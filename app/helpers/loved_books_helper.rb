@@ -1,0 +1,2 @@
+module LovedBooksHelper
+end
