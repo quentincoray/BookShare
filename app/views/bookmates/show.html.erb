@@ -1,2 +1,14 @@
 <p>hello</p>
 
+<p> Nom du détenteur du bookstore <%= @bookmate.user.email %> </p>
+<p>Description : <%= @bookmate.description %> </p>
+<p>category: <%= @bookmate.book_category %> </p>
+<p> Mode(s) de livraison : </p>
+
+<% if @bookmate.deliver_by_hand == true %>
+  <p>Livraison en main popre</p>
+<% end %>
+<% if @bookmate.home_delivery == true %>
+  <p>Livraison à domicile</p>
+<% end %>
+
