@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320141551) do
+ActiveRecord::Schema.define(version: 20170320142849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmates", force: :cascade do |t|
+    t.text     "description"
+    t.string   "book_category"
+    t.boolean  "deliver_by_hand"
+    t.boolean  "home_delivery"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["user_id"], name: "index_bookmates_on_user_id", using: :btree
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string   "title"
+    t.text     "summary"
+    t.string   "author"
+    t.text     "author_bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "loved_books", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_loved_books_on_book_id", using: :btree
+    t.index ["user_id"], name: "index_loved_books_on_user_id", using: :btree
+  end
+
+  create_table "selling_books", force: :cascade do |t|
+    t.integer  "bookmate_id"
+    t.integer  "book_id"
+    t.text     "personalized_comment"
+    t.float    "price"
+    t.string   "condition"
+    t.boolean  "favorite_book"
+    t.boolean  "sold"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["book_id"], name: "index_selling_books_on_book_id", using: :btree
+    t.index ["bookmate_id"], name: "index_selling_books_on_bookmate_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -32,4 +75,9 @@ ActiveRecord::Schema.define(version: 20170320141551) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "bookmates", "users"
+  add_foreign_key "loved_books", "books"
+  add_foreign_key "loved_books", "users"
+  add_foreign_key "selling_books", "bookmates"
+  add_foreign_key "selling_books", "books"
 end
