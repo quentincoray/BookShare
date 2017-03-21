@@ -44,9 +44,14 @@
 <!--       Contenu du profil -->
       <div class="tab-content" id="profile">
         <h2>Mon profil</h2>
-        <% if policy(@user).update? %>
-          <%= link_to "Editer mon profil", edit_user_path(current_user), class: "button" %>
-        <% end %>
+          <% if current_user.photo? %>
+            <%= cl_image_tag current_user.photo.path, alt: "profile picture", class: "avatar-large" %>
+          <% else %>
+            <%= image_tag "avatar.png", alt: "profile picture", class: "avatar-large" %>
+          <% end %>
+          <% if policy(@user).update? %>
+            <%= link_to "Editer mon profil", edit_user_path(current_user), class: "button" %>
+          <% end %>
       </div>
 <!--       Contenu des messages -->
       <div class="tab-content hidden" id="messages">
