@@ -1,4 +1,5 @@
  <div class = "text-title">
+ </div>
 <% if @users_near_me.length == 0 %>
   <div class="container">
     <div class="span">
@@ -12,17 +13,39 @@
 <% else %>
   <div class="container">
     <div class="row">
-    <p>Bookmates near <b><%= @address %></b></p>
-    <% @bookmates_near_me.each do |bookmate|%>
-      <%= bookmate.user.first_name %>
-      <%= bookmate.description %>
-    <% end %>
+    <p>Bookmates near you: </p>
+      <div class="col-xs-8" id="card-column">
+        <div class="row">
+          <% @bookmates_near_me.each do |bookmate|%>
+            <div class="col-xs-6 ">
+              <div class="card"
+                  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+                <div class="card-category">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i> <%= bookmate.user.address %>
+                </div>
+                <div class="card-description">
+                  <h2>
+                    " <%= bookmate.description %> "
+                  </h2>
+                  <i class="fa fa-user" aria-hidden="true"></i> <%= bookmate.user.first_name %>
+                  <% if bookmate.user.photo? %>
+                    <%= cl_image_tag bookmate.user.photo.path,:width=>50, :height=>50, :gravity=>"auto", :crop=>"fill", class: "card-user avatar-bordered"%>
+                    <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
+                  <% else %>
+                    <%= image_tag 'avatar.png', class: "card-user avatar avatar-bordered"%>
+                    <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="col-xs-4" id="map-column">
-        <div id="map"></div>
+      <div id="map"></div>
     </div>
   </div>
-</div>
 
   <%= content_for(:after_js) do %>
     <script>
