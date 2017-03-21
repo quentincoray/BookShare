@@ -3,6 +3,7 @@ class BookmatesController < ApplicationController
 
   def show
     authorize @bookmate
+    @book = book
   end
 
   private

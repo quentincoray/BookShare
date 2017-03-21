@@ -12,3 +12,8 @@
   <p>Livraison à domicile</p>
 <% end %>
 
+
+<p>Voir le livre <%= @bookmate.selling_books.book.title %></p>
+<%= simple_form_for [@bookmate] do |f| %>
+  <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
+<% end %>
