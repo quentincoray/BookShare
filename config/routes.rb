@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get 'search', to: 'bookmates#search'
-  get 'newcoords', to: 'bookmates#newcoords'
 
 
   mount Attachinary::Engine => "/attachinary"

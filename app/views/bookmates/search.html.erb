@@ -10,17 +10,19 @@
     </div>
   </div>
 <% else %>
-  <div class="row">
-  <p>Bookmates near <b><%= @address %></b></p>
-  <% @bookmates_near_me.each do |bookmate|%>
-    <%= bookmate.user.first_name %>
-    <%= bookmate.description %>
-  <% end %>
-</div>
-  <div class="col-xs-4" id="map-column">
-      <div id="map"></div>
+  <div class="container">
+    <div class="row">
+    <p>Bookmates near <b><%= @address %></b></p>
+    <% @bookmates_near_me.each do |bookmate|%>
+      <%= bookmate.user.first_name %>
+      <%= bookmate.description %>
+    <% end %>
+    </div>
+    <div class="col-xs-4" id="map-column">
+        <div id="map"></div>
     </div>
   </div>
+</div>
 
   <%= content_for(:after_js) do %>
     <script>
