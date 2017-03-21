@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_many :loved_books, dependent: :destroy
   has_many :books, through: :loved_books
   has_many :bookmates, dependent: :destroy
-  has_many :selling_books, through: :bookmates
+  has_many :bookmate_book_categories, through: :bookmates
+  has_many :selling_books, through: :bookmate_book_categories
 
   has_attachment :photo
 
