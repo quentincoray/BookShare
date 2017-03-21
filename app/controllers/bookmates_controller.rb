@@ -3,7 +3,15 @@ class BookmatesController < ApplicationController
 
   def show
     authorize @bookmate
-    @book = book
+    @count = 0
+
+    if @bookmate.deliver_by_hand == true
+      @count = @count + 1
+    end
+
+    if @bookmate.home_delivery == true
+      @count = @count + 1
+    end
   end
 
   private

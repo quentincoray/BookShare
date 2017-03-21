@@ -22,5 +22,7 @@ quentin_bookstore = Bookmate.create(description: "J'aime les bouquins zarb", boo
 book1 = Book.create!(title: "book-title", summary: "summaryjiji", author: "authoreeee", author_bio: "author_biooooo")
 selling_book1 = SellingBook.create!(personalized_comment: "good", price: 19, condition: "good condition", favorite_book: false, sold:"false", bookmate: quentin_bookstore , book: book1)
 
+photo_book1 = 'https://www.franceculture.fr/s3/cruiser-production/2016/08/0c515c87-da57-4043-b3f6-96de8e8eaf38/738_97827436373300-3480956.jpg'
+book1.photo_url = photo_book1
 
 puts "ok"

@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
+
   def show
+    authorize @order
   end
 
   def new
@@ -9,6 +11,8 @@ class OrdersController < ApplicationController
   end
 
   def create
+    delivery_type_array = []
+
     @order = Order.new(order_params)
     @order.order_status = "pending"
     @order.bookmate = @bookmate.user
