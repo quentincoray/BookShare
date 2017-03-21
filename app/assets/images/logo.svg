@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="644px" height="100px" viewBox="0 0 644 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(0.000000, -31.000000)" fill="#5CC8FF">
+            <g id="Group" transform="translate(0.000000, 31.000000)">
+                <rect id="Rectangle" x="0" y="16" width="23" height="84" rx="2"></rect>
+                <rect id="Rectangle" x="26" y="0" width="23" height="100" rx="2"></rect>
+                <rect id="Rectangle" transform="translate(76.547326, 56.455814) rotate(-19.000000) translate(-76.547326, -56.455814) " x="65.0473261" y="14.455814" width="23" height="84" rx="2"></rect>
+            </g>
+            <text id="BookShare" font-family="GothamRounded-Bold, Gotham Rounded" font-size="100" font-weight="bold" letter-spacing="-0.574999928">
+                <tspan x="102.270117" y="109">BookShare</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
