@@ -1,6 +1,14 @@
 .avatar {
+  display: inline-block;
+  position: relative;
   width: 30px;
+  height: 30px;
+  overflow: hidden;
   border-radius: 50%;
+}
+.avatar img {
+  width: auto;
+  height: 100%;
 }
 .avatar-large {
   display: inline-block;

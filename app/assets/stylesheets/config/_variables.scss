@@ -16,6 +16,15 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'brandon_grotesque_regularRg';
+    src: url('brandon_font/brandon_reg-webfont.woff2') format('woff2'),
+         url('brandon_font/brandon_reg-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 // $my-font: "Font Name";
 
 // Font-size and line-height
