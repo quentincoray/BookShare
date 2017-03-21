@@ -1,8 +1,6 @@
-<%=form_tag(search_path, method: 'get', id: 'searchform') do %>
-  <%= text_field_tag :search, params[:search], placeholder: 'Type your first favorite book', class: "navbar-wagon-search-input" %>
-  <%= text_field_tag :search, params[:search], placeholder: 'Type your second favorite book', class: "navbar-wagon-search-input" %>
-  <%= text_field_tag :search, params[:search], placeholder: 'Type your third favorite book', class: "navbar-wagon-search-input" %>
+<%= form_tag(search_path, method: 'get', id: 'searchform') do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'Type your favorite books!', class: "searchbar form-control" %>
   <%= hidden_field_tag :latitude %>
   <%= hidden_field_tag :longitude %>
-  <%= submit_tag 'Find bookmates!', class: "btn btn-danger", id: "submitsearch", disabled: "disabled"%>
+  <%= submit_tag 'Find bookmates!', class: "btn btn-primary btn-lg", id: "submitsearch", disabled: "disabled"%>
 <% end %>

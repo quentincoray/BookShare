@@ -5,7 +5,16 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
 @import url('https://fonts.googleapis.com/css');
 $base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+
+$header-font: 'brandon_grotesquebold', "Helvetica", "sans-serif";
+
+
+// Font-size and line-height
+$header1-size:25px;
+$header2-size: 20px;
+$base-size: 16px;
+
+
 
 // Local fonts (uncomment following lines)
 @font-face {
@@ -25,21 +34,49 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'brandon_grotesque_light';
+    src: url('brandon_font/Brandon_light.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 // $my-font: "Font Name";
 
-// Font-size and line-height
-$base-size: 16px;
+
+
+// ?
 $base-height: 1.4;
 
 /* -------------------------------------
  * Colors
  * ------------------------------------- */
 // Scheme
-$brand-color: #D23333;
 
 $red: #EE5F5B;
+$dark-red: #FC4040;
 $blue: #5CC8FF;
-$yellow: #FDB631;
-$orange: #E67E22;
-$green: #32B796;
-$gray: #000000;
+$green: #64DAA7;
+$dark-gray: #4A4A4A;
+$light-gray: #9B9B9B;
+
+
+//size fonts
+
+h1 {
+  font-family: $header-font;
+  font-size: $header1-size;
+}
+
+h2 {
+  font-family: $header-font;
+  font-size: $header2-size;
+}
+
+p {
+  font-family: $base-font;
+  font-size: 300;
+  font-size: $base-size;
+}
+
