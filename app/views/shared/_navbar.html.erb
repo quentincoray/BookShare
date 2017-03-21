@@ -57,8 +57,12 @@
 
     <% else %>
 
+      <div class="navbar-wagon-item">
+        Devenez Bookmate
+      </div>
+
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-wagon-item" %>
 
     <% end %>
   </div>
