@@ -1,0 +1,2 @@
+class BookmateBookCategoriesController < ApplicationController
+end
