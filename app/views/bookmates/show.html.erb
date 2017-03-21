@@ -21,5 +21,23 @@
   <% end %>
 <% end %>
 
+<div id="content"></div>
+
+<script>
+  // var url =
+  // var search = "harry potter"
+  function handleResponse(response) {
+    for (var i = 0; i < response.items.length; i++) {
+      var item = response.items[i];
+      // in production code, item.text should have the HTML entities escaped.
+      document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title + item.volumeInfo.authors + item.volumeInfo.imageLinks.smallThumbnail
+  }
+}
+</script>
+<script src="https://www.googleapis.com/books/v1/volumes?q=harry+potter&callback=handleResponse"></script>
+
+
+
+
 
 
