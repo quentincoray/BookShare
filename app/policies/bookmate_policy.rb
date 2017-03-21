@@ -1,11 +1,15 @@
 class BookmatePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all
     end
+  end
 
-    def create?
-      return true
-    end
+  def newcoords?
+    return true
+  end
+
+  def create?
+    return true
   end
 end

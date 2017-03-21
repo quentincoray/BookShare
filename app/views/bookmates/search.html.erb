@@ -1,5 +1,5 @@
  <div class = "text-title">
-<% if @bookmates.length == 0 %>
+<% if @users.length == 0 %>
   <div class="container">
     <div class="span">
       <p>No bookmates near <%= @address %>....</p>
@@ -12,38 +12,10 @@
 <% else %>
   <div class="row">
   <p>Bookmates near <b><%= @address %></b></p>
-    <div class="col-xs-8" id="card-column">
-      <div class="row">
-        <% @bookmates.each do |bookmate| %>
-          <div class="col-xs-6 ">
-
-            <% if bookmate.photos? %>
-              <div class="card"
-                style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmate.photos.first.path, crop: :fit %>')">
-            <% else %>
-              <div class="card"
-                  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-            <% end %>
-              <div class="card-category">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> <%= bookmate.localisation %>
-              </div>
-              <div class="card-description">
-                <h2>
-                  " <%= bookmate.title %> "
-                </h2>
-                  <i class="fa fa-user" aria-hidden="true"></i> <%= bookmate.user.first_name %> <%= bookmate.user.last_name %>
-              </div>
-              <% if bookmate.user.photo? %>
-                <%= cl_image_tag bookmate.user.photo.path,:width=>50, :height=>50, :gravity=>"auto", :crop=>"fill", class: "card-user avatar-bordered"%>
-                <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
-              <% else %>
-                <%= image_tag 'avatar.png', class: "card-user avatar avatar-bordered"%>
-                <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
-              <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+  <% @users.each do |user|%>
+    <%= user.first_name %>
+    <%= user.address %>
+  <% end %>
 </div>
   <div class="col-xs-4" id="map-column">
       <div id="map"></div>
