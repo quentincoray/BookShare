@@ -7,6 +7,7 @@ class BookmatesController < ApplicationController
   def show
     authorize @bookmate
     @count = 0
+    @bookmate_book_categories = BookmateBookCategory.all
 
     if @bookmate.deliver_by_hand == true
       @count = @count + 1
