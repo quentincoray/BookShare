@@ -9,10 +9,9 @@
 
 SellingBook.destroy_all
 BookmateBookCategory.destroy_all
-# Bookmate.destroy_all
-
+Bookmate.destroy_all
 Book.destroy_all
-# User.destroy_all
+User.destroy_all
 
 quentin = User.create(email: "quentin@gmail.com", password: "azerty", first_name: "Quentin", last_name: "Coray", address: "16 villa Gaudelet Paris")
 anne_sophie = User.create(email: "anne_sophie@gmail.com", password: "azerty", first_name: "Anne-Sophie", last_name: "Chambon", address: "8 rue des Boulangers Paris")
