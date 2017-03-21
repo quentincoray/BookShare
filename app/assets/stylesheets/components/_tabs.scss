@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css');
+
 .tabs {
   display: flex;
   flex-direction: column;
   padding: 2px 2px 2px 2px;
+  font-family: 'brandon_grotesquebold', sans-serif;
 }
 .tabs a {
   color: black;
@@ -18,12 +21,13 @@
   font-weight: bold;
   margin: 0;
 }
-.tabs p {
-  font-family: BrandonGrotesque-Bold;
+.tab p {
+  font-family: 'brandon_grotesquebold', sans-serif;
   font-size: 18px;
   color: #4A4A4A;
-  letter-spacing: -0.11px;
+  letter-spacing: 0.5px;
   margin-left: 10px;
+  padding: 5px 0 0 0;
 }
 .tabs {
   flex: 1 1 auto;
@@ -31,9 +35,10 @@
 }
 .tab.active {
   background: rgba(255,115,115,0.20);
-  font-weight: bolder;
   border-left: 4px solid #FF7474;
   color: black;
+  letter-spacing: 0.5px;
+  padding: 5px 0 0 0;
 }
 .tab-content {
   margin-top: 10px;
