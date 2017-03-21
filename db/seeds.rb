@@ -9,7 +9,7 @@
 
 SellingBook.destroy_all
 BookmateBookCategory.destroy_all
-# Bookmate.destroy_all
+Bookmate.destroy_all
 
 Book.destroy_all
 # User.destroy_all
