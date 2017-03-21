@@ -9,4 +9,5 @@ class Bookmate < ApplicationRecord
   validates :description, presence: :true
   validates :deliver_by_hand, inclusion: { in: [ true, false ] }
   validates :home_delivery, inclusion: { in: [ true, false ] }
+
 end
