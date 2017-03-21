@@ -28,7 +28,7 @@
           <% if current_user.photo? %>
             <%= cl_image_tag current_user.photo.path, alt: "profile picture", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
           <% else %>
-            <%= image_tag "avatar.png", alt: "profile picture", class: "avatar-large" %>
+            <%= image_tag "avatar.png", alt: "profile picture", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
