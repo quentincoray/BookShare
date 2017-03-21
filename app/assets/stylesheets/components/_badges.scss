@@ -6,6 +6,15 @@
   color: grey;
   text-align: left;
 }
+
+.badge-container:hover {
+  position: relative;
+  font-size: 18px;
+  line-height: 35px;
+  width: 80px;
+  color: grey;
+  text-align: left;
+}
 .badge {
   position: absolute;
   top: -5px;

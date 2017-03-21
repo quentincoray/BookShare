@@ -38,6 +38,17 @@
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
+  font-size: 18px;
+  color: grey;
+  font-family: 'brandon_grotesque_regularRg', sans-serif;
+}
+
+.navbar-wagon-item:hover {
+  flex: 0 1 auto;
+  cursor: pointer;
+  padding: 0 20px;
+  font-size: 18px;
+  color: blue;
   font-family: 'brandon_grotesque_regularRg', sans-serif;
 }
 
