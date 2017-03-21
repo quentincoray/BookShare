@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :bookmates, dependent: :destroy
   has_many :selling_books, through: :bookmates
 
-  # has_attachment :photo
+  has_attachment :photo
 
   validates :first_name, presence: :true
 
