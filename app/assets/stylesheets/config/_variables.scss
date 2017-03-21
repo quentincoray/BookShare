@@ -10,8 +10,8 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
 // Local fonts (uncomment following lines)
 @font-face {
     font-family: 'brandon_grotesquebold';
-    src: url('brandon_font/brandon_bld-webfont.woff2') format('woff2'),
-         url('brandon_font/brandon_bld-webfont.woff') format('woff');
+    src: font-url('brandon_bld-webfont.woff2') format('woff2'),
+         font-url('brandon_bld-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -19,8 +19,8 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
 
 @font-face {
     font-family: 'brandon_grotesque_regularRg';
-    src: url('brandon_font/brandon_reg-webfont.woff2') format('woff2'),
-         url('brandon_font/brandon_reg-webfont.woff') format('woff');
+    src: font-url('brandon_reg-webfont.woff2') format('woff2'),
+         font-url('brandon_reg-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
