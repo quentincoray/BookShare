@@ -1,0 +1,94 @@
+<h1>Bienvenue sur votre dashboard <%= current_user.first_name %> !</h1>
+
+<div class = "container">
+  <!-- Cette row contient le Dashboard -->
+  <div class = "row">
+    <!-- Cette colonne contient la barre latérale -->
+    <div class = "col-xs-3" style = "background-color: #F3F3F3">
+      <h3>Mon compte</h3>
+        <div class="tabs">
+          <a class="tab active" data-target="#profile">
+            <p>Mon profil</p>
+          </a>
+          <a class="tab" data-target="#messages">
+            <p>Mes messages</p>
+          </a>
+          <a class="tab" data-target="#comments">
+            <p>Mes commentaires</p>
+          </a>
+          <a class="tab" data-target="#favorite_books">
+            <p>Mes livres préférés</p>
+          </a>
+          <a class="tab" data-target="#bookmates">
+            <p>Mes bookmates</p>
+          </a>
+          <a class="tab" data-target="#cart">
+            <p>Mon panier</p>
+          </a>
+          <a class="tab" data-target="#orders">
+            <p>Mes commandes</p>
+          </a>
+        </div>
+      <h3>Mon bookstore</h3>
+        <div class="tabs">
+          <a class="tab" data-target="#sales">
+            <p>Mes ventes</p>
+          </a>
+          <a class="tab" data-target="#offers">
+            <p>Mon offre</p>
+          </a>
+        </div>
+    </div>
+    <!-- Cette colonne contient le contenu des tabs -->
+    <div class = "col-xs-9">
+<!--       Contenu du profil -->
+      <div class="tab-content" id="profile">
+        <h2>Mon profil</h2>
+          <% if current_user.photo? %>
+            <%= cl_image_tag current_user.photo.path, alt: "profile picture", class: "avatar-large" %>
+          <% else %>
+            <%= image_tag "avatar.png", alt: "profile picture", class: "avatar-large" %>
+          <% end %>
+          <% if policy(@user).update? %>
+            <%= link_to "Editer mon profil", edit_user_path(current_user), class: "button" %>
+          <% end %>
+      </div>
+<!--       Contenu des messages -->
+      <div class="tab-content hidden" id="messages">
+        <h2>Mes messages</h2>
+      </div>
+<!--       Contenu des commentaires -->
+      <div class="tab-content hidden" id="comments">
+        <h2>Mes commentaires</h2>
+      </div>
+<!--       Contenu des livres préférés -->
+      <div class="tab-content hidden" id="favorite_books">
+        <h2>Mes livres préférés</h2>
+      </div>
+<!--       Contenu des bookmates -->
+      <div class="tab-content hidden" id="bookmates">
+        <h2>Mes bookmates</h2>
+      </div>
+<!--       Contenu du panier -->
+      <div class="tab-content hidden" id="cart">
+        <h2>Mon panier</h2>
+      </div>
+<!--       Contenu des commandes -->
+      <div class="tab-content hidden" id="orders">
+        <h2>Mes commandes</h2>
+      </div>
+<!--       Contenu des ventes -->
+      <div class="tab-content hidden" id="sales">
+        <h2>Mes ventes</h2>
+      </div>
+<!--      Contenu de l'offre -->
+      <div class="tab-content hidden" id="offers">
+        <h2>Mon offre</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts pour l'animation des tabs -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="javascripts/tabs.js"></script>
