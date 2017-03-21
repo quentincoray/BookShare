@@ -9,9 +9,6 @@
       </div>
     </div>
   </div>
-  <div id="out"></div>
-
-
 
   <script>
     window.onload = function geoFindMe() {
@@ -27,6 +24,9 @@
         var longitude = position.coords.longitude;
         $("#latitude").val(latitude);
         $("#longitude").val(longitude);
+          if ( !$('#latitude') != null && !$('#longitude') != null) {
+            $("#submitsearch").removeAttr("disabled");
+          };
         // $.get(
         //   '/newcoords',
         //   {latitude, longitude},
@@ -45,6 +45,8 @@
 
       navigator.geolocation.getCurrentPosition(success, error);
     }
+
+
 
 
   </script>

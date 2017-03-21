@@ -1,8 +1,8 @@
  <div class = "text-title">
-<% if @users.length == 0 %>
+<% if @users_near_me.length == 0 %>
   <div class="container">
     <div class="span">
-      <p>No bookmates near <%= @address %>....</p>
+      <p>No bookmates near you yet</p>
       <p>Search again! </p>
       <div class="span-form">
         <%= render '/pages/search_form' %>
@@ -12,9 +12,9 @@
 <% else %>
   <div class="row">
   <p>Bookmates near <b><%= @address %></b></p>
-  <% @users.each do |user|%>
-    <%= user.first_name %>
-    <%= user.address %>
+  <% @bookmates_near_me.each do |bookmate|%>
+    <%= bookmate.user.first_name %>
+    <%= bookmate.description %>
   <% end %>
 </div>
   <div class="col-xs-4" id="map-column">
