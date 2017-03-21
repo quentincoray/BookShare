@@ -3,17 +3,28 @@
  * ------------------------------------- */
 // Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+@import url('https://fonts.googleapis.com/css');
 $base-font: "Open Sans", "Helvetica", "sans-serif";
 $header-font: "Raleway", "Helvetica", "sans-serif";
 
 // Local fonts (uncomment following lines)
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
+@font-face {
+    font-family: 'brandon_grotesquebold';
+    src: url('brandon_font/brandon_bld-webfont.woff2') format('woff2'),
+         url('brandon_font/brandon_bld-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'brandon_grotesque_regularRg';
+    src: url('brandon_font/brandon_reg-webfont.woff2') format('woff2'),
+         url('brandon_font/brandon_reg-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 // $my-font: "Font Name";
 
 // Font-size and line-height
