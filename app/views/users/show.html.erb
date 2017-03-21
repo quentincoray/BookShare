@@ -44,7 +44,7 @@
 <!--       Contenu du profil -->
       <div class="tab-content" id="profile">
         <h2>Mon profil</h2>
-        <% if policy(User).edit? %>
+        <% if policy(@user).update? %>
           <%= link_to "Editer mon profil", edit_user_path(current_user), class: "button" %>
         <% end %>
       </div>
