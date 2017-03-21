@@ -6,6 +6,18 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def edit
+    @user = User.find(params[:id])
+    authorize @user
+  end
+
+  def update
+    current_user.update(user_params)
+    current_user.save
+    authorize @user
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def user_params
