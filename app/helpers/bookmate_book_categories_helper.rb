@@ -1,0 +1,2 @@
+module BookmateBookCategoriesHelper
+end
