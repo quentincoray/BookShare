@@ -8,6 +8,6 @@ class BooksController < ApplicationController
   private
 
   def set_book
-    @book = Bookm.find(params[:id])
+    @book = Book.find(params[:id])
   end
 end
