@@ -2,7 +2,20 @@ class BookmatesController < ApplicationController
 
   skip_before_action :authenticate_user!, only: :search
   skip_after_action :verify_policy_scoped, only: :search
+  before_action :set_bookmate, only: [:show]
 
+  def show
+    authorize @bookmate
+    @count = 0
+
+    if @bookmate.deliver_by_hand == true
+      @count = @count + 1
+    end
+
+    if @bookmate.home_delivery == true
+      @count = @count + 1
+    end
+  end
 
   def search
     @address = [params[:latitude],params[:longitude]].join(",")
@@ -13,11 +26,11 @@ class BookmatesController < ApplicationController
       marker.lng user.longitude
       # marker.infowindow render_to_string(partial: 'infowindow', locals: { user: user })
     end
-    # @bookmates = User.bookmates
+  end
+
+  private
+
+  def set_bookmate
+    @bookmate = Bookmate.find(params[:id])
   end
 end
-
-
-
-    # @users = @bookmates.map { |bookmate| bookmate.user }
-    # @users_near_me = @users.flatten.near(@address, 10)

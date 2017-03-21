@@ -5,18 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 User.destroy_all
 Bookmate.destroy_all
+Book.destroy_all
+SellingBook.destroy_all
 
+quentin = User.create(email: "quentin@gmail.com", password: "azerty", first_name: "Quentin", last_name: "Coray", address: "16 villa Gaudelet Paris")
+anne_sophie = User.create(email: "anne_sophie@gmail.com", password: "azerty", first_name: "Anne-Sophie", last_name: "Chambon", address: "8 rue des Boulangers Paris")
+camille = User.create(email: "camille@gmail.com", password: "azerty", first_name: "Camille", last_name: "Franceschi", address: "23 boulevard Arago Paris")
+jean = User.create(email: "jean@gmail.com", password: "azerty", first_name: "Jean", last_name: "Flantier", address: "7 avenue de la libération Clermont-Ferrand")
+edouard = User.create(email: "edouard@gmail.com", password: "azerty", first_name: "Edouard", last_name: "Robert", address: "Donnybrook road Dublin Ireland")
+alice = User.create(email: "alice@gmail.com", password: "azerty", first_name: "Alice", last_name: "Martin", address: "100 rue Oberkampf Paris")
 
-user1 = User.create!(first_name: "Camille", email: 'camille@gmail.com', password:'azerty', address: "16 villa Gaudelet Paris")
-user2 = User.create!(first_name: "Quentin", email: 'quention@gmail.com', password:'azerty', address: "8 rue des Boulangers Paris")
-user3 = User.create!(first_name: "Julien", email: 'julien@gmail.com', password:'azerty', address: "6 rue du hameau Yzeure")
+quentin_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", book_category: "romans policiers", deliver_by_hand: true, home_delivery: false, user: quentin)
 
-bookmates = Bookmate.create!([
-  {description: 'French lit', home_delivery: true, deliver_by_hand: true, user: user1},
-  {description: 'English lit', home_delivery: true, deliver_by_hand: true, user: user2},
-  {description: 'Spanish lit', home_delivery: true, deliver_by_hand: true, user: user3}
-])
+book1 = Book.create!(title: "book-title", summary: "summaryjiji", author: "authoreeee", author_bio: "author_biooooo")
+selling_book1 = SellingBook.create!(personalized_comment: "good", price: 19, condition: "good condition", favorite_book: false, sold: false, bookmate: quentin_bookstore , book: book1)
+photo_book1 = 'https://www.franceculture.fr/s3/cruiser-production/2016/08/0c515c87-da57-4043-b3f6-96de8e8eaf38/738_97827436373300-3480956.jpg'
+book1.photo_url = photo_book1
 
-puts 'seed ok'
+book2 = Book.create!(title: "Faillir être flingué", summary: "summaryjijddeefrfrgri", author: "authorcceeeeee", author_bio: "author_biooodffffoo")
+selling_book2 = SellingBook.create!(personalized_comment: "very good", price: 29, condition: "very good condition", favorite_book: true, sold: false, bookmate: quentin_bookstore , book: book2)
+photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
+book2.photo_url = photo_book2
+
+puts "ok"

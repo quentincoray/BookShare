@@ -1,0 +1,23 @@
+<p>A propos de <%= @bookmate.user.first_name %> </p>
+<p>Ses goûts littéraires : <%= @bookmate.description %> </p>
+<p> <%= pluralize @count, "mode" %> de livraison : </p>
+<% if @bookmate.deliver_by_hand == true %>
+  <p>Livraison en main popre</p>
+<% end %>
+<% if @bookmate.home_delivery == true %>
+  <p>Livraison à domicile</p>
+<% end %>
+<p>Son top 3 ?</p>
+<p>Sa note ?</p>
+
+<p>category: <%= @bookmate.book_category %> </p>
+
+<% @bookmate.selling_books.each do |selling_book| %>
+  <p>Voir le livre <%= selling_book.book.title %></p>
+  <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "card-link" do %>
+      <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
+  <% end %>
+<% end %>
+
+
+
