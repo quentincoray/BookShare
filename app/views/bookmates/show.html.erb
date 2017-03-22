@@ -1,3 +1,9 @@
+<div class="side-bar">
+  <h3>GENRES FAVORIS</h3>
+  <%= cl_image_tag @bookmate.user.photo.path, alt: "profile picture", :width=>300, class: "avatar" %>
+</div>
+
+
 <p>A propos de <%= @bookmate.user.first_name %> </p>
 <p>Ses goûts littéraires : <%= @bookmate.description %> </p>
 <p> <%= pluralize @count, "mode" %> de livraison : </p>

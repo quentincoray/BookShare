@@ -15,6 +15,21 @@ jean = User.create(email: "jean@gmail.com", password: "azerty", first_name: "Jea
 edouard = User.create(email: "edouard@gmail.com", password: "azerty", first_name: "Edouard", last_name: "Robert", address: "Donnybrook road Dublin Ireland")
 alice = User.create(email: "alice@gmail.com", password: "azerty", first_name: "Alice", last_name: "Martin", address: "100 rue Oberkampf Paris")
 
+photo_quentin = 'https://pbs.twimg.com/profile_images/618004273998249984/-46_Q9Ca.jpg'
+photo_anne_sophie = 'https://avatars1.githubusercontent.com/u/25099604?v=3&s=460'
+photo_camille = 'https://avatars2.githubusercontent.com/u/21193933?v=3&s=460'
+photo_jean = 'http://cdn77.sadanduseless.com/wp-content/uploads/2015/05/worst9.jpg'
+photo_edouard = 'http://www.goldenmoustache.com/wp-content/uploads/2015/06/worst8.jpg'
+photo_alice = 'http://www.teamjimmyjoe.com/wp-content/uploads/2012/11/Bad-Family-Photos-80s-Yearbook-.jpg'
+
+quentin.photo_url = photo_quentin
+anne_sophie.photo_url = photo_anne_sophie
+camille.photo_url = photo_camille
+jean.photo_url = photo_jean
+edouard.photo_url = photo_edouard
+alice.photo_url = photo_alice
+
+
 puts "Creating bookmates..."
 quentin_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: quentin)
 romans_policiers = BookmateBookCategory.create!(name:"romans policiers", bookmate: quentin_bookstore)
