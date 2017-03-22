@@ -38,9 +38,9 @@
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
-  font-size: 18px;
-  color: grey;
-  font-family: 'brandon_grotesque_regularRg', sans-serif;
+  font-size: 15px;
+  color: $dark-grey;
+  font-family: $base-font;
   text-decoration: none;
 }
 
@@ -48,7 +48,7 @@
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
-  font-size: 18px;
+  font-size: 15px;
   color: $blue;
   font-family: 'brandon_grotesque_regularRg', sans-serif;
   text-decoration: none;
@@ -64,6 +64,11 @@
   color: #da552f;
   text-decoration: none;
 }
+
+
+/* basket */
+
+
 
 /* Navbar right button */
 .navbar-wagon-button {
