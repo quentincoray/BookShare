@@ -6,8 +6,8 @@
 @import url('https://fonts.googleapis.com/css');
 $base-font: "Open Sans", "Helvetica", "sans-serif";
 
-$header-font: 'brandon_grotesquebold', "Helvetica", "sans-serif";
-
+$header-font: 'brandon_grotesque_bold', "Helvetica", "sans-serif";
+$header-intermediary-font: 'brandon_grotesque_thin', "Helvetica", "sans-serif";
 
 // Font-size and line-height
 $header1-size:25px;
@@ -20,7 +20,7 @@ $base-size: 16px;
 
 // Local fonts (uncomment following lines)
 @font-face {
-    font-family: 'brandon_grotesquebold';
+    font-family: 'brandon_grotesque_bold';
     src: font-url('brandon_bld-webfont.woff2') format('woff2'),
          font-url('brandon_bld-webfont.woff') format('woff');
     font-weight: normal;
@@ -29,7 +29,7 @@ $base-size: 16px;
 }
 
 @font-face {
-    font-family: 'brandon_grotesque_regularRg';
+    font-family: 'brandon_grotesque_regular';
     src: font-url('brandon_reg-webfont.woff2') format('woff2'),
          font-url('brandon_reg-webfont.woff') format('woff');
     font-weight: normal;
@@ -38,10 +38,10 @@ $base-size: 16px;
 }
 
 @font-face {
-    font-family: 'brandon_grotesque_light';
-    src: url('brandon_font/Brandon_light.otf') format('otf');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'brandon_grotesque_thin';
+    src: font-url('Brandon_thin.otf') format('otf');
+    // font-weight: normal;
+    // font-style: normal;
 }
 
 // $my-font: "Font Name";
@@ -85,15 +85,17 @@ h2 {
 
 // pour les titres en majuscules dans la sidebar
 h3 {
-  font-family: $base-font;
-  font-size: 300;
+  font-family: $header-intermediary-font;
+  font-weight: 300;
   font-size: $header2-size;
+  text-transform: capitalize;
 }
 
 p {
   font-family: $base-font;
-  font-size: 300;
+  font-weight: 300;
   font-size: $base-size;
+  color:$dark-grey;
 }
 
 
@@ -113,7 +115,7 @@ p {
   background-color: $light-grey;
   border-radius:$br-base;
   padding: 5px;
-
+  //padding a definir a vue d oeil avec les mockups
 }
 
 .card-grey-search {
@@ -138,6 +140,6 @@ p {
 
 .side-bar {
   width:209px;
-  background-color:$grey;
+  background-color:$light-grey;
 }
 

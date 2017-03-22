@@ -1,6 +1,7 @@
 class SellingBook < ApplicationRecord
   belongs_to :book
   belongs_to :bookmate_book_category, optional: true
+  has_one :bookmate, through: :bookmate_book_category
   has_many :ordered_books
 
   validates :personalized_comment, presence: :true
