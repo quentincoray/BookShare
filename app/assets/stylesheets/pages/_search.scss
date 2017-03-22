@@ -41,7 +41,20 @@
   color: $red;
 }
 
+.user-details {
+  padding-right: 15px;
+}
+
 .user-details-books {
   margin-left: auto;
   color: $blue;
+}
+
+.user-details-books h3 {
+  display: inline-block;
+  color: $blue;
+}
+
+.user-details-books h3:last-child {
+  float: right;
 }
