@@ -119,6 +119,9 @@ p {
 }
 
 .card-grey-search {
+  background-color: $light-grey;
+  border-radius:$br-base;
+  padding: 5px;
   width:800px;
 }
 .card-grey-bookmate-page {
