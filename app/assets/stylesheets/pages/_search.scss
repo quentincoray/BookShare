@@ -1,5 +1,7 @@
 .container-search {
   position: relative;
+  margin-left: 30px;
+  max-width: 1170px;
 }
 
 .text-title {
@@ -20,7 +22,7 @@
 }
 
 #map {
-  width: 100%;
+  width: 120%;
   height: 74vh;
 }
 
@@ -31,5 +33,15 @@
   height: 74vh;
   float:left;
   overflow-y: auto;
-  padding-left: 40px;
+}
+
+.user-link {
+  margin-left: auto;
+  padding-right: 10px;
+  color: $red;
+}
+
+.user-details-books {
+  margin-left: auto;
+  color: $blue;
 }

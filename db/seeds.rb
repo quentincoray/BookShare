@@ -20,7 +20,12 @@ jean = User.create(email: "jean@gmail.com", password: "azerty", first_name: "Jea
 edouard = User.create(email: "edouard@gmail.com", password: "azerty", first_name: "Edouard", last_name: "Robert", address: "Donnybrook road Dublin Ireland")
 alice = User.create(email: "alice@gmail.com", password: "azerty", first_name: "Alice", last_name: "Martin", address: "100 rue Oberkampf Paris")
 
-quentin_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: quentin)
+quentin_bookstore = Bookmate.create!(description: "J'aime quand c'est cru, j'aime quand c'est cuit, j'aime quand ça claque, j'aime quand c'est croustillant, j'aime le Piment d'Espelette", deliver_by_hand: true, home_delivery: false, user: quentin)
+quentin_bookstore_1 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: anne_sophie)
+quentin_bookstore_2 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: camille)
+quentin_bookstore_3 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: jean)
+quentin_bookstore_4 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: edouard)
+quentin_bookstore_5 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: alice)
 
 romans_policiers = BookmateBookCategory.create!(name:"romans policiers", bookmate: quentin_bookstore)
 

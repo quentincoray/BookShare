@@ -14,9 +14,9 @@
   border-style: 4px solid white;
 }
 .card-user img {
-  vertical-align: middle;
   width: auto;
   height: 100%;
+  border-style: solid white 4px;
 }
 .card-category {
   position: absolute;
@@ -55,8 +55,4 @@
   position: absolute;
   top: 5px;
   right: 50px;
-}
-
-.user-link {
-  margin-left: auto;
 }
