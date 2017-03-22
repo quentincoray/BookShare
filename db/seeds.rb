@@ -15,6 +15,7 @@ jean = User.create(email: "jean@gmail.com", password: "azerty", first_name: "Jea
 edouard = User.create(email: "edouard@gmail.com", password: "azerty", first_name: "Edouard", last_name: "Robert", address: "Donnybrook road Dublin Ireland")
 alice = User.create(email: "alice@gmail.com", password: "azerty", first_name: "Alice", last_name: "Martin", address: "100 rue Oberkampf Paris")
 
+
 photo_quentin = 'https://pbs.twimg.com/profile_images/618004273998249984/-46_Q9Ca.jpg'
 photo_anne_sophie = 'https://avatars1.githubusercontent.com/u/25099604?v=3&s=460'
 photo_camille = 'https://avatars2.githubusercontent.com/u/21193933?v=3&s=460'
@@ -32,9 +33,18 @@ alice.photo_url = photo_alice
 
 puts "Creating bookmates..."
 quentin_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: quentin)
-romans_policiers = BookmateBookCategory.create!(name:"romans policiers", bookmate: quentin_bookstore)
+quentin_bookstore_1 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: anne_sophie)
+quentin_bookstore_2 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: camille)
+quentin_bookstore_3 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: jean)
+quentin_bookstore_4 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: edouard)
+quentin_bookstore_5 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: alice)
+
+
 
 puts "Creating books..."
+
+romans_policiers = BookmateBookCategory.create!(name:"romans policiers", bookmate: quentin_bookstore)
+
 book1 = Book.create!(title: "book-title", summary: "summaryjiji", author: "authoreeee", author_bio: "author_biooooo")
 selling_book1 = SellingBook.create!(personalized_comment: "good", price: 19, condition: "good condition", favorite_book: false, sold: false, book: book1, bookmate_book_category: romans_policiers)
 photo_book1 = 'https://www.franceculture.fr/s3/cruiser-production/2016/08/0c515c87-da57-4043-b3f6-96de8e8eaf38/738_97827436373300-3480956.jpg'

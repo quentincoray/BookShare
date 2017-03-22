@@ -1,5 +1,3 @@
- <div class = "text-title">
- </div>
 <% if @users_near_me.length == 0 %>
   <div class="container-search">
     <div class="span">
@@ -11,44 +9,45 @@
     </div>
   </div>
 <% else %>
-  <div class="container">
+  <div class="container-search">
   <!-- Bloc map et cards -->
     <div class="row">
-      <p>Bookmates near you: </p>
+      <h1 class ="red">Bookmates near you: </h1>
         <!-- Bloc cards -->
         <div class="col-xs-8" id="card-column">
           <% @bookmates_near_me.each do |bookmate|%>
             <!-- Carte utilisateur -->
             <div class="card-grey-search">
-              <div class="row">
-                  <!-- Zone photo -->
-                    <div class="col-xs-2">
-                      <% if bookmate.user.photo? %>
-                        <%= cl_image_tag bookmate.user.photo.path, :gravity=>"auto", :crop=>"fill", class: "card-user"%>
-                        <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
-                        <p><%= bookmate.user.first_name %></p>
-                      <% else %>
-                        <%= image_tag 'avatar.png', class: "card-user avatar avatar-bordered"%>
-                        <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
-                          <span><%= bookmate.user.first_name %></span>
-                      <% end %>
-                    </div>
-                  <!-- Zone description -->
-                    <div class = "col-xs-9">
-                      <h3>A propos de <%= bookmate.user.first_name %></h3>
-                      <p>" <%= bookmate.description %> "</p>
-                      <p>3 livres en commun</p>
-                    </div>
-                    <div class = "col-xs-1">
-                      <h3>></h3>
-                    </div>
+              <div class="user-avatar text-center">
+                <div class = "card-user text-center">
+                  <% if bookmate.user.photo? %>
+                    <%= cl_image_tag bookmate.user.photo.path %>
+                    <%= link_to "", bookmate_path(bookmate) %>
+                  <% else %>
+                    <%= image_tag 'avatar.png' %>
+                    <%= link_to "", bookmate_path(bookmate) %>
+                  <% end %>
                 </div>
-            <% end %>
-          </div>
+                <h2><%= bookmate.user.first_name %></h2>
+              </div>
+              <div class="user-details">
+                <h2>A propos de <%= bookmate.user.first_name %></h2>
+                <p>" <%= bookmate.description %> "</p>
+                <div class ="user-details-books">
+                  <h3>3 livres en commun</h3>
+                  <h3>My reviews</h3>
+                </div>
+              </div>
+              <div class="user-link">
+                <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i>
+              </div>
+            </div>
+          <% end %>
         </div>
         <div class="col-xs-4" id="map-column">
           <div id="map"></div>
         </div>
+      </div>
     </div>
   </div>
 <% end %>
