@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321144236) do
+ActiveRecord::Schema.define(version: 20170322112428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 20170321144236) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_loved_books_on_book_id", using: :btree
     t.index ["user_id"], name: "index_loved_books_on_user_id", using: :btree
+  end
+
+  create_table "ordered_books", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "selling_book_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["order_id"], name: "index_ordered_books_on_order_id", using: :btree
+    t.index ["selling_book_id"], name: "index_ordered_books_on_selling_book_id", using: :btree
   end
 
   create_table "orders", force: :cascade do |t|
@@ -120,6 +129,8 @@ ActiveRecord::Schema.define(version: 20170321144236) do
   add_foreign_key "bookmates", "users"
   add_foreign_key "loved_books", "books"
   add_foreign_key "loved_books", "users"
+  add_foreign_key "ordered_books", "orders"
+  add_foreign_key "ordered_books", "selling_books"
   add_foreign_key "orders", "bookmates"
   add_foreign_key "orders", "users"
   add_foreign_key "selling_books", "books"
