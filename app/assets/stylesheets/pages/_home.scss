@@ -2,3 +2,60 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+.home-title {
+  width: 785px;
+  margin: auto;
+  height: 100vh;
+}
+
+.home-subtitle {
+  display: flex;
+  align-items: center;
+}
+
+.home-title1 {
+  font-family: 'brandon_grotesquebold';
+  font-size: 48px;
+  color: white;
+  display: inline-block;
+  padding-bottom:20px;
+}
+
+.home-title2 {
+  font-family:'brandon_grotesque_light';
+  font-size: 25px;
+  color: white;
+}
+
+.home-searchbar-title {
+  font-family: BrandonGrotesque-Light;
+  font-size: 20px;
+}
+
+.searchbar {
+
+  background: #FFFFFF;
+  border-radius: 4px;
+  width:70%;
+  margin:auto;
+  padding:20px 12px;
+
+}
+.container-searchform {
+  position:relative;
+}
+
+.background-blue {
+  background-color: $blue;
+}
+
+.btn-plus {
+
+}
+
+.small-container {
+  width: 565px;
+  margin: 0px auto;
+}
+

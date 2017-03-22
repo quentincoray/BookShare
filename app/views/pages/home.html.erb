@@ -1,12 +1,24 @@
-<div class="banner">
-  <div class="banner-content">
-    <h1>Trouvez votre prochain livre sans chercher</h1>
-    <h2>Accédez à des bookstores fait par des personnes avec qui vous partagez les mêmes affinités littérairess</h2>
-    <%= image_tag "shelf.png" %>
-    <div class="row">
-      <div class="col-xs-12">
-        <%= render 'search_form' %>
+<div class="background-blue">
+  <div class="container padded-top-lg">
+    <div class="home-title text-center">
+      <div class="home-title1">Trouvez votre prochain livre sans chercher</div>
+      <div class="home-subtitle padded-bottom-lg">
+        <div class="home-title2 text-left">
+          Accédez à des bookstores fait par des personnes avec qui vous partagez les mêmes affinités
+        </div>
+        <div>
+          <%= image_tag "shelf.png" %>
+        </div>
+
       </div>
+
+      <div class="container-searchform">
+      <%= render 'search_form' %>
+        <div><%= image_tag "button-plus.png", class: "btn-plus" %></div>
+      </div>
+
+
+
     </div>
   </div>
 
