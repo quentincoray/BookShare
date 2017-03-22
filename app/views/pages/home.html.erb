@@ -16,8 +16,9 @@
       <%= render 'search_form' %>
         <div><%= image_tag "button-plus.png", class: "btn-plus" %></div>
       </div>
-      <div id="content">
-        <%= link_to "Add book", "#", class: "btn btn-danger" %>
+      <div class="container-api-img">
+      </div>
+      <div class="selected-book-cover">
       </div>
     </div>
   </div>
@@ -60,22 +61,28 @@
           console.log($('#searched_books').val());
           $.ajax({
             type: "GET",
-            url: "https://www.googleapis.com/books/v1/volumes?q=intitle:"+($('#searched_books').val())+"&maxResults=5&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+            url: "https://www.googleapis.com/books/v1/volumes?q="+($('#searched_books').val())+"&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
             success: function(data) {
-              $("#content").html('<table id="results"></table>');
+              $(".container-api-img").html('<div id="results"></div>');
               data.items.forEach(function(item) {
-                <!-- console.log(item) -->
+                var book_title = item.volumeInfo.title;
                 var book_author = item.volumeInfo.authors;
-                var book_image = item.volumeInfo.imageLinks.smallThumbnail;
+                var book_image = item.volumeInfo.imageLinks.thumbnail;
+                var book_isbn = item.volumeInfo.XXXXXXX;
                 console.log(book_image)
-                $('#results').append(book_author);
-                $("#results").append("<img src='"+book_image+"' />");
+                <!-- $('#results').append(book_author); -->
+                $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"'/></a>");
               });
             },
             error: function(jqXHR) {
               console.error(jqXHR.responseText);
             }
           });
+      });
+      $('.container-api-img').on("click", '.api-img-link', function() {
+        alert('clickable image');
+        console.log('hello');
+
       });
     });
   <% end %>

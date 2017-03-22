@@ -20,6 +20,8 @@ class BookmatesController < ApplicationController
 
   def search
     @address = [params[:latitude],params[:longitude]].join(",")
+    #récupère un array de ISBN > comparer les bookstore collections avec cet array
+    # @book = [params[:author], params[:title]]
     @users_near_me = User.near(@address, 10)
     @bookmates_near_me = @users_near_me.map { |user| user.bookmates }.flatten
     @hash = Gmaps4rails.build_markers(@users_near_me) do |user, marker|
