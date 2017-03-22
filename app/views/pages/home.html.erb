@@ -16,9 +16,7 @@
       <%= render 'search_form' %>
         <div><%= image_tag "button-plus.png", class: "btn-plus" %></div>
       </div>
-
-
-
+      <div id="content"></div>
     </div>
   </div>
 
@@ -39,13 +37,6 @@
           if ( !$('#latitude') != null && !$('#longitude') != null) {
             $("#submitsearch").removeAttr("disabled");
           };
-        // $.get(
-        //   '/newcoords',
-        //   {latitude, longitude},
-        //   success: function
-
-        // );
-
         console.log('Latitude is ' + latitude + '° Longitude is ' + longitude + '°');
       }
 
@@ -57,9 +48,19 @@
 
       navigator.geolocation.getCurrentPosition(success, error);
     }
-
-
-
+    // function handleResponse(response) {
+    //   for (var i = 0; i < response.items.length; i++) {
+    //     var item = response.items[i];
+    //     // in production code, item.text should have the HTML entities escaped.
+    //     document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title + item.volumeInfo.authors + item.volumeInfo.imageLinks.smallThumbnail
+    // }
+    // }
+    // $(document).ready(function() {
+    //   $('#searched_books').on('keydown', function(event) {
+    //     console.log(document.getElementById('#searched_books').value);
+    //   });
+    // });
 
   </script>
+
 </div>
