@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png"  %>
+    <%= image_tag "logo.svg", fill: "red"  %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -10,7 +10,7 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <div class="navbar-wagon-item">
+      <div class="navbar-wagon-item ">
         Devenez Bookmate
       </div>
 
@@ -63,7 +63,7 @@
 
     <% else %>
 
-      <div class="navbar-wagon-item">
+      <div class="navbar-wagon-item navbar-wagon-item-box">
         Devenez Bookmate
       </div>
 
