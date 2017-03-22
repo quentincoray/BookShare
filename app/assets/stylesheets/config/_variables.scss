@@ -68,13 +68,13 @@ $light-grey: #FBFBFB;
 
 h1 {
   font-family: $header-font;
-  font-size: $header1-size;
+  font-size: $header1-size !important;
   color: $red;
 }
 
 h2 {
   font-family: $header-font;
-  font-size: $header2-size;
+  font-size: $header2-size !important;
 }
 
 
@@ -85,14 +85,14 @@ h2 {
 h3 {
   font-family: $header-intermediary-font;
   font-weight: 300;
-  font-size: $header2-size;
+  font-size: $header2-size !important;
   text-transform: capitalize;
 }
 
 p {
   font-family: $base-font;
   font-weight: 300;
-  font-size: $base-size;
+  font-size: $base-size !important;
   color:$dark-grey;
 }
 
@@ -119,8 +119,15 @@ p {
 .card-grey-search {
   background-color: $light-grey;
   border-radius:$br-base;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
   padding: 5px;
-  width:800px;
+  width:728px;
+}
+.card-grey-search:hover {
+  background-color: $light-blue;
+  cursor: pointer;
 }
 .card-grey-bookmate-page {
   width:800px;

@@ -1,5 +1,7 @@
 .container-search {
   position: relative;
+  margin-left: 30px;
+  max-width: 1170px;
 }
 
 .text-title {
@@ -14,28 +16,13 @@
   right: 30px;
 }
 
-p {
-  text-align: center;
-  color: #333333;
-}
-
 .span-form {
   text-align: center;
   padding: 20px;
 }
 
-.span {
-  position: relative;
-  text-align: center;
-  // right: 10px;
-  // top: 10px;
-  margin: 10px;
-} p {
-  text-align: center;
-}
-
 #map {
-  width: 100%;
+  width: 120%;
   height: 74vh;
 }
 
@@ -46,7 +33,30 @@ p {
   height: 74vh;
   float:left;
   overflow-y: auto;
-  padding-left: 40px;
+}
+
+.user-link {
+  margin-left: auto;
+  padding-right: 10px;
+  color: $red;
+}
+
+.user-details {
+  padding-right: 15px;
+}
+
+.user-details-books {
+  margin-left: auto;
+  color: $blue;
+}
+
+.user-details-books h3 {
+  display: inline-block;
+  color: $blue;
+}
+
+.user-details-books h3:last-child {
+  float: right;
 }
 
 .bookmates-search #footer {
