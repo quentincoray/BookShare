@@ -10,14 +10,19 @@
 <p>Son top 3 ?</p>
 <p>Sa note ?</p>
 
- <% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
+<% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
   <h2>category: <%= bookmate_book_category.name %> </h2>
+
   <% bookmate_book_category.selling_books.each do |selling_book| %>
     <p>Voir le livre <%= selling_book.book.title %></p>
+    <% if selling_book.sold %>
+      <p>Vendu à mettre en bannière sur la card</p>
+    <% end %>
 
     <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "card-link" do %>
         <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
     <% end %>
+
   <% end %>
 <% end %>
 

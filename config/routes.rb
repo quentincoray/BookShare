@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :bookmates, only: [:show] do
     resources :selling_books, only: [:show, :new, :create]
   end
-
+  resources :orders, only: [:show, :new, :create]
   resources :books, only: [:show]
   resources :selling_books, only: [:edit, :update]
 

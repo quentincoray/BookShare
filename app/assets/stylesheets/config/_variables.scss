@@ -16,6 +16,8 @@ $base-size: 16px;
 
 
 
+
+
 // Local fonts (uncomment following lines)
 @font-face {
     font-family: 'brandon_grotesquebold';
@@ -43,8 +45,8 @@ $base-size: 16px;
 }
 
 // $my-font: "Font Name";
-
-
+// border radius
+$br-base:  4px;
 
 // ?
 $base-height: 1.4;
@@ -57,9 +59,11 @@ $base-height: 1.4;
 $red: #EE5F5B;
 $dark-red: #FC4040;
 $blue: #5CC8FF;
+$light-blue:#EEF9FF;
 $green: #64DAA7;
 $dark-gray: #4A4A4A;
-$light-gray: #9B9B9B;
+$gray: #9B9B9B;
+$light-gray: #FBFBFB;
 
 
 //size fonts
@@ -67,6 +71,7 @@ $light-gray: #9B9B9B;
 h1 {
   font-family: $header-font;
   font-size: $header1-size;
+  color: $red;
 }
 
 h2 {
@@ -74,9 +79,50 @@ h2 {
   font-size: $header2-size;
 }
 
+// Couleur d ecriture par defaut doit etre donnee en dark grey dans le body
+// ecriture en bleu comme h2 seule la couleur change
+
+// pour les titres en majuscules dans la sidebar
+h3 {
+  font-family: $base-font;
+  font-size: 300;
+  font-size: $header2-size;
+}
+
 p {
   font-family: $base-font;
   font-size: 300;
   font-size: $base-size;
+}
+
+.card-grey {
+  background: $light-gray;
+  border-radius:$br-base;
+  padding: 5px;
+
+}
+
+.card-grey-search {
+  width:800px;
+}
+.card-grey-bookmate-page {
+  width:800px;
+}
+
+.card-grey-book-page {
+  width:728px;
+}
+
+.card-grey-basket {
+  width:1000px;
+}
+
+.card-grey-dashboard {
+  width:826px;
+}
+
+
+.side-bar {
+  width:209px;
 }
 
