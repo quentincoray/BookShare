@@ -5,8 +5,7 @@
   background-color: $blue;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
-  display: flex;
-  align-items: center;
+  // display: flex;
   justify-content: center;
 }
 .banner h1 {
