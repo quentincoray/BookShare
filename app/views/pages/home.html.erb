@@ -19,9 +19,13 @@
       <div id="content"></div>
     </div>
   </div>
+</div>
 
-  <script>
-    window.onload = function geoFindMe() {
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+<!-- <script> -->
+    $(document).ready(function() {
+      window.onload = function geoFindMe() {
       var output = document.getElementById("out");
 
       if (!navigator.geolocation){
@@ -55,12 +59,9 @@
     //     document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title + item.volumeInfo.authors + item.volumeInfo.imageLinks.smallThumbnail
     // }
     // }
-    // $(document).ready(function() {
-    //   $('#searched_books').on('keydown', function(event) {
-    //     console.log(document.getElementById('#searched_books').value);
-    //   });
-    // });
-
-  </script>
-
-</div>
+      $('#searched_books').on('keyup', function(event) {
+        console.log($('#searched_books').val());
+      });
+    });
+  <% end %>
+<% end %>
