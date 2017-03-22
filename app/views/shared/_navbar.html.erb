@@ -14,23 +14,23 @@
         Devenez Bookmate
       </div>
 
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          Messages
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
-
+      <!-- enveloppe -->
       <div class="navbar-wagon-item">
-        <div class="card-basket">
-          <%= image_tag "shopping-cart.png" %>
-          <div class="center-num">
-            <i class="fa fa-circle" aria-hidden="true" id="basket"></i>
-          </div>
-            <%= @basket_counter %>
+        <div class="badge-container">
+          <i class="fa fa-envelope-o"></i>
+          <div class="badge badge-red">3?</div>
         </div>
       </div>
+      <!-- basket -->
+
+      <div class="navbar-wagon-item">
+        <div class="badge-container">
+          <%= image_tag "shopping-cart.png" %>
+          <div class="badge badge-red"><%= @basket_counter %></div>
+        </div>
+      </div>
+
+
 
 
       <!-- Profile picture and dropdown -->
