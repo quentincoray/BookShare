@@ -20,35 +20,34 @@
           <% @bookmates_near_me.each do |bookmate|%>
             <!-- Carte utilisateur -->
             <div class="card-grey-search">
-              <div class="row">
-                  <!-- Zone photo -->
-                    <div class="col-xs-2">
-                      <% if bookmate.user.photo? %>
-                        <%= cl_image_tag bookmate.user.photo.path, :gravity=>"auto", :crop=>"fill", class: "card-user"%>
-                        <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
-                        <p><%= bookmate.user.first_name %></p>
-                      <% else %>
-                        <%= image_tag 'avatar.png', class: "card-user avatar avatar-bordered"%>
-                        <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
-                          <span><%= bookmate.user.first_name %></span>
-                      <% end %>
-                    </div>
-                  <!-- Zone description -->
-                    <div class = "col-xs-9">
-                      <h2>A propos de <%= bookmate.user.first_name %></h2>
-                      <p>" <%= bookmate.description %> "</p>
-                      <p>3 livres en commun</p>
-                    </div>
-                    <div class = "col-xs-1">
-                      <h3>></h3>
-                    </div>
+              <div class="user-avatar">
+                <div class = "card-user text-center">
+                  <% if bookmate.user.photo? %>
+                    <%= cl_image_tag bookmate.user.photo.path %>
+                    <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
+                  <% else %>
+                    <%= image_tag 'avatar.png' %>
+                    <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
+                  <% end %>
+                  <p><%= bookmate.user.first_name %></p>
                 </div>
-            <% end %>
-          </div>
+              </div>
+              <div class="user-details">
+                <h2>A propos de <%= bookmate.user.first_name %></h2>
+                <p>" <%= bookmate.description %> "</p>
+                <p>3 livres en commun</p>
+              </div>
+              <div class="user-link">
+                <h3>></h3>
+              </div>
+                    <!-- </div> -->
+            </div>
+          <% end %>
         </div>
         <div class="col-xs-4" id="map-column">
           <div id="map"></div>
         </div>
+      </div>
     </div>
   </div>
 

@@ -75,7 +75,7 @@ h1 {
 
 h2 {
   font-family: $header-font;
-  font-size: $header2-size;
+  font-size: $header2-size !important;
 }
 
 
@@ -93,7 +93,7 @@ h3 {
 p {
   font-family: $base-font;
   font-weight: 300;
-  font-size: $base-size;
+  font-size: $base-size !important;
   color:$dark-grey;
 }
 
@@ -120,8 +120,10 @@ p {
 .card-grey-search {
   background-color: $light-grey;
   border-radius:$br-base;
+  display: flex;
+  align-items: center;
   padding: 5px;
-  width:800px;
+  width:700px;
 }
 .card-grey-bookmate-page {
   width:800px;
