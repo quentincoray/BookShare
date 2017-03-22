@@ -51,22 +51,24 @@
         </div>
     </div>
   </div>
+<% end %>
 
-  <%= content_for(:after_js) do %>
-    <script>
-      $(document).ready(function () {
-        var handler = Gmaps.build ('Google');
-        handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(3);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function () {
+      $('#footer').remove();
+      var handler = Gmaps.build ('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(3);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
         }
       });
     });
-    </script>
   <% end %>
 <% end %>
+
