@@ -16,7 +16,9 @@
       <%= render 'search_form' %>
         <div><%= image_tag "button-plus.png", class: "btn-plus" %></div>
       </div>
-      <div id="content"></div>
+      <div id="content">
+        <%= link_to "Add book", "#", class: "btn btn-danger" %>
+      </div>
     </div>
   </div>
 </div>
@@ -51,20 +53,23 @@
 
       navigator.geolocation.getCurrentPosition(success, error);
     }
-<script>
+<!-- <script> -->
 
       $('#searched_books').on('keyup', function(event) {
         if(this.value.length < 4) return;
           console.log($('#searched_books').val());
           $.ajax({
             type: "GET",
-            url: "https://www.googleapis.com/books/v1/volumes?q=intitle:"+($('#searched_books').val())+"&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+            url: "https://www.googleapis.com/books/v1/volumes?q=intitle:"+($('#searched_books').val())+"&maxResults=5&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
             success: function(data) {
               $("#content").html('<table id="results"></table>');
               data.items.forEach(function(item) {
-                console.log(item.volumeInfo.authors[0])
-                var book = item;
-                $('#results').append(book);
+                <!-- console.log(item) -->
+                var book_author = item.volumeInfo.authors;
+                var book_image = item.volumeInfo.imageLinks.smallThumbnail;
+                console.log(book_image)
+                $('#results').append(book_author);
+                $("#results").append("<img src='"+book_image+"' />");
               });
             },
             error: function(jqXHR) {
