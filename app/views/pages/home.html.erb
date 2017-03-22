@@ -51,19 +51,25 @@
 
       navigator.geolocation.getCurrentPosition(success, error);
     }
-    // function handleResponse(response) {
-    //   for (var i = 0; i < response.items.length; i++) {
-    //     var item = response.items[i];
-    //     // in production code, item.text should have the HTML entities escaped.
-    //     document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title + item.volumeInfo.authors + item.volumeInfo.imageLinks.smallThumbnail
-    // }
-    // }
+<script>
 
       $('#searched_books').on('keyup', function(event) {
         if(this.value.length < 4) return;
           console.log($('#searched_books').val());
-          $.getJSON('https://www.googleapis.com/books/v1/volumes?q='+($('#searched_books').val()), function(data) {
-            console.log(data);
+          $.ajax({
+            type: "GET",
+            url: "https://www.googleapis.com/books/v1/volumes?q=intitle:"+($('#searched_books').val())+"&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+            success: function(data) {
+              $("#content").html('<table id="results"></table>');
+              data.items.forEach(function(item) {
+                console.log(item.volumeInfo.authors[0])
+                var book = item;
+                $('#results').append(book);
+              });
+            },
+            error: function(jqXHR) {
+              console.error(jqXHR.responseText);
+            }
           });
       });
     });
