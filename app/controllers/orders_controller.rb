@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
     current_user.save
     if @order.save
-      redirect_to bookmate_path(@bookmate), notice: 'Le livre a été ajouté au panier'
+      redirect_to bookmate_selling_book(@bookmate,@selling_book), notice: 'Le livre a été ajouté au panier'
     else
       render :new
     end
