@@ -114,6 +114,21 @@
   border: 1px solid #CCCCCC;
 }
 
+.card-basket {
+  position:relative;
+}
+
+#basket {
+  position:relative;
+  right: 10px;
+  top: 10px;
+}
+
+.center-num {
+  position: absolute;
+}
+
+
 /* Navbar dropdown menu */
 .navbar-wagon-dropdown-menu {
   margin-top: 15px;

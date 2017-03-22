@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  before_action :set_basket_count, if: :user_signed_in?
   include Pundit
 
   # Pundit: white-list approach.
@@ -15,6 +16,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_basket_count
+    order = current_user.orders.where(order_status: "pending").last
+    @basket_counter = order ? order.ordered_books.count : 0
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
