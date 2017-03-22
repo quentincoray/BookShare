@@ -15,7 +15,7 @@
 }
 
 .home-title1 {
-  font-family: 'brandon_grotesquebold';
+  font-family: $header-font;
   font-size: 48px;
   color: white;
   display: inline-block;
@@ -23,13 +23,15 @@
 }
 
 .home-title2 {
-  font-family:'brandon_grotesque_light';
-  font-size: 25px;
+  font-family:$base-font;
+  font-weight:lighter;
+  font-size: 22px;
   color: white;
 }
 
 .home-searchbar-title {
-  font-family: BrandonGrotesque-Light;
+  font-family: $base-font;
+  font-weight: 300;
   font-size: 20px;
 }
 
