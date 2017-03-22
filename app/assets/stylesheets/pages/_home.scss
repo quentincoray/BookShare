@@ -36,7 +36,6 @@
 }
 
 .searchbar {
-
   background: #FFFFFF;
   border-radius: 4px;
   width:70%;
@@ -52,12 +51,53 @@
   background-color: $blue;
 }
 
-.btn-plus {
+.btn-home {
+  background-color:none;
+  color:white;
+  border: white 1px solid;
+  font-family:'brandon_grotesque_regular';
 
+}
+
+.connect {
+  font-family: 'brandon_grotesque_regular';
 }
 
 .small-container {
   width: 565px;
   margin: 0px auto;
+}
+
+
+// Navbar
+
+.pages-home .navbar-wagon {
+  background: $blue;
+  box-shadow: none;
+
+}
+.pages-home .navbar-wagon-item {
+  color: white;
+  font-family:'brandon_grotesque_regular';
+  font-size:18px;
+  padding: 7px;
+}
+
+
+.pages-home .navbar-wagon-logo {
+  content: url("logo_white.png");
+}
+
+.pages-home .fa-envelope-o {
+  color:white;
+}
+
+.pages-home .shopping-cart-logo {
+  content: url("basket_white.png");
+}
+
+
+.pages-home .fa-user-circle-o {
+  color:white;
 }
 
