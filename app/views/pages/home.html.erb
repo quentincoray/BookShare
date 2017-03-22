@@ -23,7 +23,6 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-<!-- <script> -->
     $(document).ready(function() {
       window.onload = function geoFindMe() {
       var output = document.getElementById("out");
@@ -59,8 +58,13 @@
     //     document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title + item.volumeInfo.authors + item.volumeInfo.imageLinks.smallThumbnail
     // }
     // }
+
       $('#searched_books').on('keyup', function(event) {
-        console.log($('#searched_books').val());
+        if(this.value.length < 4) return;
+          console.log($('#searched_books').val());
+          $.getJSON('https://www.googleapis.com/books/v1/volumes?q='+($('#searched_books').val()), function(data) {
+            console.log(data);
+          });
       });
     });
   <% end %>
