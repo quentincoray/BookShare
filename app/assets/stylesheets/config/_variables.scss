@@ -83,8 +83,8 @@ h2 {
 
 // pour les titres en majuscules dans la sidebar
 h3 {
-  font-family: $header-intermediary-font;
-  font-weight: 300;
+  font-family: $base-font !important;
+  font-weight: lighter;
   font-size: $header2-size !important;
   text-transform: capitalize;
 }

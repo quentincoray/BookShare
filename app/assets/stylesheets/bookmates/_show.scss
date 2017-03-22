@@ -3,7 +3,23 @@
 
 }
 .side-bar {
-  height:95vh;
+  height:94vh;
   width:209px;
   background-color:$light-grey;
+}
+
+.position-relative {
+  position:relative;
+}
+
+.side-bar-padding-top {
+  padding-top: 80px;
+}
+
+.side-bar-padding-left {
+  padding-left:10px;
+}
+
+.text-column {
+  float: left;
 }
