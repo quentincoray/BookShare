@@ -23,7 +23,13 @@
       <% end %>
 
       <div class="navbar-wagon-item">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <div class="card-basket">
+          <%= image_tag "shopping-cart.png" %>
+          <div class="center-num">
+            <i class="fa fa-circle" aria-hidden="true" id="basket"></i>
+          </div>
+            <%= @basket_counter %>
+        </div>
       </div>
 
 

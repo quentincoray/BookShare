@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
-
   def show
     authorize @order
   end
@@ -12,17 +11,18 @@ class OrdersController < ApplicationController
 
   def create
     delivery_type_array = []
-
-    @order = Order.new(order_params)
+    @selling_book = SellingBook.find(params[:selling_book_id])
+    @order = current_user.orders.where(order_status: "pending").last
+    @order ||= Order.new
+    authorize @order
     @order.order_status = "pending"
-    @order.bookmate = @bookmate.user
+    @order.bookmate = @selling_book.bookmate
+    @order.delivery_status = "en cours"
+    @order.delivery_type = "livraison à domicile"
     @order.user = current_user
-    current_user.save
-    if @order.save
-      redirect_to bookmate_selling_book(@bookmate,@selling_book), notice: 'Le livre a été ajouté au panier'
-    else
-      render :new
-    end
+    @order.selling_books << @selling_book
+    @order.save
+    redirect_to bookmate_selling_book_path(@selling_book.bookmate,@selling_book), notice: 'Le livre a été ajouté au panier'
   end
 
 
@@ -32,8 +32,5 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def order_params
-    params.require(:order).permit(:review, :rating, :delivery_type, :order_status, :delivery_status, :bookmate_id, :user_id)
-  end
 end
 

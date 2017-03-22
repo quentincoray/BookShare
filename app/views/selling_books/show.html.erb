@@ -10,5 +10,6 @@ Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_n
 <p>bio de de l'auteur ?</p>
 
 <%= simple_form_for @order do |f| %>
+  <%= hidden_field_tag :selling_book_id, @selling_book.id %>
   <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
 <% end %>
