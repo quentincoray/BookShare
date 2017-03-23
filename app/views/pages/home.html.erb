@@ -70,7 +70,7 @@
       navigator.geolocation.getCurrentPosition(success, error);
     }
 
-<!-- <script> -->
+<script>
 
       $('#searched_books').on('keyup', function(event) {
         if(this.value.length < 4) return;
@@ -102,11 +102,11 @@
           $(".selected-book-cover").prepend(this);
           selected_books ++;
         };
-      var isbn_1 = ($(".selected-book-cover:first-child").data("isbn"));
+      var isbn_1 = ($(".selected-book-cover a:nth-child(1) img").data("isbn"));
       console.log(isbn_1);
-      var isbn_2 = ($(".selected-book-cover:nth-child(2)").data("isbn"));
+      var isbn_2 = ($(".selected-book-cover a:nth-child(2) img").data("isbn"));
       console.log(isbn_2);
-      var isbn_3 = ($(".selected-book-cover:last-child").data("isbn"));
+      var isbn_3 = ($(".selected-book-cover a:nth-child(3) img").data("isbn"));
       console.log(isbn_3);
       });
     });
