@@ -57,4 +57,9 @@ selling_book2 = SellingBook.create!(personalized_comment: "very good", price: 29
 photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
 book2.photo_url = photo_book2
 
+book3 = Book.create!(title: "Livre de fous", summary: "summaryjijddeefrfrgri", author: "authorcceeeeee", author_bio: "author_biooodffffoo")
+selling_book2 = SellingBook.create!(personalized_comment: "very good", price: 29, condition: "very good condition", favorite_book: true, sold: false, book: book2, bookmate_book_category: romans_policiers)
+photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
+book2.photo_url = photo_book2
+
 puts "ok"

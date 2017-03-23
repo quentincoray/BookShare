@@ -9,6 +9,10 @@
   background-color:$light-grey;
 }
 
+.side-bar a{
+  text-decoration: none;
+}
+
 .position-relative {
   position:relative;
 }
@@ -28,5 +32,24 @@
 }
 
 .current {
-  font-size: 32px;
+  background: rgba(255,115,115,0.20);
+  border-left: 4px solid #FF7474;
+  color: $dark-grey;
+  letter-spacing: 0.5px;
+  padding: 5px 0 0 0;
+}
+
+.book-categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-categories img {
+  width: 125px;
+  height: auto;
+}
+
+.book-card {
+  display: inline-block;
+  padding: 20px;
 }

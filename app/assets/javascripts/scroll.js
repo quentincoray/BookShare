@@ -2,7 +2,7 @@ var currentTab = (function () {
 
 
     //variables
-    var $window = $(window),
+    var $window = $('#text-column'),
         $section = $('section'),
         $scrollPosition = $window.scrollTop(),
         $sectionHeights = [];

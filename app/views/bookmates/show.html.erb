@@ -32,23 +32,26 @@
     <h2>Son top 3 ?</h2>
     <h2>Sa note ?</h2>
 
-
+    <div class="book-categories">
     <% @bookmate_book_categories.each do |bookmate_book_category| %>
       <section id ="category_<%= bookmate_book_category.id %>">
-        <h2>category: <%= bookmate_book_category.name %></h2>
-
-
-      <% bookmate_book_category.selling_books.each do |selling_book| %>
-        <p>Voir le livre <%= selling_book.book.title %></p>
-        <% if selling_book.sold %>
-          <p>Vendu à mettre en bannière sur la card</p>
-        <% end %>
-        <div class="position-relative">
-          <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "" do %>
-             <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
-          <% end %>
-        </div>
+        <div class="book-category">
+          <h2>category: <%= bookmate_book_category.name %></h2>
+          <% bookmate_book_category.selling_books.each do |selling_book| %>
+          <div class="book-card">
+            <p>Voir le livre <%= selling_book.book.title %></p>
+            <% if selling_book.sold %>
+              <p>Vendu à mettre en bannière sur la card</p>
+            <% end %>
+            <div class="position-relative">
+              <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "" do %>
+                 <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
+          </div>
+              <% end %>
+            </div>
       <% end %>
+      </div>
       </section>
     <% end %>
+    </div>
   </div>
