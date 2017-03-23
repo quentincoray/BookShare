@@ -69,6 +69,37 @@
 }
 
 
+.api-img {
+  width: 75px;
+  height: 115px;
+  // opacity: 1;
+  // &:hover{
+  // opacity: 0.5;
+  // transition: opacity .5s ease-out;
+  // }
+}
+
+#search-results {
+  margin: 25px 0px 25px 0px;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.container-api-img {
+  margin: 25px 0px 25px 0px;
+}
+
+.selected-book-cover {
+  margin: 10px 0px 10px 0px;
+  padding: 5px;
+}
+
+#submit_button {
+  margin: 10px 0px 10px 0px;
+  padding: 5px;
+}
+
+
 // Navbar
 
 .pages-home .navbar-wagon {
@@ -100,4 +131,5 @@
 .pages-home .fa-user-circle-o {
   color:white;
 }
+
 

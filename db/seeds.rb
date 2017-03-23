@@ -47,12 +47,12 @@ romans_policiers = BookmateBookCategory.create!(name:"Romans policiers", bookmat
 bandes_dessinnees = BookmateBookCategory.create!(name:"Bandes dessinnées", bookmate: quentin_bookstore)
 
 
-book1 = Book.create!(title: "book-title", summary: "summaryjiji", author: "authoreeee", author_bio: "author_biooooo")
+book1 = Book.create!(title: "Le Grand Jeu", summary: "summaryjiji", author: "Céline Minard", author_bio: "author_biooooo", isbn: '9782743637323')
 selling_book1 = SellingBook.create!(personalized_comment: "good", price: 19, condition: "good condition", favorite_book: false, sold: false, book: book1, bookmate_book_category: romans_policiers)
 photo_book1 = 'https://www.franceculture.fr/s3/cruiser-production/2016/08/0c515c87-da57-4043-b3f6-96de8e8eaf38/738_97827436373300-3480956.jpg'
 book1.photo_url = photo_book1
 
-book2 = Book.create!(title: "Faillir être flingué", summary: "summaryjijddeefrfrgri", author: "authorcceeeeee", author_bio: "author_biooodffffoo")
+book2 = Book.create!(title: "Faillir être flingué", summary: "summaryjijddeefrfrgri", author: "authorcceeeeee", author_bio: "author_biooodffffoo", isbn: '9782743626563')
 selling_book2 = SellingBook.create!(personalized_comment: "very good", price: 29, condition: "very good condition", favorite_book: true, sold: false, book: book2, bookmate_book_category: bandes_dessinnees)
 photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
 book2.photo_url = photo_book2
