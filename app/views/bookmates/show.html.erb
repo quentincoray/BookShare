@@ -39,8 +39,8 @@
           <p>Vendu à mettre en bannière sur la card</p>
         <% end %>
         <div class="position-relative">
-          <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "card-link" do %>
-             <%= #cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
+          <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "" do %>
+             <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
           <% end %>
         </div>
       <% end %>

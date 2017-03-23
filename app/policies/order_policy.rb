@@ -12,4 +12,8 @@ class OrderPolicy < ApplicationPolicy
   def show?
     record.user == user
   end
+
+  def update?
+    record.user == user
+  end
 end

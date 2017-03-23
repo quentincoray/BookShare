@@ -3,7 +3,7 @@ class SellingBooksController < ApplicationController
 
   def show
     authorize @selling_book
-    @order = Order.new
+    @order = current_order
   end
 
   private
