@@ -11,6 +11,12 @@ class OrdersController < ApplicationController
     if @bookmate.home_delivery
       @delivery_type_array << "livraison en main propre"
     end
+
+    @total = 0
+    @order.selling_books.map do |selling_book|
+      @total += selling_book.price
+    end
+    @total
   end
 
   def new
@@ -29,16 +35,26 @@ class OrdersController < ApplicationController
     @order.delivery_type = "livraison à domicile"
     @order.user = current_user
     @order.selling_books << @selling_book
-    @total = 0
-    @order.selling_books.each do |selling_book|
-      @total += 1
-    end
     @order.save
     redirect_to bookmate_selling_book_path(@selling_book.bookmate,@selling_book), notice: 'Le livre a été ajouté au panier'
   end
 
   def update
-    create # same behaviour
+    @order = current_order
+    authorize @order
+    @order.order_status = "paid"
+    @order.delivery_status = "en cours"
+    @order.delivery_type = "livraison à domicile"
+    @order.user = current_user
+    @total = 0
+
+    @order.selling_books.map do |selling_book|
+      @total += selling_book.price
+    end
+
+    @total
+    @order.save
+    redirect_to order_path(@order), notice: "La commande a bien été prise en compte"
   end
 
 

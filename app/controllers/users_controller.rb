@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def show
+    @paid_orders = Order.all.where(@order_status: "paid" )
     @user = User.find(params[:id])
     authorize @user
   end
