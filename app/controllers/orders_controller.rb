@@ -10,8 +10,16 @@ class OrdersController < ApplicationController
   end
 
   def create
-    delivery_type_array = []
+    @delivery_type_array = []
+    if @bookmate.deliver_by_hand
+      @delivery_type_array << "livraison à domicile"
+    end
+    if @bookmate.home_delivery
+      @delivery_type_array << "livraison en main propre"
+    end
+
     @selling_book = SellingBook.find(params[:selling_book_id])
+
     @order = current_user.orders.where(order_status: "pending").last
     @order ||= Order.new
     authorize @order
@@ -21,6 +29,10 @@ class OrdersController < ApplicationController
     @order.delivery_type = "livraison à domicile"
     @order.user = current_user
     @order.selling_books << @selling_book
+    @total = 0
+    @order.selling_books.each do |selling_book|
+      @total += 1
+    end
     @order.save
     redirect_to bookmate_selling_book_path(@selling_book.bookmate,@selling_book), notice: 'Le livre a été ajouté au panier'
   end
