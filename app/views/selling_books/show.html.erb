@@ -11,12 +11,18 @@
         <div class="col-xs-7">
           <h2><%= @selling_book.book.title %> - <%= @selling_book.book.author %></h2>
           <hr>
-          <%= @selling_book.personalized_comment%>
+          <%= cl_image_tag @selling_book.bookmate_book_category.bookmate.user.photo.path, class:"bookmate-avatar" %>
+          <h2>Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %></h2>
+          <p><%= @selling_book.personalized_comment%>, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.</p>
         </div>
         <!-- Achat -->
         <div class="col-xs-3">
           <h2>Etat : <%= @selling_book.condition%></h2>
           <h2><%= @selling_book.price%> €</h2>
+          <%= simple_form_for @order do |f| %>
+            <%= hidden_field_tag :selling_book_id, @selling_book.id %>
+            <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -61,15 +67,10 @@
     </div>
   </div>
 </div>
-Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %>
-<%= @selling_book.personalized_comment%>
 
 
 
 <p>résumé du livre ?</p>
 <p>bio de de l'auteur ?</p>
 
-<%= simple_form_for @order do |f| %>
-  <%= hidden_field_tag :selling_book_id, @selling_book.id %>
-  <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
-<% end %>
+
