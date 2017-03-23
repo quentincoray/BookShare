@@ -4,7 +4,8 @@
 }
 .side-bar {
   height:94vh;
-  width:209px;
+  // width:209px;
+  width:100%;
   background-color:$light-grey;
 }
 
@@ -21,5 +22,7 @@
 }
 
 .text-column {
+  height:94vh;
   float: left;
+  overflow-y: auto;
 }

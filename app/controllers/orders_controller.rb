@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
+  before_action :set_order, only: [:show, :update]
 
   def show
     authorize @order
@@ -23,6 +23,9 @@ class OrdersController < ApplicationController
     @order.selling_books << @selling_book
     @order.save
     redirect_to bookmate_selling_book_path(@selling_book.bookmate,@selling_book), notice: 'Le livre a été ajouté au panier'
+  end
+
+  def update
   end
 
 
