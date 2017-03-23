@@ -13,15 +13,29 @@
       </div>
 
       <div class="container-searchform">
-      <%= render 'search_form' %>
-        <div><%= image_tag "button-plus.png", class: "btn-plus" %></div>
-      </div>
-      <div class="title-search">
-      </div>
-      <div class="selected-book-cover">
-      </div>
-      <div class="container-api-img">
-      </div>
+        <%= form_tag(search_path, method: 'get', id: 'searchform') do %>
+          <%= text_field_tag :search, params[:search], placeholder: 'Type your favorite books!', class: "searchbar form-control", id: "searched_books" %>
+          </div>
+          <div class="container-api-img">
+          </div>
+          <div id="search-results">
+            <div class="title-search">
+            </div>
+            <div class="selected-book-cover">
+
+              <%= hidden_field_tag "isbn[]", nil, id: "isbn_1" %>
+              <%= hidden_field_tag "isbn[]", nil, id: "isbn_2" %>
+              <%= hidden_field_tag "isbn[]", nil, id: "isbn_3" %>
+
+              <%= hidden_field_tag :latitude %>
+              <%= hidden_field_tag :longitude %>
+              <div id="submit_button">
+                <%= submit_tag 'Find bookmates!', class: "btn btn-primary btn-lg", id: "submitsearch", disabled: "disabled"%>
+              </div>
+        <% end %>
+            </div>
+          </div>
+
     </div>
   </div>
 </div>
@@ -73,7 +87,7 @@
                 var book_isbn = item.volumeInfo.industryIdentifiers[0].identifier;
                 console.log(book_isbn)
                 <!-- $('#results').append(book_author); -->
-                $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"'/></a>");
+                $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+" data-title='"+book_title+"' data-author='"+book_author+"'/></a>");
               });
             },
             error: function(jqXHR) {
@@ -84,8 +98,10 @@
       $('.container-api-img').on("click", '.api-img-link', function() {
         var selected_books = $(".selected-book-cover").length;
         $(".title-search").html("<h2>Vous avez sélectionné: </h2>");
+        $("#search-results").css("background-color", "white");
         if(selected_books < 3) {
-          $(".selected-book-cover").append(this);
+          $(".selected-book-cover").css("background-color", "white");
+          $(".selected-book-cover").prepend(this);
           selected_books + 1;
           var isbn_1 = $(this).data("isbn");
           console.log(isbn_1);

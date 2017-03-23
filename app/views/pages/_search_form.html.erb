@@ -1,6 +1,5 @@
 <%= form_tag(search_path, method: 'get', id: 'searchform') do %>
   <%= text_field_tag :search, params[:search], placeholder: 'Type your favorite books!', class: "searchbar form-control", id: "searched_books" %>
-<!--   <%= submit_tag 'Select book', class: "btn btn-primary btn-lg", id: "add_book"%> -->
 
   <%= hidden_field_tag "isbn[]", nil, id: "isbn_1" %>
   <%= hidden_field_tag "isbn[]", nil, id: "isbn_2" %>
