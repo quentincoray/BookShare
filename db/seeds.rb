@@ -32,12 +32,12 @@ alice.photo_url = photo_alice
 
 
 puts "Creating bookmates..."
-quentin_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: true, user: quentin)
-quentin_bookstore_1 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: anne_sophie)
-quentin_bookstore_2 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: camille)
-quentin_bookstore_3 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: jean)
+quentin_bookstore = Bookmate.create!(description: "J'aime tous types de romans, notamment les romans de fantasy, science-fiction et heroïc-fantasy. Le Seigneur des Anneaux, meilleure saga de l'histoire !", deliver_by_hand: true, home_delivery: true, user: quentin)
+quentin_bookstore_1 = Bookmate.create!(description: "J'aime la littérature dans son ensemble, c'est un art passionnant qu'il me plait de partager.", deliver_by_hand: true, home_delivery: false, user: anne_sophie)
+quentin_bookstore_2 = Bookmate.create!(description: "Lectrice insatiable, je lis deux livres par semaine. J'ai chez moi une véritable bibliothèque !", deliver_by_hand: true, home_delivery: false, user: camille)
+quentin_bookstore_3 = Bookmate.create!(description: "Moi c'est Jean, lecteur à mes heures perdues, mais je ne rechigne jamais à dévorer un bon bouquin.", deliver_by_hand: true, home_delivery: false, user: jean)
 quentin_bookstore_4 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: edouard)
-quentin_bookstore_5 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: alice)
+quentin_bookstore_5 = Bookmate.create!(description: "J'ai deux passions dans la vie : les chats et la lecture !", deliver_by_hand: true, home_delivery: false, user: alice)
 
 
 

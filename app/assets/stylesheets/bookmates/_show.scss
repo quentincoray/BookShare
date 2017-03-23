@@ -36,7 +36,7 @@
   border-left: 4px solid #FF7474;
   color: $dark-grey;
   letter-spacing: 0.5px;
-  padding: 5px 0 0 0;
+  padding: 5px 10px 5px 0;
 }
 
 .book-categories {
@@ -52,4 +52,11 @@
 .book-card {
   display: inline-block;
   padding: 20px;
+  text-align: center;
+}
+
+.book-card img:hover {
+  cursor: pointer;
+  width: 135px;
+  height: auto;
 }
