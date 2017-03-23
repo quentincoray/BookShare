@@ -9,6 +9,9 @@
   <button id="btn-comment" data-toggle="modal" data-target="#hello world"> Faire un commentaire</button>
   <%= order.delivery_status %>
 
+  <div class="modal-fade" id="sign-up">
+    Hello
+  </div>
 
   status ?
   <%= order.delivery_type %>
@@ -18,6 +21,8 @@
 <% content_for :after_js do %>
   <script>
     $(document).ready(function() {
+      $('#btn-comment').hide();
+
       $('.delivery-status-order<%= order.id %>').on('click', function(e) {
         $.ajax({
           type: 'POST',
@@ -25,6 +30,7 @@
           // success: active tab
           success:function(data){
             alert(data);
+            $('#btn-comment').show();
           }
         })
 
