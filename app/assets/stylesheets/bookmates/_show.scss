@@ -1,0 +1,28 @@
+.bookmates-show #footer {
+  display: none;
+
+}
+.side-bar {
+  height:94vh;
+  // width:209px;
+  width:100%;
+  background-color:$light-grey;
+}
+
+.position-relative {
+  position:relative;
+}
+
+.side-bar-padding-top {
+  padding-top: 80px;
+}
+
+.side-bar-padding-left {
+  padding-left:10px;
+}
+
+.text-column {
+  height:94vh;
+  float: left;
+  overflow-y: auto;
+}

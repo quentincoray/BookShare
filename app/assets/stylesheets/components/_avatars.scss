@@ -10,6 +10,21 @@
   width: auto;
   height: 100%;
 }
+
+.border-white {
+  border: white 3px solid;
+
+}
+
+.avatar-medium {
+  display: inline-block;
+  position: relative;
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 .avatar-large {
   display: inline-block;
   position: relative;

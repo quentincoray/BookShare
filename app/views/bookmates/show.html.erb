@@ -1,33 +1,55 @@
-<p>A propos de <%= @bookmate.user.first_name %> </p>
-<p>Ses goûts littéraires : <%= @bookmate.description %> </p>
-<p> <%= pluralize @count, "mode" %> de livraison : </p>
-<% if @bookmate.deliver_by_hand == true %>
-  <p>Livraison en main popre</p>
-<% end %>
-<% if @bookmate.home_delivery == true %>
-  <p>Livraison à domicile</p>
-<% end %>
-<p>Son top 3 ?</p>
-<p>Sa note ?</p>
+<div class="row">
 
-<% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
-  <h2>category: <%= bookmate_book_category.name %> </h2>
+  <div class="col-xs-2 " >
+    <div class=" side-bar side-bar-padding-top">
+      <div class="text-center">
+        <%= cl_image_tag @bookmate.user.photo.path, alt: "profile picture", class: "avatar avatar-medium border-white text-center" %>
+      </div>
+      <div class="side-bar-padding-left">
+        <h3>GENRES FAVORIS</h3>
+        <% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
+          <h2><%= bookmate_book_category.name %></h2>
+        <% end %>
+      </div>
+    </div>
 
-  <% bookmate_book_category.selling_books.each do |selling_book| %>
-    <p>Voir le livre <%= selling_book.book.title %></p>
-    <% if selling_book.sold %>
-      <p>Vendu à mettre en bannière sur la card</p>
+  </div>
+
+  <div class="col-xs-10" id="text-column">
+    <h1 class="red">A propos de <%= @bookmate.user.first_name %> </h1>
+    <h2>Ses goûts littéraires :  </h2>
+    <p><%= @bookmate.description %> <%= @bookmate.description %> <%= @bookmate.description %></p>
+    <h2> <%= pluralize @count, "mode" %> de livraison : </h2>
+    <% if @bookmate.deliver_by_hand == true %>
+      <p>Livraison en main popre</p>
     <% end %>
-
-    <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "card-link" do %>
-        <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
+    <% if @bookmate.home_delivery == true %>
+      <p>Livraison à domicile</p>
     <% end %>
-
-  <% end %>
-<% end %>
-
-
+    <h2>Son top 3 ?</h2>
+    <h2>Sa note ?</h2>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
+    <% @bookmate_book_categories.each do |bookmate_book_category| %>
+      <h2>category: <%= bookmate_book_category.name %> </h2>
 
+
+      <% bookmate_book_category.selling_books.each do |selling_book| %>
+        <p>Voir le livre <%= selling_book.book.title %></p>
+        <% if selling_book.sold %>
+          <p>Vendu à mettre en bannière sur la card</p>
+        <% end %>
+        <div class="position-relative">
+          <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "card-link" do %>
+              <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
+          <% end %>
+        </div>
+
+
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
 

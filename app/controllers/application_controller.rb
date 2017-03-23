@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_basket_count
-    order = current_user.orders.where(order_status: "pending").last
-    @basket_counter = order ? order.ordered_books.count : 0
+    @order = current_user.orders.where(order_status: "pending").last
+    @basket_counter = @order ? @order.ordered_books.count : 0
   end
 
   def skip_pundit?
