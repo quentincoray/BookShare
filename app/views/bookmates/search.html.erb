@@ -14,7 +14,7 @@
     <div class="row">
       <h1 class ="red">Découvrez les personnes proches de vous avec qui vous partagez le plus d'affinités littéraires</h1>
         <!-- Bloc cards -->
-        <div class="col-xs-8" id="card-column">
+        <div class="col-xs-7" id="card-column">
           <% @bookmates_near_me.each do |bookmate|%>
             <!-- Carte utilisateur -->
             <div class="card-grey-search">
@@ -35,7 +35,7 @@
                 <p>" <%= bookmate.description %> "</p>
                 <div class="user-details-books">
                   <h2><%= rand(2...5) %> livres en commun</h3>
-                  <h2 style="padding-left: 35vh">My reviews</h3>
+                  <h2 style="padding-left: 30vh">My reviews</h3>
                 </div>
               </div>
               <div class="user-link">
@@ -44,7 +44,7 @@
             </div>
           <% end %>
         </div>
-        <div class="col-xs-4" id="map-column">
+        <div class="col-xs-5" id="map-column">
           <div id="map"></div>
         </div>
       </div>
