@@ -85,8 +85,6 @@
                 var book_author = item.volumeInfo.authors;
                 var book_image = item.volumeInfo.imageLinks.thumbnail;
                 var book_isbn = item.volumeInfo.industryIdentifiers[0].identifier;
-                console.log(book_isbn)
-                <!-- $('#results').append(book_author); -->
                 $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"' data-title='"+book_title+"' data-author='"+book_author+"'/></a>");
               });
             },
@@ -103,9 +101,13 @@
           $(".selected-book-cover").css("background-color", "white");
           $(".selected-book-cover").prepend(this);
           selected_books ++;
-          var isbn = $(this).data("isbn");
-          console.log(isbn);
         };
+      var isbn_1 = ($(".selected-book-cover:first-child").data("isbn"));
+      console.log(isbn_1);
+      var isbn_2 = ($(".selected-book-cover:nth-child(2)").data("isbn"));
+      console.log(isbn_2);
+      var isbn_3 = ($(".selected-book-cover:last-child").data("isbn"));
+      console.log(isbn_3);
       });
     });
   <% end %>

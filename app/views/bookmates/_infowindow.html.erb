@@ -1,0 +1,10 @@
+<div class="infowindow">
+  <%= user.first_name %>
+  <% if user.photo? %>
+    <%= cl_image_tag user.photo.path, class: "card-user avatar"%>
+    <%= link_to "", bookmate_path(user), class: "card-link"  %>
+  <% else %>
+    <%= image_tag "https://www.bunnyholder.com/30/30", class: "card-user avatar"%>
+    <%= link_to "", bookmate_path(user), class: "card-link"  %>
+  <% end %>
+</div>
