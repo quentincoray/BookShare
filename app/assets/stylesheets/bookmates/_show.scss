@@ -21,8 +21,12 @@
   padding-left:10px;
 }
 
-.text-column {
+#text-column {
   height:94vh;
-  float: left;
+  float:right;
   overflow-y: auto;
+}
+
+.current {
+  font-size: 32px;
 }
