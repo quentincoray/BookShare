@@ -20,10 +20,13 @@ class BookmatesController < ApplicationController
 
   def search
     @address = [params[:latitude],params[:longitude]].join(",")
-    @isbn = [params[:isbn_1],params[:isbn_2],params[:isbn_3]]
+    @isbn = params[:isbn]
     #récupère un array de ISBN > comparer les bookstore collections avec cet array
     @users_near_me = User.near(@address, 10)
-    @bookmates_near_me = @users_near_me.map { |user| user.bookmates }.flatten
+    # @bookmates_near_me = @users_near_me.map { |user| user.bookmates }.flatten
+    @bookmates_near_me = Bookmate.where(user_id: @users_near_me.map(&:id))
+
+    raise
     @hash = Gmaps4rails.build_markers(@users_near_me) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
@@ -37,3 +40,6 @@ class BookmatesController < ApplicationController
     @bookmate = Bookmate.find(params[:id])
   end
 end
+
+
+# @bookmates_near_me.joins(:books).where(books: { title: 'Faillir être flingué' })
