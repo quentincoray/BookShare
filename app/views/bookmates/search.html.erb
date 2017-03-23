@@ -14,8 +14,9 @@
     <div class="row">
       <h1 class ="red">Découvrez les personnes proches de vous avec qui vous partagez le plus d'affinités littéraires</h1>
         <!-- Bloc cards -->
+        <!-- if search results match with bookmates books -->
         <div class="col-xs-7" id="card-column">
-          <% @bookmates_near_me.each do |bookmate|%>
+          <% @bookmates_selected.each do |bookmate|%>
             <!-- Carte utilisateur -->
             <div class="card-grey-search">
               <div class="user-avatar text-center">
@@ -70,4 +71,5 @@
     });
   <% end %>
 <% end %>
+
 

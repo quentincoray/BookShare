@@ -26,6 +26,12 @@ class BookmatesController < ApplicationController
     # @bookmates_near_me = @users_near_me.map { |user| user.bookmates }.flatten
     @bookmates_near_me = Bookmate.where(user_id: @users_near_me.map(&:id))
     @bookmates_selected = @bookmates_near_me.joins(:books).where(books: { isbn: @isbn })
+    @bookmates_selected.each do |bookmate|
+      @common_books = Book.where(books: { isbn: @isbn }).size
+    end
+    # @common_books = @bookmates_selected.map { |book| Book.where(books: { isbn: @isbn }) }
+    # @common_books = Book.where(books: { isbn: @isbn })
+    # @intersection = @isbn & @common_books
     # raise
     if @bookmates_selected.size != 0
       @hash = Gmaps4rails.build_markers(@bookmates_selected) do |bookmate, marker|
@@ -34,7 +40,8 @@ class BookmatesController < ApplicationController
         marker.infowindow render_to_string(partial: 'infowindow', locals: { bookmate: bookmate })
       end
     else
-      @hash = Gmaps4rails.build_markers(@bookmates_near_me) do |bookmate, marker|
+      @bookmates_selected = @bookmates_near_me
+      @hash = Gmaps4rails.build_markers(@bookmates_selected) do |bookmate, marker|
         marker.lat bookmate.user.latitude
         marker.lng bookmate.user.longitude
         marker.infowindow render_to_string(partial: 'infowindow', locals: { bookmate: bookmate })
@@ -49,3 +56,5 @@ class BookmatesController < ApplicationController
   end
 end
 
+#if intersection.empty?
+#ordering search > people with matches come first, then closest to me
