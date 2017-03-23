@@ -1,10 +1,62 @@
+<div class="book-header">
+  <div class ="container">
+    <div class="book-header-container">
+    <!-- En-tête avec photo titre auteur bookmate et commentaire -->
+      <div class="row">
+        <!-- Couverture du livre -->
+          <div class="col-xs-2">
+            <%= cl_image_tag @selling_book.book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
+          </div>
+        <!-- Description et commentaire -->
+        <div class="col-xs-7">
+          <h2><%= @selling_book.book.title %> - <%= @selling_book.book.author %></h2>
+          <hr>
+          <%= @selling_book.personalized_comment%>
+        </div>
+        <!-- Achat -->
+        <div class="col-xs-3">
+          <h2>Etat : <%= @selling_book.condition%></h2>
+          <h2><%= @selling_book.price%> €</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="book-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="book-body-column">
+          <h2>Vos bookmates ont aimé</h2>
+        </div>
+      </div>
+      <div class="book-body-container">
+        <div class="col-xs-9">
+          <div class="row">
+            <div class="book-body-column">
+              <h2>Les autres livres de la catégorie</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="book-body-column">
+              <h2>Résumé du livre</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="book-body-column">
+              <h2>Biographie de l'auteur</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %>
-<%= @selling_book.book.title %>
-<%= @selling_book.book.author %>
 <%= @selling_book.personalized_comment%>
-<%= @selling_book.price%>
-<%= @selling_book.condition%>
+
+
 
 <p>résumé du livre ?</p>
 <p>bio de de l'auteur ?</p>
