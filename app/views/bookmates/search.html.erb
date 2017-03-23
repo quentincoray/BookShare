@@ -12,7 +12,11 @@
   <div class="container-search">
   <!-- Bloc map et cards -->
     <div class="row">
+      <% if @common_books.nil? %>
+        <h1 class="red">Découvrez les personnes proches de vous!</h1>
+      <% else %>
       <h1 class ="red">Découvrez les personnes proches de vous avec qui vous partagez le plus d'affinités littéraires</h1>
+      <% end %>
         <!-- Bloc cards -->
         <div class="col-xs-7" id="card-column">
           <% @bookmates_selected.each do |bookmate|%>
