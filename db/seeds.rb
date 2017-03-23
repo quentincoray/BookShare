@@ -32,12 +32,12 @@ alice.photo_url = photo_alice
 
 
 puts "Creating bookmates..."
-quentin_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: true, user: quentin)
-quentin_bookstore_1 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: anne_sophie)
-quentin_bookstore_2 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: camille)
-quentin_bookstore_3 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: jean)
+quentin_bookstore = Bookmate.create!(description: "J'aime tous types de romans, notamment les romans de fantasy, science-fiction et heroïc-fantasy. Le Seigneur des Anneaux, meilleure saga de l'histoire !", deliver_by_hand: true, home_delivery: true, user: quentin)
+quentin_bookstore_1 = Bookmate.create!(description: "J'aime la littérature dans son ensemble, c'est un art passionnant qu'il me plait de partager.", deliver_by_hand: true, home_delivery: false, user: anne_sophie)
+quentin_bookstore_2 = Bookmate.create!(description: "Lectrice insatiable, je lis deux livres par semaine. J'ai chez moi une véritable bibliothèque !", deliver_by_hand: true, home_delivery: false, user: camille)
+quentin_bookstore_3 = Bookmate.create!(description: "Moi c'est Jean, lecteur à mes heures perdues, mais je ne rechigne jamais à dévorer un bon bouquin.", deliver_by_hand: true, home_delivery: false, user: jean)
 quentin_bookstore_4 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: edouard)
-quentin_bookstore_5 = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: alice)
+quentin_bookstore_5 = Bookmate.create!(description: "J'ai deux passions dans la vie : les chats et la lecture !", deliver_by_hand: true, home_delivery: false, user: alice)
 
 
 
@@ -54,6 +54,11 @@ book1.photo_url = photo_book1
 
 book2 = Book.create!(title: "Faillir être flingué", summary: "summaryjijddeefrfrgri", author: "authorcceeeeee", author_bio: "author_biooodffffoo", isbn: '9782743626563')
 selling_book2 = SellingBook.create!(personalized_comment: "very good", price: 29, condition: "very good condition", favorite_book: true, sold: false, book: book2, bookmate_book_category: bandes_dessinnees)
+photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
+book2.photo_url = photo_book2
+
+book3 = Book.create!(title: "Livre de fous", summary: "summaryjijddeefrfrgri", author: "authorcceeeeee", author_bio: "author_biooodffffoo")
+selling_book2 = SellingBook.create!(personalized_comment: "very good", price: 29, condition: "very good condition", favorite_book: true, sold: false, book: book2, bookmate_book_category: romans_policiers)
 photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
 book2.photo_url = photo_book2
 

@@ -1,21 +1,30 @@
 <div class="container">
-  <h1 class="red">Votre panier</h1>
-  <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
-  <% @order.bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
-    <h2>category: <%= bookmate_book_category.name %> </h2>
+  <% if @order.order_status == "pending" %>
+    <h1 class="red">Votre panier</h1>
+    <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
 
-    <% bookmate_book_category.selling_books.each do |selling_book| %>
+    <% current_order.selling_books.each do |selling_book| %>
       <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
     <% end %>
-  <% end %>
 
-  <p>Type de livraison</p>
-  <%= simple_form_for(@order) do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :delivery_type, collection: @delivery_type_array%>
-    <%= f.button :submit, "Passer la commande" %>
-  <% end %>
-  <p>Total :  <%= @total %></p>
+    <p>Type de livraison</p>
+    <%= simple_form_for @order, :url => {:action => "update"} do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :delivery_type, collection: @delivery_type_array%>
+      <%#= f.input :order_status, as: :hidden, :input_html => { :value => "paid" } %>
+      <%= f.button :submit, "Passer la commande" , class: "btn btn-primary" %>
+    <% end %>
+    <p>Total : <%= @total %>€</p>
+  <% else %>
+    <h1 class="red">Récapitulatif de votre commande</h1>
+    <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
 
+
+    <% @order.selling_books.each do |selling_book| %>
+      <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
+    <% end %>
+
+    <p>Total : <%= @total %>€</p>
+  <% end %>
 </div>
 

@@ -9,6 +9,10 @@
   background-color:$light-grey;
 }
 
+.side-bar a{
+  text-decoration: none;
+}
+
 .position-relative {
   position:relative;
 }
@@ -21,8 +25,38 @@
   padding-left:10px;
 }
 
-.text-column {
+#text-column {
   height:94vh;
-  float: left;
+  float:right;
   overflow-y: auto;
+}
+
+.current {
+  background: rgba(255,115,115,0.20);
+  border-left: 4px solid #FF7474;
+  color: $dark-grey;
+  letter-spacing: 0.5px;
+  padding: 5px 10px 5px 0;
+}
+
+.book-categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-categories img {
+  width: 125px;
+  height: auto;
+}
+
+.book-card {
+  display: inline-block;
+  padding: 20px;
+  text-align: center;
+}
+
+.book-card img:hover {
+  cursor: pointer;
+  width: 135px;
+  height: auto;
 }
