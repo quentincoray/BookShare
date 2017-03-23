@@ -12,12 +12,15 @@
   <div class="container-search">
   <!-- Bloc map et cards -->
     <div class="row">
-      <h1 class ="red">Découvrez les personnes proches de vous avec qui vous partagez le plus d'affinités littéraires</h1>
+      <% if @common_books.nil? %>
+        <h1 class="red">Découvrez les personnes proches de vous!</h1>
+      <% else %>
+        <h1 class ="red">Découvrez les personnes proches de vous avec qui vous partagez le plus d'affinités littéraires</h1>
+      <% end %>
         <!-- Bloc cards -->
         <div class="col-xs-7" id="card-column">
-          <% @bookmates_near_me.each do |bookmate|%>
+          <% @bookmates_selected.each do |bookmate|%>
             <!-- Carte utilisateur -->
-
             <div class="position-relative">
               <%= link_to bookmate_path(bookmate) do %>
                 <div class="card-grey-search">
@@ -25,7 +28,6 @@
                     <div class = "card-user text-center">
                       <% if bookmate.user.photo? %>
                         <%= cl_image_tag bookmate.user.photo.path,:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill" %>
-
                       <% else %>
                         <%= image_tag 'avatar.png',:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill" %>
                       <% end %>
@@ -35,27 +37,25 @@
                   <div class="user-details">
                     <h2>A propos de <%= bookmate.user.first_name %></h2>
                     <p>" <%= bookmate.description %> "</p>
-                    <div class="user-details-books">
-                      <h2><%= pluralize rand(1...5), "livre" %> en commun</h3>
-                      <h2 style="padding-left: 30vh">My reviews</h3>
+                    <% if !@common_books.nil? %>
+                      <div class="user-details-books">
+                        <h2><%= @common_books %> livres en commun</h2>
+                        <h2 style="padding-left: 30vh">My reviews</h2>
+                      </div>
+                    <% end %>
                     </div>
-                  </div>
                   <div class="user-link">
                     <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i>
                   </div>
                 </div>
+                </div>
               <% end %>
-            </div>
-
-          <% end %>
-        </div>
-
-
+            <% end %>
+          </div>
         <div class="col-xs-5" id="map-column">
           <div id="map"></div>
         </div>
       </div>
-    </div>
   </div>
 <% end %>
 
@@ -77,4 +77,5 @@
     });
   <% end %>
 <% end %>
+
 
