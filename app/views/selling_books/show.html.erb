@@ -1,15 +1,76 @@
+<div class="book-header">
+  <div class ="container">
+    <div class="book-header-container">
+    <!-- En-tête avec photo titre auteur bookmate et commentaire -->
+      <div class="row">
+        <!-- Couverture du livre -->
+          <div class="col-xs-2">
+            <%= cl_image_tag @selling_book.book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
+          </div>
+        <!-- Description et commentaire -->
+        <div class="col-xs-7">
+          <h2 class ="red"><%= @selling_book.book.title %> - <%= @selling_book.book.author %></h2>
+          <hr>
+          <%= cl_image_tag @selling_book.bookmate_book_category.bookmate.user.photo.path, class:"bookmate-avatar" %>
+          <h2>Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %></h2>
+          <p><%= @selling_book.personalized_comment%>, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.</p>
+        </div>
+        <!-- Achat -->
+        <div class="col-xs-3">
+          <h2>Etat : <%= @selling_book.condition%></h2>
+          <h2><%= @selling_book.price%> €</h2>
+          <%= simple_form_for @order do |f| %>
+            <%= hidden_field_tag :selling_book_id, @selling_book.id %>
+            <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %>
-<%= @selling_book.book.title %>
-<%= @selling_book.book.author %>
-<%= @selling_book.personalized_comment%>
-<%= @selling_book.price%>
-<%= @selling_book.condition%>
+<div class="book-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="book-body-column">
+          <h2>Vos bookmates ont aimé</h2>
+          <p>Photos des bookmates</p>
+        </div>
+      </div>
+      <div class="book-body-container">
+        <div class="col-xs-9">
+          <div class="row">
+            <div class="book-body-column">
+              <h2>Les autres livres de la catégorie</h2>
+              <p>Photos des livres</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="book-body-column">
+              <h2>Résumé du livre</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.
+
+              Pellentesque metus augue, accumsan id tortor non, viverra sollicitudin ligula. Curabitur facilisis, ligula et accumsan lacinia, ante risus elementum nisl, quis blandit justo mi et nisi. Duis fermentum id ligula at imperdiet. Aliquam condimentum nisi odio, ut ultrices orci porttitor a. Vestibulum mauris dui, mollis eu libero pretium, ultricies fringilla mi. Donec ornare lectus et sapien hendrerit, a porta nisl aliquet. Etiam eget est blandit, cursus quam id, facilisis sem. Vivamus euismod libero sit amet nisl vehicula, sit amet lobortis ante commodo. Nulla posuere finibus libero eu feugiat.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="book-body-column">
+              <h2>Biographie de l'auteur</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.
+
+              Pellentesque metus augue, accumsan id tortor non, viverra sollicitudin ligula. Curabitur facilisis, ligula et accumsan lacinia, ante risus elementum nisl, quis blandit justo mi et nisi. Duis fermentum id ligula at imperdiet. Aliquam condimentum nisi odio, ut ultrices orci porttitor a. Vestibulum mauris dui, mollis eu libero pretium, ultricies fringilla mi. Donec ornare lectus et sapien hendrerit, a porta nisl aliquet. Etiam eget est blandit, cursus quam id, facilisis sem. Vivamus euismod libero sit amet nisl vehicula, sit amet lobortis ante commodo. Nulla posuere finibus libero eu feugiat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <p>résumé du livre ?</p>
 <p>bio de de l'auteur ?</p>
 
-<%= simple_form_for @order do |f| %>
-  <%= hidden_field_tag :selling_book_id, @selling_book.id %>
-  <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
-<% end %>
+
