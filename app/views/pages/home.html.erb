@@ -16,9 +16,11 @@
       <%= render 'search_form' %>
         <div><%= image_tag "button-plus.png", class: "btn-plus" %></div>
       </div>
-      <div class="container-api-img">
+      <div class="title-search">
       </div>
       <div class="selected-book-cover">
+      </div>
+      <div class="container-api-img">
       </div>
     </div>
   </div>
@@ -68,8 +70,8 @@
                 var book_title = item.volumeInfo.title;
                 var book_author = item.volumeInfo.authors;
                 var book_image = item.volumeInfo.imageLinks.thumbnail;
-                var book_isbn = item.volumeInfo.XXXXXXX;
-                console.log(book_image)
+                var book_isbn = item.volumeInfo.industryIdentifiers[0].identifier;
+                console.log(book_isbn)
                 <!-- $('#results').append(book_author); -->
                 $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"'/></a>");
               });
@@ -80,9 +82,14 @@
           });
       });
       $('.container-api-img').on("click", '.api-img-link', function() {
-        alert('clickable image');
-        console.log('hello');
-
+        var selected_books = $(".selected-book-cover").length;
+        $(".title-search").html("<h2>Vous avez sélectionné: </h2>");
+        if(selected_books < 3) {
+          $(".selected-book-cover").append(this);
+          selected_books + 1;
+          var isbn_1 = $(this).data("isbn");
+          console.log(isbn_1);
+        };
       });
     });
   <% end %>
