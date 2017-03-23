@@ -25,9 +25,11 @@
 
       <div class="navbar-wagon-item">
         <div class="badge-container">
-          <%= link_to order_path(@order) do %>
-            <%= image_tag "shopping-cart.png", class: "shopping-cart-logo" %>
-            <div class="badge badge-red"><%= @basket_counter %></div>
+          <% if @order %>
+            <%= link_to order_path(@order) do %>
+              <%= image_tag "shopping-cart.png", class: "shopping-cart-logo" %>
+              <div class="badge badge-red"><%= @basket_counter %></div>
+            <% end %>
           <% end %>
         </div>
       </div>
