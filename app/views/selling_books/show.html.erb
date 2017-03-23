@@ -9,7 +9,7 @@
           </div>
         <!-- Description et commentaire -->
         <div class="col-xs-7">
-          <h2><%= @selling_book.book.title %> - <%= @selling_book.book.author %></h2>
+          <h2 class ="red"><%= @selling_book.book.title %> - <%= @selling_book.book.author %></h2>
           <hr>
           <%= cl_image_tag @selling_book.bookmate_book_category.bookmate.user.photo.path, class:"bookmate-avatar" %>
           <h2>Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %></h2>
