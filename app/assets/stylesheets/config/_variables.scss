@@ -15,7 +15,6 @@ $base-size: 16px;
 
 
 
-
 // Local fonts (uncomment following lines)
 @font-face {
     font-family: 'brandon_grotesque_bold';
@@ -66,6 +65,11 @@ $light-grey: #FBFBFB;
 
 //size fonts
 
+body {
+  color: $dark-grey;
+}
+
+
 h1 {
   font-family: $header-font;
   font-size: $header1-size !important;
@@ -75,6 +79,7 @@ h1 {
 h2 {
   font-family: $header-font;
   font-size: $header2-size !important;
+  color: $dark-grey !important;
 }
 
 
@@ -87,6 +92,7 @@ h3 {
   font-weight: lighter;
   font-size: $header2-size !important;
   text-transform: capitalize;
+  color: $dark-grey !important;
 }
 
 p {

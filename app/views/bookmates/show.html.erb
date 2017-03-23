@@ -1,4 +1,4 @@
-<div class="row">
+
 
   <div class="col-xs-2 " >
     <div class=" side-bar side-bar-padding-top">
@@ -12,7 +12,6 @@
         <% end %>
       </div>
     </div>
-
   </div>
 
   <div class="col-xs-10" id="text-column">
@@ -28,7 +27,6 @@
     <% end %>
     <h2>Son top 3 ?</h2>
     <h2>Sa note ?</h2>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
     <% @bookmate_book_categories.each do |bookmate_book_category| %>
@@ -42,14 +40,10 @@
         <% end %>
         <div class="position-relative">
           <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "card-link" do %>
-              <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
+             <%= #cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
           <% end %>
         </div>
-
-
       <% end %>
     <% end %>
   </div>
-
-</div>
 
