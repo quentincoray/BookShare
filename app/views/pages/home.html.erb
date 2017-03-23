@@ -77,7 +77,7 @@
           console.log($('#searched_books').val());
           $.ajax({
             type: "GET",
-            url: "https://www.googleapis.com/books/v1/volumes?q="+($('#searched_books').val())+"&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+            url: "https://www.googleapis.com/books/v1/volumes?q="+($('#searched_books').val())+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
             success: function(data) {
               $(".container-api-img").html('<div id="results"></div>');
               data.items.forEach(function(item) {
@@ -87,7 +87,7 @@
                 var book_isbn = item.volumeInfo.industryIdentifiers[0].identifier;
                 console.log(book_isbn)
                 <!-- $('#results').append(book_author); -->
-                $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+" data-title='"+book_title+"' data-author='"+book_author+"'/></a>");
+                $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"' data-title='"+book_title+"' data-author='"+book_author+"'/></a>");
               });
             },
             error: function(jqXHR) {
@@ -95,16 +95,16 @@
             }
           });
       });
+      var selected_books = 0
       $('.container-api-img').on("click", '.api-img-link', function() {
-        var selected_books = $(".selected-book-cover").length;
         $(".title-search").html("<h2>Vous avez sélectionné: </h2>");
         $("#search-results").css("background-color", "white");
         if(selected_books < 3) {
           $(".selected-book-cover").css("background-color", "white");
           $(".selected-book-cover").prepend(this);
-          selected_books + 1;
-          var isbn_1 = $(this).data("isbn");
-          console.log(isbn_1);
+          selected_books ++;
+          var isbn = $(this).data("isbn");
+          console.log(isbn);
         };
       });
     });
