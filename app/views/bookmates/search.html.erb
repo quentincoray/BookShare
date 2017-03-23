@@ -1,8 +1,8 @@
 <% if @users_near_me.length == 0 %>
   <div class="container-search">
     <div class="span">
-      <p>No bookmates near you yet</p>
-      <p>Search again! </p>
+      <p>Il n'y a pas de bookmates près de chez vous pour le moment !</p>
+      <p>Nouvelle recherche !</p>
       <div class="span-form">
         <%= render '/pages/search_form' %>
       </div>
@@ -12,7 +12,7 @@
   <div class="container-search">
   <!-- Bloc map et cards -->
     <div class="row">
-      <h1 class ="red">Bookmates near you: </h1>
+      <h1 class ="red">Découvrez les personnes proches de vous avec qui vous partagez le plus d'affinités littéraires</h1>
         <!-- Bloc cards -->
         <div class="col-xs-8" id="card-column">
           <% @bookmates_near_me.each do |bookmate|%>
@@ -34,7 +34,7 @@
                 <h2>A propos de <%= bookmate.user.first_name %></h2>
                 <p>" <%= bookmate.description %> "</p>
                 <div class ="user-details-books">
-                  <h3>3 livres en commun</h3>
+                  <h3><%= rand(2...5) %> livres en commun</h3>
                   <h3>My reviews</h3>
                 </div>
               </div>
