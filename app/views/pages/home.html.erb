@@ -15,7 +15,6 @@
       <div class="container-searchform">
         <%= form_tag(search_path, method: 'get', id: 'searchform') do %>
           <%= text_field_tag :search, params[:search], placeholder: 'Type your favorite books!', class: "searchbar form-control", id: "searched_books" %>
-          </div>
           <div class="container-api-img">
           </div>
           <div id="search-results">
@@ -35,7 +34,7 @@
         <% end %>
             </div>
           </div>
-
+      </div>
     </div>
   </div>
 </div>
@@ -70,6 +69,7 @@
 
       navigator.geolocation.getCurrentPosition(success, error);
     }
+
 <!-- <script> -->
 
       $('#searched_books').on('keyup', function(event) {
@@ -110,3 +110,4 @@
     });
   <% end %>
 <% end %>
+

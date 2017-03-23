@@ -1,0 +1,66 @@
+.container-search {
+  position: relative;
+  margin-left: 30px;
+}
+
+.text-title {
+  position: relative;
+  padding-left: 25px;
+}
+
+.container-link{
+  position: absolute;
+  padding-left: 10px;
+  top: 10px;
+  right: 30px;
+}
+
+.span-form {
+  text-align: center;
+  padding: 20px;
+}
+
+#map {
+  width: 98%;
+  height: 82vh;
+}
+
+#card-column {
+  // position:fixed;
+  // top:200px;
+  // float:left;
+  height: 82vh;
+  float:left;
+  overflow-y: auto;
+}
+
+.user-link {
+  margin-left: auto;
+  padding-right: 10px;
+  color: $red;
+}
+
+.user-details {
+  padding-right: 15px;
+}
+
+.user-details-books {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  color: $blue;
+}
+
+// .user-details-books h3:last-child {
+//   float: right;
+// }
+
+.bookmates-search #footer {
+  display: none;
+}
+
+.user-avatar {
+  padding: 1em 3em 0 2em;
+  width: 176px;
+  text-align: center;
+}

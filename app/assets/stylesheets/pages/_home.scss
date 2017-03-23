@@ -15,7 +15,7 @@
 }
 
 .home-title1 {
-  font-family: 'brandon_grotesquebold';
+  font-family: $header-font;
   font-size: 48px;
   color: white;
   display: inline-block;
@@ -23,17 +23,20 @@
 }
 
 .home-title2 {
-  font-family:'brandon_grotesque_light';
-  font-size: 25px;
+  font-family:$base-font;
+  font-weight:lighter;
+  font-size: 22px;
   color: white;
 }
 
 .home-searchbar-title {
-  font-family: 'brandon_grotesque_light';
+  font-family: $base-font;
+  font-weight: 300;
   font-size: 20px;
 }
 
 .searchbar {
+  background: #FFFFFF;
   border-radius: 4px;
   width:70%;
   margin:auto;
@@ -48,14 +51,23 @@
   background-color: $blue;
 }
 
-.btn-plus {
+.btn-home {
+  background-color:none;
+  color:white;
+  border: white 1px solid;
+  font-family:'brandon_grotesque_regular';
 
+}
+
+.connect {
+  font-family: 'brandon_grotesque_regular';
 }
 
 .small-container {
   width: 565px;
   margin: 0px auto;
 }
+
 
 .api-img {
   width: 75px;
@@ -87,5 +99,37 @@
   padding: 5px;
 }
 
+
+// Navbar
+
+.pages-home .navbar-wagon {
+  background: $blue;
+  box-shadow: none;
+
+}
+.pages-home .navbar-wagon-item {
+  color: white;
+  font-family:'brandon_grotesque_regular';
+  font-size:18px;
+  padding: 7px;
+}
+
+
+.pages-home .navbar-wagon-logo {
+  content: url("logo_white.png");
+}
+
+.pages-home .fa-envelope-o {
+  color:white;
+}
+
+.pages-home .shopping-cart-logo {
+  content: url("basket_white.png");
+}
+
+
+.pages-home .fa-user-circle-o {
+  color:white;
+}
 
 

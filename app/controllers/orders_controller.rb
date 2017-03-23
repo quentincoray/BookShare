@@ -1,9 +1,16 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
-
+  before_action :set_order, only: [:show, :update]
 
   def show
     authorize @order
+    @bookmate = @order.bookmate
+    @delivery_type_array = []
+    if @bookmate.deliver_by_hand
+      @delivery_type_array << "livraison à domicile"
+    end
+    if @bookmate.home_delivery
+      @delivery_type_array << "livraison en main propre"
+    end
   end
 
   def new
@@ -11,18 +18,27 @@ class OrdersController < ApplicationController
   end
 
   def create
-    delivery_type_array = []
+    @selling_book = SellingBook.find(params[:selling_book_id])
 
-    @order = Order.new(order_params)
+    @order = current_user.orders.where(order_status: "pending").last
+    @order ||= Order.new
+    authorize @order
     @order.order_status = "pending"
-    @order.bookmate = @bookmate.user
+    @order.bookmate = @selling_book.bookmate
+    @order.delivery_status = "en cours"
+    @order.delivery_type = "livraison à domicile"
     @order.user = current_user
-    current_user.save
-    if @order.save
-      redirect_to bookmate_path(@bookmate), notice: 'Le livre a été ajouté au panier'
-    else
-      render :new
+    @order.selling_books << @selling_book
+    @total = 0
+    @order.selling_books.each do |selling_book|
+      @total += 1
     end
+    @order.save
+    redirect_to bookmate_selling_book_path(@selling_book.bookmate,@selling_book), notice: 'Le livre a été ajouté au panier'
+  end
+
+  def update
+    create # same behaviour
   end
 
 
@@ -32,8 +48,5 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def order_params
-    params.require(:order).permit(:review, :rating, :delivery_type, :order_status, :delivery_status, :bookmate_id, :user_id)
-  end
 end
 

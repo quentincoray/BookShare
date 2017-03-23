@@ -1,10 +1,15 @@
-<p>hello</p>
-Le commentaire de <%= @selling_book.bookmate.user.first_name %>
+
+Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %>
 <%= @selling_book.book.title %>
+<%= @selling_book.book.author %>
 <%= @selling_book.personalized_comment%>
 <%= @selling_book.price%>
-<%= @selling_book.sold%>
+<%= @selling_book.condition%>
 
- <%= #simple_form_for [@bookmate, @selling_book] do |f| %>
-  <%= #f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
-<% #end %>
+<p>résumé du livre ?</p>
+<p>bio de de l'auteur ?</p>
+
+<%= simple_form_for @order do |f| %>
+  <%= hidden_field_tag :selling_book_id, @selling_book.id %>
+  <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
+<% end %>

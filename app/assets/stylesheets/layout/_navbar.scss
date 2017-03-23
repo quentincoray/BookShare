@@ -1,10 +1,12 @@
 /* Main class */
+
+
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: white;
   transition: all 0.3s ease;
   display: flex;
-  height: 70px;
+  height: 55px;
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
@@ -33,22 +35,33 @@
 }
 
 /* Navbar item */
+
+
+
+.navbar-wagon-item-box {
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
 .navbar-wagon-item {
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
-  font-size: 18px;
-  color: grey;
-  font-family: 'brandon_grotesque_regularRg', sans-serif;
+  font-size: 15px;
+  color: $dark-grey;
+  font-family: $base-font;
+  text-decoration: none;
+  margin-left:10px;
 }
 
 .navbar-wagon-item:hover {
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
-  font-size: 18px;
+  font-size: 15px;
   color: $blue;
   font-family: 'brandon_grotesque_regularRg', sans-serif;
+  text-decoration: none;
 }
 
 /* Navbar standard link */
@@ -61,6 +74,11 @@
   color: #da552f;
   text-decoration: none;
 }
+
+
+/* basket */
+
+
 
 /* Navbar right button */
 .navbar-wagon-button {

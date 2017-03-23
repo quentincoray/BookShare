@@ -1,8 +1,21 @@
+<div class="container">
+  <h1 class="red">Votre panier</h1>
+  <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
+  <% @order.bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
+    <h2>category: <%= bookmate_book_category.name %> </h2>
 
-<!--
-    if @bookmate.deliver_by_hand
-      delivery_type_array << "livraison à domicile"
-    end
-    if @bookmate.home_delivery
-      delivery_type_array << "livraison en main propre"
-    end -->
+    <% bookmate_book_category.selling_books.each do |selling_book| %>
+      <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
+    <% end %>
+  <% end %>
+
+  <p>Type de livraison</p>
+  <%= simple_form_for(@order) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :delivery_type, collection: @delivery_type_array%>
+    <%= f.button :submit, "Passer la commande" %>
+  <% end %>
+  <p>Total :  <%= @total %></p>
+
+</div>
+

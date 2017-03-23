@@ -2,11 +2,11 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-// @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Raleway:100,300,400,500,700");
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Raleway:100,300,400,500,700');
-$base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: 'brandon_grotesquebold', "Helvetica", "sans-serif";
 
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+$base-font: "Open Sans", "Helvetica", "sans-serif";
+$header-font: 'brandon_grotesque_bold', "Helvetica", "sans-serif";
+$header-intermediary-font: 'brandon_grotesque_thin', "Helvetica", "sans-serif";
 
 // Font-size and line-height
 $header1-size:25px;
@@ -15,9 +15,10 @@ $base-size: 16px;
 
 
 
+
 // Local fonts (uncomment following lines)
 @font-face {
-    font-family: 'brandon_grotesquebold';
+    font-family: 'brandon_grotesque_bold';
     src: font-url('brandon_bld-webfont.woff2') format('woff2'),
          font-url('brandon_bld-webfont.woff') format('woff');
     font-weight: normal;
@@ -26,7 +27,7 @@ $base-size: 16px;
 }
 
 @font-face {
-    font-family: 'brandon_grotesque_regularRg';
+    font-family: 'brandon_grotesque_regular';
     src: font-url('brandon_reg-webfont.woff2') format('woff2'),
          font-url('brandon_reg-webfont.woff') format('woff');
     font-weight: normal;
@@ -35,15 +36,15 @@ $base-size: 16px;
 }
 
 @font-face {
-    font-family: 'brandon_grotesque_light';
-    src: font-url('Brandon_light.otf') format('otf');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'brandon_grotesque_thin';
+    src: font-url('Brandon_thin.otf') format('otf');
+    // font-weight: normal;
+    // font-style: normal;
 }
 
 // $my-font: "Font Name";
-
-
+// border radius
+$br-base:  4px;
 
 // ?
 $base-height: 1.4;
@@ -56,26 +57,101 @@ $base-height: 1.4;
 $red: #EE5F5B;
 $dark-red: #FC4040;
 $blue: #5CC8FF;
+$light-blue:#EEF9FF;
 $green: #64DAA7;
-$dark-gray: #4A4A4A;
-$light-gray: #9B9B9B;
+$dark-grey: #4A4A4A;
+$grey: #9B9B9B;
+$light-grey: #FBFBFB;
 
 
 //size fonts
 
+body {
+  color: $dark-grey;
+}
+
+
 h1 {
   font-family: $header-font;
-  font-size: $header1-size;
+  font-size: $header1-size !important;
+  color: $red;
 }
 
 h2 {
   font-family: $header-font;
-  font-size: $header2-size;
+  font-size: $header2-size !important;
+  color: $dark-grey !important;
+}
+
+
+// Couleur d ecriture par defaut doit etre donnee en dark grey dans le body
+// ecriture en bleu comme h2 seule la couleur change
+
+// pour les titres en majuscules dans la sidebar
+h3 {
+  font-family: $base-font !important;
+  font-weight: lighter;
+  font-size: $header2-size !important;
+  text-transform: capitalize;
+  color: $dark-grey !important;
 }
 
 p {
   font-family: $base-font;
-  font-size: 300;
-  font-size: $base-size;
+  font-weight: 300;
+  font-size: $base-size !important;
+  color:$dark-grey;
 }
+
+
+.blue {
+  color:$blue;
+}
+
+.red {
+  color:$red;
+}
+
+.dark-grey {
+  color:$dark-grey;
+}
+
+.card-grey {
+  background-color: $light-grey;
+  border-radius:$br-base;
+  padding: 5px;
+  //padding a definir a vue d oeil avec les mockups
+}
+
+.card-grey-search {
+  background-color: $light-grey;
+  border-radius:$br-base;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 5px;
+  width:700px;
+}
+.card-grey-search:hover {
+  background-color: $light-blue;
+  cursor: pointer;
+}
+.card-grey-bookmate-page {
+  width:800px;
+}
+
+.card-grey-book-page {
+  width:728px;
+}
+
+.card-grey-basket {
+  width:1000px;
+}
+
+.card-grey-dashboard {
+  width:826px;
+}
+
+
+
 

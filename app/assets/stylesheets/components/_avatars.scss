@@ -1,8 +1,8 @@
 .avatar {
   display: inline-block;
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   overflow: hidden;
   border-radius: 50%;
 }
@@ -10,6 +10,21 @@
   width: auto;
   height: 100%;
 }
+
+.border-white {
+  border: white 3px solid;
+
+}
+
+.avatar-medium {
+  display: inline-block;
+  position: relative;
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 .avatar-large {
   display: inline-block;
   position: relative;
@@ -47,4 +62,10 @@
 .avatar-navbar img {
   width: auto;
   height: 100%;
+}
+
+.user-avatar {
+  padding: 1em 3em 0 2em;
+  width: 176px;
+  text-align: center;
 }

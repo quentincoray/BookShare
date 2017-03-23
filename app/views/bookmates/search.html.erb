@@ -1,67 +1,73 @@
- <div class = "text-title">
- </div>
 <% if @users_near_me.length == 0 %>
   <div class="container-search">
     <div class="span">
-      <p>No bookmates near you yet</p>
-      <p>Search again! </p>
+      <p>Il n'y a pas de bookmates près de chez vous pour le moment !</p>
+      <p>Nouvelle recherche !</p>
       <div class="span-form">
         <%= render '/pages/search_form' %>
       </div>
     </div>
   </div>
 <% else %>
-  <div class="container">
+  <div class="container-search">
+  <!-- Bloc map et cards -->
     <div class="row">
-    <p>Bookmates near you: </p>
-      <div class="col-xs-8" id="card-column">
-        <div class="row">
+      <h1 class ="red">Découvrez les personnes proches de vous avec qui vous partagez le plus d'affinités littéraires</h1>
+        <!-- Bloc cards -->
+        <div class="col-xs-7" id="card-column">
           <% @bookmates_near_me.each do |bookmate|%>
-            <div class="col-xs-6 ">
-              <div class="card"
-                  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-                <div class="card-category">
-                  <i class="fa fa-map-marker" aria-hidden="true"></i> <%= bookmate.user.address %>
-                </div>
-                <div class="card-description">
-                  <h2>
-                    " <%= bookmate.description %> "
-                  </h2>
-                  <i class="fa fa-user" aria-hidden="true"></i> <%= bookmate.user.first_name %>
+            <!-- Carte utilisateur -->
+            <div class="card-grey-search">
+              <div class="user-avatar text-center">
+                <div class = "card-user text-center">
                   <% if bookmate.user.photo? %>
-                    <%= cl_image_tag bookmate.user.photo.path,:width=>50, :height=>50, :gravity=>"auto", :crop=>"fill", class: "card-user avatar-bordered"%>
-                    <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
+                    <%= cl_image_tag bookmate.user.photo.path,:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill" %>
+                    <%= link_to "", bookmate_path(bookmate) %>
                   <% else %>
-                    <%= image_tag 'avatar.png', class: "card-user avatar avatar-bordered"%>
-                    <%= link_to "", bookmate_path(bookmate), class: "card-link"  %>
+                    <%= image_tag 'avatar.png',:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill" %>
+                    <%= link_to "", bookmate_path(bookmate) %>
                   <% end %>
                 </div>
+                <h2><%= bookmate.user.first_name %></h2>
+              </div>
+              <div class="user-details">
+                <h2>A propos de <%= bookmate.user.first_name %></h2>
+                <p>" <%= bookmate.description %> "</p>
+                <div class="user-details-books">
+                  <h2><%= rand(2...5) %> livres en commun</h3>
+                  <h2 style="padding-left: 30vh">My reviews</h3>
+                </div>
+              </div>
+              <div class="user-link">
+                <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i>
               </div>
             </div>
           <% end %>
         </div>
+        <div class="col-xs-5" id="map-column">
+          <div id="map"></div>
+        </div>
       </div>
     </div>
-    <div class="col-xs-4" id="map-column">
-      <div id="map"></div>
-    </div>
   </div>
+<% end %>
 
-  <%= content_for(:after_js) do %>
-    <script>
-      $(document).ready(function () {
-        var handler = Gmaps.build ('Google');
-        handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(3);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function () {
+      <!-- $('#footer').remove(); -->
+      var handler = Gmaps.build ('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(3);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
         }
       });
     });
-    </script>
   <% end %>
 <% end %>
+
