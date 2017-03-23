@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  DELIVERY_STATUS = ["en cours","effectuée"]
+
   belongs_to :bookmate
   belongs_to :user
   has_many :ordered_books

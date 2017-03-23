@@ -43,8 +43,8 @@ class OrdersController < ApplicationController
     @order = current_order
     authorize @order
     @order.order_status = "paid"
-    @order.delivery_status = "en cours"
-    @order.delivery_type = "livraison à domicile"
+    # @order.delivery_status = "en cours"
+    # @order.delivery_type = "livraison à domicile"
     @order.user = current_user
     @total = 0
 
@@ -57,6 +57,11 @@ class OrdersController < ApplicationController
     redirect_to order_path(@order), notice: "La commande a bien été prise en compte"
   end
 
+  def delivered
+    @order = Order.find(params[:id])
+    @order.delivery_status = "effectuée"
+    @order.save
+  end
 
   private
 
