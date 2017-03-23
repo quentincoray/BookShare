@@ -29,6 +29,7 @@ class BookmatesController < ApplicationController
     @bookmates_selected.each do |bookmate|
       @common_books = Book.where(books: { isbn: @isbn }).size
     end
+    # raise
     # @common_books = @bookmates_selected.map { |book| Book.where(books: { isbn: @isbn }) }
     # @common_books = Book.where(books: { isbn: @isbn })
     # @intersection = @isbn & @common_books
