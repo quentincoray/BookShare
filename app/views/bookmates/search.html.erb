@@ -21,10 +21,10 @@
               <div class="user-avatar text-center">
                 <div class = "card-user text-center">
                   <% if bookmate.user.photo? %>
-                    <%= cl_image_tag bookmate.user.photo.path %>
+                    <%= cl_image_tag bookmate.user.photo.path,:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill" %>
                     <%= link_to "", bookmate_path(bookmate) %>
                   <% else %>
-                    <%= image_tag 'avatar.png' %>
+                    <%= image_tag 'avatar.png',:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill" %>
                     <%= link_to "", bookmate_path(bookmate) %>
                   <% end %>
                 </div>
