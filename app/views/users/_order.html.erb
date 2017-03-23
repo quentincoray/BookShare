@@ -1,0 +1,34 @@
+  photo?
+  Nom du bookmate ?
+  Détail de la commande ?
+  Mode de livraison ?
+  <!-- A changer en requete ajax -->
+  <div class="btn">
+    <a class="delivery-status-order<%= order.id %>" href="">Valider la réception de la commande</a>
+  </div>
+  <button id="btn-comment" data-toggle="modal" data-target="#hello world"> Faire un commentaire</button>
+  <%= order.delivery_status %>
+
+
+  status ?
+  <%= order.delivery_type %>
+
+
+
+<% content_for :after_js do %>
+  <script>
+    $(document).ready(function() {
+      $('.delivery-status-order<%= order.id %>').on('click', function(e) {
+        $.ajax({
+          type: 'POST',
+          url: '/orders/' + <%= order.id %> + '/delivered',
+          // success: active tab
+          success:function(data){
+            alert(data);
+          }
+        })
+
+      });
+    });
+  </script>
+<% end %>

@@ -75,32 +75,11 @@
       </div>
 <!--       Contenu des commandes -->
       <div class="tab-content hidden" id="orders">
+        <h1>Mes commandes en cours</h1>
         <% @paid_orders.each do |paid_order| %>
-          <% if paid_order.delivery_status == "en cours" %>
-            <h1>Mes commandes en cours</h1>
-            photo?
-            Nom du bookmate ?
-            Détail de la commande ?
-            Mode de livraison ?
-            <%= simple_form_for @order do |f| %>
-              <%= f.input :delivery_type %>
-              <%= f.submit "valider", class: "btn btn-primary" %>
-            <% end %>
-
-            status ?
-
-
-          <% else %>
-            <h1>Mes commandes reçues</h1>
-
-            <%= paid_order.delivery_status %>
-            photo?
-            Nom du bookmate ?
-            Détail de la commande ?
-            Mode de livraison ?
-            status ?
-
-          <% end %>
+          <div>
+          <%= render "order", order: paid_order %>
+          </div>
         <% end %>
       </div>
 <!--       Contenu des ventes -->
@@ -118,3 +97,5 @@
 <!-- Scripts pour l'animation des tabs -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="javascripts/tabs.js"></script>
+
+
