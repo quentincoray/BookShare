@@ -3,13 +3,7 @@ class OrdersController < ApplicationController
 
   def show
     authorize @order
-  end
-
-  def new
-    @order = Order.new
-  end
-
-  def create
+    @bookmate = @order.bookmate
     @delivery_type_array = []
     if @bookmate.deliver_by_hand
       @delivery_type_array << "livraison à domicile"
@@ -17,7 +11,13 @@ class OrdersController < ApplicationController
     if @bookmate.home_delivery
       @delivery_type_array << "livraison en main propre"
     end
+  end
 
+  def new
+    @order = Order.new
+  end
+
+  def create
     @selling_book = SellingBook.find(params[:selling_book_id])
 
     @order = current_user.orders.where(order_status: "pending").last
@@ -38,6 +38,7 @@ class OrdersController < ApplicationController
   end
 
   def update
+    create # same behaviour
   end
 
 
