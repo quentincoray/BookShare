@@ -33,11 +33,11 @@ alice.photo_url = photo_alice
 
 puts "Creating bookmates..."
 quentin_bookstore = Bookmate.create!(description: "J'aime tous types de romans, notamment les romans de fantasy, science-fiction et heroïc-fantasy. Le Seigneur des Anneaux, meilleure saga de l'histoire !", deliver_by_hand: true, home_delivery: true, user: quentin)
-anne_sophie_bookstore = Bookmate.create!(description: "J'aime la littérature dans son ensemble, c'est un art passionnant qu'il me plait de partager.", deliver_by_hand: true, home_delivery: false, user: anne_sophie)
-camille_bookstore = Bookmate.create!(description: "Lectrice insatiable, je lis deux livres par semaine. J'ai chez moi une véritable bibliothèque !", deliver_by_hand: true, home_delivery: false, user: camille)
-jean_bookstore = Bookmate.create!(description: "Moi c'est Jean, lecteur à mes heures perdues, mais je ne rechigne jamais à dévorer un bon bouquin.", deliver_by_hand: true, home_delivery: false, user: jean)
-edouard_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: false, user: edouard)
-alice_bookstore = Bookmate.create!(description: "J'ai deux passions dans la vie : les chats et la lecture !", deliver_by_hand: true, home_delivery: false, user: alice)
+anne_sophie_bookstore = Bookmate.create!(description: "J'aime la littérature dans son ensemble, c'est un art passionnant qu'il me plait de partager.", deliver_by_hand: true, home_delivery: true, user: anne_sophie)
+camille_bookstore = Bookmate.create!(description: "Lectrice insatiable, je lis deux livres par semaine. J'ai chez moi une véritable bibliothèque !", deliver_by_hand: true, home_delivery: true, user: camille)
+jean_bookstore = Bookmate.create!(description: "Moi c'est Jean, lecteur à mes heures perdues, mais je ne rechigne jamais à dévorer un bon bouquin.", deliver_by_hand: true, home_delivery: true, user: jean)
+edouard_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: true, user: edouard)
+alice_bookstore = Bookmate.create!(description: "J'ai deux passions dans la vie : les chats et la lecture !", deliver_by_hand: true, home_delivery: true, user: alice)
 
 
 
@@ -49,6 +49,8 @@ bandes_dessinnees = BookmateBookCategory.create!(name:"Bandes dessinées", bookm
 lotr = BookmateBookCategory.create!(name:"Lord of the Rings", bookmate: quentin_bookstore)
 cats = BookmateBookCategory.create!(name:"I love cats!", bookmate: alice_bookstore)
 litterature_us = BookmateBookCategory.create!(name:"Littérature américaine", bookmate: anne_sophie_bookstore)
+livres_francais = BookmateBookCategory.create!(name:"Mes derniers livres lus", bookmate: alice_bookstore)
+last_french_awards = BookmateBookCategory.create!(name:"Derniers livres primés", bookmate: anne_sophie_bookstore)
 
 book1 = Book.create!(title: "Le Grand Jeu", summary: "Robinson revisité", author: "Céline Minard", author_bio: "Romancière française éclectique", isbn: '9782743637323')
 selling_book1 = SellingBook.create!(personalized_comment: "Donne envie de se retirer dans une bulle au fond des bois... ou pas ! ", price: 19, condition: "bon état", favorite_book: false, sold: false, book: book1, bookmate_book_category: litterature_francaise)
@@ -91,7 +93,7 @@ photo_book8 = 'https://images-na.ssl-images-amazon.com/images/I/51MlPWDaXGL._AC_
 book8.photo_url = photo_book8
 
 book9 = Book.create!(title: "Le chien des Baskerville", summary: "Vous ne verrez plus la lande anglaise de la même façon....", author: "Sir Arthur Conan Doyle", author_bio: "Auteur anglais", isbn: '9782371131002')
-selling_book9 = SellingBook.create!(personalized_comment: "Replongez-vous dans ce classique pendant une après-midi pluvieuse...", price: 3, condition: "bon état", favorite_book: false, sold: false, book: book9, bookmate_book_category: lotr)
+selling_book9 = SellingBook.create!(personalized_comment: "Replongez-vous dans ce classique pendant une après-midi pluvieuse...", price: 3, condition: "bon état", favorite_book: false, sold: false, book: book9, bookmate_book_category: romans_policiers)
 photo_book9 = 'https://images-na.ssl-images-amazon.com/images/I/5103MS3nyQL._SX349_BO1,204,203,200_.jpg'
 book9.photo_url = photo_book9
 
@@ -115,6 +117,44 @@ selling_book12 = SellingBook.create!(personalized_comment: "Ecriture acerbe, un 
 photo_book12 = 'https://images-na.ssl-images-amazon.com/images/I/41i4iaoq%2BsL._SX328_BO1,204,203,200_.jpg'
 book12.photo_url = photo_book12
 
+selling_book13 = SellingBook.create!(personalized_comment: "Pas mal! ", price: 15, condition: "bon état", favorite_book: false, sold: false, book: book1, bookmate_book_category: livres_francais)
+photo_book1 = 'https://www.franceculture.fr/s3/cruiser-production/2016/08/0c515c87-da57-4043-b3f6-96de8e8eaf38/738_97827436373300-3480956.jpg'
+book1.photo_url = photo_book1
+
+selling_book14 = SellingBook.create!(personalized_comment: "Pas mal aussi!", price: 25, condition: "très bon état", favorite_book: true, sold: false, book: book2, bookmate_book_category: livres_francais)
+photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
+book2.photo_url = photo_book2
+
+selling_book15 = SellingBook.create!(personalized_comment: "Si vous aimez le dépaysement, ce livre est pour vous!", price: 16, condition: "très bon état", favorite_book: true, sold: false, book: book1, bookmate_book_category: last_french_awards)
+photo_book1 = 'https://www.franceculture.fr/s3/cruiser-production/2016/08/0c515c87-da57-4043-b3f6-96de8e8eaf38/738_97827436373300-3480956.jpg'
+book1.photo_url = photo_book1
+
+selling_book16 = SellingBook.create!(personalized_comment: "Excellent pour passer un après-midi à lire et voyager", price: 22, condition: "très bon état", favorite_book: true, sold: false, book: book2, bookmate_book_category: last_french_awards)
+photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
+book2.photo_url = photo_book2
+
+selling_book17 = SellingBook.create!(personalized_comment: "Polar Western : le mélange est possible !", price: 20, condition: "bon état", favorite_book: false, sold: false, book: book2, bookmate_book_category: romans_policiers)
+photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
+book2.photo_url = photo_book2
+
+book13 = Book.create!(title: "La Septième Fonction du Langage", summary: "Roman déjanté qui revisite la France des années 80s. Roland Barthes vient de mourir, mais est-ce vraiment un accident? ", author: "Laurent Binet", author_bio: "Auteur français contemporain", isbn: '9782246854944')
+selling_book18 = SellingBook.create!(personalized_comment: "Vous ne lirez plus jamais du Barthes de la même manière!", price: 17, condition: "très bon état", favorite_book: true, sold: false, book: book13, bookmate_book_category: last_french_awards)
+photo_book13 = 'http://static.fnac-static.com/multimedia/Images/FR/NR/ce/ba/6c/7125710/1507-1/tsp20150901141233/La-septieme-fonction-du-langage.jpg'
+book13.photo_url = photo_book13
+
+book14 = Book.create!(title: "D'après une histoire vraie", summary: "Comment une personne, L. peut s'immiscer dans la vie d'une personne et prendre sa place...", author: "Delphine de Vigan", author_bio: "Romancière française ", isbn: '9782709648813')
+selling_book19 = SellingBook.create!(personalized_comment: "Thriller psychologique, on ne peut plus le poser tant qu'on n'est pas arrivé au dénouement....", price: 11, condition: "très bon état", favorite_book: false, sold: false, book: book14, bookmate_book_category: last_french_awards)
+photo_book14 = 'https://images-na.ssl-images-amazon.com/images/I/41Bya7stsoL._SX315_BO1,204,203,200_.jpg'
+book14.photo_url = photo_book14
+
+book15 = Book.create!(title: "Réparer les vivants", summary: "Aperçu de toutes les vies qui se croisent, au propre comme au figuré, dans un hopital", author: "Maylis de Kerangal", author_bio: "Romancière française ", isbn: '9782072574795')
+selling_book20 = SellingBook.create!(personalized_comment: "Ecriture dense et précise, histoire poignante, n'hésitez plus : il faut lire ce livre!", price: 4, condition: "bon état", favorite_book: false, sold: false, book: book15, bookmate_book_category: last_french_awards)
+photo_book15 = 'https://images-na.ssl-images-amazon.com/images/I/41EUVx5oWQL._SX299_BO1,204,203,200_.jpg'
+book15.photo_url = photo_book15
+
+selling_book21 = SellingBook.create!(personalized_comment: "Une fantastique odyssée!", price: 17, condition: "très bon état", favorite_book: true, sold: false, book: book5, bookmate_book_category: last_french_awards)
+photo_book5 = 'https://images-eu.ssl-images-amazon.com/images/I/51mq14kMy4L._SY346_.jpg'
+book5.photo_url = photo_book5
 
 puts "ok"
 
