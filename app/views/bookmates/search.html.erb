@@ -39,8 +39,8 @@
                     <p>" <%= bookmate.description %> "</p>
                     <% if !@common_books.nil? %>
                       <div class="user-details-books">
-                        <h2><%= @common_books %> livres en commun</h2>
-                        <h2 style="padding-left: 30vh">My reviews</h2>
+                        <h2 class="blue"><%= pluralize(@common_books, 'livre') %> en commun</h2>
+                        <h2 style="padding-left: 30vh"></h2>
                       </div>
                     <% end %>
                     </div>

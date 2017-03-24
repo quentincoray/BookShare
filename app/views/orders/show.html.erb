@@ -1,4 +1,4 @@
-<div class="container">
+<div class="order-wrapper">
   <div class="order-container">
     <% if @order.order_status == "pending" %>
         <h1 class="red">Votre panier</h1>
@@ -18,28 +18,34 @@
 
                 <%= simple_form_for @order, :url => {:action => "update"} do |f| %>
                   <%= f.error_notification %>
-                  <%= f.input :delivery_type, collection: @delivery_type_array%>
+                  <%= f.input :delivery_type, collection: @delivery_type_array, :label=>"Mode de livraison"%>
                   <%#= f.input :order_status, as: :hidden, :input_html => { :value => "paid" } %>
                   <%= f.button :submit, "Passer la commande" , class: "btn btn-primary" %>
                 <% end %>
-                <p>Total : </p><h2><%= @total %>€</h2>
+                <div id ="total">
+                  <span><p>Total : </p></span> <span><h2><%= @total %>€</h2></span>
+                </div>
+              </div>
               <% else %>
+              <div class="recap-container text-center">
                 <h1 class="red">Récapitulatif de votre commande</h1>
                 <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
 
-                  <% @order.selling_books.each do |selling_book| %>
-                    <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
-                  <% end %>
+                  <div class="books-container">
+                    <% @order.selling_books.each do |selling_book| %>
+                      <%= cl_image_tag selling_book.book.photo.path %>
+                    <% end %>
+                  </div>
 
-                <p>Total : <%= @total %>€</p>
+                <p>Total :</p> <h2><%= @total %>€</h2>
               <% end %>
               </div>
             </div>
         </div>
       </div>
-  </div>
       <div class="text-center">
         <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
       </div>
+  </div>
 </div>
 
