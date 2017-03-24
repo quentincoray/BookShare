@@ -12,10 +12,10 @@
   <div class="container-search">
   <!-- Bloc map et cards -->
     <div class="row">
-      <% if @common_books.nil? %>
-        <h1 class="red">Découvrez les personnes proches de vous!</h1>
-      <% else %>
+      <% if @bookmates_matching.exists? %>
         <h1 class ="red">Découvrez les personnes proches de vous avec qui vous partagez le plus d'affinités littéraires</h1>
+      <% else %>
+        <h1 class="red">Découvrez les personnes proches de vous!</h1>
       <% end %>
         <!-- Bloc cards -->
         <div class="col-xs-7" id="card-column">
@@ -37,10 +37,10 @@
                   <div class="user-details">
                     <h2>A propos de <%= bookmate.user.first_name %></h2>
                     <p>" <%= bookmate.description %> "</p>
-                    <% if !@common_books.nil? %>
+                    <% if bookmate.respond_to?(:common_books) %>
                       <div class="user-details-books">
-                        <h2 class="blue"><%= pluralize(@common_books, 'livre') %> en commun</h2>
-                        <h2 style="padding-left: 30vh"></h2>
+                        <h2 class="blue" ><%= pluralize bookmate.common_books, "livre en commun" %></h2>
+                        <h2 style="padding-left: 30vh">My reviews</h2>
                       </div>
                     <% end %>
                     </div>

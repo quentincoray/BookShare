@@ -25,29 +25,43 @@ class BookmatesController < ApplicationController
     @users_near_me = User.near(@address, 10)
     # @bookmates_near_me = @users_near_me.map { |user| user.bookmates }.flatten
     @bookmates_near_me = Bookmate.where(user_id: @users_near_me.map(&:id))
-    @bookmates_selected = @bookmates_near_me.joins(:books).where(books: { isbn: @isbn })
-    @bookmates_selected.each do |bookmate|
-      @common_books = Book.where(books: { isbn: @isbn }).size
-    end
+    @bookmates_matching = @bookmates_near_me.
+      select("bookmates.*, COUNT(books.id) AS common_books").
+      joins(:books).
+      where(books: { isbn: @isbn }).
+      group("bookmates.id")
+
+    # FIXME
+    # @bookmates_selected.each do |bookmate|
+    #   @common_books = Book.where(books: { isbn: @isbn }).size
+    # end
+    # duplicates = @bookmates_selected.detect { |element| @bookmates_selected.count(element) > 1 }
+    # if duplicates != 0
+    #   @bookmates_selected = duplicates.first
+    # end
+
     # raise
     # @common_books = @bookmates_selected.map { |book| Book.where(books: { isbn: @isbn }) }
     # @common_books = Book.where(books: { isbn: @isbn })
     # @intersection = @isbn & @common_books
     # raise
-    if @bookmates_selected.size != 0
-      @hash = Gmaps4rails.build_markers(@bookmates_selected) do |bookmate, marker|
-        marker.lat bookmate.user.latitude
-        marker.lng bookmate.user.longitude
-        marker.infowindow render_to_string(partial: 'infowindow', locals: { bookmate: bookmate })
-      end
+    if @bookmates_matching.exists?
+      @bookmates_selected = @bookmates_matching
     else
       @bookmates_selected = @bookmates_near_me
-      @hash = Gmaps4rails.build_markers(@bookmates_selected) do |bookmate, marker|
-        marker.lat bookmate.user.latitude
-        marker.lng bookmate.user.longitude
-        marker.infowindow render_to_string(partial: 'infowindow', locals: { bookmate: bookmate })
-      end
     end
+
+    @hash = Gmaps4rails.build_markers(@bookmates_selected) do |bookmate, marker|
+      marker.lat bookmate.user.latitude
+      marker.lng bookmate.user.longitude
+      marker.infowindow render_to_string(partial: 'infowindow', locals: { bookmate: bookmate })
+    end
+    #   @hash = Gmaps4rails.build_markers(@bookmates_selected) do |bookmate, marker|
+    #     marker.lat bookmate.user.latitude
+    #     marker.lng bookmate.user.longitude
+    #     marker.infowindow render_to_string(partial: 'infowindow', locals: { bookmate: bookmate })
+    #   end
+    # end
   end
 
   private

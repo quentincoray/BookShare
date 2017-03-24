@@ -13,7 +13,7 @@
           <hr>
           <%= cl_image_tag @selling_book.bookmate_book_category.bookmate.user.photo.path, class:"bookmate-avatar" %>
           <h2>Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %></h2>
-          <p><%= @selling_book.personalized_comment%>, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.</p>
+          <p><%= @selling_book.personalized_comment%></p>
         </div>
         <!-- Achat -->
         <div class="col-xs-3">
@@ -53,15 +53,13 @@
           <div class="row">
             <div class="book-body-column">
               <h2>Résumé du livre</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.
-
-              Pellentesque metus augue, accumsan id tortor non, viverra sollicitudin ligula. Curabitur facilisis, ligula et accumsan lacinia, ante risus elementum nisl, quis blandit justo mi et nisi. Duis fermentum id ligula at imperdiet. Aliquam condimentum nisi odio, ut ultrices orci porttitor a. Vestibulum mauris dui, mollis eu libero pretium, ultricies fringilla mi. Donec ornare lectus et sapien hendrerit, a porta nisl aliquet. Etiam eget est blandit, cursus quam id, facilisis sem. Vivamus euismod libero sit amet nisl vehicula, sit amet lobortis ante commodo. Nulla posuere finibus libero eu feugiat.</p>
+              <p id="book_summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.</p>
             </div>
           </div>
           <div class="row">
             <div class="book-body-column">
               <h2>Biographie de l'auteur</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.
+              <p id="author_bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.
 
               Pellentesque metus augue, accumsan id tortor non, viverra sollicitudin ligula. Curabitur facilisis, ligula et accumsan lacinia, ante risus elementum nisl, quis blandit justo mi et nisi. Duis fermentum id ligula at imperdiet. Aliquam condimentum nisi odio, ut ultrices orci porttitor a. Vestibulum mauris dui, mollis eu libero pretium, ultricies fringilla mi. Donec ornare lectus et sapien hendrerit, a porta nisl aliquet. Etiam eget est blandit, cursus quam id, facilisis sem. Vivamus euismod libero sit amet nisl vehicula, sit amet lobortis ante commodo. Nulla posuere finibus libero eu feugiat.</p>
             </div>
@@ -72,9 +70,36 @@
   </div>
 </div>
 
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+<!-- <script> -->
+      var isbn = <%= @isbn %>;
+      $.ajax({
+        type: "GET",
+        url: "https://www.googleapis.com/books/v1/volumes?q="+isbn+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+        success: function(data) {
+          console.log(data);
+          console.log(data.items)
+          // (function (item) {
+          //   var summary_from_api = item.volumeInfo.authors.description;
+          //   console.log(summary_from_api);
+          //   $("#book_summary").html(summary_from_api);
+          //   // $("#author_bio").html('<div id="results"></div>');
+            // data.items.forEach(function(item) {
+            //   // var author_from_api = item.volumeInfo.authors;
+            //   $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"' data-title='"+book_title+"' data-author='"+book_author+"'/></a>");
+            // });
+          // });
+        },
+        error: function(jqXHR) {
+          console.error(jqXHR.responseText);
+        }
+      });
+    });
+  <% end %>
+<% end %>
 
 
-<p>résumé du livre ?</p>
-<p>bio de de l'auteur ?</p>
 
 

@@ -4,6 +4,7 @@ class SellingBooksController < ApplicationController
   def show
     authorize @selling_book
     @order = Order.new
+    @isbn = @selling_book.book.isbn
   end
 
   private
