@@ -43,9 +43,11 @@
           <div class="row">
             <div class="book-body-column">
               <h2>Les autres livres de la catégorie</h2>
-                <% @selling_book.bookmate_book_category.bookmate.books.each do |book| %>
-                  <%= cl_image_tag book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
-              <% end %>
+                <div class="books-container">
+                  <% @selling_book.bookmate_book_category.bookmate.books.each do |book| %>
+                    <%= cl_image_tag book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
+                  <% end %>
+                </div>
             </div>
           </div>
           <div class="row">
