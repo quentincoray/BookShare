@@ -57,6 +57,9 @@
 
 .book-card img:hover {
   cursor: pointer;
-  width: 135px;
-  height: auto;
+  width: auto;
+  height: 220px;
+  -moz-transition: all 1s;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
 }

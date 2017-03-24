@@ -81,6 +81,7 @@ h2 {
   font-family: $header-font;
   font-size: $header2-size !important;
   color: $dark-grey !important;
+  margin-top: 5px !important;
 }
 
 
@@ -105,15 +106,15 @@ p {
 
 
 .blue {
-  color:$blue;
+  color:$blue !important;
 }
 
 .red {
-  color:$red;
+  color:$red !important;
 }
 
 .dark-grey {
-  color:$dark-grey;
+  color:$dark-grey !important;
 }
 
 .card-grey {
@@ -137,6 +138,12 @@ p {
   cursor: pointer;
 }
 .card-grey-bookmate-page {
+  background-color: $light-grey;
+  width:800px;
+}
+
+.card-grey-bookmate-page:hover {
+  background-color: $light-blue;
   width:800px;
 }
 
