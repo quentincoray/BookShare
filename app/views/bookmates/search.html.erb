@@ -39,7 +39,7 @@
                     <p>" <%= bookmate.description %> "</p>
                     <% if bookmate.respond_to?(:common_books) %>
                       <div class="user-details-books">
-                        <h2><%= pluralize bookmate.common_books, "livre en commun" %></h2>
+                        <h2 class="blue" ><%= pluralize bookmate.common_books, "livre en commun" %></h2>
                         <h2 style="padding-left: 30vh">My reviews</h2>
                       </div>
                     <% end %>
