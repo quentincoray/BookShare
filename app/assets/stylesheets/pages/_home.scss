@@ -116,7 +116,7 @@
 
 
 .pages-home .navbar-wagon-logo {
-  content: url("logo_white.png");
+  content: asset-url("logo_white.png");
 }
 
 .pages-home .fa-envelope-o {
@@ -124,7 +124,7 @@
 }
 
 .pages-home .shopping-cart-logo {
-  content: url("basket_white.png");
+  content: asset-url("basket_white.png");
 }
 
 
