@@ -22,7 +22,9 @@
                   <%#= f.input :order_status, as: :hidden, :input_html => { :value => "paid" } %>
                   <%= f.button :submit, "Passer la commande" , class: "btn btn-primary" %>
                 <% end %>
-                <p>Total : </p><h2><%= @total %>€</h2>
+                <div id ="total">
+                  <span><p>Total : </p></span> <span><h2><%= @total %>€</h2></span>
+                </div>
               </div>
               <% else %>
               <div class="recap-container text-center">
