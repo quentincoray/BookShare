@@ -34,7 +34,7 @@ alice.photo_url = photo_alice
 puts "Creating bookmates..."
 quentin_bookstore = Bookmate.create!(description: "J'aime tous types de romans, notamment les romans de fantasy, science-fiction et heroïc-fantasy. Le Seigneur des Anneaux, meilleure saga de l'histoire !", deliver_by_hand: true, home_delivery: true, user: quentin)
 anne_sophie_bookstore = Bookmate.create!(description: "J'aime la littérature dans son ensemble, c'est un art passionnant qu'il me plait de partager.", deliver_by_hand: true, home_delivery: true, user: anne_sophie)
-camille_bookstore = Bookmate.create!(description: "Lectrice insatiable, je lis deux livres par semaine. J'ai chez moi une véritable bibliothèque !", deliver_by_hand: true, home_delivery: true, user: camille)
+# camille_bookstore = Bookmate.create!(description: "Lectrice insatiable, je lis deux livres par semaine. J'ai chez moi une véritable bibliothèque !", deliver_by_hand: true, home_delivery: true, user: camille)
 jean_bookstore = Bookmate.create!(description: "Moi c'est Jean, lecteur à mes heures perdues, mais je ne rechigne jamais à dévorer un bon bouquin.", deliver_by_hand: true, home_delivery: true, user: jean)
 edouard_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: true, user: edouard)
 alice_bookstore = Bookmate.create!(description: "J'ai deux passions dans la vie : les chats et la lecture !", deliver_by_hand: true, home_delivery: true, user: alice)
@@ -43,7 +43,7 @@ alice_bookstore = Bookmate.create!(description: "J'ai deux passions dans la vie 
 
 puts "Creating books..."
 
-litterature_francaise = BookmateBookCategory.create!(name:"Littérature française", bookmate: camille_bookstore)
+litterature_francaise = BookmateBookCategory.create!(name:"Littérature française", bookmate: edouard_bookstore)
 romans_policiers = BookmateBookCategory.create!(name:"Romans policiers", bookmate: quentin_bookstore)
 bandes_dessinnees = BookmateBookCategory.create!(name:"Bandes dessinées", bookmate: quentin_bookstore)
 lotr = BookmateBookCategory.create!(name:"Lord of the Rings", bookmate: quentin_bookstore)
