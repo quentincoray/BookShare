@@ -22,11 +22,15 @@
     </div>
   </div>
 
-
+  <div class="modal-fade" id="sign-up">
+    Hello
+  </div>
 
 <% content_for :after_js do %>
   <script>
     $(document).ready(function() {
+      $('#btn-comment').hide();
+
       $('.delivery-status-order<%= order.id %>').on('click', function(e) {
         $.ajax({
           type: 'POST',
@@ -34,6 +38,7 @@
           // success: active tab
           success:function(data){
             alert(data);
+            $('#btn-comment').show();
           }
         })
 
