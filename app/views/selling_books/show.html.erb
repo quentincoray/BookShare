@@ -44,9 +44,10 @@
             <div class="book-body-column">
               <h2>Les autres livres de la catégorie</h2>
                 <div class="books-container">
-                  <% @selling_book.bookmate_book_category.bookmate.books.each do |book| %>
-                    <%= cl_image_tag book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
-                  <% end %>
+                  <% @selling_book.bookmate_book_category.books.each do |book| %>
+                    <% next if book == @selling_book.book %>
+                      <%= cl_image_tag book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
+                    <% end %>
                 </div>
               <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
             </div>
