@@ -110,11 +110,11 @@ p {
 }
 
 .red {
-  color:$red;
+  color:$red !important;
 }
 
 .dark-grey {
-  color:$dark-grey;
+  color:$dark-grey !important;
 }
 
 .card-grey {
@@ -138,6 +138,12 @@ p {
   cursor: pointer;
 }
 .card-grey-bookmate-page {
+  background-color: $light-grey;
+  width:800px;
+}
+
+.card-grey-bookmate-page:hover {
+  background-color: $light-blue;
   width:800px;
 }
 

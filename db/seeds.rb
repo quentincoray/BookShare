@@ -45,7 +45,7 @@ puts "Creating books..."
 
 litterature_francaise = BookmateBookCategory.create!(name:"Littérature française", bookmate: camille_bookstore)
 romans_policiers = BookmateBookCategory.create!(name:"Romans policiers", bookmate: quentin_bookstore)
-bandes_dessinnees = BookmateBookCategory.create!(name:"Bandes dessinnées", bookmate: quentin_bookstore)
+bandes_dessinnees = BookmateBookCategory.create!(name:"Bandes dessinées", bookmate: quentin_bookstore)
 lotr = BookmateBookCategory.create!(name:"Lord of the Rings", bookmate: quentin_bookstore)
 cats = BookmateBookCategory.create!(name:"I love cats!", bookmate: alice_bookstore)
 litterature_us = BookmateBookCategory.create!(name:"Littérature américaine", bookmate: anne_sophie_bookstore)

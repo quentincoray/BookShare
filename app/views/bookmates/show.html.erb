@@ -9,7 +9,7 @@
         <h3>GENRES FAVORIS</h3>
         <% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
           <h2>
-            <a href="#category_<%= bookmate_book_category.id %>">
+            <a href="#category_<%= bookmate_book_category.id %>", class="dark-grey">
               <%= bookmate_book_category.name %>
             </a>
           </h2>
@@ -33,10 +33,11 @@
     <h2>Sa note ?</h2>
 
     <div class="book-categories">
-    <% @bookmate_book_categories.each do |bookmate_book_category| %>
+    <% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
       <section id ="category_<%= bookmate_book_category.id %>">
         <div class="book-category">
-          <h2><%= bookmate_book_category.name %></h2>
+          <h2 class="red"><%= bookmate_book_category.name %></h2>
+          <div class="card-grey-bookmate-page">
           <% bookmate_book_category.selling_books.each do |selling_book| %>
           <div class="book-card">
             <% if selling_book.sold %>
@@ -47,11 +48,12 @@
                  <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
           </div>
               <% end %>
-            </div>
+          </div>
       <% end %>
-      </div>
+          </div>
       </section>
     <% end %>
     </div>
+  </div>
   </div>
 
