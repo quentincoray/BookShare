@@ -1,4 +1,4 @@
-<div class="container">
+<div class="order-wrapper">
   <div class="order-container">
     <% if @order.order_status == "pending" %>
         <h1 class="red">Votre panier</h1>
@@ -18,7 +18,7 @@
 
                 <%= simple_form_for @order, :url => {:action => "update"} do |f| %>
                   <%= f.error_notification %>
-                  <%= f.input :delivery_type, collection: @delivery_type_array%>
+                  <%= f.input :delivery_type, collection: @delivery_type_array, :label=>"Mode de livraison"%>
                   <%#= f.input :order_status, as: :hidden, :input_html => { :value => "paid" } %>
                   <%= f.button :submit, "Passer la commande" , class: "btn btn-primary" %>
                 <% end %>
@@ -39,9 +39,9 @@
             </div>
         </div>
       </div>
-  </div>
       <div class="text-center">
         <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
       </div>
+  </div>
 </div>
 
