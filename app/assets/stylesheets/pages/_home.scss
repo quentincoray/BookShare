@@ -49,7 +49,6 @@
 
 .background-blue {
   background-color: $blue;
-  min-height: 250vh;
 }
 
 .btn-home {
@@ -125,7 +124,7 @@
 }
 
 .pages-home .shopping-cart-logo {
-  content: asset-url("basket_white.png");
+  content: asset-heroku openurl("basket_white.png");
 }
 
 
