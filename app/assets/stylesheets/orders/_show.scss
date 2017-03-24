@@ -32,3 +32,13 @@ span {
 #total {
   padding-top: 5px;
 }
+
+.books-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.books-container img {
+  margin-right: 5px;
+}
