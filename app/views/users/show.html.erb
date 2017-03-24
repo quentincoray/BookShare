@@ -1,44 +1,44 @@
-<h3>Bienvenue sur votre dashboard <%= current_user.first_name %> !</h1>
+<h1>Bienvenue sur votre dashboard <%= current_user.first_name %> !</h1>
 
-<div class = "container">
   <!-- Cette row contient le Dashboard -->
-  <div class = "row">
     <!-- Cette colonne contient la barre latérale -->
-    <div class = "col-xs-3" style = "background-color: #F3F3F3">
+  <div class = "col-xs-3" style = "background-color: #F3F3F3">
+    <div class="side-bar-padding-left">
       <h3>Mon compte</h3>
         <div class="tabs">
           <a class="tab active" data-target="#profile">
-            <p>Mon profil</p>
+            <h2>Mon profil</h2>
           </a>
           <a class="tab" data-target="#messages">
-            <p>Mes messages</p>
+            <h2>Mes messages</h2>
           </a>
           <a class="tab" data-target="#comments">
-            <p>Mes commentaires</p>
+            <h2>Mes commentaires</h2>
           </a>
           <a class="tab" data-target="#favorite_books">
-            <p>Mes livres préférés</p>
+            <h2>Mes livres préférés</h2>
           </a>
           <a class="tab" data-target="#bookmates">
-            <p>Mes bookmates</p>
+            <h2>Mes bookmates</h2>
           </a>
           <a class="tab" data-target="#cart">
-            <p>Mon panier</p>
+            <h2>Mon panier</h2>
           </a>
           <a class="tab" data-target="#orders">
-            <p>Mes commandes</p>
+            <h2>Mes commandes</h2>
           </a>
         </div>
       <h3>Mon bookstore</h3>
         <div class="tabs">
           <a class="tab" data-target="#sales">
-            <p>Mes ventes</p>
+            <h2>Mes ventes</h2>
           </a>
           <a class="tab" data-target="#offers">
-            <p>Mon offre</p>
+            <h2>Mon offre</h2>
           </a>
         </div>
     </div>
+  </div>
     <!-- Cette colonne contient le contenu des tabs -->
     <div class = "col-xs-9">
 <!--       Contenu du profil -->
@@ -91,8 +91,6 @@
         <h2>Mon offre</h2>
       </div>
     </div>
-  </div>
-</div>
 
 <!-- Scripts pour l'animation des tabs -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

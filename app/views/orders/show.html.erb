@@ -23,15 +23,17 @@
                   <%= f.button :submit, "Passer la commande" , class: "btn btn-primary" %>
                 <% end %>
                 <p>Total : </p><h2><%= @total %>€</h2>
+              </div>
               <% else %>
+              <div class="recap-container text-center">
                 <h1 class="red">Récapitulatif de votre commande</h1>
                 <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
 
                   <% @order.selling_books.each do |selling_book| %>
-                    <%= cl_image_tag selling_book.book.photo.path, :width=>200, :gravity=>"auto", :crop=>"fill"%>
+                    <%= cl_image_tag selling_book.book.photo.path, :width=>100, :gravity=>"auto", :crop=>"fill"%>
                   <% end %>
 
-                <p>Total : <%= @total %>€</p>
+                <p>Total :</p> <h2><%= @total %>€</h2>
               <% end %>
               </div>
             </div>

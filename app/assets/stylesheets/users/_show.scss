@@ -1,4 +1,12 @@
-
 .users-show #footer {
   display: none;
+}
+
+span p {
+  display: inline-block;
+}
+
+.order-details {
+  display:flex;
+  flex-direction:column;
 }

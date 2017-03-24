@@ -1,17 +1,26 @@
-  photo?
-  Nom du bookmate ?
-  Détail de la commande ?
-  Mode de livraison ?
+
   <!-- A changer en requete ajax -->
-  <div class="btn">
-    <a class="delivery-status-order<%= order.id %>" href="">Valider la réception de la commande</a>
+  <div class="card-grey-search">
+    <div class="order-bookmate">
+      <div class="user-avatar text-center">
+        <div class = "card-user text-center">
+          <%= cl_image_tag order.bookmate.user.photo.path, :width=>80, :height=>80, :gravity=>"auto", :crop=>"fill", class:"bookmate-avatar"  %>
+        </div>
+        <h2><%= order.bookmate.user.first_name  %></h2>
+      </div>
+    </div>
+    <div class="order-description">
+      Description
+    </div>
+    <div class="btn">
+    </div>
+    <div class="order-details">
+      <span><h2>Statut : <%= order.delivery_status %></h2></span>
+      <span><h2>Mode de livraison : <%= order.delivery_type %></h2></span>
+      <button id="btn-comment" data-toggle="modal" data-target="#hello world"> Faire un commentaire</button>
+      <a class="delivery-status-order<%= order.id %>" href="">Valider la réception de la commande</a>
+    </div>
   </div>
-  <button id="btn-comment" data-toggle="modal" data-target="#hello world"> Faire un commentaire</button>
-  <%= order.delivery_status %>
-
-
-  status ?
-  <%= order.delivery_type %>
 
 
 
