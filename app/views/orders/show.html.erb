@@ -33,7 +33,7 @@
 
                   <div class="books-container">
                     <% @order.selling_books.each do |selling_book| %>
-                      <%= cl_image_tag selling_book.book.photo.path, :width=>100, :gravity=>"auto", :crop=>"fill" %>
+                      <%= cl_image_tag selling_book.book.photo.path %>
                     <% end %>
                   </div>
 
