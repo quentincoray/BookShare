@@ -47,18 +47,18 @@
                   <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
                 <% end %>
 
-                <%= simple_form_for @order,remote: true, :url => url_for(:action => 'reviewed', :controller => 'orders'), :method => 'post', id: "save-review#{order.id}" do |f| %>
-                  <%= hidden_field_tag :order_id, order.id %>
-                  <%= hidden_field_tag :user_id, @user.id %>
-                  <%= f.input :review %>
-                  <%= f.input :rating %>
+                <div id= "form-review#{order.id}" >
+                  <%= simple_form_for @order, remote: true, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => order.id), :method => 'post' do |f| %>
+                    <%= hidden_field_tag :order_id, order.id %>
+                    <%= f.input :review %>
+                    <%= f.input :rating %>
+                    <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{order.id}"%>
+                  <% end %>
+                </div>
               </div>
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary" %>
-
-                <% end %>
               </div>
 
             </div>
@@ -79,7 +79,6 @@
     $(document).ready(function() {
 
       $('#thank-review<%= order.id %>').hide();
-
       <!-- // Code pour les tabs -->
       $(function(){
 
@@ -114,23 +113,13 @@
       });
 
       $('#myModal<%= order.id %>').on('shown.bs.modal', function () {
-        $('#myInput').focus()
+        $('#thank-review<%= order.id %>').hide();
+        $('#myInput').focus();
+
       })
 
 
-      $('#save-review<%= order.id %>').submit(function() {
 
-        $.ajax({
-          type: 'POST',
-          url: '/orders/' + <%= order.id %> + '/reviewed',
-          data: $("#save-review<%= order.id %>").serialize(),
-          success: function() {
-          console.log("ok coolll !!");
-          $('#save-review<%= order.id %>').hide();
-          $('#thank-review<%= order.id %>').show()
-          }
-        });
-      });
 
     });
   <% end %>

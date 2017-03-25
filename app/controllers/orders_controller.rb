@@ -63,16 +63,14 @@ class OrdersController < ApplicationController
   end
 
   def reviewed
-    # @order.id = order_id
-
-    # authorize @user
-    # @order.id = order_id
     @order = Order.find(params[:order_id])
     authorize @order
-    # @order.review =
-    # @order.rating
-    # @order.update(order_params)
-    @order.save
+    @user = current_user
+    if @order.update(order_params)
+        redirect_to user_path(@user), alert: "Your comment is saved!"
+    else
+        redirect_to user_path(@user), alert: "Oops! There was a problem, please try again"
+    end
   end
 
   private
