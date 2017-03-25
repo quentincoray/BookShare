@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @paid_orders = Order.all.where(order_status: "paid").where(user: current_user)
-
+    @undelivered_orders = Order.all.where(order_status: "paid").where(delivery_status: "en cours").where(user: current_user)
+    @delivered_orders = Order.all.where(order_status: "paid").where(delivery_status: "effectuée").where(user: current_user)
 
 
 

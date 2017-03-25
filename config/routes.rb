@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   post 'orders/:id/delivered', to: 'orders#delivered'
+  post 'orders/:id/reviewed', to: 'orders#reviewed'
 end
 
 

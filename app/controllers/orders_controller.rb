@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :update]
+  before_action :set_order, only: [:show, :update, :delivered]
 
   def show
     authorize @order
@@ -58,8 +58,12 @@ class OrdersController < ApplicationController
   end
 
   def delivered
-    @order = Order.find(params[:id])
     @order.delivery_status = "effectuée"
+    @order.save
+  end
+
+  def reviewed
+    # @order.id = order_id
     @order.save
   end
 

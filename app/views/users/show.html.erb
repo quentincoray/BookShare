@@ -76,12 +76,21 @@
       </div>
 <!--       Contenu des commandes -->
       <div class="tab-content hidden" id="orders">
+
         <h1>Mes commandes en cours</h1>
-        <% @paid_orders.each do |paid_order| %>
+        <% @undelivered_orders.each do |undelivered_order| %>
           <div>
-          <%= render "order", order: paid_order %>
+          <%= render "order", order: undelivered_order %>
           </div>
         <% end %>
+
+        <h1>Mes commandes passées</h1>
+        <% @delivered_orders.each do |delivered_order| %>
+          <div>
+          <%= render "order", order: delivered_order %>
+          </div>
+        <% end %>
+
       </div>
 <!--       Contenu des ventes -->
       <div class="tab-content hidden" id="sales">
@@ -94,11 +103,6 @@
     </div>
 
 <!-- Scripts pour l'animation des tabs -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="javascripts/tabs.js"></script>
-
-<script>
-  $(document).ready(function() {
-    $('#btn-comment').hide();
-  });
-</script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<!-- <script src="javascripts/tabs.js" type="text/javascript"></script> -->
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" /> -->
