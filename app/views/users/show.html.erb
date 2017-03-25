@@ -3,31 +3,36 @@
     <!-- Cette colonne contient la barre latérale -->
   <div class = "col-xs-3" style = "background-color: #F3F3F3">
     <div class="side-bar-padding-left">
-      <h3>Mon compte</h3>
+      <h3>MON COMPTE</h3>
         <div class="tabs">
           <a class="tab active" data-target="#profile">
             <h2>Mon profil</h2>
           </a>
           <a class="tab" data-target="#messages">
             <h2>Mes messages</h2>
+            <%= render "message"%>
           </a>
           <a class="tab" data-target="#comments">
             <h2>Mes commentaires</h2>
+            <%= render "comment"%>
           </a>
           <a class="tab" data-target="#favorite_books">
             <h2>Mes livres préférés</h2>
+            <%= render "favorite-book"%>
           </a>
           <a class="tab" data-target="#bookmates">
             <h2>Mes bookmates</h2>
+            <%= render "bookmate"%>
           </a>
           <a class="tab" data-target="#cart">
             <h2>Mon panier</h2>
+            <%= render "cart"%>
           </a>
           <a class="tab" data-target="#orders">
             <h2>Mes commandes</h2>
           </a>
         </div>
-      <h3>Mon bookstore</h3>
+      <h3>MON BOOKSTORE</h3>
         <div class="tabs">
           <a class="tab" data-target="#sales">
             <h2>Mes ventes</h2>
@@ -42,17 +47,8 @@
     <div class = "col-xs-9">
 <!--       Contenu du profil -->
       <div class="tab-content" id="profile">
-        <h2>Mon profil</h2>
-          <div class="profile-details">
-            <% if current_user.photo? %>
-              <%= cl_image_tag current_user.photo.path, alt: "profile picture", class: "avatar-large" %>
-            <% else %>
-              <%= image_tag "avatar.png", alt: "profile picture", class: "avatar-large" %>
-            <% end %>
-            <% if policy(@user).update? %>
-              <%= link_to "Editer mon profil", edit_user_path(current_user), class: "button" %>
-            <% end %>
-          </div>
+        <%= render "profile"%>
+
       </div>
 <!--       Contenu des messages -->
       <div class="tab-content hidden" id="messages">

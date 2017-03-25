@@ -64,6 +64,14 @@ class OrdersController < ApplicationController
 
   def reviewed
     # @order.id = order_id
+
+    # authorize @user
+    # @order.id = order_id
+    @order = Order.find(params[:order_id])
+    authorize @order
+    # @order.review =
+    # @order.rating
+    # @order.update(order_params)
     @order.save
   end
 
@@ -73,5 +81,12 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def order_params
+    params.require(:order).permit(:review, :rating)
+  end
+
 end
+
+
+
 

@@ -10,7 +10,10 @@
       </div>
     </div>
     <div class="order-description">
-      Description
+    <h2>Détail de la commande </h2>
+      <% order.selling_books.each do |selling_book| %>
+        <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
+      <% end %>
     </div>
     <div class="btn">
     </div>
@@ -36,19 +39,28 @@
               </div>
               <div class="modal-body">
 
-                <%= simple_form_for @order, :url => url_for(:action => 'reviewed', :controller => 'orders'), :method => 'post' do |f| %>
+                <div id="thank-review#{order.id}">
+                  <p>Vos commentaires ont bien été pris en compte</p>
+                </div>
+
+                <% order.selling_books.each do |selling_book| %>
+                  <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
+                <% end %>
+
+                <%= simple_form_for @order,remote: true, :url => url_for(:action => 'reviewed', :controller => 'orders'), :method => 'post', id: "save-review#{order.id}" do |f| %>
                   <%= hidden_field_tag :order_id, order.id %>
+                  <%= hidden_field_tag :user_id, @user.id %>
                   <%= f.input :review %>
                   <%= f.input :rating %>
               </div>
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <%= f.button :submit, "Envoyer", id: "save-review#{order.id}",class: "btn btn-primary" %>
+                  <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary" %>
 
                 <% end %>
-
               </div>
+
             </div>
           </div>
         </div>
@@ -65,6 +77,8 @@
 <% content_for :after_js do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
+
+      $('#thank-review<%= order.id %>').hide();
 
       <!-- // Code pour les tabs -->
       $(function(){
@@ -94,7 +108,7 @@
           type: 'POST',
           url: '/orders/' + <%= order.id %> + '/delivered',
           success: function() {
-            current_tab.addClass('active');
+            <!-- current_tab.addClass('active'); -->
           }
         });
       });
@@ -104,15 +118,19 @@
       })
 
 
- <!--      $('#save-review<%= order.id %>').on('click', function(e) {
+      $('#save-review<%= order.id %>').submit(function() {
 
         $.ajax({
           type: 'POST',
           url: '/orders/' + <%= order.id %> + '/reviewed',
-          success: function(data) {
+          data: $("#save-review<%= order.id %>").serialize(),
+          success: function() {
+          console.log("ok coolll !!");
+          $('#save-review<%= order.id %>').hide();
+          $('#thank-review<%= order.id %>').show()
           }
         });
-      }); -->
+      });
 
     });
   <% end %>
