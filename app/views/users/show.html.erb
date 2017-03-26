@@ -4,43 +4,30 @@
   <div class = "col-xs-3" style = "background-color: #F3F3F3">
     <div class="side-bar-padding-left">
       <h3>MON COMPTE</h3>
-        <div class="tabs">
-          <a class="tab active" data-target="#profile">
-            <h2>Mon profil</h2>
-          </a>
-          <a class="tab" data-target="#messages">
-            <h2>Mes messages</h2>
-            <%= render "message"%>
-          </a>
-          <a class="tab" data-target="#comments">
-            <h2>Mes commentaires</h2>
-            <%= render "comment"%>
-          </a>
-          <a class="tab" data-target="#favorite_books">
-            <h2>Mes livres préférés</h2>
-            <%= render "favorite-book"%>
-          </a>
-          <a class="tab" data-target="#bookmates">
-            <h2>Mes bookmates</h2>
-            <%= render "bookmate"%>
-          </a>
-          <a class="tab" data-target="#cart">
-            <h2>Mon panier</h2>
-            <%= render "cart"%>
-          </a>
-          <a class="tab" data-target="#orders">
-            <h2>Mes commandes</h2>
-          </a>
-        </div>
-      <h3>MON BOOKSTORE</h3>
-        <div class="tabs">
-          <a class="tab" data-target="#sales">
-            <h2>Mes ventes</h2>
-          </a>
-          <a class="tab" data-target="#offers">
-            <h2>Mon offre</h2>
-          </a>
-        </div>
+      <div class="tabs">
+        <a class="tab active" data-target="#profile">
+          <h2>Mon profil</h2>
+        </a>
+        <a class="tab" data-target="#messages">
+          <h2>Mes messages</h2>
+          <%= render "message"%>
+        </a>
+        <a class="tab" data-target="#comments">
+          <h2>Mes commentaires</h2>
+          <%= render "comment"%>
+        </a>
+        <a class="tab" data-target="#favorite_books">
+          <h2>Mes livres préférés</h2>
+          <%= render "favorite-book"%>
+        </a>
+        <a class="tab" data-target="#bookmates">
+          <h2>Mes bookmates</h2>
+          <%= render "bookmate"%>
+        </a>
+        <a class="tab" data-target="#orders">
+          <h2>Mes commandes</h2>
+        </a>
+      </div>
     </div>
   </div>
     <!-- Cette colonne contient le contenu des tabs -->
@@ -57,12 +44,62 @@
 <!--       Contenu des commentaires -->
       <div class="tab-content hidden" id="comments">
         <h1>Les commentaires à laisser</h1>
-        <% @paid_orders.each do |paid_order| %>
+        <% @uncommented_orders.each do |uncommented_order| %>
           <div>
-          <%= render "comment", order: paid_order %>
+            <%= render "comment", order: uncommented_order %>
+          </div>
+          <h2><%= uncommented_order.bookmate.user.first_name  %></h2>
+
+          <button type="button" id="btn-comment<%= uncommented_order.id %>" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= uncommented_order.id %>">
+            Faire un commentaire
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal<%= uncommented_order.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+
+                  <div id="thank-review#{uncommented_order.id}">
+                    <p>Vos commentaires ont bien été pris en compte</p>
+                  </div>
+
+                  <div id= "form-review#{uncommented_order.id}" >
+                    <%= simple_form_for @order, remote: true, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => uncommented_order.id), :method => 'post' do |f| %>
+                      <%= hidden_field_tag :order_id, uncommented_order.id %>
+                      <%= f.input :review %>
+                      <%= f.input :rating %>
+                      <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{uncommented_order.id}"%>
+                    <% end %>
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+
+        <h1>Les commentaires que vous avez laissé</h1>
+        <% @commented_orders.each do |commented_order| %>
+          <div>
+            <%= render "comment", order: commented_order %>
+            <%= commented_order.review %>
+            <%= commented_order.rating  %>
           </div>
         <% end %>
-        <h1>Les commentaires que vous avez laissé</h1>
       </div>
 <!--       Contenu des livres préférés -->
       <div class="tab-content hidden" id="favorite_books">
@@ -72,10 +109,7 @@
       <div class="tab-content hidden" id="bookmates">
         <h2>Mes bookmates</h2>
       </div>
-<!--       Contenu du panier -->
-      <div class="tab-content hidden" id="cart">
-        <h2>Mon panier</h2>
-      </div>
+
 <!--       Contenu des commandes -->
       <div class="tab-content hidden" id="orders">
 
@@ -93,14 +127,6 @@
           </div>
         <% end %>
 
-      </div>
-<!--       Contenu des ventes -->
-      <div class="tab-content hidden" id="sales">
-        <h2>Mes ventes</h2>
-      </div>
-<!--      Contenu de l'offre -->
-      <div class="tab-content hidden" id="offers">
-        <h2>Mon offre</h2>
       </div>
     </div>
 
