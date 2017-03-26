@@ -19,6 +19,20 @@ class BookmatesController < ApplicationController
   end
 
   def search
+
+    # @bookmate_orders = @bookmate.orders
+
+    # @mean = 0
+    # @bookmate_orders.each do |bookmate_order|
+      # @sum += bookmate_order.rating
+    # end
+    # if @bookmate_orders.count > 0
+      # @mean = @sum.fdiv(@bookmate_orders.count)
+    # else
+      # @mean = ""
+    # end
+    # @nb = @bookmate_orders.count
+
     @address = [params[:latitude],params[:longitude]].join(",")
     @isbn = params[:isbn]
     #récupère un array de ISBN > comparer les bookstore collections avec cet array

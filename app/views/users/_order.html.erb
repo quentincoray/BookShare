@@ -19,19 +19,12 @@
         <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
 
 
-        <%#= simple_form_for @book, remote: true, :url => url_for(:action => 'create', :controller => 'loved_books'), :method => 'post' do |f| %>
+        <%#= simple_form_for @selling_book, remote: true, :url => url_for(:action => 'liked', :controller => 'selling_books', :id => selling_book.id), :method => 'post' do |f| %>
           <%#= hidden_field_tag :order_id, order.id %>
           <%#= hidden_field_tag :selling_book_id, selling_book.id %>
           <%#= hidden_field_tag :book_id, selling_book.book.id %>
           <%#= f.button :submit, "liker" %>
         <%# end %>
-
-        <%= simple_form_for [@user, @loved_book] do |f| %>
-          <%= hidden_field_tag :order_id, order.id %>
-          <%= hidden_field_tag :selling_book_id, selling_book.id %>
-          <%= hidden_field_tag :book_id, selling_book.book.id %>
-          <%= f.button :submit, "liker" %>
-        <% end %>
 
         <%= link_to "",  class: "blue", id: "like#{counter}" do %>
           <i class="fa fa-thumbs-o-up" ></i>
