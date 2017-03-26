@@ -111,6 +111,9 @@
 <!--       Contenu des bookmates -->
       <div class="tab-content hidden" id="bookmates">
         <h2>Mes bookmates</h2>
+        <% @loved_bookstores.each do |loved_bookstore| %>
+          <%= loved_bookstore.bookmate.user.first_name %>
+        <% end %>
       </div>
 
 <!--       Contenu des commandes -->

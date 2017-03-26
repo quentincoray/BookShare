@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @uncommented_orders = Order.all.where(review: nil).where(user: current_user)
     @user = User.find(params[:id])
     @loved_books = LovedBook.all.where(user: current_user)
+    @loved_bookstores = LovedBookstore.all.where(user: current_user)
     authorize @user
   end
 

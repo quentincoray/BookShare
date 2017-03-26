@@ -4,7 +4,7 @@ class LovedBooksController < ApplicationController
     @loved_books = LovedBook.all
   end
   def create
-    @loved_book = LovedBook.create
+    @loved_book = LovedBook.new
     @loved_book.user = current_user
     @order = Order.find(params[:order_id])
     @selling_book = @order.SellingBook.find(params[:selling_book_id])

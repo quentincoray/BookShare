@@ -141,20 +141,6 @@
 
       })
 
-            <!-- current_tab.addClass('active'); -->
-      $('#delivery-status-order<%= order.id %>').on('click', function(e) {
-        $.ajax({
-          type: 'POST',
-          url: '/orders/' + <%= order.id %> + '/delivered',
-          success: function() {
-
-          }
-        });
-      });
-
-
-
-
     });
   <% end %>
 <% end %>

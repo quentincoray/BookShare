@@ -19,7 +19,20 @@
   </div>
 
   <div class="col-xs-10" id="text-column">
-    <h1 class="red">A propos de <%= @bookmate.user.first_name %> </h1>
+    <h1 class="red">
+      A propos de <%= @bookmate.user.first_name %>
+    </h1>
+    <div class="follow_option">
+
+      <%= simple_form_for @bookmate, remote: true, :url => url_for(:action => 'bookmarked', :controller => 'bookmates', :id => @bookmate.id), :method => 'post' do |f| %>
+        <%= hidden_field_tag :bookmate_id, @bookmate.id %>
+        <%= f.button :submit, "Bookmarker",class: "btn btn-primary"%>
+      <% end %>
+
+      <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+      <i class="fa fa-bookmark" aria-hidden="true"></i>
+    </div>
+
     <h2>Ses goûts littéraires :  </h2>
     <p><%= @bookmate.description %></p>
     <h2> <%= pluralize @count, "mode" %> de livraison : </h2>
@@ -57,3 +70,21 @@
     </div>
   </div>
 
+
+<% content_for :after_js do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+
+      $(function(){
+      $(".fa-bookmark").hide();
+
+        $(".follow_option").on("click", function(e){
+          <!-- // Change active tab -->
+          $(".fa-bookmark-o").hide();
+          $(".fa-bookmark").show();
+        });
+      });
+
+    });
+  <% end %>
+<% end %>

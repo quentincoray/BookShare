@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   post 'orders/:id/delivered', to: 'orders#delivered'
   post 'orders/:id/reviewed', to: 'orders#reviewed'
+  post 'bookmates/:id/loved_bookstores', to: 'bookmates#bookmarked'
 
   resources :books, only: [:show]
   resources :selling_books, only: [:edit, :update]
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
     resources :loved_books, only: [:create]
   end
   # post 'books/:id/create', to: 'loved_books#create'
+  # post 'bookmates/:id/loved_bookstores', to: 'loved_bookstores#bookmate_liked'
 end
 
 

@@ -12,5 +12,9 @@ class BookmatePolicy < ApplicationPolicy
   def show?
     return true
   end
+
+  def bookmarked?
+    record.user == user
+  end
 end
 

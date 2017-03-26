@@ -1,2 +1,3 @@
 class LovedBookstoresController < ApplicationController
+
 end
