@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :bookmate_book_categories, through: :bookmates
   has_many :selling_books, through: :bookmate_book_categories
   has_many :orders
+  has_many :messages, dependent: :nullify
 
   has_attachment :photo
 
@@ -18,4 +19,20 @@ class User < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  def other_user(conversation)
+    conversation.users.include?(self) ? conversation.other_user(self) : nil
+  end
+
+  def unread_conversations
+    conversations.select { |c| c.unread_messages?(self) }
+  end
+
+  def unread_conversations_count
+    unread_conversations.count
+  end
+
+  def unread_conversations?
+    unread_conversations_count > 0
+  end
 end

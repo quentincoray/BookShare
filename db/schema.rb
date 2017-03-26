@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323164022) do
+ActiveRecord::Schema.define(version: 20170326134414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 20170323164022) do
     t.string   "isbn"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "user1_id"
+    t.integer  "user2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user1_id"], name: "index_conversations_on_user1_id", using: :btree
+    t.index ["user2_id"], name: "index_conversations_on_user2_id", using: :btree
+  end
+
   create_table "loved_books", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "book_id"
@@ -65,6 +74,16 @@ ActiveRecord::Schema.define(version: 20170323164022) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_loved_books_on_book_id", using: :btree
     t.index ["user_id"], name: "index_loved_books_on_user_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.string   "content"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "ordered_books", force: :cascade do |t|
@@ -130,6 +149,8 @@ ActiveRecord::Schema.define(version: 20170323164022) do
   add_foreign_key "bookmates", "users"
   add_foreign_key "loved_books", "books"
   add_foreign_key "loved_books", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "ordered_books", "orders"
   add_foreign_key "ordered_books", "selling_books"
   add_foreign_key "orders", "bookmates"
