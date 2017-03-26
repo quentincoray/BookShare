@@ -17,6 +17,16 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   post 'orders/:id/delivered', to: 'orders#delivered'
+
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: :create
+  end
+  resources :users, only: :index
+
+  get 'conversations/:conversation_id/preview' => 'messages#preview', as: :preview
+
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
 end
 
 

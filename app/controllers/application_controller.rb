@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   # Pundit: white-list approach.
-  after_action :verify_authorized, except: :search, unless: :skip_pundit?
-  after_action :verify_policy_scoped, only: :search, unless: :skip_pundit?
+  after_action :verify_authorized, except: [:search, :index], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: [:search, :index], unless: :skip_pundit?
 
   helper_method :current_order
 

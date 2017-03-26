@@ -20,6 +20,12 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  def conversations
+    Conversation.includes(:messages)
+                .where("user1_id = :id OR user2_id = :id", id: id)
+                .order("messages.created_at DESC")
+  end
+
   def other_user(conversation)
     conversation.users.include?(self) ? conversation.other_user(self) : nil
   end

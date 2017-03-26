@@ -1,0 +1,9 @@
+<h1><%= current_user %> Conversations</h1>
+
+<% @conversations.each do |conversation| %>
+  <ul>
+    <li><%= conversation.user2 %></li>
+    <li><%= conversation.messages %></li>
+  </ul>
+
+<% end %>
