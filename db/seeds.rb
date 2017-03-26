@@ -156,6 +156,10 @@ selling_book21 = SellingBook.create!(personalized_comment: "Une fantastique odys
 photo_book5 = 'https://images-eu.ssl-images-amazon.com/images/I/51mq14kMy4L._SY346_.jpg'
 book5.photo_url = photo_book5
 
+puts "Creating loved books..."
+
+camille_loved_book1 = LovedBook.create!(user: camille, book: book5)
+
 puts "ok"
 
 

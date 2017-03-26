@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :update]
+  before_action :set_order, only: [:show, :update, :delivered]
 
   def show
     authorize @order
@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
 
   def create
     @selling_book = SellingBook.find(params[:selling_book_id])
-
     @order = current_user.orders.where(order_status: "pending").last
     @order ||= Order.new
     authorize @order
@@ -58,9 +57,19 @@ class OrdersController < ApplicationController
   end
 
   def delivered
-    @order = Order.find(params[:id])
     @order.delivery_status = "effectuée"
     @order.save
+  end
+
+  def reviewed
+    @order = Order.find(params[:order_id])
+    authorize @order
+    @user = current_user
+    if @order.update(order_params)
+        redirect_to user_path(@user), alert: "Your comment is saved!"
+    else
+        redirect_to user_path(@user), alert: "Oops! There was a problem, please try again"
+    end
   end
 
   private
@@ -69,5 +78,12 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def order_params
+    params.require(:order).permit(:review, :rating)
+  end
+
 end
+
+
+
 

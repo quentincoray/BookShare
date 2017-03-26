@@ -1,6 +1,6 @@
 
   <!-- A changer en requete ajax -->
-  <div class="card-grey-search">
+  <div class="card-grey-dashboard">
     <div class="order-bookmate">
       <div class="user-avatar text-center">
         <div class = "card-user text-center">
@@ -9,40 +9,154 @@
         <h2><%= order.bookmate.user.first_name  %></h2>
       </div>
     </div>
+
     <div class="order-description">
-      Description
+
+    <h2>Détail de la commande </h2>
+    <% counter= 0 %>
+      <% order.selling_books.each do |selling_book| %>
+        <% counter += 1 %>
+        <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
+
+
+        <%#= simple_form_for @book, remote: true, :url => url_for(:action => 'create', :controller => 'loved_books'), :method => 'post' do |f| %>
+          <%#= hidden_field_tag :order_id, order.id %>
+          <%#= hidden_field_tag :selling_book_id, selling_book.id %>
+          <%#= hidden_field_tag :book_id, selling_book.book.id %>
+          <%#= f.button :submit, "liker" %>
+        <%# end %>
+
+        <%= simple_form_for [@user, @loved_book] do |f| %>
+          <%= hidden_field_tag :order_id, order.id %>
+          <%= hidden_field_tag :selling_book_id, selling_book.id %>
+          <%= hidden_field_tag :book_id, selling_book.book.id %>
+          <%= f.button :submit, "liker" %>
+        <% end %>
+
+        <%= link_to "",  class: "blue", id: "like#{counter}" do %>
+          <i class="fa fa-thumbs-o-up" ></i>
+        <% end %>
+
+        <%= link_to "",  class: "blue", id: "dislike#{counter}" do %>
+          <i class="fa fa-thumbs-o-down" ></i>
+        <% end %>
+
+      <% end %>
     </div>
-    <div class="btn">
-    </div>
+
     <div class="order-details">
-      <span><h2>Statut : <%= order.delivery_status %></h2></span>
       <span><h2>Mode de livraison : <%= order.delivery_type %></h2></span>
-      <button id="btn-comment" data-toggle="modal" data-target="#hello world"> Faire un commentaire</button>
-      <a class="delivery-status-order<%= order.id %>" href="">Valider la réception de la commande</a>
+
+      <% if order.delivery_status == "effectuée" %>
+
+        <!-- Button trigger modal -->
+        <button type="button" id="btn-comment<%= order.id %>" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= order.id %>">
+          Faire un commentaire
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal<%= order.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <div id="thank-review#{order.id}">
+                  <p>Vos commentaires ont bien été pris en compte</p>
+                </div>
+
+                <div id= "form-review#{order.id}" >
+                  <%= simple_form_for @order, remote: true, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => order.id), :method => 'post' do |f| %>
+                    <%= hidden_field_tag :order_id, order.id %>
+                    <%= f.input :review %>
+                    <%= f.input :rating %>
+                    <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{order.id}"%>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      <% else %>
+        <a id="delivery-status-order<%= order.id %>" href="">Valider la réception de la commande</a>
+      <% end %>
+
     </div>
   </div>
 
-  <div class="modal-fade" id="sign-up">
-    Hello
-  </div>
+
 
 <% content_for :after_js do %>
-  <script>
+  <%= javascript_tag do %>
     $(document).ready(function() {
-      $('#btn-comment').hide();
 
-      $('.delivery-status-order<%= order.id %>').on('click', function(e) {
+      $('#thank-review<%= order.id %>').hide();
+      <!-- // Code pour les tabs -->
+      $(function(){
+
+        $(".tab").on("click", function(e){
+          <!-- // Change active tab -->
+          $(".tab").removeClass('active');
+          $(this).addClass('active');
+          <!-- // Hide all tab-content (use class="hidden") -->
+          $(".tab-content").addClass('hidden');
+          <!-- // Show target tab-content (use class="hidden") -->
+          $($(this).data('target')).removeClass('hidden');
+        });
+
+      });
+
+
+      <!-- // Code pour se rappeller sur quelle table on a clique -->
+      $(".tab").on("click", function(e){
+        <!-- // Change active tab -->
+        var current_tab = $(this);
+      });
+
+      <!-- // Code pour passer le delivery status de en cours a effectue -->
+      $('#delivery-status-order<%= order.id %>').on('click', function(e) {
         $.ajax({
           type: 'POST',
           url: '/orders/' + <%= order.id %> + '/delivered',
-          // success: active tab
-          success:function(data){
-            alert(data);
-            $('#btn-comment').show();
+          success: function() {
+            <!-- current_tab.addClass('active'); -->
           }
-        })
-
+        });
       });
+
+      $('#myModal<%= order.id %>').on('shown.bs.modal', function () {
+        $('#thank-review<%= order.id %>').hide();
+        $('#myInput').focus();
+
+      })
+
+            <!-- current_tab.addClass('active'); -->
+      $('#delivery-status-order<%= order.id %>').on('click', function(e) {
+        $.ajax({
+          type: 'POST',
+          url: '/orders/' + <%= order.id %> + '/delivered',
+          success: function() {
+
+          }
+        });
+      });
+
+
+
+
     });
-  </script>
+  <% end %>
 <% end %>
+
+
