@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
 
   def create
     @selling_book = SellingBook.find(params[:selling_book_id])
-
     @order = current_user.orders.where(order_status: "pending").last
     @order ||= Order.new
     authorize @order

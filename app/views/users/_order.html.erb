@@ -9,14 +9,41 @@
         <h2><%= order.bookmate.user.first_name  %></h2>
       </div>
     </div>
+
     <div class="order-description">
+
     <h2>Détail de la commande </h2>
+    <% counter= 0 %>
       <% order.selling_books.each do |selling_book| %>
+        <% counter += 1 %>
         <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
+
+
+        <%#= simple_form_for @book, remote: true, :url => url_for(:action => 'create', :controller => 'loved_books'), :method => 'post' do |f| %>
+          <%#= hidden_field_tag :order_id, order.id %>
+          <%#= hidden_field_tag :selling_book_id, selling_book.id %>
+          <%#= hidden_field_tag :book_id, selling_book.book.id %>
+          <%#= f.button :submit, "liker" %>
+        <%# end %>
+
+        <%= simple_form_for [@user, @loved_book] do |f| %>
+          <%= hidden_field_tag :order_id, order.id %>
+          <%= hidden_field_tag :selling_book_id, selling_book.id %>
+          <%= hidden_field_tag :book_id, selling_book.book.id %>
+          <%= f.button :submit, "liker" %>
+        <% end %>
+
+        <%= link_to "",  class: "blue", id: "like#{counter}" do %>
+          <i class="fa fa-thumbs-o-up" ></i>
+        <% end %>
+
+        <%= link_to "",  class: "blue", id: "dislike#{counter}" do %>
+          <i class="fa fa-thumbs-o-down" ></i>
+        <% end %>
+
       <% end %>
     </div>
-    <div class="btn">
-    </div>
+
     <div class="order-details">
       <span><h2>Mode de livraison : <%= order.delivery_type %></h2></span>
 
@@ -42,10 +69,6 @@
                 <div id="thank-review#{order.id}">
                   <p>Vos commentaires ont bien été pris en compte</p>
                 </div>
-
-                <% order.selling_books.each do |selling_book| %>
-                  <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
-                <% end %>
 
                 <div id= "form-review#{order.id}" >
                   <%= simple_form_for @order, remote: true, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => order.id), :method => 'post' do |f| %>
@@ -117,6 +140,17 @@
         $('#myInput').focus();
 
       })
+
+            <!-- current_tab.addClass('active'); -->
+      $('#delivery-status-order<%= order.id %>').on('click', function(e) {
+        $.ajax({
+          type: 'POST',
+          url: '/orders/' + <%= order.id %> + '/delivered',
+          success: function() {
+
+          }
+        });
+      });
 
 
 

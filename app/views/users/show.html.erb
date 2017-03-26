@@ -104,6 +104,9 @@
 <!--       Contenu des livres préférés -->
       <div class="tab-content hidden" id="favorite_books">
         <h2>Mes livres préférés</h2>
+        <% @loved_books.each do |loved_book| %>
+          <%= loved_book.book.title %>
+        <% end %>
       </div>
 <!--       Contenu des bookmates -->
       <div class="tab-content hidden" id="bookmates">
