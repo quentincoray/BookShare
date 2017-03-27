@@ -1,11 +1,61 @@
 <h1><%= current_user.first_name %> Conversations</h1>
+<div class="container">
 
-  <%= @conversations.each do |conversation| %>
-  <ul>
-    <li><%= conversation.user1.first_name %></li>
-    <li><%= conversation.user2.first_name %></li>
-      <% conversation.messages.each do |message|  %>
-        <li><%= message.content%></li>
-      <% end %>
-  </ul>
+<!-- Cette row contient le Dashboard -->
+    <!-- Cette colonne contient la barre latérale -->
+  <div class="row">
+    <div class = "col-xs-4" style = "background-color: #F3F3F3">
+      <div class="side-bar-padding-left">
+        <h3>Mes conversations</h3>
+          <div class="tabs">
+            <% @conversations.each do |conversation| %>
+              <a class="tab blabla" data-target="#conversation_<%= conversation.id %>">
+              <p>Conversation avec: <%= conversation.user2.first_name %></p>
+            <% end %>
+            </a>
+          </div>
+      </div>
+    </div>
+
+<!-- Cette colonne contient le contenu des tabs -->
+    <div class = "col-xs-8">
+      <div class="tab-content hidden" id="messages">
+        <div id="messages-content">
+          <div id="conversation">
+            <% @conversations.each do |conversation| %>
+              <% conversation.messages.each do |message|  %>
+                <% if message.user == current_user %>
+                  <li class="current-user-message"><%= message.content%>
+                  </li>
+                <% else %>
+                  <li class="other-user-message"><%= message.content%></li>
+                <% end %>
+            <% end %>
+          </div>
+          <div id="new_message">
+            <%= render 'form', user: current_user, conversation: conversation, message: Message.new %>
+          </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+    <!-- <script> -->
+      $('#messages-content').hide;
+      $('.blabla').text().on('click', function (data) {
+        console.log(data);
+        $(this).slideToggle();
+      });
+  });
   <% end %>
+<% end %>

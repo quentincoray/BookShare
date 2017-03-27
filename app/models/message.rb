@@ -7,7 +7,7 @@ class Message < ApplicationRecord
   validates :user, inclusion: { in: :users }
 
   def mark_as_read
-    self.read_at = DateTime.now
+    self.read = true
     self.save
   end
 

@@ -6,15 +6,11 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = policy_scope(Conversation)
+    @messages = policy_scope(Message)
     @user = current_user
-    @user_conversation = current_user.conversations
-    # if @conversations
-    #   @unread_messages = @conversation.unread_messages(current_user)
-    #   @unread_messages.each { |message| message.mark_as_read }
-    # else
-    #   @messages = []
-    # end
-    @unread_conversations_count = current_user.unread_conversations_count
+
+    @unread_messages = @conversations.map { |conversation| conversation.unread_messages(current_user)}.flatten
+    @unread_messages.each { |message| message.mark_as_read }
   end
 
   def create

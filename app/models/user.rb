@@ -20,6 +20,7 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+
   def conversations
     Conversation.includes(:messages)
                 .where("user1_id = :id OR user2_id = :id", id: id)
@@ -30,15 +31,16 @@ class User < ApplicationRecord
     conversation.users.include?(self) ? conversation.other_user(self) : nil
   end
 
-  def unread_conversations
-    conversations.select { |c| c.unread_messages?(self) }
+  def unread_messages
+    scope = Conversation.where(user1_id: self.id).or(Conversation.where(user2_id: self.id)).map { |conversation| conversation.messages }.flatten
+    scope.select { |m| m.read? }
   end
 
-  def unread_conversations_count
-    unread_conversations.count
+  def unread_messages_count
+    unread_messages.count
   end
 
-  def unread_conversations?
-    unread_conversations_count > 0
+  def unread_messages?
+    unread_messages_count > 0
   end
 end

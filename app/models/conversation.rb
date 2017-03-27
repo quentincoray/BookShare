@@ -11,11 +11,13 @@ class Conversation < ApplicationRecord
   end
 
   def other_user(user)
-    users.include?(user) ? (users - [user]).first : nil
+    users - [User.find_by_id(user.id)]
+    # raise
   end
 
   def unread_messages(user)
-    messages.where(user: other_user(user), read_at: nil)
+    scope = Conversation.where(user1_id: user.id).or(Conversation.where(user2_id: user.id)).map { |conversation| conversation.messages }.flatten
+    # policy_scope(Message)
   end
 
   def unread_messages_count(user)
