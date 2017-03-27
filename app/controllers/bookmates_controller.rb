@@ -25,11 +25,13 @@ class BookmatesController < ApplicationController
     @users_near_me = User.near(@address, 10)
     # @bookmates_near_me = @users_near_me.map { |user| user.bookmates }.flatten
     @bookmates_near_me = Bookmate.where(user_id: @users_near_me.map(&:id))
+
     @bookmates_matching = @bookmates_near_me.
       select("bookmates.*, COUNT(books.id) AS common_books").
       joins(:books).
       where(books: { isbn: @isbn }).
       group("bookmates.id")
+
 
     # FIXME
     # @bookmates_selected.each do |bookmate|

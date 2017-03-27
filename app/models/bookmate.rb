@@ -11,4 +11,13 @@ class Bookmate < ApplicationRecord
   validates :deliver_by_hand, inclusion: { in: [ true, false ] }
   validates :home_delivery, inclusion: { in: [ true, false ] }
 
+  def review_count
+    orders.where.not(review: nil).count
+  end
+
+  def average_rating
+    return if review_count == 0
+
+    return orders.where.not(rating: nil).average(:rating).round
+  end
 end

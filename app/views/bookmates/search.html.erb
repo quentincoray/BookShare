@@ -38,23 +38,16 @@
                     <h2>A propos de <%= bookmate.user.first_name %></h2>
                     <p>" <%= bookmate.description %> "</p>
                     <h2 style="padding-left: 30vh">
-                      <% review_count = bookmate.orders.where.not(review: nil).count %>
-                      <p class="green"><%= pluralize review_count, "commentaires" %></p>
-                      <% rating_sum = 0 %>
-                      <% bookmate.orders.where.not(rating: nil).each do |order| %>
-                        <% rating_sum += order.rating  %>
-                      <% end %>
+                      <p class="green"><%= pluralize bookmate.review_count, "commentaire" %></p>
 
-                      <% if not rating_sum.fdiv(review_count).nan? %>
-                        <% rating_average = rating_sum.fdiv(review_count).round %>
-                        <% rating_average.times do %>
+                      <% if bookmate.average_rating %>
+                        <% bookmate.average_rating.times do %>
                           <i class="fa fa-star blue"></i>
                         <% end %>
-                        <% (5 - rating_average).times do %>
+                        <% (5 - bookmate.average_rating).times do %>
                           <i class="fa fa-star grey"></i>
                         <% end %>
                       <% end %>
-
                     </h2>
                     <% if bookmate.respond_to?(:common_books) %>
                       <div class="user-details-books">
