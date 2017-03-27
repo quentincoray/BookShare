@@ -23,12 +23,18 @@
         <div class="col-xs-3">
           <h2>Etat : <%= @selling_book.condition%></h2>
           <h2><%= @selling_book.price%> €</h2>
-          <div id="btn-ajouter">
-            <%= simple_form_for @order do |f| %>
-              <%= hidden_field_tag :selling_book_id, @selling_book.id %>
-              <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
-            <% end %>
-          </div>
+
+          <!-- A faire -->
+          <% if current_order.selling_books.include? @selling_book %>
+            Le livre a bien été ajouté
+          <% else %>
+            <div id="btn-ajouter">
+              <%= simple_form_for @order do |f| %>
+                <%= hidden_field_tag :selling_book_id, @selling_book.id %>
+                <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          <% end %>
           <div id="phrase-done">
             <h2 class="green">Ajouté au panier</h2>
             <i class="fa fa-check green"></i>
