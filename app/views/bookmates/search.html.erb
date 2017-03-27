@@ -39,15 +39,20 @@
                     <p>" <%= bookmate.description %> "</p>
                     <h2 style="padding-left: 30vh">
                       <% review_count = bookmate.orders.where.not(review: nil).count %>
-                      <p class="green"><%= review_count %></p>
+                      <p class="green"><%= pluralize review_count, "commentaires" %></p>
                       <% rating_sum = 0 %>
                       <% bookmate.orders.where.not(rating: nil).each do |order| %>
                         <% rating_sum += order.rating  %>
                       <% end %>
-                      <% if rating_sum.fdiv(review_count).nan? %>
-                        <p>0</p>
-                      <% else %>
-                        <%= rating_sum.fdiv(review_count) %>
+
+                      <% if not rating_sum.fdiv(review_count).nan? %>
+                        <% rating_average = rating_sum.fdiv(review_count).round %>
+                        <% rating_average.times do %>
+                          <i class="fa fa-star blue"></i>
+                        <% end %>
+                        <% (5 - rating_average).times do %>
+                          <i class="fa fa-star grey"></i>
+                        <% end %>
                       <% end %>
 
                     </h2>
