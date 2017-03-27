@@ -67,23 +67,21 @@
                     <%= simple_form_for @order, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => uncommented_order.id), :method => 'post' do |f| %>
                       <%= hidden_field_tag :order_id, uncommented_order.id %>
                       <%= f.input :review %>
-                       <%#= f.input :rating %>
                        <div class="rating">
-                          <%#= f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last %>
 
-                          <input type="radio" value="5" name="order[rating]" id="order_rating_5">
-                          <label class="collection_radio_buttons" for="order_rating_5">5</label>
+                          <input type="radio" value="5" name="order[rating]" id="order_rating_5bisbis">
+                          <label class="collection_radio_buttons" for="order_rating_5bis">5</label>
 
-                          <input type="radio" value="4" name="order[rating]" id="order_rating_4">
-                          <label class="collection_radio_buttons" for="order_rating_4">4</label>
+                          <input type="radio" value="4" name="order[rating]" id="order_rating_4bis">
+                          <label class="collection_radio_buttons" for="order_rating_4bis">4</label>
 
-                          <input type="radio" value="3" name="order[rating]" id="order_rating_3">
-                          <label class="collection_radio_buttons" for="order_rating_3">3</label>
+                          <input type="radio" value="3" name="order[rating]" id="order_rating_3bis">
+                          <label class="collection_radio_buttons" for="order_rating_3bis">3</label>
 
-                          <input type="radio" value="2" name="order[rating]" id="order_rating_2">
-                          <label class="collection_radio_buttons" for="order_rating_2">2</label>
-                          <input type="radio" value="1" name="order[rating]" id="order_rating_1">
-                          <label class="collection_radio_buttons" for="order_rating_1">1</label>
+                          <input type="radio" value="2" name="order[rating]" id="order_rating_2bis">
+                          <label class="collection_radio_buttons" for="order_rating_2bis">2</label>
+                          <input type="radio" value="1" name="order[rating]" id="order_rating_1bis">
+                          <label class="collection_radio_buttons" for="order_rating_1bis">1</label>
 
                         </div>
 
@@ -135,7 +133,3 @@
       </div>
     </div>
 
-<!-- Scripts pour l'animation des tabs -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<!-- <script src="javascripts/tabs.js" type="text/javascript"></script> -->
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" /> -->

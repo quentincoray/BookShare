@@ -57,7 +57,7 @@
 
 
                       <a tabindex="0" class="user-details-books"
-                       data-toggle="popover" data-trigger="hover" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">
+                       data-toggle="popover" data-trigger="hover" title="Dismissible popover" placement="right" data-content="And here's some amazing content. It's very engaging. Right?">
                         <h2 class="blue" ><%= pluralize bookmate.common_books, "livre" %> en commun</h2>
                       </a>
 
@@ -87,7 +87,7 @@
     $(document).ready(function () {
 
       <!-- Popover on common books -->
-      $('#example').popover(options);
+      <!-- $('#example').popover(options); -->
 
       <!-- $('#footer').remove(); -->
       var handler = Gmaps.build ('Google');
