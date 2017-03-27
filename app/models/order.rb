@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   DELIVERY_STATUS = ["en cours","effectuée"]
+  DELIVERY_TYPE = ["livraison à domicile", "livraison en main propre"]
 
   belongs_to :bookmate
   belongs_to :user

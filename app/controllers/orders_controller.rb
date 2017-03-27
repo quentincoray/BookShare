@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     if @bookmate.home_delivery
       @delivery_type_array << "livraison en main propre"
     end
+    # @delivery_type = Order.select(:delivery_type).distinct
 
     @total = 0
     @order.selling_books.map do |selling_book|
