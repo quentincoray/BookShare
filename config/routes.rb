@@ -2,17 +2,19 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :bookmates, only: [:show] do
-    resources :selling_books, only: [:show, :new, :create] do
-    end
+    resources :selling_books, only: [:show, :new, :create]
   end
   resources :orders, only: [:show, :new, :create, :update]
 
   post 'orders/:id/delivered', to: 'orders#delivered'
   post 'orders/:id/reviewed', to: 'orders#reviewed'
   post 'bookmates/:id/loved_bookstores', to: 'bookmates#bookmarked'
-  post 'selling_books/:id/liked', to: 'selling_books#liked'
+  # post 'selling_books/:id/liked', to: 'selling_books#liked'
 
-  resources :books, only: [:show]
+  resources :books, only: [:show] do
+    resource :loved_book, only: [:create, :destroy]
+  end
+
   resources :selling_books, only: [:edit, :update]
 
   get 'search', to: 'bookmates#search'

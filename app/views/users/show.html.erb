@@ -50,12 +50,12 @@
           </div>
           <h2><%= uncommented_order.bookmate.user.first_name  %></h2>
 
-          <button type="button" id="btn-comment<%= uncommented_order.id %>" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= uncommented_order.id %>">
+          <button type="button" id="btn-comment<%= uncommented_order.id %>" class="btn btn-primary" data-toggle="modal" data-target="#myModalUncommentedOrder<%= uncommented_order.id %>">
             Faire un commentaire
           </button>
 
           <!-- Modal -->
-          <div class="modal fade" id="myModal<%= uncommented_order.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="myModalUncommentedOrder<%= uncommented_order.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
 
@@ -119,17 +119,10 @@
 <!--       Contenu des commandes -->
       <div class="tab-content hidden" id="orders">
 
-        <h1>Mes commandes en cours</h1>
-        <% @undelivered_orders.each do |undelivered_order| %>
+        <h1>Mes commandes</h1>
+        <% @paid_orders.each do |paid_order| %>
           <div>
-          <%= render "order", order: undelivered_order %>
-          </div>
-        <% end %>
-
-        <h1>Mes commandes passées</h1>
-        <% @delivered_orders.each do |delivered_order| %>
-          <div>
-          <%= render "order", order: delivered_order %>
+          <%= render "order", order: paid_order %>
           </div>
         <% end %>
 

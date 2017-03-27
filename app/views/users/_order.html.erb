@@ -18,20 +18,14 @@
         <% counter += 1 %>
         <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
 
-
-        <%#= simple_form_for @selling_book, remote: true, :url => url_for(:action => 'liked', :controller => 'selling_books', :id => selling_book.id), :method => 'post' do |f| %>
-          <%#= hidden_field_tag :order_id, order.id %>
-          <%#= hidden_field_tag :selling_book_id, selling_book.id %>
-          <%#= hidden_field_tag :book_id, selling_book.book.id %>
-          <%#= f.button :submit, "liker" %>
-        <%# end %>
-
-        <%= link_to "",  class: "blue", id: "like#{counter}" do %>
-          <i class="fa fa-thumbs-o-up" ></i>
-        <% end %>
-
-        <%= link_to "",  class: "blue", id: "dislike#{counter}" do %>
-          <i class="fa fa-thumbs-o-down" ></i>
+        <% if current_user.loved_books.where(book: selling_book.book).exists? %>
+          <%= link_to book_loved_book_path(selling_book.book), method: :delete, class: "blue", id: "like#{counter}" do %>
+            <i class="fa fa-heart" aria-hidden="true"></i>
+          <% end %>
+        <% else %>
+          <%= link_to book_loved_book_path(selling_book.book), method: :post, class: "blue", id: "like#{counter}" do %>
+            <i class="fa fa-heart-o" ></i>
+          <% end %>
         <% end %>
 
       <% end %>
@@ -39,14 +33,19 @@
 
     <div class="order-details">
       <span><h2>Mode de livraison : <%= order.delivery_type %></h2></span>
+      <span><h2>Date : <%= order.created_at.strftime('%d.%m.%y') %></h2></span>
 
-      <% if order.delivery_status == "effectuée" %>
-
-        <!-- Button trigger modal -->
-        <button type="button" id="btn-comment<%= order.id %>" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= order.id %>">
-          Faire un commentaire
-        </button>
-
+        <% if order.review.present? %>
+          <!-- Comment done -->
+          <div id="thank-review#{order.id}">
+            <p>Votre commentaire a bien été pris en compte</p>
+          </div>
+        <% else %>
+          <!-- Button trigger modal -->
+          <button type="button" id="btn-comment<%= order.id %>" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= order.id %>">
+            Faire un commentaire
+          </button>
+        <% end %>
         <!-- Modal -->
         <div class="modal fade" id="myModal<%= order.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -59,12 +58,9 @@
               </div>
               <div class="modal-body">
 
-                <div id="thank-review#{order.id}">
-                  <p>Vos commentaires ont bien été pris en compte</p>
-                </div>
 
                 <div id= "form-review#{order.id}" >
-                  <%= simple_form_for @order, remote: true, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => order.id), :method => 'post' do |f| %>
+                  <%= simple_form_for @order, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => order.id), :method => 'post' do |f| %>
                     <%= hidden_field_tag :order_id, order.id %>
                     <%= f.input :review %>
                     <%= f.input :rating %>
@@ -80,11 +76,6 @@
             </div>
           </div>
         </div>
-
-      <% else %>
-        <a id="delivery-status-order<%= order.id %>" href="">Valider la réception de la commande</a>
-      <% end %>
-
     </div>
   </div>
 
@@ -93,40 +84,6 @@
 <% content_for :after_js do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-
-      $('#thank-review<%= order.id %>').hide();
-      <!-- // Code pour les tabs -->
-      $(function(){
-
-        $(".tab").on("click", function(e){
-          <!-- // Change active tab -->
-          $(".tab").removeClass('active');
-          $(this).addClass('active');
-          <!-- // Hide all tab-content (use class="hidden") -->
-          $(".tab-content").addClass('hidden');
-          <!-- // Show target tab-content (use class="hidden") -->
-          $($(this).data('target')).removeClass('hidden');
-        });
-
-      });
-
-
-      <!-- // Code pour se rappeller sur quelle table on a clique -->
-      $(".tab").on("click", function(e){
-        <!-- // Change active tab -->
-        var current_tab = $(this);
-      });
-
-      <!-- // Code pour passer le delivery status de en cours a effectue -->
-      $('#delivery-status-order<%= order.id %>').on('click', function(e) {
-        $.ajax({
-          type: 'POST',
-          url: '/orders/' + <%= order.id %> + '/delivered',
-          success: function() {
-            <!-- current_tab.addClass('active'); -->
-          }
-        });
-      });
 
       $('#myModal<%= order.id %>').on('shown.bs.modal', function () {
         $('#thank-review<%= order.id %>').hide();
