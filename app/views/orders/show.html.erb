@@ -18,7 +18,7 @@
 
                 <%= simple_form_for @order, :url => {:action => "update"} do |f| %>
                   <%= f.error_notification %>
-                  <%= f.input :delivery_type, collection: @delivery_type_array, :label=>"Mode de livraison",  :as => :radio_buttons, :item_wrapper_class => 'inline' %>
+                  <%= f.input :delivery_type, collection: @delivery_type_array, :label=>"Mode de livraison",  :as => :radio_buttons, :item_wrapper_class => 'inline'%>
                   <%#= f.input :order_status, as: :hidden, :input_html => { :value => "paid" } %>
                   <%= f.button :submit, "Passer la commande" , class: "btn btn-primary" %>
                 <% end %>
