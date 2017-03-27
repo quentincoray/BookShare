@@ -1,7 +1,7 @@
 class BookmatesController < ApplicationController
 
   skip_before_action :authenticate_user!, only: :search
-  skip_after_action :verify_policy_scoped, only: [:search, :bookmarked]
+  skip_after_action :verify_policy_scoped, only: [:search]
   before_action :set_bookmate, only: [:show]
 
   def show
@@ -78,18 +78,7 @@ class BookmatesController < ApplicationController
     # end
   end
 
-  def bookmarked
-    @bookmate = Bookmate.find(params[:bookmate_id])
-    authorize @bookmate
-    @loved_bookstore = LovedBookstore.new
-    @loved_bookstore.user = current_user
-    @loved_bookstore.bookmate = @bookmate
-    if @loved_bookstore.update(loved_bookstore_params)
-        redirect_to bookmate_path(@bookmate), alert: "Le bookmate est bookmarké"
-    else
-        redirect_to bookmate_path(@bookmate), alert: "Oops! There was a problem, please try again"
-    end
-  end
+
 
 
   private

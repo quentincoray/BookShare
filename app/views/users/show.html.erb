@@ -8,21 +8,16 @@
         <a class="tab active" data-target="#profile">
           <h2>Mon profil</h2>
         </a>
-        <a class="tab" data-target="#messages">
-          <h2>Mes messages</h2>
-          <%= render "message"%>
-        </a>
         <a class="tab" data-target="#comments">
           <h2>Mes commentaires</h2>
-          <%= render "comment"%>
+
         </a>
-        <a class="tab" data-target="#favorite_books">
+        <a class="tab" data-target="#loved_books">
           <h2>Mes livres préférés</h2>
-          <%= render "favorite-book"%>
+
         </a>
         <a class="tab" data-target="#bookmates">
           <h2>Mes bookmates</h2>
-          <%= render "bookmate"%>
         </a>
         <a class="tab" data-target="#orders">
           <h2>Mes commandes</h2>
@@ -36,10 +31,6 @@
       <div class="tab-content" id="profile">
         <%= render "profile"%>
 
-      </div>
-<!--       Contenu des messages -->
-      <div class="tab-content hidden" id="messages">
-        <h2>Mes messages</h2>
       </div>
 <!--       Contenu des commentaires -->
       <div class="tab-content hidden" id="comments">
@@ -102,7 +93,7 @@
         <% end %>
       </div>
 <!--       Contenu des livres préférés -->
-      <div class="tab-content hidden" id="favorite_books">
+      <div class="tab-content hidden" id="loved_books">
         <h2>Mes livres préférés</h2>
         <% @loved_books.each do |loved_book| %>
           <%= loved_book.book.title %>
@@ -110,10 +101,7 @@
       </div>
 <!--       Contenu des bookmates -->
       <div class="tab-content hidden" id="bookmates">
-        <h2>Mes bookmates</h2>
-        <% @loved_bookstores.each do |loved_bookstore| %>
-          <%= loved_bookstore.bookmate.user.first_name %>
-        <% end %>
+        <%= render "bookmate"%>
       </div>
 
 <!--       Contenu des commandes -->

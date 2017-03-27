@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @paid_orders = Order.all.where(order_status: "paid").where(user: current_user).order("created_at DESC")
     @undelivered_orders = Order.all.where(order_status: "paid").where(delivery_status: "en cours").where(user: current_user)
     @delivered_orders = Order.all.where(order_status: "paid").where(delivery_status: "effectuée").where(user: current_user).order("created_at DESC")
-    @commented_orders = Order.all.where.not(review: nil).where(user: current_user)
+    @commented_orders = Order.all.where.not(review: nil).where(user: current_user).order("updated_at DESC")
     @uncommented_orders = Order.all.where(review: nil).where(user: current_user)
     @user = User.find(params[:id])
     @loved_books = LovedBook.all.where(user: current_user)

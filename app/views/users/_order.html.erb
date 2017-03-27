@@ -64,15 +64,12 @@
                     <%= hidden_field_tag :order_id, order.id %>
                     <%= f.input :review %>
                     <%= f.input :rating %>
+                    <div class="modal-footer">
                     <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{order.id}"%>
+                    </div>
                   <% end %>
                 </div>
               </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-
             </div>
           </div>
         </div>

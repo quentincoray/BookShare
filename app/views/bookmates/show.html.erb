@@ -22,16 +22,16 @@
     <h1 class="red">
       A propos de <%= @bookmate.user.first_name %>
     </h1>
-    <div class="follow_option">
 
-      <%= simple_form_for @bookmate, remote: true, :url => url_for(:action => 'bookmarked', :controller => 'bookmates', :id => @bookmate.id), :method => 'post' do |f| %>
-        <%= hidden_field_tag :bookmate_id, @bookmate.id %>
-        <%= f.button :submit, "Bookmarker",class: "btn btn-primary"%>
-      <% end %>
-
-      <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+    <% if current_user.loved_bookstores.where(bookmate: @bookmate).exists? %>
+      <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :delete, class: "blue"  do %>
       <i class="fa fa-bookmark" aria-hidden="true"></i>
-    </div>
+      <% end %>
+    <% else %>
+      <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :post, class: "blue" do %>
+      <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
 
     <h2>Ses goûts littéraires :  </h2>
     <p><%= @bookmate.description %></p>
@@ -76,7 +76,6 @@
     $(document).ready(function() {
 
       $(function(){
-      $(".fa-bookmark").hide();
 
         $(".follow_option").on("click", function(e){
           <!-- // Change active tab -->

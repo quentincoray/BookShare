@@ -1,10 +1,6 @@
 class LovedBooksController < ApplicationController
   before_action :set_book, only: [:create, :destroy]
 
-  # def index
-  #   @loved_books = LovedBook.all
-  # end
-
   def create
     @loved_book = LovedBook.new
     @loved_book.user = current_user
