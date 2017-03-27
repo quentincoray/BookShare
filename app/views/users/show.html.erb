@@ -56,7 +56,7 @@
       </div>
 <!--       Contenu des messages -->
       <div class="tab-content hidden" id="messages">
-        <h2>Mes messages</h2>
+        <h2><%= link_to "Mes Messages", user_conversations_path(current_user)%></h2>
       </div>
 <!--       Contenu des commentaires -->
       <div class="tab-content hidden" id="comments">

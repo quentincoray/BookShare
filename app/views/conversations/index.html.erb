@@ -1,9 +1,11 @@
-<h1><%= current_user %> Conversations</h1>
+<h1><%= current_user.first_name %> Conversations</h1>
 
-<% @conversations.each do |conversation| %>
+  <%= @conversations.each do |conversation| %>
   <ul>
-    <li><%= conversation.user2 %></li>
-    <li><%= conversation.messages %></li>
+    <li><%= conversation.user1.first_name %></li>
+    <li><%= conversation.user2.first_name %></li>
+      <% conversation.messages.each do |message|  %>
+        <li><%= message.content%></li>
+      <% end %>
   </ul>
-
-<% end %>
+  <% end %>

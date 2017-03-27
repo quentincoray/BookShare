@@ -14,19 +14,17 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resources :conversations, only: [:index, :create] do
+      resources :messages, only: :create
+    end
+  end
 
   post 'orders/:id/delivered', to: 'orders#delivered'
 
-  resources :conversations, only: [:index, :create] do
-    resources :messages, only: :create
-  end
-  resources :users, only: :index
-
-  get 'conversations/:conversation_id/preview' => 'messages#preview', as: :preview
 
   # Serve websocket cable requests in-process
-  mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
 end
 
 
