@@ -19,7 +19,20 @@
   </div>
 
   <div class="col-xs-10" id="text-column">
-    <h1 class="red">A propos de <%= @bookmate.user.first_name %> </h1>
+    <h1 class="red">
+      A propos de <%= @bookmate.user.first_name %>
+    </h1>
+
+    <% if current_user.loved_bookstores.where(bookmate: @bookmate).exists? %>
+      <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :delete, class: "blue"  do %>
+      <i class="fa fa-bookmark" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+      <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :post, class: "blue" do %>
+      <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+
     <h2>Ses goûts littéraires :  </h2>
     <p><%= @bookmate.description %></p>
     <h2> <%= pluralize @count, "mode" %> de livraison : </h2>
@@ -57,3 +70,20 @@
     </div>
   </div>
 
+
+<% content_for :after_js do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+
+      $(function(){
+
+        $(".follow_option").on("click", function(e){
+          <!-- // Change active tab -->
+          $(".fa-bookmark-o").hide();
+          $(".fa-bookmark").show();
+        });
+      });
+
+    });
+  <% end %>
+<% end %>

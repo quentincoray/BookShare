@@ -1,0 +1,7 @@
+<h1>Mes bookmates</h1>
+<% @loved_bookstores.each do |loved_bookstore| %>
+  <h2>
+    <%= loved_bookstore.bookmate.user.first_name %>
+  </h2>
+<% end %>
+

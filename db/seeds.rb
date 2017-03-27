@@ -1,4 +1,6 @@
 puts "Cleaning database..."
+LovedBookstore.destroy_all
+LovedBook.destroy_all
 OrderedBook.destroy_all
 Order.destroy_all
 SellingBook.destroy_all
@@ -160,6 +162,9 @@ puts "Creating loved books..."
 
 camille_loved_book1 = LovedBook.create!(user: camille, book: book5)
 
+puts "Creating loved booksmates..."
+
+camille_loved_bookmate1 = LovedBookstore.create!(user: camille, bookmate: quentin_bookstore)
 puts "ok"
 
 

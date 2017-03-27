@@ -11,5 +11,13 @@ $(document).ready(function() {
       $($(this).data('target')).removeClass('hidden');
     });
 
+    if ($(".tab-content").length) {
+      var anchor = window.location.hash;
+
+      // trigger click on sidebar to show the correct tab content
+      if (anchor != '') {
+        $('a[data-target="' + anchor + '"]').trigger('click');
+      }
+    }
   });
 });
