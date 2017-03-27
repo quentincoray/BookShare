@@ -16,14 +16,12 @@
     width: 95%;
     max-width: 45em;
     margin: 10em auto;
+    font-weight: bolder;
   }
 
   div.dialog > div {
-    border: 1px solid white;
-    border-radius: 9px;
     background-color: #5CC8FF;
     padding: 7px 8% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
   h1 {
@@ -31,12 +29,13 @@
     color: #FC4040;
     font-family: 'brandon_grotesque_bold', "Helvetica", "sans-serif";
     font-size: 25px;
-    line-height: 1.5em;
+    line-height: 2em;
   }
 
   div.dialog > p {
     margin: 0 0 1em;
     padding: 1em;
+    line-height: 1em;
     background-color: $blue;
     border: 1px solid white;
     border-right-color: white;
@@ -58,6 +57,11 @@
     text-decoration: none;
     color: #EE5F5B;
   }
+
+  img {
+    width: 200px;
+    height: auto;
+  }
   </style>
 </head>
 
@@ -65,8 +69,10 @@
   <!-- This file lives in public/500.html -->
   <div class="dialog">
     <div>
-      <h1>500</h1>
+      <img src="/assets/sheet-of-torn-paper.png">
+      <h1>Aïe !</h1>
       <p>Nous sommes désolés, une erreur est survenue. :(</h1>
+      <p><a href="/">Retour à la page d'accueil</a></p>
     </div>
   </div>
 </body>
