@@ -2,4 +2,4 @@
 
 meta_title: "BookShare - Trouvez votre prochain livre sans chercher !"
 meta_description: "Accédez à des bookstores faits par des personnes avec qui vous partagez les mêmes affinités"
-meta_image: "cover.png" # should exist in `app/assets/images/`
+meta_image: "cover.jpg" # should exist in `app/assets/images/`
