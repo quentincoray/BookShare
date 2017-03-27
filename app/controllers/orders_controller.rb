@@ -6,12 +6,12 @@ class OrdersController < ApplicationController
     @bookmate = @order.bookmate
     @delivery_type_array = []
     if @bookmate.deliver_by_hand
-      @delivery_type_array << "livraison en main propre"
+      @delivery_type_array << "Livraison en main propre"
     end
     if @bookmate.home_delivery
-      @delivery_type_array << "livraison à domicile"
-
+      @delivery_type_array << "Livraison à domicile"
     end
+    # @delivery_type = Order.select(:delivery_type).distinct
 
     @total = 0
     @order.selling_books.map do |selling_book|
