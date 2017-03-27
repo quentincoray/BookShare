@@ -6,10 +6,11 @@ class OrdersController < ApplicationController
     @bookmate = @order.bookmate
     @delivery_type_array = []
     if @bookmate.deliver_by_hand
-      @delivery_type_array << "livraison à domicile"
+      @delivery_type_array << "livraison en main propre"
     end
     if @bookmate.home_delivery
-      @delivery_type_array << "livraison en main propre"
+      @delivery_type_array << "livraison à domicile"
+
     end
 
     @total = 0
