@@ -1,3 +1,7 @@
+<% content_for :meta_title, "BookShare - #{@selling_book.book.title}" %>
+<% content_for :meta_description, @selling_book.book.author %>
+<%# content_for :meta_description, cloudinary_url(@selling_book.book.photo.path) %>
+
 <div class="book-header">
   <div class ="container">
     <div class="book-header-container">
