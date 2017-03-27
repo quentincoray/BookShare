@@ -50,9 +50,21 @@
                       <% end %>
                     </h2>
                     <% if bookmate.respond_to?(:common_books) %>
-                      <div class="user-details-books">
+                      <!-- <div class="user-details-books"> -->
+
+                      <!-- </div> -->
+
+
+
+                      <a tabindex="0" class="user-details-books"
+                       data-toggle="popover" data-trigger="hover" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">
                         <h2 class="blue" ><%= pluralize bookmate.common_books, "livre" %> en commun</h2>
-                      </div>
+                      </a>
+
+
+
+
+
                     <% end %>
                     </div>
                   <div class="user-link">
@@ -73,6 +85,10 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function () {
+
+      <!-- Popover on common books -->
+      $('#example').popover(options);
+
       <!-- $('#footer').remove(); -->
       var handler = Gmaps.build ('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
