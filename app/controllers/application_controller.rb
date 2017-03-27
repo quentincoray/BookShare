@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
 
   def current_order
     return unless user_signed_in?
-
     @order = current_user.orders.where(order_status: "pending").last
     @order ||= Order.new
   end

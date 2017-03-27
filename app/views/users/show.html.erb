@@ -64,20 +64,36 @@
                   </div>
 
                   <div id= "form-review#{uncommented_order.id}" >
-                    <%= simple_form_for @order, remote: true, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => uncommented_order.id), :method => 'post' do |f| %>
+                    <%= simple_form_for @order, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => uncommented_order.id), :method => 'post' do |f| %>
                       <%= hidden_field_tag :order_id, uncommented_order.id %>
                       <%= f.input :review %>
                        <%#= f.input :rating %>
-                        f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last
+                       <div class="rating">
+                          <%#= f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last %>
 
-                      <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{uncommented_order.id}"%>
+                          <input type="radio" value="5" name="order[rating]" id="order_rating_5">
+                          <label class="collection_radio_buttons" for="order_rating_5">5</label>
+
+                          <input type="radio" value="4" name="order[rating]" id="order_rating_4">
+                          <label class="collection_radio_buttons" for="order_rating_4">4</label>
+
+                          <input type="radio" value="3" name="order[rating]" id="order_rating_3">
+                          <label class="collection_radio_buttons" for="order_rating_3">3</label>
+
+                          <input type="radio" value="2" name="order[rating]" id="order_rating_2">
+                          <label class="collection_radio_buttons" for="order_rating_2">2</label>
+                          <input type="radio" value="1" name="order[rating]" id="order_rating_1">
+                          <label class="collection_radio_buttons" for="order_rating_1">1</label>
+
+                        </div>
+
+                      <div class="modal-footer">
+                        <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{uncommented_order.id}"%>
+                      </div>
+
                     <% end %>
                   </div>
 
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>

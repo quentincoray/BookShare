@@ -63,7 +63,22 @@
                   <%= simple_form_for @order, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => order.id), :method => 'post' do |f| %>
                     <%= hidden_field_tag :order_id, order.id %>
                     <%= f.input :review %>
-                    <%= f.input :rating %>
+                    <div class="rating">
+                      <input type="radio" value="5" name="order[rating]" id="order_rating_5">
+                      <label class="collection_radio_buttons" for="order_rating_5">5</label>
+
+                      <input type="radio" value="4" name="order[rating]" id="order_rating_4">
+                      <label class="collection_radio_buttons" for="order_rating_4">4</label>
+
+                      <input type="radio" value="3" name="order[rating]" id="order_rating_3">
+                      <label class="collection_radio_buttons" for="order_rating_3">3</label>
+
+                      <input type="radio" value="2" name="order[rating]" id="order_rating_2">
+                      <label class="collection_radio_buttons" for="order_rating_2">2</label>
+                      <input type="radio" value="1" name="order[rating]" id="order_rating_1">
+                      <label class="collection_radio_buttons" for="order_rating_1">1</label>
+                    </div>
+
                     <div class="modal-footer">
                     <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{order.id}"%>
                     </div>

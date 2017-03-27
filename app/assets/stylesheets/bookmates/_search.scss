@@ -72,3 +72,44 @@ a {
 a:hover {
   text-decoration: none;
 }
+
+
+// CSS for star hover
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating input { display: none; }
+.rating .collection_radio_buttons:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+// .rating > .half:before {
+//   content: "\f089";
+//   position: absolute;
+// }
+
+.rating .collection_radio_buttons {
+  color: #ddd;
+ float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+// .rating input:checked ~ .collection_radio_buttons, /* show gold star when clicked */
+// .rating:not(:checked) .collection_radio_buttons:hover, /* hover current star */
+// .rating:not(:checked) .collection_radio_buttons:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+// .rating input:checked + .collection_radio_buttons:hover, /* hover current star when changing rating */
+// .rating input:checked ~ .collection_radio_buttons :hover,
+// .rating  .collection_radio_buttons:hover ~ input:checked ~ .collection_radio_buttons  , /* lighten current selection */
+// .rating input:checked ~ .collection_radio_buttons :hover ~ .collection_radio_buttons  { color: #FFED85;  }
+
