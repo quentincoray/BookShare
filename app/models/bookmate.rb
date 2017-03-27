@@ -4,6 +4,7 @@ class Bookmate < ApplicationRecord
   has_many :selling_books,through: :bookmate_book_categories, dependent: :destroy
   has_many :books, through: :selling_books
   has_many :orders, dependent: :destroy
+  has_many :loved_bookstores, dependent: :destroy
 
 
   validates :description, presence: :true

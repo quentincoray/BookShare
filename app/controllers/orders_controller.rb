@@ -6,10 +6,10 @@ class OrdersController < ApplicationController
     @bookmate = @order.bookmate
     @delivery_type_array = []
     if @bookmate.deliver_by_hand
-      @delivery_type_array << "Livraison à domicile"
+      @delivery_type_array << "Livraison en main propre"
     end
     if @bookmate.home_delivery
-      @delivery_type_array << "Livraison en main propre"
+      @delivery_type_array << "Livraison à domicile"
     end
     # @delivery_type = Order.select(:delivery_type).distinct
 
@@ -67,9 +67,9 @@ class OrdersController < ApplicationController
     authorize @order
     @user = current_user
     if @order.update(order_params)
-        redirect_to user_path(@user), alert: "Your comment is saved!"
+      redirect_to user_path(@user, anchor: "orders"), notice: "Your comment is saved!"
     else
-        redirect_to user_path(@user), alert: "Oops! There was a problem, please try again"
+      redirect_to user_path(@user, anchor: "orders"), alert: "Oops! There was a problem, please try again"
     end
   end
 
