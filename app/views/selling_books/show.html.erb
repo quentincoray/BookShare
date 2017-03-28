@@ -71,7 +71,7 @@
           <div class="row">
             <div class="book-body-column">
               <h2>Résumé du livre</h2>
-              <p id="book_summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.</p>
+              <p id="book_summary"></p>
             </div>
           </div>
           <div class="row">
@@ -108,16 +108,15 @@
 
 <!-- <script> -->
       var isbn = <%= @isbn %>;
+      console.log(isbn);
       $.ajax({
         type: "GET",
-        url: "https://www.googleapis.com/books/v1/volumes?q="+isbn+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+        url: "https://www.googleapis.com/books/v1/volumes?q=+isbn="+isbn+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
         success: function(data) {
-          console.log(data);
-          console.log(data.items)
-          // (function (item) {
-          //   var summary_from_api = item.volumeInfo.authors.description;
-          //   console.log(summary_from_api);
-          //   $("#book_summary").html(summary_from_api);
+            var datum = data.items[0];
+            console.log(datum);
+            var summary_from_api = datum.volumeInfo.description;
+            $("#book_summary").html(summary_from_api);
           //   // $("#author_bio").html('<div id="results"></div>');
             // data.items.forEach(function(item) {
             //   // var author_from_api = item.volumeInfo.authors;
