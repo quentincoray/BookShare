@@ -1,6 +1,6 @@
 
   <!-- A changer en requete ajax -->
-  <div class="card-grey-search">
+  <div class="card-grey-dashboard">
     <div class="order-bookmate">
       <div class="user-avatar text-center">
         <div class = "card-user text-center">
@@ -9,40 +9,104 @@
         <h2><%= order.bookmate.user.first_name  %></h2>
       </div>
     </div>
+
     <div class="order-description">
-      Description
+
+    <h2>Détail de la commande </h2>
+    <% counter= 0 %>
+      <% order.selling_books.each do |selling_book| %>
+        <% counter += 1 %>
+        <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
+
+        <% if current_user.loved_books.where(book: selling_book.book).exists? %>
+          <%= link_to book_loved_book_path(selling_book.book), method: :delete, class: "blue", id: "like#{counter}" do %>
+            <i class="fa fa-heart" aria-hidden="true"></i>
+          <% end %>
+        <% else %>
+          <%= link_to book_loved_book_path(selling_book.book), method: :post, class: "blue", id: "like#{counter}" do %>
+            <i class="fa fa-heart-o" ></i>
+          <% end %>
+        <% end %>
+
+      <% end %>
     </div>
-    <div class="btn">
-    </div>
+
     <div class="order-details">
-      <span><h2>Statut : <%= order.delivery_status %></h2></span>
       <span><h2>Mode de livraison : <%= order.delivery_type %></h2></span>
-      <button id="btn-comment" data-toggle="modal" data-target="#hello world"> Faire un commentaire</button>
-      <a class="delivery-status-order<%= order.id %>" href="">Valider la réception de la commande</a>
+      <span><h2>Date : <%= order.created_at.strftime('%d.%m.%y') %></h2></span>
+
+        <% if order.review.present? %>
+          <!-- Comment done -->
+          <div id="thank-review#{order.id}">
+            <p>Votre commentaire a bien été pris en compte</p>
+          </div>
+        <% else %>
+          <!-- Button trigger modal -->
+          <button type="button" id="btn-comment<%= order.id %>" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= order.id %>">
+            Faire un commentaire
+          </button>
+        <% end %>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal<%= order.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+
+                <div id= "form-review#{order.id}" >
+                  <%= simple_form_for @order, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => order.id), :method => 'post' do |f| %>
+                    <%= hidden_field_tag :order_id, order.id %>
+                    <%= f.input :review %>
+                    <div class="rating">
+
+                      <input type="radio" value="5" name="order[rating]" id="order_rating_5">
+                      <label class="collection_radio_buttons" for="order_rating_5">5</label>
+
+                      <input type="radio" value="4" name="order[rating]" id="order_rating_4">
+                      <label class="collection_radio_buttons" for="order_rating_4">4</label>
+
+                      <input type="radio" value="3" name="order[rating]" id="order_rating_3">
+                      <label class="collection_radio_buttons" for="order_rating_3">3</label>
+
+                      <input type="radio" value="2" name="order[rating]" id="order_rating_2">
+                      <label class="collection_radio_buttons" for="order_rating_2">2</label>
+                      <input type="radio" value="1" name="order[rating]" id="order_rating_1">
+                      <label class="collection_radio_buttons" for="order_rating_1">1</label>
+
+                    </div>
+
+                    <div class="modal-footer">
+                    <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{order.id}"%>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 
-  <div class="modal-fade" id="sign-up">
-    Hello
-  </div>
+
 
 <% content_for :after_js do %>
-  <script>
+  <%= javascript_tag do %>
     $(document).ready(function() {
-      $('#btn-comment').hide();
 
-      $('.delivery-status-order<%= order.id %>').on('click', function(e) {
-        $.ajax({
-          type: 'POST',
-          url: '/orders/' + <%= order.id %> + '/delivered',
-          // success: active tab
-          success:function(data){
-            alert(data);
-            $('#btn-comment').show();
-          }
-        })
+      $('#myModal<%= order.id %>').on('shown.bs.modal', function () {
+        $('#thank-review<%= order.id %>').hide();
+        $('#myInput').focus();
 
-      });
+      })
+
     });
-  </script>
+  <% end %>
 <% end %>
+
+

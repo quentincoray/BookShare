@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :selling_books, through: :bookmate_book_categories
   has_many :orders
   has_many :messages, dependent: :nullify
+  has_many :loved_bookstores, dependent: :destroy
 
   has_attachment :photo
 

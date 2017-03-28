@@ -1,4 +1,4 @@
-class BookmatePolicy < ApplicationPolicy
+class LovedBookstorePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -9,12 +9,9 @@ class BookmatePolicy < ApplicationPolicy
     return true
   end
 
-  def show?
-    return true
-  end
-
-  def bookmarked?
+  def destroy?
     record.user == user
   end
 end
+
 

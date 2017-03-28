@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
 
   def current_order
     return unless user_signed_in?
-
     @order = current_user.orders.where(order_status: "pending").last
     @order ||= Order.new
   end
@@ -45,6 +44,10 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def default_url_options
+  { host: ENV["HOST"] || "www.bookshare-lewagon.herokuapp.com" }
   end
 end
 

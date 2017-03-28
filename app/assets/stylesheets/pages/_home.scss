@@ -49,7 +49,7 @@
 
 .background-blue {
   background-color: $blue;
-  min-height: 250vh;
+  min-height: 100vh;
 }
 
 .btn-home {
@@ -120,14 +120,19 @@
   content: asset-url("logo_white.png");
 }
 
-.pages-home .fa-envelope-o {
-  color:white;
+
+
+.pages-home .shopping-cart-logo {
+  content: asset-heroku openurl("basket_white.png");
 }
 
 .pages-home .shopping-cart-logo {
   content: asset-url("basket_white.png");
 }
 
+.pages-home .fa-envelope-o {
+  color:white;
+}
 
 .pages-home .fa-user-circle-o {
   color:white;

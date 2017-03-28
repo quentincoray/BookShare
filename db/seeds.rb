@@ -1,4 +1,6 @@
 puts "Cleaning database..."
+LovedBookstore.destroy_all
+LovedBook.destroy_all
 OrderedBook.destroy_all
 Order.destroy_all
 SellingBook.destroy_all
@@ -32,8 +34,8 @@ alice.photo_url = photo_alice
 
 
 puts "Creating bookmates..."
-quentin_bookstore = Bookmate.create!(description: "J'aime tous types de romans, notamment les romans de fantasy, science-fiction et heroïc-fantasy. Le Seigneur des Anneaux, meilleure saga de l'histoire !", deliver_by_hand: true, home_delivery: true, user: quentin)
-anne_sophie_bookstore = Bookmate.create!(description: "J'aime la littérature dans son ensemble, c'est un art passionnant qu'il me plait de partager.", deliver_by_hand: true, home_delivery: true, user: anne_sophie)
+quentin_bookstore = Bookmate.create!(description: "J'aime tous types de romans, notamment les romans de fantasy, science-fiction et heroïc-fantasy. Le Seigneur des Anneaux, meilleure saga de l'histoire !", deliver_by_hand: false, home_delivery: true, user: quentin)
+anne_sophie_bookstore = Bookmate.create!(description: "J'aime la littérature dans son ensemble, c'est un art passionnant qu'il me plait de partager.", deliver_by_hand: true, home_delivery: false, user: anne_sophie)
 # camille_bookstore = Bookmate.create!(description: "Lectrice insatiable, je lis deux livres par semaine. J'ai chez moi une véritable bibliothèque !", deliver_by_hand: true, home_delivery: true, user: camille)
 jean_bookstore = Bookmate.create!(description: "Moi c'est Jean, lecteur à mes heures perdues, mais je ne rechigne jamais à dévorer un bon bouquin.", deliver_by_hand: true, home_delivery: true, user: jean)
 edouard_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: true, user: edouard)
@@ -179,6 +181,14 @@ m11 = Message.create!(user: edouard, conversation: c5, content: "Non.... mais j'
 m12 = Message.create!(user: quentin, conversation: c6, content: "Tu peux lire 'Le Chat du Rabbin', c'est très chouette !")
 
 
+
+puts "Creating loved books..."
+
+camille_loved_book1 = LovedBook.create!(user: camille, book: book5)
+
+puts "Creating loved booksmates..."
+
+camille_loved_bookmate1 = LovedBookstore.create!(user: camille, bookmate: quentin_bookstore)
 
 puts "ok"
 

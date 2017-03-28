@@ -9,6 +9,11 @@ class OrderPolicy < ApplicationPolicy
     return true
   end
 
+
+  def reviewed?
+    record.user == user
+  end
+
   def show?
     record.user == user
   end

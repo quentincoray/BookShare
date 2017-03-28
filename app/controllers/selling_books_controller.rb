@@ -1,5 +1,5 @@
 class SellingBooksController < ApplicationController
-  before_action :set_selling_book, only: [:show]
+  before_action :set_selling_book, only: [:show, :liked]
 
   def show
     authorize @selling_book

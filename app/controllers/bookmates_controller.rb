@@ -1,7 +1,7 @@
 class BookmatesController < ApplicationController
 
   skip_before_action :authenticate_user!, only: :search
-  skip_after_action :verify_policy_scoped, only: :search
+  skip_after_action :verify_policy_scoped, only: [:search]
   before_action :set_bookmate, only: [:show]
 
   def show
@@ -25,11 +25,13 @@ class BookmatesController < ApplicationController
     @users_near_me = User.near(@address, 10)
     # @bookmates_near_me = @users_near_me.map { |user| user.bookmates }.flatten
     @bookmates_near_me = Bookmate.where(user_id: @users_near_me.map(&:id))
+
     @bookmates_matching = @bookmates_near_me.
       select("bookmates.*, COUNT(books.id) AS common_books").
       joins(:books).
       where(books: { isbn: @isbn }).
       group("bookmates.id")
+
 
     # FIXME
     # @bookmates_selected.each do |bookmate|
@@ -64,10 +66,21 @@ class BookmatesController < ApplicationController
     # end
   end
 
+
+
+
   private
 
   def set_bookmate
     @bookmate = Bookmate.find(params[:id])
+  end
+
+
+  private
+
+  def loved_bookstore_params
+    params.require(:loved_bookstore).permit(:user, :bookmate)
+
   end
 end
 
