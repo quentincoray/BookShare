@@ -38,7 +38,7 @@
                     <h2>A propos de <%= bookmate.user.first_name %></h2>
                     <p>" <%= bookmate.description %> "</p>
                     <h2 style="padding-left: 30vh">
-                      <p class="green"><%= pluralize bookmate.review_count, "commentaire" %></p>
+                      <p class="blue"><%= pluralize bookmate.review_count, "commentaire" %></p>
 
                       <% if bookmate.average_rating %>
                         <% bookmate.average_rating.times do %>
@@ -50,21 +50,9 @@
                       <% end %>
                     </h2>
                     <% if bookmate.respond_to?(:common_books) %>
-                      <!-- <div class="user-details-books"> -->
-
-                      <!-- </div> -->
-
-
-
-                      <a tabindex="0" class="user-details-books"
-                       data-toggle="popover" data-trigger="hover" title="Dismissible popover" placement="right" data-content="And here's some amazing content. It's very engaging. Right?">
+                      <a class="btn common-book" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right">
                         <h2 class="blue" ><%= pluralize bookmate.common_books, "livre" %> en commun</h2>
                       </a>
-
-
-
-
-
                     <% end %>
                     </div>
                   <div class="user-link">
@@ -87,9 +75,12 @@
     $(document).ready(function () {
 
       <!-- Popover on common books -->
-      <!-- $('#example').popover(options); -->
+      $('.common-book').popover({
+        html: true,
+        content: function () {
+        }
+      });
 
-      <!-- $('#footer').remove(); -->
       var handler = Gmaps.build ('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
