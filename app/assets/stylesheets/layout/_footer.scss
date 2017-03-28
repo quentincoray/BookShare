@@ -1,7 +1,9 @@
 #footer {
   position:relative;
   display:flex;
-  display:block;
+  align-items:center;
+  justify-content:space-around;
+  height:60px;
   bottom:0;
   width:100%;
   background: rgba(74,73,74,0.77);

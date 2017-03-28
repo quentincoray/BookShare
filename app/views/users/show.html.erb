@@ -1,34 +1,41 @@
 
   <!-- Cette row contient le Dashboard -->
     <!-- Cette colonne contient la barre latérale -->
-  <div class = "col-xs-3" style = "background-color: #F3F3F3">
-    <div class="side-bar-padding-left">
+    <div class="sidebar">
       <h3>MON COMPTE</h3>
       <div class="tabs">
-        <a class="tab active" data-target="#profile">
-          <h2>Mon profil</h2>
-        </a>
-        <a class="tab" data-target="#comments">
-          <h2>Mes commentaires</h2>
-
-        </a>
-        <a class="tab" data-target="#loved_books">
-          <h2>Mes livres préférés</h2>
-
+        <a class="tab active" data-target="#orders">
+          <h2>Mes commandes</h2>
         </a>
         <a class="tab" data-target="#bookmates">
           <h2>Mes bookmates</h2>
         </a>
-        <a class="tab" data-target="#orders">
-          <h2>Mes commandes</h2>
+        <a class="tab" data-target="#loved_books">
+          <h2>Mes livres préférés</h2>
+        </a>
+        <a class="tab" data-target="#comments">
+          <h2>Mes commentaires</h2>
+        </a>
+        <a class="tab" data-target="#profile">
+          <h2>Mon profil</h2>
         </a>
       </div>
     </div>
-  </div>
     <!-- Cette colonne contient le contenu des tabs -->
-    <div class = "col-xs-9">
+    <div class = "col-xs-offset-2 col-xs-10">
+    <!--       Contenu des commandes -->
+          <div class="tab-content" id="orders">
+
+            <h1>Mes commandes</h1>
+            <% @paid_orders.each do |paid_order| %>
+              <div>
+              <%= render "order", order: paid_order %>
+              </div>
+            <% end %>
+
+          </div>
 <!--       Contenu du profil -->
-      <div class="tab-content" id="profile">
+      <div class="tab-content hidden" id="profile">
         <%= render "profile"%>
 
       </div>
@@ -120,16 +127,6 @@
         <%= render "bookmate"%>
       </div>
 
-<!--       Contenu des commandes -->
-      <div class="tab-content hidden" id="orders">
 
-        <h1>Mes commandes</h1>
-        <% @paid_orders.each do |paid_order| %>
-          <div>
-          <%= render "order", order: paid_order %>
-          </div>
-        <% end %>
-
-      </div>
     </div>
 

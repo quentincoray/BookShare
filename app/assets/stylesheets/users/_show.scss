@@ -2,13 +2,64 @@
   display: none;
 }
 
+.users-show {
+  .navbar-wagon {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 3000;
+  }
+}
+
 span p {
   display: inline-block;
+}
+
+.order-bookmate {
+  flex: 0 0 15%;
+  margin-right: 15px;
+}
+.order-description {
+  flex: 1;
+  h2 {
+    font-weight: 700;
+    font-size: 18px;
+  }
+}
+
+.order-date {
+  font-size: 14px;
+  position: absolute;
+  top: -5px;
+  right: 0;
+  background: $dark-grey;
+  color: white !important;
+  padding: 10px;
+}
+
+.order-book-list {
+  display: flex;
+  padding-left: 25px;
+  p {
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+}
+
+.order-delivery {
+  font-weight: 300 !important;
+  font-size: 18px;
+  margin-top: 25px !important;
 }
 
 .order-details {
   display:flex;
   flex-direction:column;
+  .review-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
 }
 
 .profile-details {
