@@ -17,8 +17,12 @@
       <!-- enveloppe -->
       <div class="navbar-wagon-item">
         <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-red"><%= @messages_count %></div>
+          <% if user_signed_in? %>
+            <%= link_to  user_conversations_path(current_user) do%>
+              <i class="fa fa-envelope-o"></i>
+              <div class="badge badge-red"><%= @messages_count %></div>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <!-- basket -->
