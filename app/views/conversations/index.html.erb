@@ -30,17 +30,33 @@
               <div id="previous-messages_<%= conversation.id %>">
               <% conversation.messages.each do |message|  %>
                 <% if message.user == current_user %>
-                  <li class="current-user-message"><%= message.content%>
-                  </li>
-                <% else %>
-                  <li class="other-user-message"><%= message.content%></li>
-                <% end %>
-            <% end %>
+                <div class="position-relative">
+                  <div class="talk-bubble tri-right round left-in">
+                    <div class="talktext">
+                      <p class="current-user-message"><%= message.content%>
+                      </p>
+                      </div>
+                    </div>
+                  </div>
+                  <% else %>
+                    <div class="position-relative">
+                      <div class="talk-bubble tri-right round right-in">
+                        <div class="talktext">
+                      <p class="other-user-message"><%= message.content%></p>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+              <% end %>
               </div>
-            <div id="new_message">
-              <%= render 'form', user: current_user, conversation: conversation, message: Message.new %>
+              <div class="talk-bubble tri-right round left-in">
+                <div class="talktext">
+                  <div id="new_message">
+                    <%= render 'form', user: current_user, conversation: conversation, message: Message.new %>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
           <% end %>
         </div>
     </div>
