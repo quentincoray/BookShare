@@ -39,7 +39,9 @@ class ApplicationController < ActionController::Base
     @messages = Conversation.where(user1_id: user.id).or(Conversation.where(user2_id: user.id)).map { |conversation| conversation.messages }.flatten
     @messages = @messages.reject! { |message| message.user == current_user }
     @messages = @messages.select! { |message| message.read == false}
-    @messages_count = @messages.count
+    if @messages
+      @messages_count ||= @messages.count
+    end
   end
 
   def skip_pundit?
