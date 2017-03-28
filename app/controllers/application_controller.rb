@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
+
   protected
 
   def current_order
