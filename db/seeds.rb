@@ -186,8 +186,11 @@ puts "Creating loved books..."
 
 camille_loved_book1 = LovedBook.create!(user: camille, book: book5)
 camille_loved_book2 = LovedBook.create!(user: camille, book: book2)
-quentin_loved_book1 = LovedBook.create!(user: camille, book: book8)
-quentin_loved_book2 = LovedBook.create!(user: camille, book: book11)
+quentin_loved_book1 = LovedBook.create!(user: quentin, book: book8)
+quentin_loved_book2 = LovedBook.create!(user: quentin, book: book11)
+quentin_loved_book3 = LovedBook.create!(user: quentin, book: book3)
+anne_sophie_loved_book1 = LovedBook.create!(user: anne_sophie, book: book4)
+anne_sophie_loved_book2 = LovedBook.create!(user: anne_sophie, book: book9)
 
 puts "Creating loved booksmates..."
 
