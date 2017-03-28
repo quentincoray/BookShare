@@ -41,9 +41,6 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-
-<!-- <script> -->
-
       $('#searched_books').on('keyup', function(event) {
         if(this.value.length < 4) return;
           console.log($('#searched_books').val());
