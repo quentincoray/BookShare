@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('#messages-content').hide;
-  $('.blabla').on('click', function () {
+  $('.listing').on('click', function () {
     $('.conversation').addClass('hidden')
     var content = $(this).text()
     console.log(content);

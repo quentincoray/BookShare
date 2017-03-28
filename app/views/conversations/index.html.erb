@@ -9,7 +9,7 @@
         <h3>Mes conversations</h3>
           <div class="chat-index">
             <% @conversations.each do |conversation| %>
-              <a class="blabla" data-target="#conversation_<%= conversation.id %>">
+              <a class="listing" data-target="#conversation_<%= conversation.id %>">
               <% if conversation.user1 == current_user %>
                 <p>Conversation avec: <%= conversation.user2.first_name %></p>
               <% else %>
