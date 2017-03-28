@@ -21,6 +21,14 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  def save_loved_books(isbn)
+    loved_book_isbns = books.pluck(:isbn)
+    books_to_love = Book.where(isbn: isbn).where.not(isbn: loved_book_isbns)
+
+    books_to_love.each do |book|
+      loved_books.create(book: book)
+    end
+  end
 
   def conversations
     Conversation.includes(:messages)
