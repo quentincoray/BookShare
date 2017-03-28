@@ -6,6 +6,7 @@ class SellingBooksController < ApplicationController
     @order = Order.new
     @isbn = @selling_book.book.isbn
     @bookmate = @selling_book.bookmate
+    @books_category = SellingBook.where(bookmate_book_category: @selling_book.bookmate_book_category)
   end
 
   private
