@@ -7,7 +7,5 @@ $(document).ready(function() {
     var conversation_id = $(this).data('target');
     console.log(conversation_id);
     $(conversation_id).removeClass('hidden');
-
-
   });
 });

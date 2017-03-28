@@ -50,4 +50,4 @@ var currentTab = (function () {
     //initialization
     resizeSectionHeights();
 
-}());
+});

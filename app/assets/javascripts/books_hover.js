@@ -5,9 +5,9 @@ $(document).ready(() => {
 
   }).on('mouseleave', function() {
     removeHasClasses()
-  })
+  });
 
   function removeHasClasses() {
     $('.card').removeClass('has-negative-translate has-positive-translate')
   }
-})
+});
