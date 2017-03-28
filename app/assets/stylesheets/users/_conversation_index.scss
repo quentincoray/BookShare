@@ -1,23 +1,45 @@
+#messages-content {
+  margin-top: 10px;
+  padding: 10px;
+  width: 80%;
+  margin: auto;
+  margin-top: 55px;
+}
+
 .user1-name, .current-user-message {
-  color: blue;
+  background-color: $grey;
 }
 
 .user2-name, .other-user-message {
-  color: red
+  background-color: $blue;
+}
+
+.chat-index {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 2px 2px 2px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }
 
 a:hover{
+  background: rgba(255,115,115,0.20);
   cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
 }
 
 .talk-bubble {
   margin: 15px;
   display: inline-block;
   position: relative;
-  width: 100%;
+  width: 75%;
   height: auto;
-  background-color: $light-grey;
-  padding: 5% 5%;
+  // background-color: $light-grey;
+  padding: 2% 2%;
 }
 
 .round{
@@ -31,12 +53,12 @@ a:hover{
   position: absolute;
   width: 0;
   height: 0;
-  left: -20px;
+  left: -15px;
   right: auto;
-  top: 38px;
+  top: 15px;
   bottom: auto;
   border: 12px solid;
-  border-color: $light-grey $light-grey transparent transparent;
+  border-color: $grey $grey transparent transparent;
 }
 
 .tri-right.right-in:after{
@@ -45,20 +67,20 @@ a:hover{
   width: 0;
   height: 0;
   left: auto;
-  right: -20px;
-  top: 38px;
+  right: -15px;
+  top: 15px;
   bottom: auto;
   border: 12px solid;
-  border-color: $light-grey transparent transparent $light-grey;
+  border-color: $blue transparent transparent $blue;
 }
 
-// .talktext{
-//   padding: 1em;
-//   text-align: left;
-//   line-height: 1.5em;
-// }
-// .talktext p{
-//   /* remove webkit p margins */
-//   -webkit-margin-before: 0em;
-//   -webkit-margin-after: 0em;
-// }
+.talktext p {
+  color: white;
+}
+
+
+
+// $lightgrey pour la side bar
+// $gray pour mes messages
+// $blue pour les messages de mon interlocuteur
+// $white pour le fond
