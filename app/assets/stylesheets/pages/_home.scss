@@ -6,7 +6,7 @@
 .home-title {
   width: 785px;
   margin: auto;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .home-subtitle {
@@ -110,7 +110,7 @@
 }
 .pages-home .navbar-wagon-item {
   color: white;
-  font-family:'brandon_grotesque_regular';
+  font-family: $header-font;
   font-size:18px;
   padding: 7px;
 }
@@ -138,7 +138,3 @@
   color:white;
 }
 
-html body {
-  height: 100%;
-  margin: 0;
-}

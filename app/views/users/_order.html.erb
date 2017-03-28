@@ -1,48 +1,47 @@
 
   <!-- A changer en requete ajax -->
   <div class="card-grey-dashboard">
-    <div class="order-bookmate">
-      <div class="user-avatar text-center">
-        <div class = "card-user text-center">
-          <%= cl_image_tag order.bookmate.user.photo.path, :width=>80, :height=>80, :gravity=>"auto", :crop=>"fill", class:"bookmate-avatar"  %>
-        </div>
-        <h2><%= order.bookmate.user.first_name  %></h2>
-      </div>
+    <div class="order-bookmate text-center">
+      <%= cl_image_tag order.bookmate.user.photo.path, :width=>80, :height=>80, :gravity=>"auto", :crop=>"fill", class:"bookmate-avatar"  %>
+
+      <h2><%= order.bookmate.user.first_name  %></h2>
     </div>
 
     <div class="order-description">
 
-    <h2>Détail de la commande </h2>
-    <% counter= 0 %>
+      <h2>Détail de la commande </h2>
+      <% counter= 0 %>
       <% order.selling_books.each do |selling_book| %>
         <% counter += 1 %>
-        <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
+        <div class="order-book-list">
+          <p><%= selling_book.book.title %> - <%= selling_book.book.author %></p>
 
-        <% if current_user.loved_books.where(book: selling_book.book).exists? %>
-          <%= link_to book_loved_book_path(selling_book.book), method: :delete, class: "blue", id: "like#{counter}" do %>
-            <i class="fa fa-heart" aria-hidden="true"></i>
+          <% if current_user.loved_books.where(book: selling_book.book).exists? %>
+            <%= link_to book_loved_book_path(selling_book.book), method: :delete, class: "blue", id: "like#{counter}" do %>
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            <% end %>
+          <% else %>
+            <%= link_to book_loved_book_path(selling_book.book), method: :post, class: "blue", id: "like#{counter}" do %>
+              <i class="fa fa-heart-o" ></i>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to book_loved_book_path(selling_book.book), method: :post, class: "blue", id: "like#{counter}" do %>
-            <i class="fa fa-heart-o" ></i>
-          <% end %>
-        <% end %>
+        </div>
 
       <% end %>
+      <h2 class="order-delivery"><span class="text-bold">Mode de livraison :</span>  <%= order.delivery_type %></h2>
     </div>
 
     <div class="order-details">
-      <span><h2>Mode de livraison : <%= order.delivery_type %></h2></span>
-      <span><h2>Date : <%= order.created_at.strftime('%d.%m.%y') %></h2></span>
+        <h2 class="order-date"><%= order.created_at.strftime('%d.%m.%y') %></h2>
 
         <% if order.review.present? %>
           <!-- Comment done -->
-          <div id="thank-review#{order.id}">
+          <div class="review-right" id="thank-review#{order.id}">
             <p>Votre commentaire a bien été pris en compte</p>
           </div>
         <% else %>
           <!-- Button trigger modal -->
-          <button type="button" id="btn-comment<%= order.id %>" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= order.id %>">
+          <button type="button" id="btn-comment<%= order.id %>" class="btn btn-primary review-right" data-toggle="modal" data-target="#myModal<%= order.id %>">
             Faire un commentaire
           </button>
         <% end %>

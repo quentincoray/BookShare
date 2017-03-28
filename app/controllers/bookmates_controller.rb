@@ -18,9 +18,31 @@ class BookmatesController < ApplicationController
     end
   end
 
+
   def search
     @address = [params[:latitude],params[:longitude]].join(",")
     @isbn = params[:isbn]
+
+    if user_signed_in?
+      loved_book_isbns = current_user.books.pluck(:isbn)
+
+      # Add selected books to user loved books
+      if @isbn.present?
+        books_to_love = Book.where(isbn: @isbn).where.not(isbn: loved_book_isbns)
+
+        books_to_love.each do |book|
+          current_user.loved_books.create(book: book)
+        end
+      end
+
+      # include loved books to bookmate search
+      @isbn += loved_book_isbns
+    else
+      session[:isbn] = @isbn
+    end
+
+    # TO DO : Once connected we save in loved books
+
     #récupère un array de ISBN > comparer les bookstore collections avec cet array
     @users_near_me = User.near(@address, 10)
     # @bookmates_near_me = @users_near_me.map { |user| user.bookmates }.flatten

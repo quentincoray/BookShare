@@ -21,8 +21,17 @@
   padding-top: 80px;
 }
 
-.side-bar-padding-left {
-  padding-left:10px;
+.sidebar {
+  position: fixed;
+  width: 250px;
+  top: 55px;
+  left: 0;
+  bottom: 0;
+  background-color: $light-grey;
+  h3 {
+    padding-left: 38px;
+    margin-top: 75px;
+  }
 }
 
 #text-column {
