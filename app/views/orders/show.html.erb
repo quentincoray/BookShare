@@ -32,9 +32,11 @@
 
                 <div class="card-grey text-center">
                   <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
-                    <div class="books-container">
+                    <div class="books">
                       <% @order.selling_books.each do |selling_book| %>
-                        <%= cl_image_tag selling_book.book.photo.path %>
+                        <div class="book">
+                          <%= cl_image_tag selling_book.book.photo.path %>
+                        </div>
                       <% end %>
                     </div>
                     <span><p>Total :</p></span> <span><h2><%= @total %>€</h2></span>
@@ -50,4 +52,3 @@
       </div>
   </div>
 </div>
-
