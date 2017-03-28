@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
-  before_action :set_basket_count, if: :user_signed_in?
+  before_action :set_basket_count,  if: :user_signed_in?
   before_action :set_message_count, if: :user_signed_in?
+  before_action :save_loved_books,  if: :user_signed_in?
 
   include Pundit
 
@@ -31,6 +32,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def save_loved_books
+    isbn = session[:isbn_to_love]
+    return if isbn.blank?
+
+    current_user.save_loved_books(isbn)
+    session[:isbn_to_love] = nil
+  end
+
   def set_basket_count
     @basket_counter ||= current_order.ordered_books.count
   end
@@ -50,7 +59,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-  { host: ENV["HOST"] || "www.bookshare-lewagon.herokuapp.com" }
+    { host: ENV["HOST"] || "www.bookshare-lewagon.herokuapp.com" }
   end
 end
 
