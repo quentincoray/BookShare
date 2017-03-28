@@ -158,6 +158,30 @@ selling_book21 = SellingBook.create!(personalized_comment: "Une fantastique odys
 photo_book5 = 'https://images-eu.ssl-images-amazon.com/images/I/51mq14kMy4L._SY346_.jpg'
 book5.photo_url = photo_book5
 
+puts "Creating conversations..."
+c1 = Conversation.create!(user1: quentin, user2: anne_sophie)
+c2 = Conversation.create!(user1: camille, user2: anne_sophie)
+c3 = Conversation.create!(user1: alice, user2: camille)
+c4 = Conversation.create!(user1: camille, user2: quentin)
+c5 = Conversation.create!(user1: quentin, user2: edouard)
+c6 = Conversation.create!(user1: alice, user2: quentin)
+
+puts "Creating messages..."
+m1 = Message.create!(user: quentin, conversation: c1, content: "Besoin de conseils en littérature américaine")
+m2 = Message.create!(user: camille, conversation: c2, content: "Est-ce que tu vends toujours 'Réparer les Vivants' ?")
+m3 = Message.create!(user: camille, conversation: c3, content: "Tu préfères les chats ou la littérature ?")
+m4 = Message.create!(user: anne_sophie, conversation: c1, content: "Salut Quentin, avec plaisir pour te conseiller! Tu peux m'en dire plus sur tes goûts ?")
+m5 = Message.create!(user: anne_sophie, conversation: c2, content: "Hello Camille, je te confirme que le livre est toujours à vendre (et qu'il est vraiment très bien !) Intéressée ?")
+m6 = Message.create!(user: alice, conversation: c3, content: "Je préfère les chats, j'en ai 10 chez moi. D'ailleurs si tu veux je peux t'en prêter un. Et si tu veux faire garder ton chat, regarde sur Easyc@t, super site!")
+m7 = Message.create!(user: camille, conversation: c4, content: "Quentin, il faut que ça CSS.... ")
+m8 = Message.create!(user: quentin, conversation: c5, content: "Salut Edouard, tu connais les avocats ?")
+m9 = Message.create!(user: alice, conversation: c6, content: "Hello, tu as des BD à me conseiller qui mettent en scène des chats ?")
+m10 = Message.create!(user: quentin, conversation: c4, content: "Non, on est sur les Rails, il faut avancer !")
+m11 = Message.create!(user: edouard, conversation: c5, content: "Non.... mais j'ai de la chance, c'est ça ?")
+m12 = Message.create!(user: quentin, conversation: c6, content: "Tu peux lire 'Le Chat du Rabbin', c'est très chouette !")
+
+
+
 puts "Creating loved books..."
 
 camille_loved_book1 = LovedBook.create!(user: camille, book: book5)
@@ -165,6 +189,7 @@ camille_loved_book1 = LovedBook.create!(user: camille, book: book5)
 puts "Creating loved booksmates..."
 
 camille_loved_bookmate1 = LovedBookstore.create!(user: camille, bookmate: quentin_bookstore)
+
 puts "ok"
 
 
