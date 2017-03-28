@@ -8,9 +8,13 @@
               <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
 
               <div class="books-container">
-                <% current_order.selling_books.each do |selling_book| %>
-                  <%= cl_image_tag selling_book.book.photo.path %>
-                <% end %>
+                <div class="books">
+                  <% current_order.selling_books.each do |selling_book| %>
+                    <div class="book">
+                      <%= cl_image_tag selling_book.book.photo.path %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
             </div>
             <div class="col-xs-5">
