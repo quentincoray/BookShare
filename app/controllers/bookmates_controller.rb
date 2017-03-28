@@ -28,22 +28,16 @@ class BookmatesController < ApplicationController
 
       # Add selected books to user loved books
       if @isbn.present?
-        books_to_love = Book.where(isbn: @isbn).where.not(isbn: loved_book_isbns)
-
-        books_to_love.each do |book|
-          current_user.loved_books.create(book: book)
-        end
+        current_user.save_loved_books(@isbn)
       end
 
-      # include loved books to bookmate search
+      # Include loved books to bookmate search
       @isbn += loved_book_isbns
     else
-      session[:isbn] = @isbn
+      session[:isbn_to_love] = @isbn
     end
 
-    # TO DO : Once connected we save in loved books
-
-    #récupère un array de ISBN > comparer les bookstore collections avec cet array
+    #recupere un array de ISBN > comparer les bookstore collections avec cet array
     @users_near_me = User.near(@address, 10)
     # @bookmates_near_me = @users_near_me.map { |user| user.bookmates }.flatten
     @bookmates_near_me = Bookmate.where(user_id: @users_near_me.map(&:id))
@@ -52,7 +46,8 @@ class BookmatesController < ApplicationController
       select("bookmates.*, COUNT(books.id) AS common_books").
       joins(:books).
       where(books: { isbn: @isbn }).
-      group("bookmates.id")
+      group("bookmates.id").
+      order("common_books DESC")
 
 
     # FIXME
