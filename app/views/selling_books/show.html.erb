@@ -103,9 +103,6 @@
       });
 
 
-
-
-
 <!-- <script> -->
       var isbn = <%= @isbn %>;
       console.log(isbn);
@@ -123,9 +120,10 @@
               type: "GET",
               url: "https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles="+author_from_api+"&exintro=1&origin=*",
               success: function(data) {
-                var wiki_extract = data;
-                console.log(wiki_extract.query.pages);
-                $("#author_bio").html(wiki_extract);
+                var wiki_extract = data.query.pages;
+                var author_bio_wiki = (wiki_extract[Object.keys(wiki_extract)[0]].extract);
+                console.log(author_bio_wiki);
+                $("#author_bio").html(author_bio_wiki);
               },
               error: function(jqXHR) {
                 console.error(jqXHR.responseText);
