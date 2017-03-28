@@ -116,10 +116,14 @@
       </div>
 <!--       Contenu des livres préférés -->
       <div class="tab-content hidden" id="loved_books">
-        <h2>Mes livres préférés</h2>
-        <% @loved_books.each do |loved_book| %>
-          <%= loved_book.book.title %>
-        <% end %>
+        <h1>Mes livres préférés</h1>
+        <div class="books">
+          <% @loved_books.each do |loved_book| %>
+            <div class="book">
+              <%= cl_image_tag loved_book.book.photo.path %>
+            </div>
+          <% end %>
+        </div>
       </div>
 <!--       Contenu des bookmates -->
       <div class="tab-content hidden" id="bookmates">

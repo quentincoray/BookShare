@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     @order.order_status = "pending"
     @order.bookmate = @selling_book.bookmate
     @order.delivery_status = "en cours"
-    @order.delivery_type = "livraison à domicile"
+    @order.delivery_type = "Livraison à domicile"
     @order.user = current_user
     @order.selling_books << @selling_book
     @order.save

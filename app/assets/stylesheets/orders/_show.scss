@@ -33,9 +33,6 @@
 
 .order-wrapper {
   min-height: calc(100vh - 60px - 55px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 span {
@@ -45,8 +42,6 @@ span {
 #total {
   padding-top: 5px;
 }
-
-$scale: 1.2;
 
 .books { display: flex;
          justify-content: center;
