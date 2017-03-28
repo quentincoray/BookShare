@@ -52,7 +52,8 @@ class BookmatesController < ApplicationController
       select("bookmates.*, COUNT(books.id) AS common_books").
       joins(:books).
       where(books: { isbn: @isbn }).
-      group("bookmates.id")
+      group("bookmates.id").
+      order("common_books DESC")
 
 
     # FIXME
