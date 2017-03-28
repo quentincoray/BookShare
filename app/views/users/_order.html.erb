@@ -41,7 +41,7 @@
           </div>
         <% else %>
           <!-- Button trigger modal -->
-          <button type="button" id="btn-comment<%= order.id %>" class="btn btn-primary review-right" data-toggle="modal" data-target="#myModal<%= order.id %>">
+          <button type="button" id="btn-comment<%= order.id %>" class="btn-bookshare-red review-right" data-toggle="modal" data-target="#myModal<%= order.id %>">
             Faire un commentaire
           </button>
         <% end %>
@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="modal-footer">
-                    <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{order.id}"%>
+                    <%= f.button :submit, "Envoyer le commentaire",class: " btn-bookshare-red",id: "save-review#{order.id}"%>
                     </div>
                   <% end %>
                 </div>

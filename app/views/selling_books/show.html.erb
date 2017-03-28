@@ -29,7 +29,7 @@
               <div id="btn-ajouter">
                 <%= simple_form_for @order do |f| %>
                   <%= hidden_field_tag :selling_book_id, @selling_book.id %>
-                  <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
+                  <%= f.submit "Ajouter à mon panier", class: "btn-bookshare-red" %>
                 <% end %>
               </div>
             <% end %>
