@@ -14,13 +14,23 @@
         Devenez Bookmate
       </div>
 
+
+      <!-- Button (call-to-action) -->
+      <a href="" class="navbar-wagon-item navbar-wagon-button">
+        Trouver un bookstore
+      </a>
+
       <!-- enveloppe -->
       <div class="navbar-wagon-item">
         <div class="badge-container">
           <% if user_signed_in? %>
             <%= link_to  user_conversations_path(current_user) do%>
-              <i class="fa fa-envelope-o"></i>
-              <div class="badge badge-red"><%= @messages_count %></div>
+              <% if @messages_count == 0 %>
+                <i class="fa fa-envelope-o"></i>
+              <% else %>
+                <i class="fa fa-envelope-o"></i>
+                <div class="badge badge-red"><%= @messages_count %></div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -31,11 +41,11 @@
         <div class="badge-container">
           <% if current_order && current_order.persisted? %>
             <%= link_to order_path(current_order) do %>
-              <%= image_tag "shopping-cart.png", class: "shopping-cart-logo" %>
+              <%= image_tag "shopping-cart-grey.png", class: "shopping-cart-logo" %>
               <div class="badge badge-red"><%= @basket_counter %></div>
             <% end %>
           <% else %>
-            <%= image_tag "shopping-cart.png", class: "shopping-cart-logo" %>
+            <%= image_tag "shopping-cart-grey.png", class: "shopping-cart-logo" %>
           <% end %>
         </div>
       </div>
