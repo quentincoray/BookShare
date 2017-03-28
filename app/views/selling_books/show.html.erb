@@ -117,12 +117,20 @@
             console.log(datum);
             var summary_from_api = datum.volumeInfo.description;
             $("#book_summary").html(summary_from_api);
-          //   // $("#author_bio").html('<div id="results"></div>');
-            // data.items.forEach(function(item) {
-            //   // var author_from_api = item.volumeInfo.authors;
-            //   $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"' data-title='"+book_title+"' data-author='"+book_author+"'/></a>");
-            // });
-          // });
+            var author_from_api = datum.volumeInfo.authors;
+            console.log(author_from_api);
+            $.ajax({
+              type: "GET",
+              url: "https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles="+author_from_api+"&exintro=1&origin=*",
+              success: function(data) {
+                var wiki_extract = data;
+                console.log(wiki_extract.query.pages);
+                $("#author_bio").html(wiki_extract);
+              },
+              error: function(jqXHR) {
+                console.error(jqXHR.responseText);
+              }
+            });
         },
         error: function(jqXHR) {
           console.error(jqXHR.responseText);
@@ -131,7 +139,6 @@
     });
   <% end %>
 <% end %>
-
 
 
 
