@@ -4,40 +4,39 @@
 
 <div class="book-header">
   <div class ="container">
-    <div class="book-header-container">
-    <!-- En-tête avec photo titre auteur bookmate et commentaire -->
-      <div class="row">
-        <!-- Couverture du livre -->
-          <div class="col-xs-2">
-            <%= cl_image_tag @selling_book.book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
-          </div>
-        <!-- Description et commentaire -->
-        <div class="col-xs-7">
-          <h2 class ="red"><%= @selling_book.book.title %> - <%= @selling_book.book.author %></h2>
-          <hr>
-          <%= cl_image_tag @selling_book.bookmate_book_category.bookmate.user.photo.path, class:"bookmate-avatar" %>
-          <h2>Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %></h2>
-          <p><%= @selling_book.personalized_comment%></p>
+    <div class="row">
+      <div class="book-header-container">
+      <!-- En-tête avec photo titre auteur bookmate et commentaire -->
+        <div class="book-header-image">
+          <%= cl_image_tag @selling_book.book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
         </div>
-        <!-- Achat -->
-        <div class="col-xs-3">
-          <h2>Etat : <%= @selling_book.condition%></h2>
-          <h2><%= @selling_book.price%> €</h2>
+        <div class="book-header-details">
+          <div class="book-header-description">
+            <h1><%= @selling_book.book.title %> - <%= @selling_book.book.author %></h1>
+            <hr>
+            <%= cl_image_tag @selling_book.bookmate_book_category.bookmate.user.photo.path, class:"bookmate-avatar" %>
+            <h2>Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %></h2>
+            <p><%= @selling_book.personalized_comment%></p>
+          </div>
+          <div class="book-header-actions">
+            <h2>Etat : <%= @selling_book.condition%></h2>
+            <h2><%= @selling_book.price%> €</h2>
 
-          <!-- A faire -->
-          <% if current_order.selling_books.include? @selling_book %>
-            Le livre a bien été ajouté
-          <% else %>
-            <div id="btn-ajouter">
-              <%= simple_form_for @order do |f| %>
-                <%= hidden_field_tag :selling_book_id, @selling_book.id %>
-                <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
-              <% end %>
+            <!-- A faire -->
+            <% if current_order.selling_books.include? @selling_book %>
+              Le livre a bien été ajouté
+            <% else %>
+              <div id="btn-ajouter">
+                <%= simple_form_for @order do |f| %>
+                  <%= hidden_field_tag :selling_book_id, @selling_book.id %>
+                  <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            <% end %>
+            <div id="phrase-done">
+              <h2 class="green">Ajouté au panier <i class="fa fa-check green"></i></h2>
+
             </div>
-          <% end %>
-          <div id="phrase-done">
-            <h2 class="green">Ajouté au panier</h2>
-            <i class="fa fa-check green"></i>
           </div>
         </div>
       </div>
@@ -47,25 +46,28 @@
 
 <div class="book-body">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-2">
-        <div class="book-body-column">
-          <!-- <h2>Vos bookmates ont aimé</h2> -->
-          <!-- <p>Photos des bookmates</p> -->
-        </div>
-      </div>
-      <div class="book-body-container">
-        <div class="col-xs-9">
-          <div class="row">
-            <div class="book-body-column">
-              <h2>Les autres livres de la catégorie</h2>
-                <div class="books-container">
-                  <% @selling_book.bookmate_book_category.books.each do |book| %>
-                    <% next if book == @selling_book.book %>
-                      <%= cl_image_tag book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
-                    <% end %>
-                </div>
-              <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
+    <div class="book-body-wrapper">
+      <div class="row">
+        <!-- <div class="col-xs-2"> -->
+
+          <!-- <div class="book-body-column"> -->
+            <!-- <h2>Vos bookmates ont aimé</h2> -->
+            <!-- <p>Photos des bookmates</p> -->
+          <!-- </div> -->
+       <!--  </div> -->
+        <div class="book-body-container">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="book-body-column">
+                <h2>Les autres livres de la catégorie</h2>
+                  <div class="books-container">
+                    <% @selling_book.bookmate_book_category.books.each do |book| %>
+                      <% next if book == @selling_book.book %>
+                        <%= cl_image_tag book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
+                      <% end %>
+                  </div>
+                <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -84,6 +86,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 <% content_for(:after_js) do %>

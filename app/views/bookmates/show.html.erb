@@ -1,11 +1,11 @@
 
 
   <div class="col-xs-2 " >
-    <div class=" side-bar side-bar-padding-top">
+    <div class="side-bar side-bar-padding-top">
       <div class="text-center">
         <%= cl_image_tag @bookmate.user.photo.path, alt: "profile picture", class: "avatar avatar-medium border-white text-center" %>
       </div>
-      <div class="side-bar-padding-left">
+      <div class="padded-left">
         <h3>GENRES FAVORIS</h3>
         <% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
           <h2>

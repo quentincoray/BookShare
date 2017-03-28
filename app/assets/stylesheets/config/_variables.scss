@@ -3,10 +3,9 @@
  * ------------------------------------- */
 // Google fonts
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Lato:300,400,700,900");
 $base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: 'brandon_grotesque_bold', "Helvetica", "sans-serif";
-$header-intermediary-font: 'brandon_grotesque_thin', "Helvetica", "sans-serif";
+$header-font: 'Lato', "Helvetica", "sans-serif";
 
 // Font-size and line-height
 $header1-size:25px;
@@ -17,30 +16,30 @@ $base-size: 16px;
 
 
 // Local fonts (uncomment following lines)
-@font-face {
-    font-family: 'brandon_grotesque_bold';
-    src: font-url('brandon_bld-webfont.woff2') format('woff2'),
-         font-url('brandon_bld-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+// @font-face {
+//     font-family: 'brandon_grotesque_bold';
+//     src: font-url('brandon_bld-webfont.woff2') format('woff2'),
+//          font-url('brandon_bld-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
 
-}
+// }
 
-@font-face {
-    font-family: 'brandon_grotesque_regular';
-    src: font-url('brandon_reg-webfont.woff2') format('woff2'),
-         font-url('brandon_reg-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+// @font-face {
+//     font-family: 'brandon_grotesque_regular';
+//     src: font-url('brandon_reg-webfont.woff2') format('woff2'),
+//          font-url('brandon_reg-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
 
-}
+// }
 
-@font-face {
-    font-family: 'brandon_grotesque_thin';
-    src: font-url('Brandon_thin.otf') format('otf');
-    // font-weight: normal;
-    // font-style: normal;
-}
+// @font-face {
+//     font-family: 'brandon_grotesque_thin';
+//     src: font-url('Brandon_thin.otf') format('otf');
+//     // font-weight: normal;
+//     // font-style: normal;
+// }
 
 // $my-font: "Font Name";
 // border radius
@@ -66,20 +65,27 @@ $light-grey: #FBFBFB;
 
 //size fonts
 
+
+// html body {
+//   min-height:calc(100vh - 50px) !important;
+// }
+
 body {
   color: $dark-grey !important;
+  // min-height:calc(100vh - 50px) !important;
 }
 
 
 h1 {
-  font-family: $header-font;
-  font-size: $header1-size !important;
+  //font-family: $header-font;
+  // font-size: $header1-size !important;
   color: $red !important;
+  font-weight: 700;
 }
 
 h2 {
-  font-family: $header-font;
-  font-size: $header2-size !important;
+ // font-family: $header-font;
+  // font-size: $header2-size;
   color: $dark-grey !important;
   margin-top: 5px !important;
 }
@@ -98,9 +104,9 @@ h3 {
 }
 
 p {
-  font-family: $base-font;
+  //font-family: $base-font;
   font-weight: 300;
-  font-size: $base-size !important;
+  //font-size: $base-size !important;
   color:$dark-grey;
 }
 
@@ -170,8 +176,8 @@ p {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  padding: 5px;
-  width:826px;
+  padding: 20px;
+  position: relative;
 }
 
 .card-grey-dashboard:hover {
