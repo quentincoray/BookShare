@@ -71,15 +71,13 @@
           <div class="row">
             <div class="book-body-column">
               <h2>Résumé du livre</h2>
-              <p id="book_summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.</p>
+              <p id="book_summary"></p>
             </div>
           </div>
           <div class="row">
             <div class="book-body-column">
               <h2>Biographie de l'auteur</h2>
-              <p id="author_bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed quam placerat, molestie nibh in, condimentum arcu. Sed pharetra nisl est. Nulla dignissim condimentum elit, a consectetur ex dictum id. Integer quis scelerisque ex, vitae sollicitudin massa. Maecenas rhoncus finibus suscipit. Suspendisse eu elit in lorem pulvinar condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut varius mauris lacus, sed malesuada mauris pretium vel. Maecenas vitae sodales quam.
-
-              Pellentesque metus augue, accumsan id tortor non, viverra sollicitudin ligula. Curabitur facilisis, ligula et accumsan lacinia, ante risus elementum nisl, quis blandit justo mi et nisi. Duis fermentum id ligula at imperdiet. Aliquam condimentum nisi odio, ut ultrices orci porttitor a. Vestibulum mauris dui, mollis eu libero pretium, ultricies fringilla mi. Donec ornare lectus et sapien hendrerit, a porta nisl aliquet. Etiam eget est blandit, cursus quam id, facilisis sem. Vivamus euismod libero sit amet nisl vehicula, sit amet lobortis ante commodo. Nulla posuere finibus libero eu feugiat.</p>
+              <p id="author_bio"></p>
             </div>
           </div>
         </div>
@@ -103,27 +101,32 @@
       });
 
 
-
-
-
 <!-- <script> -->
       var isbn = <%= @isbn %>;
+      console.log(isbn);
       $.ajax({
         type: "GET",
-        url: "https://www.googleapis.com/books/v1/volumes?q="+isbn+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+        url: "https://www.googleapis.com/books/v1/volumes?q=+isbn="+isbn+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
         success: function(data) {
-          console.log(data);
-          console.log(data.items)
-          // (function (item) {
-          //   var summary_from_api = item.volumeInfo.authors.description;
-          //   console.log(summary_from_api);
-          //   $("#book_summary").html(summary_from_api);
-          //   // $("#author_bio").html('<div id="results"></div>');
-            // data.items.forEach(function(item) {
-            //   // var author_from_api = item.volumeInfo.authors;
-            //   $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"' data-title='"+book_title+"' data-author='"+book_author+"'/></a>");
-            // });
-          // });
+            var datum = data.items[0];
+            console.log(datum);
+            var summary_from_api = datum.volumeInfo.description;
+            $("#book_summary").html(summary_from_api);
+            var author_from_api = datum.volumeInfo.authors;
+            console.log(author_from_api);
+            $.ajax({
+              type: "GET",
+              url: "https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles="+author_from_api+"&exintro=1&origin=*",
+              success: function(data) {
+                var wiki_extract = data.query.pages;
+                var author_bio_wiki = (wiki_extract[Object.keys(wiki_extract)[0]].extract);
+                console.log(author_bio_wiki);
+                $("#author_bio").html(author_bio_wiki);
+              },
+              error: function(jqXHR) {
+                console.error(jqXHR.responseText);
+              }
+            });
         },
         error: function(jqXHR) {
           console.error(jqXHR.responseText);
@@ -132,7 +135,6 @@
     });
   <% end %>
 <% end %>
-
 
 
 
