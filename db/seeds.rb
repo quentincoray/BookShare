@@ -184,13 +184,20 @@ m12 = Message.create!(user: quentin, conversation: c6, content: "Tu peux lire 'L
 
 puts "Creating loved books..."
 
-camille_loved_book1 = LovedBook.create!(user: camille, book: book5)
+camille_loved_book1 = LovedBook.create!(user: camille, book: book1)
 camille_loved_book2 = LovedBook.create!(user: camille, book: book2)
-quentin_loved_book1 = LovedBook.create!(user: quentin, book: book8)
-quentin_loved_book2 = LovedBook.create!(user: quentin, book: book11)
-quentin_loved_book3 = LovedBook.create!(user: quentin, book: book3)
+camille_loved_book3 = LovedBook.create!(user: camille, book: book5)
+quentin_loved_book1 = LovedBook.create!(user: quentin, book: book3)
+quentin_loved_book2 = LovedBook.create!(user: quentin, book: book8)
+quentin_loved_book3 = LovedBook.create!(user: quentin, book: book11)
 anne_sophie_loved_book1 = LovedBook.create!(user: anne_sophie, book: book4)
 anne_sophie_loved_book2 = LovedBook.create!(user: anne_sophie, book: book9)
+anne_sophie_loved_book3 = LovedBook.create!(user: anne_sophie, book: book14)
+jean_loved_book1 = LovedBook.create!(user: jean, book: book10)
+jean_loved_book2 = LovedBook.create!(user: jean, book: book12)
+alice_loved_book1 = LovedBook.create!(user: alice, book: book12)
+alice_loved_book2 = LovedBook.create!(user: alice, book: book15)
+edouard_loved_book1 = LovedBook.create!(user: edouard, book: book14)
 
 puts "Creating loved booksmates..."
 

@@ -60,11 +60,13 @@
             <div class="row">
               <div class="book-body-column">
                 <h2>Les autres livres de la catégorie</h2>
-                  <div class="books-container">
+                  <div class="books">
                     <% @books_category.each do |selling_book| %>
                       <% next if selling_book == @selling_book %>
                         <%= link_to bookmate_selling_book_path(@bookmate, selling_book) do %>
-                          <%= cl_image_tag selling_book.book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
+                          <div class="book">
+                            <%= cl_image_tag selling_book.book.photo.path %>
+                          </div>
                       <% end %>
                     <% end %>
                   </div>

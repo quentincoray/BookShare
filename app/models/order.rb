@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   DELIVERY_STATUS = ["en cours","effectuée"]
-  DELIVERY_TYPE = ["livraison à domicile", "livraison en main propre"]
+  DELIVERY_TYPE = ["Livraison à domicile", "Livraison en main propre"]
 
   belongs_to :bookmate
   belongs_to :user
@@ -9,7 +9,7 @@ class Order < ApplicationRecord
 
   validates :order_status, inclusion: { in: ["pending","paid"], allow_nil: false }
   validates :delivery_status, inclusion: { in: ["en cours","effectuée"], allow_nil: false }
-  validates :delivery_type, inclusion: { in: ["livraison à domicile","livraison en main propre"], allow_nil: false }
+  validates :delivery_type, inclusion: { in: ["Livraison à domicile","Livraison en main propre"], allow_nil: false }
 
 
   # def average_rating

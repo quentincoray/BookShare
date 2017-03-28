@@ -51,14 +51,14 @@
         <div class="book-category">
           <h2 class="red"><%= bookmate_book_category.name %></h2>
           <div class="card-grey-bookmate-page">
-            <div class="books-container">
+            <div class="books">
               <% bookmate_book_category.selling_books.each do |selling_book| %>
-              <div class="book-card">
+              <div class="book">
                 <% if selling_book.sold %>
                   <p>Vendu à mettre en bannière sur la card</p>
                 <% end %>
-                  <%= link_to bookmate_selling_book_path(@bookmate, selling_book), class: "" do %>
-                     <%= cl_image_tag selling_book.book.photo.path, :height=>200, :gravity=>"auto", :crop=>"fill"%>
+                  <%= link_to bookmate_selling_book_path(@bookmate, selling_book) do %>
+                     <%= cl_image_tag selling_book.book.photo.path %>
                   <% end %>
               </div>
             <% end %>
