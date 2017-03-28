@@ -43,23 +43,33 @@ span {
   padding-top: 5px;
 }
 
-$scale: 1.4;
+$scale: 1.2;
 
-.books { display: flex }
+.books { display: flex;
+         justify-content: center;
+         align-items: space-between;
+         position: relative;
+         padding: 10px; }
 
 .book {
-  background: #E82A4E;
   position: relative;
   cursor: pointer;
-  width: 200px;
-  height: auto;
+  width: auto;
+  height: 220px;
   margin-right: 3px;
   transition: .3s cubic-bezier(.5, 0, .1, 1) transform;
   transition-delay: .15s;
 
+  img {
+  height: 220px;
+  width: auto;
+  margin-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  }
+
   &:hover {
     transform: scale($scale);
-
   }
 
   &.has-positive-translate {
