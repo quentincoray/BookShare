@@ -26,46 +26,38 @@
       <div class="chat-content" id="messages">
         <div id="messages-content">
             <% @conversations.each do |conversation| %>
-            <div id="conversation_<%= conversation.id %>" class='hidden conversation' >
-              <div id="previous-messages_<%= conversation.id %>">
-              <% conversation.messages.each do |message|  %>
-                <% if message.user == current_user %>
-                <div class="position-relative">
-                  <div class="talk-bubble tri-right round left-in current-user-message">
-                    <div class="talktext">
-                      <p class="current-user-message"><%= message.content%>
-                      </p>
-                      </div>
-                    </div>
-                  </div>
-                  <% else %>
-                    <div class="position-relative">
-                      <div class="talk-bubble tri-right round right-in other-user-message">
-                        <div class="talktext">
-                      <p class="other-user-message"><%= message.content%></p>
+              <div id="conversation_<%= conversation.id %>" class='hidden conversation' >
+                <div id="previous-messages_<%= conversation.id %>">
+                  <% conversation.messages.each do |message|  %>
+                    <% if message.user == current_user %>
+                      <div class="position-relative">
+                        <div class="talk-bubble tri-right round left-in current-user-message">
+                          <p class="current-user-message"><%= message.content%>
+                            </p>
                         </div>
                       </div>
-                    </div>
+                    <% else %>
+                      <div class="position-relative">
+                        <div class="talk-bubble tri-right round right-in other-user-message">
+                          <p class="other-user-message"><%= message.content%></p>
+                        </div>
+                      </div>
+                    <% end %>
                   <% end %>
-              <% end %>
-              </div>
-              <div class="chat-message">
+
+<!--               <div class="new-message">
                 <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message"></textarea>
-                <button>Send</button>
-              </div>
-<!--                 <div id="new_message">
-                  <div class="talk-bubble tri-right round left-in">
-                    <div class="talktext">
-                    <%= render 'form', user: current_user, conversation: conversation, message: Message.new %>
-                  </div>
-                </div>
+                <button class="btn btn-primary">Send</button>
               </div> -->
-            </div>
-          <% end %>
+                </div>
+                <div id="new_message">
+                  <%= render 'form', user: current_user, conversation: conversation, message: Message.new %>
+                </div>
+            <% end %>
         </div>
       </div>
     </div>
-  <!-- </div> -->
+  </div>
 <!-- </div> -->
 
 

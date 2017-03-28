@@ -8,10 +8,12 @@
 
 .user1-name, .current-user-message {
   background-color: $grey;
+  color: white;
 }
 
 .user2-name, .other-user-message {
   background-color: $blue;
+  color: white;
 }
 
 .chat-index {
@@ -73,12 +75,6 @@ a:hover{
   border: 12px solid;
   border-color: $blue transparent transparent $blue;
 }
-
-.talktext p {
-  color: white;
-}
-
-
 
 // $lightgrey pour la side bar
 // $gray pour mes messages
