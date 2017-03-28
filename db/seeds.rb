@@ -185,6 +185,9 @@ m12 = Message.create!(user: quentin, conversation: c6, content: "Tu peux lire 'L
 puts "Creating loved books..."
 
 camille_loved_book1 = LovedBook.create!(user: camille, book: book5)
+camille_loved_book2 = LovedBook.create!(user: camille, book: book2)
+quentin_loved_book1 = LovedBook.create!(user: camille, book: book8)
+quentin_loved_book2 = LovedBook.create!(user: camille, book: book11)
 
 puts "Creating loved booksmates..."
 
