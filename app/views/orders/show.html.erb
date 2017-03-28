@@ -9,7 +9,7 @@
 
               <div class="books-container">
                 <% current_order.selling_books.each do |selling_book| %>
-                  <%= cl_image_tag selling_book.book.photo.path, :width=>100, :gravity=>"auto", :crop=>"fill"%>
+                  <%= cl_image_tag selling_book.book.photo.path %>
                 <% end %>
               </div>
             </div>
@@ -18,7 +18,8 @@
 
                 <%= simple_form_for @order, :url => {:action => "update"} do |f| %>
                   <%= f.error_notification %>
-                  <%= f.input :delivery_type, collection: @delivery_type_array, :label=>"Mode de livraison",  :as => :radio_buttons, :item_wrapper_class => 'inline'%>
+                  <%= f.input :delivery_type, collection: @delivery_type_array, label: "Mode de livraison" %>
+                  <!-- , :label=>"Mode de livraison",  :as => :radio_buttons, :item_wrapper_class => 'inline' -->
                   <%#= f.input :order_status, as: :hidden, :input_html => { :value => "paid" } %>
                   <%= f.button :submit, "Passer la commande" , class: "btn btn-primary" %>
                 <% end %>
@@ -27,17 +28,18 @@
                 </div>
               </div>
               <% else %>
-              <div class="recap-container text-center">
-                <h1 class="red">Récapitulatif de votre commande</h1>
-                <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
+                <h1 class="red text-center">Récapitulatif de votre commande</h1>
 
-                  <div class="books-container">
-                    <% @order.selling_books.each do |selling_book| %>
-                      <%= cl_image_tag selling_book.book.photo.path %>
-                    <% end %>
-                  </div>
+                <div class="card-grey text-center">
+                  <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
+                    <div class="books-container">
+                      <% @order.selling_books.each do |selling_book| %>
+                        <%= cl_image_tag selling_book.book.photo.path %>
+                      <% end %>
+                    </div>
+                    <span><p>Total :</p></span> <span><h2><%= @total %>€</h2></span>
+                </div>
 
-                <p>Total :</p> <h2><%= @total %>€</h2>
               <% end %>
               </div>
             </div>

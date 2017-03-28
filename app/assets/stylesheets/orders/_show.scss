@@ -17,8 +17,16 @@
   margin-top: 15px;
 }
 
+.books-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .books-container img {
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
   height: 200px;
   width: auto;
 }
@@ -35,15 +43,6 @@ span {
   padding-top: 5px;
 }
 
-.books-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.books-container img {
-  margin-right: 5px;
-}
 
 span.radio.inline {
   display: flex;
