@@ -129,16 +129,13 @@ a:hover{
   border-color: $blue transparent transparent $blue;
 }
 
-input#custom-input {
-  border: none;
-  border-top: 5px solid red;
+
+.custom-test {
   background-color: red;
 }
 
-.custom {
-  display: flex;
-  align-items: left;
-  margin-left: 100px;
+#placearea-for-new-message {
+  border-top: 2px solid $dark-grey;
 }
 // $lightgrey pour la side bar
 // $gray pour mes messages

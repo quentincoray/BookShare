@@ -169,9 +169,9 @@ selling_book36 = SellingBook.create!(personalized_comment: "J'ai vraiment adoré
 
 puts "Creating conversations..."
 # c1 = Conversation.create!(user1: quentin, user2: anne_sophie)
-c2 = Conversation.create!(user1: camille, user2: anne_sophie)
+c2 = Conversation.create!(user1: quentin, user2: camille)
 # c3 = Conversation.create!(user1: alice, user2: camille)
-c4 = Conversation.create!(user1: quentin, user2: camille)
+c4 = Conversation.create!(user1: camille, user2: anne_sophie)
 # c5 = Conversation.create!(user1: quentin, user2: edouard)
 # c6 = Conversation.create!(user1: alice, user2: quentin)
 
@@ -189,9 +189,9 @@ puts "Creating messages..."
 # m10 = Message.create!(user: quentin, conversation: c4, content: "Non, on est sur les Rails, il faut avancer !")
 # m11 = Message.create!(user: edouard, conversation: c5, content: "Non.... mais j'ai de la chance, c'est ça ?")
 # m12 = Message.create!(user: quentin, conversation: c6, content: "Tu peux lire 'Le Chat du Rabbin', c'est très chouette !")
-m13 = Message.create!(user: anne_sophie, conversation: c2, content: "Merci d'avoir passé commande chez moi! On se retrouve Place d'Italie pour la remise en main propre?")
-m14 = Message.create!(user: camille, conversation: c2, content: "Parfait pour moi! J'y serai demain à 16h, devant la sortie du métro. On pourra prendre un café à côté pour parler du livre")
-m15 = Message.create!(user: quentin, conversation: c4, content: "Merci pour cette commande!")
+m13 = Message.create!(user: quentin, conversation: c2, content: "Merci pour cette commande!")
+m14 = Message.create!(user: anne_sophie, conversation: c4, content: "Merci d'avoir passé commande chez moi! On se retrouve Place d'Italie pour la remise en main propre?")
+m15 = Message.create!(user: camille, conversation: c4, content: "Parfait pour moi! J'y serai demain à 16h, devant la sortie du métro. On pourra prendre un café à côté pour parler du livre")
 
 
 puts "Creating loved books..."
