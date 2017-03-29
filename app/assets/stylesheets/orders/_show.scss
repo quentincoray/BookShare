@@ -75,7 +75,8 @@ h2.weighted {
          justify-content: center;
          align-items: space-between;
          position: relative;
-         padding: 10px; }
+         padding: 10px;
+         flex-wrap: wrap; }
 
 .book {
 
@@ -83,16 +84,14 @@ h2.weighted {
   cursor: pointer;
   width: auto;
   height: 220px;
-  margin-right: 3px;
   transition: .3s cubic-bezier(.5, 0, .1, 1) transform;
   transition-delay: .15s;
+  flex: 0 0 20%;
 
   img {
   height: 220px;
   width: auto;
-  margin-right: 20px;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding: 20px 20px 20px 20px;
   }
 
   &:hover {
