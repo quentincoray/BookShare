@@ -1,6 +1,6 @@
 <%= simple_form_for([user, conversation, message], remote: true) do |form| %>
   <div id="placearea-for-new-message">
-    <%= form.input :content, wrapper_html: { class: 'custom-test' }, label: false, placeholder: 'Tapez votre réponse', as: :string, id: 'custom-input' %>
+    <%= form.input :content, html: { id: 'message_input' }, label: false, placeholder: 'Tapez votre réponse', as: :string, id: 'custom-input' %>
   </div>
 <!--   <%= form.button :submit, class: 'btn btn-primary custom'%> -->
 <% end %>

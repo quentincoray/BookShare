@@ -130,12 +130,12 @@ a:hover{
 }
 
 
-.custom-test {
-  background-color: red;
+.form-control {
+  border: none;
 }
 
 #placearea-for-new-message {
-  border-top: 2px solid $dark-grey;
+  border-top: 1px solid $light-grey;
 }
 // $lightgrey pour la side bar
 // $gray pour mes messages
