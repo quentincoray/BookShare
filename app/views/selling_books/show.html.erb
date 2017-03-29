@@ -20,11 +20,11 @@
           </div>
           <div class="book-header-actions">
             <h2>Etat : <%= @selling_book.condition%></h2>
-            <h2><%= @selling_book.price%> €</h2>
+            <h2>Prix : <%= @selling_book.price%> €</h2>
 
             <!-- A faire -->
             <% if current_order.selling_books.include? @selling_book %>
-                <div class="inline-block"><h2 class="green">Le livre a bien été ajouté</h2> <i class="fa fa-check green"></i></div>
+                <div class="inline-block"><span><h2 class="green">Le livre a bien été ajouté au panier</h2></span> <span><i class="fa fa-check green"></i></span></div>
             <% else %>
               <div id="btn-ajouter">
                 <%= simple_form_for @order do |f| %>
@@ -69,7 +69,6 @@
                       <% end %>
                     <% end %>
                   </div>
-                <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
               </div>
             </div>
           </div>
@@ -86,6 +85,7 @@
             </div>
           </div>
         </div>
+                <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
       </div>
     </div>
   </div>

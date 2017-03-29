@@ -1,11 +1,9 @@
         <h1>Mon profil</h1>
-          <div class="profile-details">
             <% if current_user.photo? %>
               <%= cl_image_tag current_user.photo.path, alt: "profile picture", class: "avatar-large" %>
             <% else %>
               <%= image_tag "avatar.png", alt: "profile picture", class: "avatar-large" %>
             <% end %>
             <% if policy(@user).update? %>
-              <%= link_to "Editer mon profil", edit_user_path(current_user), class: "button" %>
+              <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn-bookshare-red" %>
             <% end %>
-          </div>
