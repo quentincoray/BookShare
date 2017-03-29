@@ -4,11 +4,14 @@
 <% else %>
   // Create a paragraph for the new review. But hide it.
   var new_message = $("<%= j render 'new_message', message: @message %>").hide();
+  console.log(new_message)
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
-  var conversation_id = $('#conversation_<%= @conversation.id %>');
-  // conversation_id.append(new_message);
+  var previous_messages = $('#previous-messages_<%= @conversation.id %>');
+  console.log(previous_messages)
   $('#previous-messages_<%= @conversation.id %>').append(new_message)
   // Show the new review with an animation!
+  new_message.addClass("talk-bubble tri-right round left-in current-user-message")
+  console.log(new_message)
   new_message.slideDown();
   // Reset the form
   $('#new_message').html("<%= j render 'conversations/form', user: current_user, conversation: @conversation, message: Message.new %>");
