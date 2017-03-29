@@ -213,7 +213,7 @@ edouard_loved_book1 = LovedBook.create!(user: edouard, book: book14)
 
 puts "Creating loved booksmates..."
 
-camille_loved_bookmate1 = LovedBookstore.create!(user: camille, bookmate: quentin_bookstore)
+# camille_loved_bookmate1 = LovedBookstore.create!(user: camille, bookmate: quentin_bookstore)
 
 puts "Creating orders..."
 order1 = Order.create!(user: camille, bookmate: anne_sophie_bookstore, order_status: 'paid', delivery_status: 'effectuée', delivery_type: 'Livraison en main propre', review: 'Livre en excellent état, discussion sympa, je recommande', rating: 5)
