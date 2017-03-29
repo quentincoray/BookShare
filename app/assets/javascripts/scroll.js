@@ -1,6 +1,6 @@
 var currentTab = (function () {
     //variables
-    var $window = $('#text-column'),
+    var $window = $('#card-column'),
         $section = $('section'),
         $scrollPosition = $window.scrollTop(),
         $sectionHeights = [];

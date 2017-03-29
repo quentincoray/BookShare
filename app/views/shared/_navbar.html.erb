@@ -10,7 +10,7 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <div class="navbar-wagon-item ">
+      <div class="navbar-wagon-item">
         Devenez Bookmate
       </div>
 
@@ -19,7 +19,7 @@
       <%= render 'shared/searchform' %>
 
       <!-- enveloppe -->
-      <div class="navbar-wagon-item">
+      <div class="navbar-enveloppe">
         <div class="badge-container">
           <% if user_signed_in? %>
             <%= link_to  user_conversations_path(current_user) do%>
@@ -35,7 +35,7 @@
       </div>
       <!-- basket -->
 
-      <div class="navbar-wagon-item">
+      <div class="navbar-cart">
         <div class="badge-container">
           <% if current_order && current_order.persisted? %>
             <%= link_to order_path(current_order) do %>

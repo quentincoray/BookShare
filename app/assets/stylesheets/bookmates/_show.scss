@@ -2,6 +2,16 @@
   display: none;
 
 }
+
+.bookmate-show {
+  .navbar-wagon {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 3000;
+  }
+}
+
 .side-bar {
   height:94vh;
   // width:209px;
@@ -42,10 +52,9 @@
 
 .current {
   background: rgba(255,115,115,0.20);
-  border-left: 4px solid #FF7474;
+  border-left: 8px solid #FF7474;
   color: $dark-grey;
   letter-spacing: 0.5px;
-  padding: 5px 10px 5px 0;
 }
 
 .book-categories {
@@ -71,4 +80,65 @@
   -moz-transition: all 1s;
   -webkit-transition: all 1s;
   -o-transition: all 1s;
+}
+
+.bookmate-books {
+  background-color: $light-grey;
+  width: 100%;
+  padding: 10px 0 10px 20px;
+}
+
+.bookmate-books:hover {
+  background-color: $light-blue;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.inline-block {
+  span {
+  display : inline-block;
+  }
+}
+
+.bookmate-avatar {
+  margin-top: 30px;
+}
+
+.bookmate-tabs {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 2px 2px 2px;
+}
+.bookmate-tabs a {
+  color: $dark-grey;
+  text-decoration: none;
+}
+.bookmate-tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.bookmate-tab:hover {
+  background: rgba(255,115,115,0.20);
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.bookmate-tab.active {
+  background: rgba(255,115,115,0.20);
+  border-left: 8px solid #FF7474;
+  color: $dark-grey;
+  letter-spacing: 0.5px;
+}
+.bookmate-tab h2 {
+  padding-left: 5px;
+  font-weight: 700;
+  font-size:16px;
+  color: $dark-grey;
+  margin: 0;
+}
+.bookmate-tab {
+  padding: 15px 0 15px 30px;
+  border-left: 8px solid transparent;
+  color: $dark-grey;
 }
