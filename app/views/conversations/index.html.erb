@@ -10,10 +10,13 @@
           <% @conversations.each do |conversation| %>
             <a class="listing" data-target="#conversation_<%= conversation.id %>">
             <% if conversation.user1 == current_user %>
-
-              <p><%= conversation.user2.first_name %></p>
+              <div class='card-user'>
+                <p><%= conversation.user2.first_name %></p>
+              </div>
             <% else %>
-              <p><%= conversation.user1.first_name %></p>
+              <div class='card-user'>
+                <p><%= conversation.user1.first_name %></p>
+              </div>
             <% end %>
           <% end %>
           </a>
