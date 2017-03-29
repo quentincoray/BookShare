@@ -1,7 +1,12 @@
 <h1>Mes bookmates</h1>
 <% @loved_bookstores.each do |loved_bookstore| %>
-  <h2>
-    <%= loved_bookstore.bookmate.user.first_name %>
-  </h2>
+  <div class="user-avatar-bookmate text-center">
+    <div class = "card-user text-center">
+        <%= cl_image_tag loved_bookstore.bookmate.user.photo.path  %>
+    </div>
+      <h2>
+        <%= loved_bookstore.bookmate.user.first_name %>
+      </h2>
+  </div>
 <% end %>
 
