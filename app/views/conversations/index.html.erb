@@ -10,12 +10,34 @@
           <% @conversations.each do |conversation| %>
             <a class="listing" data-target="#conversation_<%= conversation.id %>">
             <% if conversation.user1 == current_user %>
-              <div class='card-user'>
-                <p><%= conversation.user2.first_name %></p>
-              </div>
+              <div class='current-conversations'>
+                <div class='user-avatar'>
+                  <div class="avatar dropdown-toggle">
+                    <% if conversation.user2.photo? %>
+                      <%= cl_image_tag conversation.user2.photo.path,:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
+                    <% else %>
+                      <%= image_tag 'avatar.png',:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="conv-user-details">
+                  <p><%= conversation.user2.first_name %></p>
+                </div>
+               </div>
             <% else %>
-              <div class='card-user'>
-                <p><%= conversation.user1.first_name %></p>
+              <div class='current-conversations'>
+                <div class='user-avatar'>
+                  <div class="avatar dropdown-toggle">
+                    <% if conversation.user1.photo? %>
+                      <%= cl_image_tag conversation.user1.photo.path,:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
+                    <% else %>
+                      <%= image_tag 'avatar.png',:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="conv-user-details">
+                  <p><%= conversation.user1.first_name %></p>
+                </div>
               </div>
             <% end %>
           <% end %>

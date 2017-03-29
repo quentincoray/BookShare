@@ -1,3 +1,11 @@
+.current-conversations {
+  display: flex;
+  flex-direction: row;
+}
+.conv-user-details {
+  padding: 10px;
+}
+
 .conversations-index #footer {
   display: none;
 }
