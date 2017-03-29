@@ -42,11 +42,11 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       $('#searched_books').on('keyup', function(event) {
-        if(this.value.length < 4) return;
+        if(this.value.length < 6) return;
           console.log($('#searched_books').val());
           $.ajax({
             type: "GET",
-            url: "https://www.googleapis.com/books/v1/volumes?q="+($('#searched_books').val())+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+            url: "https://www.googleapis.com/books/v1/volumes?q="+($('#searched_books').val())+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>&origin=*",
             success: function(data) {
               $(".container-api-img").html('<div id="results"></div>');
               data.items.forEach(function(item) {

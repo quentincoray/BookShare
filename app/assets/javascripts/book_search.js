@@ -1,25 +1,25 @@
 $(document).ready(function() {
-  $('#searched_books').on('keyup', function(event) {
-    if(this.value.length < 6) return;
-      console.log($('#searched_books').val());
-      $.ajax({
-        type: "GET",
-        url: "https://www.googleapis.com/books/v1/volumes?q="+($('#searched_books').val())+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
-        success: function(data) {
-          $(".container-api-img").html('<div id="results"></div>');
-          data.items.forEach(function(item) {
-            var book_title = item.volumeInfo.title;
-            var book_author = item.volumeInfo.authors;
-            var book_image = item.volumeInfo.imageLinks.thumbnail;
-            var book_isbn = item.volumeInfo.industryIdentifiers[0].identifier;
-            $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"' data-title='"+book_title+"' data-author='"+book_author+"'/></a>");
-          });
-        },
-        error: function(jqXHR) {
-          console.error(jqXHR.responseText);
-        }
-      });
-  });
+  // $('#searched_books').on('keyup', function(event) {
+  //   if(this.value.length < 6) return;
+  //     console.log($('#searched_books').val());
+  //     $.ajax({
+  //       type: "GET",
+  //       url: "https://www.googleapis.com/books/v1/volumes?q="+($('#searched_books').val())+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+  //       success: function(data) {
+  //         $(".container-api-img").html('<div id="results"></div>');
+  //         data.items.forEach(function(item) {
+  //           var book_title = item.volumeInfo.title;
+  //           var book_author = item.volumeInfo.authors;
+  //           var book_image = item.volumeInfo.imageLinks.thumbnail;
+  //           var book_isbn = item.volumeInfo.industryIdentifiers[0].identifier;
+  //           $("#results").append("<a href='#' class='api-img-link'><img src='"+book_image+"' class='api-img' data-isbn='"+book_isbn+"' data-title='"+book_title+"' data-author='"+book_author+"'/></a>");
+  //         });
+  //       },
+  //       error: function(jqXHR) {
+  //         console.error(jqXHR.responseText);
+  //       }
+  //     });
+  // });
   var selected_books = 0
   $('.container-api-img').on("click", '.api-img-link', function(event) {
     event.preventDefault();
