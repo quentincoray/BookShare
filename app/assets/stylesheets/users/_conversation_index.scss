@@ -1,3 +1,11 @@
+.current-conversations {
+  display: flex;
+  flex-direction: row;
+}
+.conv-user-details {
+  padding: 10px;
+}
+
 .conversations-index #footer {
   display: none;
 }
@@ -10,13 +18,31 @@
     z-index: 3000;
   }
 }
-
-#messages-content {
-  margin-top: 10px;
+.conv-user-avatar {
+  padding: 10px;
+}
+.chat-content {
   padding: 10px;
   width: 80%;
   margin: auto;
-  margin-top: 55px;
+  margin-top: 120px;
+}
+
+// .position-relative {
+//   display: flex;
+//   flex-direction: row;
+// }
+
+.current-user {
+  display: flex;
+  flex-direction: row;
+  margin-right: 20%
+}
+
+.other-user {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20%
 }
 
 .user1-name, .current-user-message {
@@ -68,7 +94,7 @@ a:hover{
   width: 75%;
   height: auto;
   // background-color: $light-grey;
-  padding: 2% 2%;
+  padding: 3% 3%;
 }
 
 .round{
@@ -82,7 +108,7 @@ a:hover{
   position: absolute;
   width: 0;
   height: 0;
-  left: -15px;
+  left: -16px;
   right: auto;
   top: 15px;
   bottom: auto;
@@ -96,13 +122,24 @@ a:hover{
   width: 0;
   height: 0;
   left: auto;
-  right: -15px;
+  right: -16px;
   top: 15px;
   bottom: auto;
   border: 12px solid;
   border-color: $blue transparent transparent $blue;
 }
 
+input#custom-input {
+  border: none;
+  border-top: 5px solid red;
+  background-color: red;
+}
+
+.custom {
+  display: flex;
+  align-items: left;
+  margin-left: 100px;
+}
 // $lightgrey pour la side bar
 // $gray pour mes messages
 // $blue pour les messages de mon interlocuteur
