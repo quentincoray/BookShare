@@ -24,11 +24,11 @@
 
         <% if current_user.loved_bookstores.where(bookmate: @bookmate).exists? %>
           <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :delete, class: "blue"  do %>
-          <span><i class="fa fa-heart-o" ></i></span>
+          <span><h2 class="margin-left"><i class="fa fa-heart-o" ></i></h2></span>
           <% end %>
         <% else %>
           <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :post, class: "blue" do %>
-          <span><i class="fa fa-heart-o" ></i></span>
+          <span><h2><i class="fa fa-heart-o" ></i></h2></span>
           <% end %>
         <% end %>
       </div>

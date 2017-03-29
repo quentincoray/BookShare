@@ -56,6 +56,13 @@
                       </a>
                     <% end %>
                     </div>
+                    <div class="slick-photo">
+                     <% current_user.loved_books.each do |loved_book| %>
+                        <% if bookmate.user.loved_books.include? loved_book %>
+                        <%= cl_image_tag current_user.loved_book.book.photo.path %>
+                       <% end %>
+                     <% end %>
+                   </div>
                   <div class="user-link">
                     <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i>
                   </div>
@@ -74,6 +81,11 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function () {
+
+     $('.slick-photo').slick({
+      setting-name: setting-value
+    });
+
 
       <!-- Popover on common books -->
       $('.common-book').popover({
