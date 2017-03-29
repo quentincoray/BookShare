@@ -1,16 +1,18 @@
     <div class="sidebar">
-      <div class="text-center">
+      <div class="text-center bookmate-avatar">
         <%= cl_image_tag @bookmate.user.photo.path, alt: "profile picture", class: "avatar avatar-medium border-white text-center" %>
       </div>
-      <div class="padded-left">
         <h3>GENRES FAVORIS</h3>
+        <div class="bookmate-tabs">
           <% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
+          <div class ="bookmate-tab">
             <h2>
-              <a href="#category_<%= bookmate_book_category.id %>", class="dark-grey">
+              <a href="#category_<%= bookmate_book_category.id %>" >
                 <%= bookmate_book_category.name %>
               </a>
             </h2>
-          <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
 

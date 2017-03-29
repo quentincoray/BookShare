@@ -88,13 +88,49 @@
   width: 100%;
 }
 
+.bookmate-books:hover {
+  background-color: $light-blue;
+  width: 100%;
+}
+
 .inline-block {
   span {
   display : inline-block;
   }
 }
 
-.overflow-wrap {
-  overflow: visible;
-  max-width: 100%;
+.bookmate-avatar {
+  margin-top: 30px;
+}
+
+.bookmate-tabs {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 2px 2px 2px;
+}
+.bookmate-tabs a {
+  color: black;
+  text-decoration: none;
+}
+.bookmate-tab:hover {
+  background: rgba(255,115,115,0.20);
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.bookmate-tab.active {
+  background: rgba(255,115,115,0.20);
+  border-left: 8px solid #FF7474;
+  color: $dark-grey;
+  letter-spacing: 0.5px;
+}
+.bookmate-tab h2 {
+  padding-left: 5px;
+  font-weight: 700;
+  font-size:16px;
+  margin: 0;
+}
+.bookmate-tab {
+  padding: 15px 0 15px 30px;
+  border-left: 8px solid transparent;
 }
