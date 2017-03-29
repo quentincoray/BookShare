@@ -1,3 +1,4 @@
+
 .container-search {
   position: relative;
   margin-left: 30px;
@@ -35,13 +36,43 @@
 }
 
 .user-link {
-  margin-left: auto;
-  padding-right: 10px;
+  display:flex;
+  // margin-left: auto;
+  // padding-right: 10px;
+  align-items:center;
   color: $red;
+  flex: 0 0 20%;
 }
 
+.rating-search {
+  display:flex;
+  align-items:center;
+  p{
+    margin:0 !important;
+    padding-right:5px;
+  }
+}
+
+
+h2 {
+  .weighted {
+    font-weight: 600;
+  }
+}
 .user-details {
-  padding-right: 15px;
+  // padding-right: 15px;
+    flex: 1;
+}
+
+.common-book-number {
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background: $blue;
+  color: white !important;
+  font-weight: 800;
+  padding: 10px;
 }
 
 .user-details-books {
@@ -66,4 +97,5 @@ a {
 a:hover {
   text-decoration: none;
 }
+
 
