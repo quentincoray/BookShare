@@ -18,13 +18,27 @@
     z-index: 3000;
   }
 }
-
-#messages-content {
-  margin-top: 10px;
+.conv-user-avatar {
+  padding: 10px;
+}
+.chat-content {
   padding: 10px;
   width: 80%;
   margin: auto;
-  margin-top: 55px;
+  margin-top: 120px;
+}
+
+.position-relative {
+  display: flex;
+  flex-direction: row;
+}
+
+.position-relative.current-user {
+
+}
+
+.position-relative.other-user {
+
 }
 
 .user1-name, .current-user-message {
