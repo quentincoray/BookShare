@@ -20,8 +20,8 @@
 }
 
 .user1-name, .current-user-message {
-  background-color: $grey;
-  color: white;
+  background-color: $light-grey;
+  color: $dark-grey;
 }
 
 .user2-name, .other-user-message {
@@ -33,6 +33,18 @@
   display: flex;
   flex-direction: column;
   padding: 2px 2px 2px 2px;
+}
+
+.listing {
+  padding: 15px 0 15px 30px;
+  border-left: 8px solid transparent;
+}
+
+.listing.active {
+  background: rgba(255,115,115,0.20);
+  // border-left: 8px solid #FF7474;
+  color: $dark-grey;
+  letter-spacing: 0.5px;
 }
 
 a {
@@ -73,7 +85,7 @@ a:hover{
   top: 15px;
   bottom: auto;
   border: 12px solid;
-  border-color: $grey $grey transparent transparent;
+  border-color: $light-grey $light-grey transparent transparent;
 }
 
 .tri-right.right-in:after{
