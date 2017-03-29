@@ -30,7 +30,6 @@
   color: white;
   padding-right: 40px;
   padding-left: 10px
-
 }
 
 .home-searchbar-title {
@@ -61,7 +60,6 @@
   color:white;
   border: white 1px solid;
   font-family:'brandon_grotesque_regular';
-
 }
 
 .btn-bookshare-red.lg-padding {
@@ -160,6 +158,9 @@
   content: asset-url("logo_white.png");
 }
 
+.pages-home #btn-find-nav {
+  display: none;
+}
 
 
 .pages-home .shopping-cart-logo {

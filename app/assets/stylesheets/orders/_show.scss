@@ -1,6 +1,6 @@
 .order-container {
-  width: 800px;
-  margin: auto auto 50px auto;
+  min-width: 800px;
+  margin: auto;
 }
 
 .cart-container {
@@ -32,6 +32,9 @@
 }
 
 .order-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: calc(100vh - 60px - 55px);
 }
 
