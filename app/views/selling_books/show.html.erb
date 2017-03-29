@@ -12,7 +12,7 @@
         </div>
         <div class="book-header-details">
           <div class="book-header-description">
-            <h1><%= @selling_book.book.title %> - <%= @selling_book.book.author %></h1>
+            <h1 style = "padding-bottom: 10px"><%= @selling_book.book.title %> - <%= @selling_book.book.author %></h1>
             <hr>
             <%= cl_image_tag @selling_book.bookmate_book_category.bookmate.user.photo.path, class:"bookmate-avatar" %>
             <h2>Le commentaire de <%= @selling_book.bookmate_book_category.bookmate.user.first_name %></h2>
@@ -24,7 +24,7 @@
 
             <!-- A faire -->
             <% if current_order.selling_books.include? @selling_book %>
-              Le livre a bien été ajouté
+              <h2 class="order-date">Le livre a bien été ajouté</h2>
             <% else %>
               <div id="btn-ajouter">
                 <%= simple_form_for @order do |f| %>
@@ -141,6 +141,3 @@
     });
   <% end %>
 <% end %>
-
-
-
