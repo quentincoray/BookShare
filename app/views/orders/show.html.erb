@@ -57,14 +57,6 @@
 </div>
 <div class="text-center margin-bottomed">
 
-  <%= form_tag(search_path, method: 'get', id: 'searchform') do %>
-    <%= hidden_field_tag "isbn[]", nil, id: "isbn_1" %>
-    <%= hidden_field_tag "isbn[]", nil, id: "isbn_2" %>
-    <%= hidden_field_tag "isbn[]", nil, id: "isbn_3" %>
-
-    <%= hidden_field_tag :latitude %>
-    <%= hidden_field_tag :longitude %>
-    <%= submit_tag 'Retour à la liste des bookstores', id: "submitsearch", disabled: "disabled"%>
-  <% end %>
+  <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
 </div>
 

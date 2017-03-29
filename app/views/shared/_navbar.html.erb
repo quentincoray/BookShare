@@ -16,9 +16,12 @@
 
 
       <!-- Button (call-to-action) -->
-      <div class="navbar-wagon-item" id="btn-find-nav">
-        <%= render 'shared/searchform' %>
-      </div>
+      <% if current_page?(root_path) %>
+      <% else %>
+        <div class="navbar-wagon-item" id="btn-find-nav">
+          <%= render 'shared/searchform' %>
+        </div>
+      <% end %>
 
       <!-- enveloppe -->
       <div class="navbar-enveloppe">
