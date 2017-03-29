@@ -4,7 +4,7 @@
  * ------------------------------------- */
 
 .home-title {
-  width: 785px;
+  width: 931px;
   margin: auto;
   min-height: 100vh;
 }
@@ -20,6 +20,7 @@
   color: white;
   display: inline-block;
   padding-bottom:20px;
+  font-weight: 900;
 }
 
 .home-title2 {
@@ -27,6 +28,9 @@
   font-weight:lighter;
   font-size: 22px;
   color: white;
+  padding-right: 40px;
+  padding-left: 10px
+
 }
 
 .home-searchbar-title {
@@ -60,6 +64,11 @@
 
 }
 
+.btn-bookshare-red.lg-padding {
+    padding:20px;
+    font-size: 20px;
+
+}
 .connect {
   font-family: 'brandon_grotesque_regular';
 }
@@ -164,6 +173,7 @@
 .pages-home .fa-envelope-o {
   color:white;
 }
+
 
 .pages-home .fa-user-circle-o {
   color:white;

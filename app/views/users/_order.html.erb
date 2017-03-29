@@ -1,5 +1,5 @@
 
-  <!-- A changer en requete ajax -->
+
   <div class="card-grey-dashboard">
     <div class="order-bookmate text-center">
       <%= cl_image_tag order.bookmate.user.photo.path, :width=>80, :height=>80, :gravity=>"auto", :crop=>"fill", class:"bookmate-avatar"  %>
@@ -41,7 +41,7 @@
           </div>
         <% else %>
           <!-- Button trigger modal -->
-          <button type="button" id="btn-comment<%= order.id %>" class="btn btn-primary review-right" data-toggle="modal" data-target="#myModal<%= order.id %>">
+          <button type="button" id="btn-comment<%= order.id %>" class="btn-bookshare-red review-right" data-toggle="modal" data-target="#myModal<%= order.id %>">
             Faire un commentaire
           </button>
         <% end %>
@@ -65,23 +65,23 @@
                     <div class="rating">
 
                       <input type="radio" value="5" name="order[rating]" id="order_rating_5">
-                      <label class="collection_radio_buttons" for="order_rating_5">5</label>
+                      <label class="collection_radio_buttons" for="order_rating_5"></label>
 
                       <input type="radio" value="4" name="order[rating]" id="order_rating_4">
-                      <label class="collection_radio_buttons" for="order_rating_4">4</label>
+                      <label class="collection_radio_buttons" for="order_rating_4"></label>
 
                       <input type="radio" value="3" name="order[rating]" id="order_rating_3">
-                      <label class="collection_radio_buttons" for="order_rating_3">3</label>
+                      <label class="collection_radio_buttons" for="order_rating_3"></label>
 
                       <input type="radio" value="2" name="order[rating]" id="order_rating_2">
-                      <label class="collection_radio_buttons" for="order_rating_2">2</label>
+                      <label class="collection_radio_buttons" for="order_rating_2"></label>
                       <input type="radio" value="1" name="order[rating]" id="order_rating_1">
-                      <label class="collection_radio_buttons" for="order_rating_1">1</label>
+                      <label class="collection_radio_buttons" for="order_rating_1"></label>
 
                     </div>
 
                     <div class="modal-footer">
-                    <%= f.button :submit, "Envoyer le commentaire",class: "btn btn-primary",id: "save-review#{order.id}"%>
+                    <%= f.button :submit, "Envoyer le commentaire",class: " btn-bookshare-red",id: "save-review#{order.id}"%>
                     </div>
                   <% end %>
                 </div>

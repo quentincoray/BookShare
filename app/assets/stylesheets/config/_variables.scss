@@ -132,6 +132,23 @@ p {
   color:$dark-grey !important;
 }
 
+
+.btn-bookshare-red {
+  border-radius:$br-base;
+  padding:15px;
+  background-color:$red;
+  color:white;
+  font-style:$header-font;
+  font-weight: 700;
+  border-style:none;
+  border-shadow:none;
+}
+
+.btn-bookshare-red:hover {
+  background-color:$dark-red;
+}
+
+
 .card-grey {
   background-color: $light-grey;
   border-radius:$br-base;
@@ -146,7 +163,6 @@ p {
   align-items: center;
   margin-bottom: 20px;
   padding: 5px;
-  width:800px;
 }
 .card-grey-search:hover {
   background-color: $light-blue;

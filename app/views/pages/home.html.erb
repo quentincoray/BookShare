@@ -13,7 +13,7 @@
 
       <div class="container-searchform">
         <%= form_tag(search_path, method: 'get', id: 'searchform') do %>
-          <%= text_field_tag :search, params[:search], placeholder: 'Type your favorite books!', class: "searchbar form-control", id: "searched_books" %>
+          <%= text_field_tag :search, params[:search], placeholder: 'Tapez vos livres préférés!', class: "searchbar form-control", id: "searched_books" %>
           <div class="container-api-img">
           </div>
           <div id="search-results">
@@ -28,7 +28,7 @@
               <%= hidden_field_tag :latitude %>
               <%= hidden_field_tag :longitude %>
               <div id="submit_button">
-                <%= submit_tag 'Find bookmates!', class: "btn btn-primary btn-lg", id: "submitsearch", disabled: "disabled"%>
+                <%= submit_tag 'Trouver un bookstore', class: "btn-bookshare-red lg-padding", id: "submitsearch", disabled: "disabled"%>
               </div>
             </div>
           </div>
