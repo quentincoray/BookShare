@@ -82,3 +82,19 @@
   -webkit-transition: all 1s;
   -o-transition: all 1s;
 }
+
+.bookmate-books {
+  background-color: $light-grey;
+  width: 100%;
+}
+
+.inline-block {
+  span {
+  display : inline-block;
+  }
+}
+
+.overflow-wrap {
+  overflow: visible;
+  max-width: 100%;
+}
