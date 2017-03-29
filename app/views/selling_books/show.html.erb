@@ -24,7 +24,7 @@
 
             <!-- A faire -->
             <% if current_order.selling_books.include? @selling_book %>
-                <div class="inline-block"><span><h2 class="green">Le livre a bien été ajouté au panier</h2></span> <span><i class="fa fa-check green"></i></span></div>
+                <h2 class="green">Le livre a bien été ajouté au panier <i class="fa fa-check green"></i></h2>
             <% else %>
               <div id="btn-ajouter">
                 <%= simple_form_for @order do |f| %>
@@ -33,9 +33,9 @@
                 <% end %>
               </div>
             <% end %>
-            <div id="phrase-done">
+<!--             <div id="phrase-done">
               <h2 class="green">Ajouté au panier <i class="fa fa-check green"></i></h2>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
