@@ -61,6 +61,7 @@ book1.photo_url = photo_book1
 
 book2 = Book.create!(title: "Faillir être flingué", summary: "Western moderne", author: "Céline Minard", author_bio: "Romancière française éclectique", isbn: '9782743626563')
 selling_book2 = SellingBook.create!(personalized_comment: "Super dépaysant!", price: 29, condition: "très bon état", favorite_book: true, sold: false, book: book2, bookmate_book_category: litterature_francaise)
+# Photo a changer
 photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
 book2.photo_url = photo_book2
 
@@ -104,20 +105,41 @@ selling_book10 = SellingBook.create!(personalized_comment: "Replongez-vous dans 
 photo_book10 = 'https://images-na.ssl-images-amazon.com/images/I/51cVMH6cUKL._SX258_BO1,204,203,200_.jpg'
 book10.photo_url = photo_book10
 
-book10 = Book.create!(title: "Plus je connais les hommes, plus j'aime mon chat", summary: "Des illustrations drôles et décalés faisant le parallèle entre votre homme et votre matou !", author: "Daisy Hay", author_bio: "Auteur BD qui aime les chats (comme moi!)", isbn: '9782822210768')
-selling_book10 = SellingBook.create!(personalized_comment: "Très vrai!", price: 3, condition: "bon état", favorite_book: true, sold: false, book: book10, bookmate_book_category: cats)
-photo_book10 = 'https://images-na.ssl-images-amazon.com/images/I/41K1oybaXaL._SX345_BO1,204,203,200_.jpg'
-book10.photo_url = photo_book10
-
-book11 = Book.create!(title: "The Goldfinch", summary: "Fantastique roman d'apprentissage, entre New York, Las Vegas et Bruxelles", author: "Donna Tartt", author_bio: "Romancière américaine", isbn: '9781405529518')
-selling_book11 = SellingBook.create!(personalized_comment: "Captivant!", price: 11, condition: "très bon état", favorite_book: true, sold: false, book: book11, bookmate_book_category: litterature_us)
-photo_book11 = 'https://images-na.ssl-images-amazon.com/images/I/41%2B8%2BYuhDjL._SX316_BO1,204,203,200_.jpg'
+book11 = Book.create!(title: "Plus je connais les hommes, plus j'aime mon chat", summary: "Des illustrations drôles et décalés faisant le parallèle entre votre homme et votre matou !", author: "Daisy Hay", author_bio: "Auteur BD qui aime les chats (comme moi!)", isbn: '9782822210768')
+selling_book11 = SellingBook.create!(personalized_comment: "Très vrai!", price: 3, condition: "bon état", favorite_book: true, sold: false, book: book11, bookmate_book_category: cats)
+photo_book11 = 'https://images-na.ssl-images-amazon.com/images/I/41K1oybaXaL._SX345_BO1,204,203,200_.jpg'
 book11.photo_url = photo_book11
 
-book12 = Book.create!(title: "Less Than Zero", summary: "Portrait d'une bande de jeunes dans le Los Angeles des années 80", author: "Bret Easton Ellis", author_bio: "Romancier contemporain", isbn: '9780307756466')
-selling_book12 = SellingBook.create!(personalized_comment: "Ecriture acerbe, un roman coup de poing dans la même veine que Douglas Coupland ou Chuck Palaniuk", price: 12, condition: "bon état", favorite_book: true, sold: false, book: book12, bookmate_book_category: litterature_us)
-photo_book12 = 'https://images-na.ssl-images-amazon.com/images/I/41i4iaoq%2BsL._SX328_BO1,204,203,200_.jpg'
+book12 = Book.create!(title: "The Goldfinch", summary: "Fantastique roman d'apprentissage, entre New York, Las Vegas et Bruxelles", author: "Donna Tartt", author_bio: "Romancière américaine", isbn: '9781405529518')
+selling_book12 = SellingBook.create!(personalized_comment: "Captivant!", price: 11, condition: "très bon état", favorite_book: true, sold: false, book: book12, bookmate_book_category: litterature_us)
+photo_book12 = 'https://images-na.ssl-images-amazon.com/images/I/41%2B8%2BYuhDjL._SX316_BO1,204,203,200_.jpg'
 book12.photo_url = photo_book12
+
+book13 = Book.create!(title: "Less Than Zero", summary: "Portrait d'une bande de jeunes dans le Los Angeles des années 80", author: "Bret Easton Ellis", author_bio: "Romancier contemporain", isbn: '9780307756466')
+selling_book13 = SellingBook.create!(personalized_comment: "Ecriture acerbe, un roman coup de poing dans la même veine que Douglas Coupland ou Chuck Palaniuk", price: 12, condition: "bon état", favorite_book: true, sold: false, book: book13, bookmate_book_category: litterature_us)
+photo_book13 = 'https://images-na.ssl-images-amazon.com/images/I/41i4iaoq%2BsL._SX328_BO1,204,203,200_.jpg'
+book13.photo_url = photo_book13
+
+book14 = Book.create!(title: "L'insoutenable légèreté de l'être", summary: "Qu'est-il resté des agonisants du Cambodge ? Une grande photo de la star américaine tenant dans ses bras un enfant jaune. Qu'est-il resté de Tomas ? Une inscription : Il voulait le Royaume de Dieu sur la terre. Qu'est-il resté de Beethoven ? Un homme morose à l'invraisemblable crinière, qui prononce d'une voix sombre : Es muss sein ! Qu'est-il resté de Franz ? Une inscription : Après un long égarement, le retour. Et ainsi de suite, et ainsi de suite. Avant d'être oubliés, nous serons changés en kitsch. Le kitsch, c'est la station de correspondance entre l'être et l'oubli.", author: "Milan Kundera", isbn: '207038165X')
+selling_book14 = SellingBook.create!(personalized_comment: "Faut-il lire Kundera? Oui, il le faut! Ja, es muss sein! Ne serait-ce que pour suivre l'histoire d'amour entre Tomas et Tereza. Lui est un libertin (c'est le côté léger développé dans ce roman et que possède aussi l'une de ses maîtresses, l'artiste Sabrina) mais il est torturé par la douleur insoutenable qu'il génère pour son couple, surtout pour Tereza, déjà marquée par l'éducation et les vexations de sa mère. de lourds fardeaux pour elle.", price: 12, condition: "bon état", favorite_book: true, sold: false, book: book14, bookmate_book_category: litterature_francaise)
+# Photo à ajouter
+
+book15 = Book.create!(title: "Banquises", author: "Valentine Goby", isbn: '9782226229878')
+selling_book15 = SellingBook.create!(personalized_comment: "Une histoire émouvante de disparition d'une jeune fille Sarah, partie dans le Grand Nord et qui n'est jamais rentrée.
+Désarroi des parents qui luttent chacun de leur façon, le père pudiquement, presque secrètement contrairement à la mère qui déploie toute son energie à la recherche de sa fille , attente qui devient obsessionnelle mais comment lui reprocher ce qui devient le seul but de son existence.", price: 12, condition: "bon état", favorite_book: true, sold: false, book: book15, bookmate_book_category: litterature_francaise)
+# Photo à ajouter
+
+
+# A retraiter
+book13 = Book.create!(title: "La Septième Fonction du Langage", summary: "Roman déjanté qui revisite la France des années 80s. Roland Barthes vient de mourir, mais est-ce vraiment un accident? ", author: "Laurent Binet", author_bio: "Auteur français contemporain", isbn: '9782246854944')
+book14 = Book.create!(title: "D'après une histoire vraie", summary: "Comment une personne, L. peut s'immiscer dans la vie d'une personne et prendre sa place...", author: "Delphine de Vigan", author_bio: "Romancière française ", isbn: '9782709648813')
+book15 = Book.create!(title: "Réparer les vivants", summary: "Aperçu de toutes les vies qui se croisent, au propre comme au figuré, dans un hopital", author: "Maylis de Kerangal", author_bio: "Romancière française ", isbn: '9782072574795')
+photo_book15 = 'https://images-na.ssl-images-amazon.com/images/I/41EUVx5oWQL._SX299_BO1,204,203,200_.jpg'
+book15.photo_url = photo_book15
+photo_book5 = 'https://images-eu.ssl-images-amazon.com/images/I/51mq14kMy4L._SY346_.jpg'
+book5.photo_url = photo_book5
+photo_book14 = 'https://images-na.ssl-images-amazon.com/images/I/41Bya7stsoL._SX315_BO1,204,203,200_.jpg'
+book14.photo_url = photo_book14
 
 selling_book13 = SellingBook.create!(personalized_comment: "Pas mal! ", price: 15, condition: "bon état", favorite_book: false, sold: false, book: book1, bookmate_book_category: livres_francais)
 photo_book1 = 'https://www.franceculture.fr/s3/cruiser-production/2016/08/0c515c87-da57-4043-b3f6-96de8e8eaf38/738_97827436373300-3480956.jpg'
@@ -139,24 +161,18 @@ selling_book17 = SellingBook.create!(personalized_comment: "Polar Western : le m
 photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
 book2.photo_url = photo_book2
 
-book13 = Book.create!(title: "La Septième Fonction du Langage", summary: "Roman déjanté qui revisite la France des années 80s. Roland Barthes vient de mourir, mais est-ce vraiment un accident? ", author: "Laurent Binet", author_bio: "Auteur français contemporain", isbn: '9782246854944')
 selling_book18 = SellingBook.create!(personalized_comment: "Vous ne lirez plus jamais du Barthes de la même manière!", price: 17, condition: "très bon état", favorite_book: true, sold: false, book: book13, bookmate_book_category: last_french_awards)
 photo_book13 = 'http://static.fnac-static.com/multimedia/Images/FR/NR/ce/ba/6c/7125710/1507-1/tsp20150901141233/La-septieme-fonction-du-langage.jpg'
 book13.photo_url = photo_book13
 
-book14 = Book.create!(title: "D'après une histoire vraie", summary: "Comment une personne, L. peut s'immiscer dans la vie d'une personne et prendre sa place...", author: "Delphine de Vigan", author_bio: "Romancière française ", isbn: '9782709648813')
 selling_book19 = SellingBook.create!(personalized_comment: "Thriller psychologique, on ne peut plus le poser tant qu'on n'est pas arrivé au dénouement....", price: 11, condition: "très bon état", favorite_book: false, sold: false, book: book14, bookmate_book_category: last_french_awards)
-photo_book14 = 'https://images-na.ssl-images-amazon.com/images/I/41Bya7stsoL._SX315_BO1,204,203,200_.jpg'
-book14.photo_url = photo_book14
 
-book15 = Book.create!(title: "Réparer les vivants", summary: "Aperçu de toutes les vies qui se croisent, au propre comme au figuré, dans un hopital", author: "Maylis de Kerangal", author_bio: "Romancière française ", isbn: '9782072574795')
+
 selling_book20 = SellingBook.create!(personalized_comment: "Ecriture dense et précise, histoire poignante, n'hésitez plus : il faut lire ce livre!", price: 4, condition: "bon état", favorite_book: false, sold: false, book: book15, bookmate_book_category: last_french_awards)
-photo_book15 = 'https://images-na.ssl-images-amazon.com/images/I/41EUVx5oWQL._SX299_BO1,204,203,200_.jpg'
-book15.photo_url = photo_book15
+
 
 selling_book21 = SellingBook.create!(personalized_comment: "Une fantastique odyssée!", price: 17, condition: "très bon état", favorite_book: true, sold: false, book: book5, bookmate_book_category: last_french_awards)
-photo_book5 = 'https://images-eu.ssl-images-amazon.com/images/I/51mq14kMy4L._SY346_.jpg'
-book5.photo_url = photo_book5
+
 
 puts "Creating conversations..."
 c1 = Conversation.create!(user1: quentin, user2: anne_sophie)
