@@ -4,52 +4,52 @@
     <!-- Cette colonne contient la barre latérale -->
 <!--   <div class="row">
     <div class = "col-xs-4" style = "background-color: #F3F3F3"> -->
-      <div class="sidebar">
-        <h3>Mes conversations</h3>
-          <div class="chat-index">
-            <% @conversations.each do |conversation| %>
-              <a class="listing active" data-target="#conversation_<%= conversation.id %>">
-              <% if conversation.user1 == current_user %>
-                <p>Conversation avec: <%= conversation.user2.first_name %></p>
-              <% else %>
-                <p>Conversation avec: <%= conversation.user1.first_name %></p>
-              <% end %>
+    <div class="sidebar">
+      <h3>Mes conversations</h3>
+        <div class="chat-index">
+          <% @conversations.each do |conversation| %>
+            <a class="listing" data-target="#conversation_<%= conversation.id %>">
+            <% if conversation.user1 == current_user %>
+              <p>Conversation avec: <%= conversation.user2.first_name %></p>
+            <% else %>
+              <p>Conversation avec: <%= conversation.user1.first_name %></p>
             <% end %>
-            </a>
-          </div>
-      </div>
-    <!-- </div> -->
-
-<!-- Cette colonne contient le contenu des tabs -->
-    <div class = "col-xs-offset-2 col-xs-10">
-<!--       <h1><%= current_user.first_name %> Conversations</h1> -->
-      <div class="chat-content" id="messages">
-        <div id="messages-content">
-            <% @conversations.each do |conversation| %>
-              <div id="conversation_<%= conversation.id %>" class='hidden conversation' >
-                <div id="previous-messages_<%= conversation.id %>">
-                  <% conversation.messages.each do |message|  %>
-                    <% if message.user == current_user %>
-                      <div class="position-relative">
-                        <div class="talk-bubble tri-right round left-in current-user-message">
-                          <p class="current-user-message"><%= message.content%>
-                            </p>
-                        </div>
-                      </div>
-                    <% else %>
-                      <div class="position-relative">
-                        <div class="talk-bubble tri-right round right-in other-user-message">
-                          <p class="other-user-message"><%= message.content%></p>
-                        </div>
-                      </div>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div id="new_message">
-                  <%= render 'form', user: current_user, conversation: conversation, message: Message.new %>
-                </div>
-            <% end %>
+          <% end %>
+          </a>
         </div>
+    </div>
+  <!-- </div> -->
+
+  <!-- Cette colonne contient le contenu des tabs -->
+  <div class = "col-xs-offset-2 col-xs-10">
+  <!--       <h1><%= current_user.first_name %> Conversations</h1> -->
+    <div class="chat-content" id="messages">
+      <div id="messages-content">
+        <% @conversations.each do |conversation| %>
+          <div id="conversation_<%= conversation.id %>" class='hidden conversation' >
+            <div id="previous-messages_<%= conversation.id %>">
+              <% conversation.messages.each do |message|  %>
+                <% if message.user == current_user %>
+                  <div class="position-relative">
+                    <div class="talk-bubble tri-right round left-in current-user-message">
+                      <p class="current-user-message"><%= message.content%>
+                        </p>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="position-relative">
+                    <div class="talk-bubble tri-right round right-in other-user-message">
+                      <p class="other-user-message"><%= message.content%></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div id="new_message">
+              <%= render 'form', user: current_user, conversation: conversation, message: Message.new %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
