@@ -32,7 +32,9 @@ class BookmatesController < ApplicationController
       end
 
       # Include loved books to bookmate search
-      @isbn += loved_book_isbns
+      if !@isbn.nil?
+        @isbn += loved_book_isbns
+      end
     else
       session[:isbn_to_love] = @isbn
     end
