@@ -1,58 +1,70 @@
 <div class="order-wrapper">
   <div class="order-container">
     <% if @order.order_status == "pending" %>
-        <h1 class="red">Votre panier</h1>
+      <h1 class="red">Votre panier</h1>
+      <div class="cart-grey">
+
+        <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
         <div class="cart-container">
-          <div class="row">
-            <div class="col-xs-7">
-              <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
 
-              <div class="books-container">
-                <div class="books">
-                  <% current_order.selling_books.each do |selling_book| %>
-                    <div class="book">
-                      <%= cl_image_tag selling_book.book.photo.path %>
-                    </div>
-                  <% end %>
+          <div class="books-container">
+            <div class="books">
+              <% current_order.selling_books.each do |selling_book| %>
+                <div class="book">
+                  <%= cl_image_tag selling_book.book.photo.path %>
                 </div>
-              </div>
-            </div>
-            <div class="col-xs-5">
-              <div class="recap-container text-center">
-
-                <%= simple_form_for @order, :url => {:action => "update"} do |f| %>
-                  <%= f.error_notification %>
-                  <%= f.input :delivery_type, collection: @delivery_type_array, label: "Mode de livraison" %>
-                  <!-- , :label=>"Mode de livraison",  :as => :radio_buttons, :item_wrapper_class => 'inline' -->
-                  <%#= f.input :order_status, as: :hidden, :input_html => { :value => "paid" } %>
-                  <%= f.button :submit, "Passer la commande" , class: "btn-bookshare-red" %>
-                <% end %>
-                <div id ="total">
-                  <span><p>Total : </p></span> <span><h2><%= @total %>€</h2></span>
-                </div>
-              </div>
-              <% else %>
-                <h1 class="red text-center">Récapitulatif de votre commande</h1>
-
-                <div class="card-grey text-center">
-                  <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
-                    <div class="books">
-                      <% @order.selling_books.each do |selling_book| %>
-                        <div class="book">
-                          <%= cl_image_tag selling_book.book.photo.path %>
-                        </div>
-                      <% end %>
-                    </div>
-                    <span><h2>Total :</h2></span> <span><h2><%= @total %>€</h2></span>
-                </div>
-
               <% end %>
-              </div>
             </div>
-      <div class="text-center">
-        <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
-      </div>
+          </div>
+
+          <div class="recap-container text-center">
+
+            <div id ="total">
+              <h2 class="weighted">Total : <%= @total %>€</h2>
+            </div>
+            <%= simple_form_for @order, :url => {:action => "update"} do |f| %>
+              <%= f.error_notification %>
+              <%= f.input :delivery_type, collection: @delivery_type_array, label: "Mode de livraison" %>
+              <!-- , :label=>"Mode de livraison",  :as => :radio_buttons, :item_wrapper_class => 'inline' -->
+              <%#= f.input :order_status, as: :hidden, :input_html => { :value => "paid" } %>
+              <%= f.submit "Passer la commande" , class: "btn-bookshare-red" %>
+            <% end %>
+
+          </div>
+
         </div>
       </div>
+
+    <% else %>
+
+      <h1 class="red">Récapitulatif de votre commande</h1>
+      <div class="cart-grey">
+        <h2>Boutique de <%=@order.bookmate.user.first_name  %></h2>
+        <div class="cart-container">
+              <% @order.selling_books.each do |selling_book| %>
+                <div class="book">
+                  <%= cl_image_tag selling_book.book.photo.path %>
+                </div>
+              <% end %>
+            <!-- </div> -->
+          <div class="total-price white">
+            <h2 class="text-center white">Total : <%= @total %>€</h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
+<div class="text-center margin-bottomed">
+
+  <%= form_tag(search_path, method: 'get', id: 'searchform') do %>
+    <%= hidden_field_tag "isbn[]", nil, id: "isbn_1" %>
+    <%= hidden_field_tag "isbn[]", nil, id: "isbn_2" %>
+    <%= hidden_field_tag "isbn[]", nil, id: "isbn_3" %>
+
+    <%= hidden_field_tag :latitude %>
+    <%= hidden_field_tag :longitude %>
+    <%= submit_tag 'Retour à la liste des bookstores', id: "submitsearch", disabled: "disabled"%>
+  <% end %>
+</div>
+

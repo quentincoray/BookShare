@@ -1,9 +1,9 @@
-  <%= form_tag(search_path, method: 'get', id: 'searchform') do %>
+  <%= form_tag(search_path, method: 'get', id: 'searchform_navbar') do %>
     <%= hidden_field_tag "isbn[]", nil, id: "isbn_1" %>
     <%= hidden_field_tag "isbn[]", nil, id: "isbn_2" %>
     <%= hidden_field_tag "isbn[]", nil, id: "isbn_3" %>
 
     <%= hidden_field_tag :latitude %>
     <%= hidden_field_tag :longitude %>
-    <%= submit_tag 'Trouver un bookstore', class: 'navbar-wagon-item navbar-wagon-button', id: "submitsearch", disabled: "disabled"%>
+    <%= submit_tag 'Trouver un bookstore', class: 'navbar-wagon-item navbar-wagon-button', id: "submitsearch_navbar", disabled: "disabled"%>
   <% end %>
