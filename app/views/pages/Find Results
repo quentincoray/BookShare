@@ -1,0 +1,42 @@
+Searching 243 files for "searchform"
+
+/Users/camillefranceschi/code/CamilleFranceschi/BookShare/app/assets/stylesheets/pages/_home.scss:
+   47
+   48  }
+   49: .container-searchform {
+   50    position:relative;
+   51  }
+
+/Users/camillefranceschi/code/CamilleFranceschi/BookShare/app/views/orders/show.html.erb:
+   56  <div class="text-center margin-bottomed">
+   57
+   58:   <%= form_tag(search_path, method: 'get', id: 'searchform') do %>
+   59      <%= hidden_field_tag "isbn[]", nil, id: "isbn_1" %>
+   60      <%= hidden_field_tag "isbn[]", nil, id: "isbn_2" %>
+
+/Users/camillefranceschi/code/CamilleFranceschi/BookShare/app/views/pages/_search_form.html.erb:
+    1: <%= form_tag(search_path, method: 'get', id: 'searchform') do %>
+    2    <%= text_field_tag :search, params[:search], placeholder: 'Type your favorite books!', class: "searchbar form-control", id: "searched_books" %>
+    3
+
+/Users/camillefranceschi/code/CamilleFranceschi/BookShare/app/views/pages/home.html.erb:
+   12        </div>
+   13
+   14:       <div class="container-searchform">
+   15:         <%= form_tag(search_path, method: 'get', id: 'searchform_home') do %>
+   16            <%= text_field_tag :search, params[:search], placeholder: 'Tapez vos livres préférés!', class: "searchbar form-control", id: "searched_books" %>
+   17            <div class="container-api-img">
+
+/Users/camillefranceschi/code/CamilleFranceschi/BookShare/app/views/shared/_navbar.html.erb:
+   18        <!-- Button (call-to-action) -->
+   19        <div class="navbar-wagon-item" id="btn-find-nav">
+   20:         <%= render 'shared/searchform' %>
+   21        </div>
+   22
+
+/Users/camillefranceschi/code/CamilleFranceschi/BookShare/app/views/shared/_searchform.html.erb:
+    1:   <%= form_tag(search_path, method: 'get', id: 'searchform_navbar') do %>
+    2      <%= hidden_field_tag "isbn[]", nil, id: "isbn_1" %>
+    3      <%= hidden_field_tag "isbn[]", nil, id: "isbn_2" %>
+
+7 matches across 6 files

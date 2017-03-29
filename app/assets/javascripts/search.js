@@ -14,6 +14,8 @@ $(document).ready(function() {
       $("#longitude").val(longitude);
         if ( !$('#latitude') != null && !$('#longitude') != null) {
           $("#submitsearch").removeAttr("disabled");
+          $("#submitsearch_home").removeAttr("disabled");
+          $("#submitsearch_navbar").removeAttr("disabled");
         };
       console.log('Latitude is ' + latitude + '° Longitude is ' + longitude + '°');
     }

@@ -86,7 +86,7 @@ h1 {
 h2 {
  // font-family: $header-font;
   // font-size: $header2-size;
-  color: $dark-grey !important;
+  color: $dark-grey;
   margin-top: 5px !important;
 }
 
@@ -127,6 +127,10 @@ p {
   color:$green !important;
 }
 
+.white {
+  color:white;
+}
+
 
 .dark-grey {
   color:$dark-grey !important;
@@ -135,7 +139,7 @@ p {
 
 .btn-bookshare-red {
   border-radius:$br-base;
-  padding:15px;
+  padding:15px 20px;
   background-color:$red;
   color:white;
   font-style:$header-font;

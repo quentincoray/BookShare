@@ -3,14 +3,34 @@
   margin: auto;
 }
 
-.cart-container {
+.cart-grey {
   background-color: $light-grey;
-  padding: 5px 5px 5px 30px;
+  padding: 15px;
+  position:relative
+}
+
+.cart-container {
+
+  // min-height:80px;
+  display:flex;
+  flex-direction:row;
+  // justify-content: center;
+  // align-items: space-between;
+  justify-content: space-around;
+}
+
+.total-price {
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #4A4A4A;
+    // color: white !important;
+    padding:  5px 10px;
 }
 
 .recap-container {
   border-radius: 3px;
-  border: solid $grey 1px;
   background-color: white;
   padding: 15px 20px 15px 20px;
   margin-right: 15px;
@@ -18,9 +38,9 @@
 }
 
 .books-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: center;
 }
 
 .books-container img {
@@ -43,7 +63,12 @@ span {
 }
 
 #total {
-  padding-top: 5px;
+  padding: 10px 0px;
+
+}
+
+h2.weighted {
+  font-weight:900;
 }
 
 .books { display: flex;
@@ -53,6 +78,7 @@ span {
          padding: 10px; }
 
 .book {
+
   position: relative;
   cursor: pointer;
   width: auto;
@@ -81,6 +107,11 @@ span {
     transform: translate(-($scale * 100 - 100px))
   }
 
+}
+
+#submitsearch {
+  background: none;
+  border: none;
 }
 
 // Si Radio Buttons : Permet de donner effet de hover sur le champ
