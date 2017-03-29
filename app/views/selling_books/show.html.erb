@@ -114,7 +114,7 @@
       console.log(isbn);
       $.ajax({
         type: "GET",
-        url: "https://www.googleapis.com/books/v1/volumes?q=+isbn="+isbn+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>",
+        url: "https://www.googleapis.com/books/v1/volumes?q=+isbn="+isbn+"&printType=books&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>&origin=*"",
         success: function(data) {
             var datum = data.items[0];
             console.log(datum);
