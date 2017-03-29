@@ -1,4 +1,4 @@
 <%= simple_form_for([user, conversation, message], remote: true) do |form| %>
-  <%= form.input :content, label: 'Nouveau Message', as: :text %>
-  <%= form.button :submit, class: 'btn btn-primary'%>
+  <%= form.input :content, label: false, placeholder: 'Tapez votre réponse', as: :string, id: 'custom-input' %>
+<!--   <%= form.button :submit, class: 'btn btn-primary custom'%> -->
 <% end %>

@@ -94,7 +94,19 @@
               <% end %>
             </div>
             <div id="new_message">
-              <%= render 'form', user: current_user, conversation: conversation, message: Message.new %>
+              <!-- <div class='conv-user-avatar'>
+                <div class="avatar dropdown-toggle">
+                  <% if @current_user.photo? %>
+                    <%= cl_image_tag current_user.photo.path,:width=>25, :height=>25, :gravity=>"auto", :crop=>"fill" %>
+                  <% else %>
+                    <%= image_tag 'avatar.png',:width=>10, :height=>10, :gravity=>"auto", :crop=>"fill" %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="talk-bubble tri-right round left-in current-user-message"> -->
+                <%= render 'form', user: current_user, conversation: conversation, message: Message.new %>
+              <!-- </div> -->
+
             </div>
           </div>
         <% end %>
