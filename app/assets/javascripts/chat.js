@@ -11,8 +11,6 @@ $(document).ready(function() {
     // console.log(content);
     var conversation_id = $(this).data('target');
     console.log(conversation_id);
-    // var conv_id_content = $(conversation_id).text();
-    // console.log(conv_id_content);
     $(conversation_id).toggleClass('hidden');
   });
 });

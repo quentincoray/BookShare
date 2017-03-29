@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('#searched_books').on('keyup', function(event) {
-    if(this.value.length < 4) return;
+    if(this.value.length < 6) return;
       console.log($('#searched_books').val());
       $.ajax({
         type: "GET",

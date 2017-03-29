@@ -29,13 +29,12 @@
               <div id="btn-ajouter">
                 <%= simple_form_for @order do |f| %>
                   <%= hidden_field_tag :selling_book_id, @selling_book.id %>
-                  <%= f.submit "Ajouter à mon panier", class: "btn btn-primary" %>
+                  <%= f.submit "Ajouter à mon panier", class: "btn-bookshare-red" %>
                 <% end %>
               </div>
             <% end %>
             <div id="phrase-done">
               <h2 class="green">Ajouté au panier <i class="fa fa-check green"></i></h2>
-
             </div>
           </div>
         </div>
@@ -60,11 +59,15 @@
             <div class="row">
               <div class="book-body-column">
                 <h2>Les autres livres de la catégorie</h2>
-                  <div class="books-container">
-                    <% @selling_book.bookmate_book_category.books.each do |book| %>
-                      <% next if book == @selling_book.book %>
-                        <%= cl_image_tag book.photo.path, :width=>150, :gravity=>"auto", :crop=>"fill"%>
+                  <div class="books">
+                    <% @books_category.each do |selling_book| %>
+                      <% next if selling_book == @selling_book %>
+                        <%= link_to bookmate_selling_book_path(@bookmate, selling_book) do %>
+                          <div class="book">
+                            <%= cl_image_tag selling_book.book.photo.path %>
+                          </div>
                       <% end %>
+                    <% end %>
                   </div>
                 <%= link_to "Retour à la page du bookmate", bookmate_path(@bookmate) %>
               </div>

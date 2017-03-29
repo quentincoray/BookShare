@@ -46,7 +46,7 @@
 .navbar-wagon-item {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 20px;
+  padding: 0 5px;
   font-size: 15px;
   color: $dark-grey;
   font-family: $base-font;
@@ -77,24 +77,40 @@
 
 
 /* basket */
+// a.enveloppe-grey {
+//   color:$dark-grey;
+// }
 
+.fa-envelope-o {
+  color:$dark-grey;
+}
 
 
 /* Navbar right button */
 .navbar-wagon-button {
   margin-left: 10px;
-  padding: 0 20px;
-  border-radius: 20em;
-  line-height: 40px;
-  background-color: #D23333;
+  padding: 9px 15px;
+  border-radius: $br-base;
+  background-color: $red;
   color: white;
   font-size: 14px;
-  border: 2px solid #D23333;
+  font-style:$header-font;
+  font-weight: 700;
+  border-style:none;
+  border-shadow:none;
 }
 .navbar-wagon-button:hover {
+  margin-left: 10px;
+  padding: 9px 15px;
+  border-radius: $br-base;
+  background-color: $dark-red;
   color: white;
-  background: #D23333;
-  border-color: #ac2626;
+  font-size: 14px;
+  font-style:$header-font;
+  font-weight: 700;
+  border-style:none;
+  border-shadow:none;
+
 }
 
 /* Navbar search form */

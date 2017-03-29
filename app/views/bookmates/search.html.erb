@@ -18,12 +18,13 @@
         <h1 class="red">Découvrez les personnes proches de vous!</h1>
       <% end %>
         <!-- Bloc cards -->
+
         <div class="col-xs-7" id="card-column">
           <% @bookmates_selected.each do |bookmate|%>
             <!-- Carte utilisateur -->
             <div class="position-relative">
               <%= link_to bookmate_path(bookmate) do %>
-                <div class="card-grey-search">
+                <div class="card-grey-dashboard">
                   <div class="user-avatar text-center">
                     <div class = "card-user text-center">
                       <% if bookmate.user.photo? %>

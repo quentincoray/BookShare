@@ -76,18 +76,18 @@
                        <div class="rating">
 
                           <input type="radio" value="5" name="order[rating]" id="order_rating_5bis">
-                          <label class="collection_radio_buttons" for="order_rating_5bis">5</label>
+                          <label class="collection_radio_buttons" for="order_rating_5bis"></label>
 
                           <input type="radio" value="4" name="order[rating]" id="order_rating_4bis">
-                          <label class="collection_radio_buttons" for="order_rating_4bis">4</label>
+                          <label class="collection_radio_buttons" for="order_rating_4bis"></label>
 
                           <input type="radio" value="3" name="order[rating]" id="order_rating_3bis">
-                          <label class="collection_radio_buttons" for="order_rating_3bis">3</label>
+                          <label class="collection_radio_buttons" for="order_rating_3bis"></label>
 
                           <input type="radio" value="2" name="order[rating]" id="order_rating_2bis">
-                          <label class="collection_radio_buttons" for="order_rating_2bis">2</label>
+                          <label class="collection_radio_buttons" for="order_rating_2bis"></label>
                           <input type="radio" value="1" name="order[rating]" id="order_rating_1bis">
-                          <label class="collection_radio_buttons" for="order_rating_1bis">1</label>
+                          <label class="collection_radio_buttons" for="order_rating_1bis"></label>
 
                         </div>
 
@@ -116,10 +116,14 @@
       </div>
 <!--       Contenu des livres préférés -->
       <div class="tab-content hidden" id="loved_books">
-        <h2>Mes livres préférés</h2>
-        <% @loved_books.each do |loved_book| %>
-          <%= loved_book.book.title %>
-        <% end %>
+        <h1>Mes livres préférés</h1>
+        <div class="books">
+          <% @loved_books.each do |loved_book| %>
+            <div class="book">
+              <%= cl_image_tag loved_book.book.photo.path %>
+            </div>
+          <% end %>
+        </div>
       </div>
 <!--       Contenu des bookmates -->
       <div class="tab-content hidden" id="bookmates">
