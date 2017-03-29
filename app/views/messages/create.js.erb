@@ -8,11 +8,30 @@
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
   var previous_messages = $('#previous-messages_<%= @conversation.id %>');
   console.log(previous_messages)
-  $('#previous-messages_<%= @conversation.id %>').append(new_message)
-  // Show the new review with an animation!
+  // $('#message_content').keypress(function (e) {
+  //   console.log(e);
+  //   if (e.which == 13) {
+  //     e.preventDefault();
+  //     console.log('hello')
+  //     console.log(('#custom-input').text())
+  //     $("#custom-input").submit();
+  //     $('#previous-messages_<%= @conversation.id %>').append(new_message);
+  //     new_message.addClass("talk-bubble tri-right round left-in current-user-message")
+  //     console.log(new_message)
+  //     new_message.slideDown();
+  //     $('#new_message').html("<%= j render 'conversations/form', user: current_user, conversation: @conversation, message: Message.new %>");
+  //     return false;
+  //   }
+  // });
   new_message.addClass("talk-bubble tri-right round left-in current-user-message")
   console.log(new_message)
+  $('#previous-messages_<%= @conversation.id %>').append(new_message)
+  // Show the new review with an animation!
+  // $('#theDiv').prepend('<img id="theImg" src="theImg.png" />')
   new_message.slideDown();
   // Reset the form
   $('#new_message').html("<%= j render 'conversations/form', user: current_user, conversation: @conversation, message: Message.new %>");
 <% end %>
+
+
+// (event.keyCode === 13)

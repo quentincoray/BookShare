@@ -5,8 +5,7 @@ class ConversationsController < ApplicationController
   after_action :verify_policy_scoped, only: [:index]
 
   def index
-    @conversations = policy_scope(Conversation)
-    @messages = policy_scope(Message)
+    @conversations = policy_scope(Conversation).includes(:messages)
     @user = current_user
 
     @unread_messages = @conversations.map { |conversation| conversation.unread_messages(current_user)}.flatten
