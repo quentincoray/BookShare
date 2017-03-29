@@ -52,10 +52,9 @@
 
 .current {
   background: rgba(255,115,115,0.20);
-  border-left: 4px solid #FF7474;
+  border-left: 8px solid #FF7474;
   color: $dark-grey;
   letter-spacing: 0.5px;
-  padding: 5px 10px 5px 0;
 }
 
 .book-categories {
@@ -86,7 +85,7 @@
 .bookmate-books {
   background-color: $light-grey;
   width: 100%;
-  padding-left: 20px;
+  padding: 10px 0 10px 20px;
 }
 
 .bookmate-books:hover {
