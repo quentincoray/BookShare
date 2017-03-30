@@ -23,16 +23,12 @@
 }
 .chat-content {
   padding: 10px;
+  padding-bottom: 50px;
   width: 100%;
   margin: auto;
   margin-top: 120px;
   overflow-y: auto;
 }
-
-// .position-relative {
-//   display: flex;
-//   flex-direction: row;
-// }
 
 .current-user {
   display: flex;
@@ -131,14 +127,26 @@ a:hover{
 }
 
 
-.form-control {
+#message_input {
   border: none;
   bottom: 0px;
   position: fixed;
 }
 
-#placearea-for-new-message {
-  border-top: 1px solid $light-grey;
+#message_content {
+  // border-top: 1px solid $grey;
+    border-radius: 0;
+    box-shadow: none !important;
+    border-top: 1px solid #bbbbbb !important;
+    border: 0;
+
 }
 
+#new_message {
+  position: fixed;
+  bottom: 0;
+  width: 68%;
+  background: white;
+
+}
 
