@@ -72,6 +72,7 @@
           $(".selected-book-cover").prepend(this);
           selected_books ++;
         };
+        $('#searched_books').val("");
       var isbn_1 = ($(".selected-book-cover a:nth-child(1) img").data("isbn"));
       $("#isbn_1").val(isbn_1);
       var isbn_2 = ($(".selected-book-cover a:nth-child(2) img").data("isbn"));
