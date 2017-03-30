@@ -67,9 +67,9 @@ class OrdersController < ApplicationController
     authorize @order
     @user = current_user
     if @order.update(order_params)
-      redirect_to user_path(@user, anchor: "orders"), notice: "Your comment is saved!"
+      redirect_to user_path(@user, anchor: "orders"), notice: "Votre commentaire a bien été pris en compte"
     else
-      redirect_to user_path(@user, anchor: "orders"), alert: "Oops! There was a problem, please try again"
+      redirect_to user_path(@user, anchor: "orders"), alert: "Oops! Il y a eu une erreur, veuillez réessayer"
     end
   end
 

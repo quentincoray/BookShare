@@ -8,9 +8,9 @@ class LovedBookstoresController < ApplicationController
     authorize @loved_bookstore
 
     if @loved_bookstore.save
-      redirect_to bookmate_path(@bookmate), notice: "le bookmate a été bookmarké"
+      redirect_to bookmate_path(@bookmate), notice: "Ajouté à vos favoris"
     else
-      redirect_to bookmate_path(@bookmate), alert: "Oops! Il y a eu un problème, ressayez svp"
+      redirect_to bookmate_path(@bookmate), alert: "Oops! Il y a eu un problème, réessayez svp"
     end
   end
 
@@ -21,9 +21,9 @@ class LovedBookstoresController < ApplicationController
     @loved_bookstore.destroy
 
     if @loved_bookstore.destroyed?
-      redirect_to bookmate_path(@bookmate), notice: "le bookmate a été débookmarké"
+      redirect_to bookmate_path(@bookmate), notice: "Retiré de vos favoris"
     else
-      redirect_to bookmate_path(@bookmate), alert: "Oops! Il y a eu un problème, ressayez svp"
+      redirect_to bookmate_path(@bookmate), alert: "Oops! Il y a eu un problème, réessayez svp"
     end
   end
 
