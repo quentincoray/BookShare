@@ -50,9 +50,9 @@ litterature_francaise = BookmateBookCategory.create!(name:"Littérature françai
 romans_policiers = BookmateBookCategory.create!(name:"Romans policiers", bookmate: quentin_bookstore)
 bandes_dessinnees = BookmateBookCategory.create!(name:"Bandes dessinées", bookmate: quentin_bookstore)
 lotr = BookmateBookCategory.create!(name:"Lord of the Rings", bookmate: quentin_bookstore)
+livres_francais = BookmateBookCategory.create!(name:"Mes derniers livres lus", bookmate: alice_bookstore)
 cats = BookmateBookCategory.create!(name:"I love cats!", bookmate: alice_bookstore)
 litterature_us = BookmateBookCategory.create!(name:"Littérature américaine", bookmate: anne_sophie_bookstore)
-livres_francais = BookmateBookCategory.create!(name:"Mes derniers livres lus", bookmate: alice_bookstore)
 nouveautes = BookmateBookCategory.create!(name:"Derniers livres lus", bookmate: anne_sophie_bookstore)
 derniers_achats = BookmateBookCategory.create!(name:"Mes derniers achats", bookmate: jean_bookstore)
 
@@ -123,11 +123,11 @@ book24 = Book.create!(title: "La Septième Fonction du Langage", summary: "Roman
 photo_book24 = 'http://static.fnac-static.com/multimedia/Images/FR/NR/ce/ba/6c/7125710/1507-1/tsp20150901141233/La-septieme-fonction-du-langage.jpg'
 book24.photo_url = photo_book24
 
-book22 = Book.create!(title: "D'après une histoire vraie", summary: "Comment une personne, L. peut s'immiscer dans la vie d'une personne et prendre sa place...", author: "Delphine de Vigan", author_bio: "Romancière française ", isbn: '9782709648813')
+book22 = Book.create!(title: "D'après une histoire vraie", summary: "Dans ce roman aux allures de thriller psychologique, Delphine de Vigan s’aventure en équilibriste sur la ligne de crête qui sépare le réel de la fiction. Ce livre est aussi une plongée au cœur d’une époque fascinée par le Vrai.", author: "Delphine de Vigan", author_bio: "Delphine de Vigan est une romancière et réalisatrice française née le 1er mars 1966 à Boulogne-Billancourt. Elle est l'auteur de huit romans dont D’après une histoire vraie en 2015 qui a été couronné par le prix Renaudot, le prix Goncourt des lycéens.", isbn: '9782709648813')
 photo_book22 = 'https://images-na.ssl-images-amazon.com/images/I/41Bya7stsoL._SX315_BO1,204,203,200_.jpg'
 book22.photo_url = photo_book22
 
-book23 = Book.create!(title: "Réparer les vivants", summary: "Aperçu de toutes les vies qui se croisent, au propre comme au figuré, dans un hopital", author: "Maylis de Kerangal", author_bio: "Romancière française ", isbn: '9782072574795')
+book23 = Book.create!(title: "Réparer les vivants", summary: "'Le cœur de Simon migrait dans un autre endroit du pays, ses reins, son foie et ses poumons gagnaient d'autres provinces, ils filaient vers d'autres corps.' Réparer les vivants est le roman d'une transplantation cardiaque. Telle une chanson de gestes, il tisse les présences et les espaces, les voix et les actes qui vont se relayer en vingt-quatre heures exactement. Roman de tension et de patience, d'accélérations paniques et de pauses méditatives, il trace une aventure métaphysique, à la fois collective et intime, où le cœur, au-delà de sa fonction organique, demeure le siège des affects et le symbole de l'amour.", author: "Maylis de Kerangal", author_bio: "Maylis de Kerangal est une femme de lettres française, née le 16 juin 19671 à Toulon2.", isbn: '9782072574795')
 photo_book23 = 'https://images-na.ssl-images-amazon.com/images/I/41EUVx5oWQL._SX299_BO1,204,203,200_.jpg'
 book23.photo_url = photo_book23
 
@@ -157,7 +157,7 @@ selling_book21 = SellingBook.create!(personalized_comment: "Vous ne lirez plus j
 selling_book25 = SellingBook.create!(personalized_comment: "Thriller psychologique, on ne peut plus le poser tant qu'on n'est pas arrivé au dénouement....", price: 11, condition: "très bon état", favorite_book: false, sold: false, book: book14, bookmate_book_category: last_french_awards)
 selling_book26 = SellingBook.create!(personalized_comment: "Ecriture dense et précise, histoire poignante, n'hésitez plus : il faut lire ce livre!", price: 4, condition: "bon état", favorite_book: false, sold: false, book: book15, bookmate_book_category: last_french_awards)
 selling_book27 = SellingBook.create!(personalized_comment: "Très bon livre, si vous avez aimé Céline Minard, ce livre vous plaira", price: 17, condition: "très bon état", favorite_book: true, sold: false, book: book23, bookmate_book_category: last_french_awards)
-selling_book28 = SellingBook.create!(personalized_comment: "Encore une très belle découverte de cette romancière", price: 17, condition: "très bon état", favorite_book: true, sold: false, book: book22, bookmate_book_category: last_french_awards)
+selling_book28 = SellingBook.create!(personalized_comment: "Encore une très belle découverte de cette romancière. On ne peut plus poser le livre tant qu'on ne connaît pas la fin. N'hésitez pas, il faut lire ce livre.", price: 17, condition: "très bon état", favorite_book: true, sold: false, book: book22, bookmate_book_category: last_french_awards)
 selling_book29 = SellingBook.create!(personalized_comment: "Intéressante découverte", price: 15, condition: "bon état", favorite_book: true, sold: false, book: book22, bookmate_book_category: nouveautes)
 selling_book30 = SellingBook.create!(personalized_comment: "Je ne connaissais pas Céline Minard, mais ce livre m'a convaincu", price: 10, condition: "bon état", favorite_book: true, sold: false, book: book1, bookmate_book_category: nouveautes)
 selling_book31 = SellingBook.create!(personalized_comment: "Livre haletant", price: 10, condition: "bon état", favorite_book: true, sold: false, book: book22, bookmate_book_category: derniers_achats)
@@ -166,6 +166,7 @@ selling_book33 = SellingBook.create!(personalized_comment: "Livre haletant", pri
 selling_book34 = SellingBook.create!(personalized_comment: "Très poignant!", price: 10, condition: "bon état", favorite_book: true, sold: false, book: book23, bookmate_book_category: livres_francais)
 selling_book35 = SellingBook.create!(personalized_comment: "Fantastique", price: 10, condition: "bon état", favorite_book: true, sold: false, book: book5, bookmate_book_category: derniers_achats)
 selling_book36 = SellingBook.create!(personalized_comment: "J'ai vraiment adoré ce livre", price: 10, condition: "bon état", favorite_book: true, sold: false, book: book5, bookmate_book_category: livres_francais)
+
 
 puts "Creating conversations..."
 # c1 = Conversation.create!(user1: quentin, user2: anne_sophie)
