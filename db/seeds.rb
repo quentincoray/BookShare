@@ -23,7 +23,7 @@ photo_anne_sophie = 'https://avatars1.githubusercontent.com/u/25099604?v=3&s=460
 photo_camille = 'https://avatars2.githubusercontent.com/u/21193933?v=3&s=460'
 photo_jean = 'https://pbs.twimg.com/profile_images/662333810185543680/0NdNCnYu.jpg'
 photo_edouard = 'https://s-media-cache-ak0.pinimg.com/originals/a6/70/b6/a670b6579ac8de3142a40e5de7217ad0.jpg'
-photo_alice = 'http://www.teamjimmyjoe.com/wp-content/uploads/2012/11/Bad-Family-Photos-80s-Yearbook-.jpg'
+photo_alice = 'http://cdn.images.express.co.uk/img/dynamic/79/285x214/64992_1.jpg'
 
 quentin.photo_url = photo_quentin
 anne_sophie.photo_url = photo_anne_sophie
