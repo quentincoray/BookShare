@@ -1,5 +1,12 @@
 $(document).ready(function() {
   $('#messages-content').hide;
+    // console.log('hello');
+    var tabactive = $('a.listing:first-child');
+    console.log(tabactive);
+    tabactive.addClass('active');
+    var conv_active = tabactive.data('target');
+    console.log(conv_active);
+    $(conv_active).removeClass('hidden');
   $('.listing').on('click', function () {
     // Change active tab
     $('.listing').removeClass('active');
