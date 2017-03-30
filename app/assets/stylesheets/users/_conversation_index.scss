@@ -23,20 +23,17 @@
 }
 .chat-content {
   padding: 10px;
-  width: 80%;
+  padding-bottom: 50px;
+  width: 100%;
   margin: auto;
   margin-top: 120px;
+  overflow-y: auto;
 }
-
-// .position-relative {
-//   display: flex;
-//   flex-direction: row;
-// }
 
 .current-user {
   display: flex;
   flex-direction: row;
-  margin-right: 20%
+  margin-right: 20%;
 }
 
 .other-user {
@@ -129,18 +126,25 @@ a:hover{
   border-color: $blue transparent transparent $blue;
 }
 
-input#custom-input {
+
+#message_input {
   border: none;
-  border-top: 5px solid red;
-  background-color: red;
+  bottom: 0px;
+  position: fixed;
 }
 
-.custom {
-  display: flex;
-  align-items: left;
-  margin-left: 100px;
+#message_content {
+  // border-top: 1px solid $grey;
+    border-radius: 0;
+    box-shadow: none !important;
+    border-top: 1px solid #bbbbbb !important;
+    border: 0;
 }
-// $lightgrey pour la side bar
-// $gray pour mes messages
-// $blue pour les messages de mon interlocuteur
-// $white pour le fond
+
+#new_message {
+  position: fixed;
+  bottom: 0;
+  width: 68%;
+  background: white;
+}
+
