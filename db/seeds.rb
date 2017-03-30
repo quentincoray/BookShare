@@ -190,7 +190,7 @@ puts "Creating messages..."
 # m10 = Message.create!(user: quentin, conversation: c4, content: "Non, on est sur les Rails, il faut avancer !")
 # m11 = Message.create!(user: edouard, conversation: c5, content: "Non.... mais j'ai de la chance, c'est ça ?")
 # m12 = Message.create!(user: quentin, conversation: c6, content: "Tu peux lire 'Le Chat du Rabbin', c'est très chouette !")
-m13 = Message.create!(user: quentin, conversation: c2, content: "Merci pour cette commande ! Je reviens vers toi rapidement pour la livraison")
+m13 = Message.create!(user: quentin, conversation: c2, content: "Merci pour cette commande !")
 m14 = Message.create!(user: anne_sophie, conversation: c4, content: "Merci d'avoir passé commande chez moi! On se retrouve Place d'Italie pour la remise en main propre?")
 m15 = Message.create!(user: camille, conversation: c4, content: "Parfait pour moi! J'y serai demain à 16h, devant la sortie du métro. On pourra prendre un café à côté pour parler du livre")
 
