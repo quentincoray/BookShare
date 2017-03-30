@@ -1,0 +1,17 @@
+.books-modal {
+  .modal-dialog {
+    margin: 150px auto;
+    width: 800px;
+  }
+  .modal-content {
+    padding: 50px;
+    text-align: center ;
+  }
+  h3 {
+    margin-bottom: 40px;
+    font-weight: 700;
+  }
+  .book {
+    margin: 0 15px;
+  }
+}
