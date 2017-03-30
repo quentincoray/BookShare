@@ -21,8 +21,8 @@ alice = User.create(email: "alice@gmail.com", password: "azerty", first_name: "A
 photo_quentin = 'https://pbs.twimg.com/profile_images/618004273998249984/-46_Q9Ca.jpg'
 photo_anne_sophie = 'https://avatars1.githubusercontent.com/u/25099604?v=3&s=460'
 photo_camille = 'https://avatars2.githubusercontent.com/u/21193933?v=3&s=460'
-photo_jean = 'http://cdn77.sadanduseless.com/wp-content/uploads/2015/05/worst9.jpg'
-photo_edouard = 'http://www.goldenmoustache.com/wp-content/uploads/2015/06/worst8.jpg'
+photo_jean = 'https://pbs.twimg.com/profile_images/662333810185543680/0NdNCnYu.jpg'
+photo_edouard = 'https://s-media-cache-ak0.pinimg.com/originals/a6/70/b6/a670b6579ac8de3142a40e5de7217ad0.jpg'
 photo_alice = 'http://www.teamjimmyjoe.com/wp-content/uploads/2012/11/Bad-Family-Photos-80s-Yearbook-.jpg'
 
 quentin.photo_url = photo_quentin
@@ -37,8 +37,8 @@ puts "Creating bookmates..."
 quentin_bookstore = Bookmate.create!(description: "J'aime tous types de romans, surtout les romans français contemporains, et parfois je me détends avec une BD", deliver_by_hand: true, home_delivery: true, user: quentin)
 anne_sophie_bookstore = Bookmate.create!(description: "J'aime la littérature dans son ensemble, c'est un art passionnant qu'il me plait de partager.", deliver_by_hand: true, home_delivery: false, user: anne_sophie)
 # camille_bookstore = Bookmate.create!(description: "Lectrice insatiable, je lis deux livres par semaine. J'ai chez moi une véritable bibliothèque !", deliver_by_hand: true, home_delivery: true, user: camille)
-jean_bookstore = Bookmate.create!(description: "Moi c'est Jean, lecteur à mes heures perdues, mais je ne rechigne jamais à dévorer un bon bouquin.", deliver_by_hand: true, home_delivery: true, user: jean)
-edouard_bookstore = Bookmate.create!(description: "J'aime les bouquins zarb", deliver_by_hand: true, home_delivery: true, user: edouard)
+jean_bookstore = Bookmate.create!(description: "Moi c'est Jean, je tourne dans quelques films, entre Paris et Hollywood, mais je ne rechigne jamais à dévorer un bon bouquin.", deliver_by_hand: true, home_delivery: true, user: jean)
+edouard_bookstore = Bookmate.create!(description: "Vous savez, je ne pense pas qu'il y a de bon ou de mauvais livre...", deliver_by_hand: true, home_delivery: true, user: edouard)
 alice_bookstore = Bookmate.create!(description: "J'ai deux passions dans la vie : les chats et la lecture !", deliver_by_hand: true, home_delivery: true, user: alice)
 
 
@@ -62,7 +62,7 @@ book1.photo_url = photo_book1
 
 book2 = Book.create!(title: "Faillir être flingué", summary: "Western moderne", author: "Céline Minard", author_bio: "Romancière française éclectique", isbn: '9782743626563')
 # Photo a changer
-photo_book2 = 'http://ecx.images-amazon.com/images/I/41o5R7NGgjL._SX210_.jpg'
+photo_book2 = 'https://images-na.ssl-images-amazon.com/images/I/41A4ZJV1fNL._SX323_BO1,204,203,200_.jpg'
 book2.photo_url = photo_book2
 
 book3 = Book.create!(title: "Les hommes qui n'aimaient pas les femmes", summary: "Début de la trilogie Millénium", author: "Stieg Larsson", author_bio: "Auteur suédois", isbn: '9782742761579')
@@ -169,9 +169,9 @@ selling_book36 = SellingBook.create!(personalized_comment: "J'ai vraiment adoré
 
 puts "Creating conversations..."
 # c1 = Conversation.create!(user1: quentin, user2: anne_sophie)
-c2 = Conversation.create!(user1: camille, user2: anne_sophie)
+c2 = Conversation.create!(user1: quentin, user2: camille)
 # c3 = Conversation.create!(user1: alice, user2: camille)
-c4 = Conversation.create!(user1: quentin, user2: camille)
+c4 = Conversation.create!(user1: camille, user2: anne_sophie)
 # c5 = Conversation.create!(user1: quentin, user2: edouard)
 # c6 = Conversation.create!(user1: alice, user2: quentin)
 
@@ -189,9 +189,9 @@ puts "Creating messages..."
 # m10 = Message.create!(user: quentin, conversation: c4, content: "Non, on est sur les Rails, il faut avancer !")
 # m11 = Message.create!(user: edouard, conversation: c5, content: "Non.... mais j'ai de la chance, c'est ça ?")
 # m12 = Message.create!(user: quentin, conversation: c6, content: "Tu peux lire 'Le Chat du Rabbin', c'est très chouette !")
-m13 = Message.create!(user: anne_sophie, conversation: c2, content: "Merci d'avoir passé commande chez moi! On se retrouve Place d'Italie pour la remise en main propre?")
-m14 = Message.create!(user: camille, conversation: c2, content: "Parfait pour moi! J'y serai demain à 16h, devant la sortie du métro. On pourra prendre un café à côté pour parler du livre")
-m15 = Message.create!(user: quentin, conversation: c4, content: "Merci pour cette commande!")
+m13 = Message.create!(user: quentin, conversation: c2, content: "Merci pour cette commande!")
+m14 = Message.create!(user: anne_sophie, conversation: c4, content: "Merci d'avoir passé commande chez moi! On se retrouve Place d'Italie pour la remise en main propre?")
+m15 = Message.create!(user: camille, conversation: c4, content: "Parfait pour moi! J'y serai demain à 16h, devant la sortie du métro. On pourra prendre un café à côté pour parler du livre")
 
 
 puts "Creating loved books..."
