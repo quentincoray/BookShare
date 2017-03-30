@@ -2,12 +2,23 @@
   display: none;
 }
 
+.fav-bookmates {
+  display: flex;
+  margin-top: 40px;
+  .user-avatar-bookmate {
+    margin-right: 15px;
+  }
+}
+
 .users-show {
   .navbar-wagon {
     // position: fixed;
     right: 0;
     left: 0;
     z-index: 3000;
+  }
+  .alert {
+    margin-left: 250px;
   }
 }
 

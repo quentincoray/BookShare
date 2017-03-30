@@ -24,7 +24,7 @@
 
           <% if current_user.loved_bookstores.where(bookmate: @bookmate).exists? %>
             <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :delete, class: "blue"  do %>
-            <i class="fa fa-heart-o" ></i>
+            <i class="fa fa-heart" ></i>
             <% end %>
           <% else %>
             <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :post, class: "blue" do %>

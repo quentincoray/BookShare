@@ -12,11 +12,6 @@
   <div class="container-search">
   <!-- Bloc map et cards -->
     <div class="row">
-      <% if @bookmates_matching.exists? %>
-
-      <% else %>
-        <h1 class="red">Découvrez les personnes proches de vous!</h1>
-      <% end %>
         <!-- Bloc cards -->
 
         <div class="col-xs-7" id="card-column">
@@ -59,14 +54,22 @@
 
                 <div class="common-book-number" data-toggle="modal" data-target="#common-books-modal<%= bookmate.id %>">
                   <% if bookmate.respond_to?(:common_books) %>
-                    <%= pluralize bookmate.common_books, "livre" %> en commun</h2>
+                      <%= pluralize bookmate.common_books, "livre" %> en commun
+                  <% else %>
+                      Aucun livre en commun
                   <% end %>
+
                 </div>
 
                 <div class="modal fade books-modal" id="common-books-modal<%= bookmate.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <h3>Vos livres en commun avec <%= bookmate.user.first_name %></h3>
+                      <% if bookmate.respond_to?(:common_books) %>
+                           <h3>Vos livres en commun avec <%= bookmate.user.first_name %></h3>
+                      <% else %>
+                          <h3>Vous n'avez aucun livre en commun avec <%= bookmate.user.first_name %> </h3>
+                      <% end %>
+
                       <div class="common-books">
 
                           <% current_user.loved_books.each do |loved_book| %>

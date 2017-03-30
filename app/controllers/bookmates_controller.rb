@@ -1,6 +1,4 @@
 class BookmatesController < ApplicationController
-
-  skip_before_action :authenticate_user!, only: :search
   skip_after_action :verify_policy_scoped, only: [:search]
   before_action :set_bookmate, only: [:show]
 
