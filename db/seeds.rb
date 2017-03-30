@@ -152,7 +152,7 @@ selling_book16 = SellingBook.create!(personalized_comment: "Pas mal! ", price: 1
 selling_book17 = SellingBook.create!(personalized_comment: "Pas mal aussi!", price: 25, condition: "très bon état", favorite_book: true, sold: false, book: book2, bookmate_book_category: livres_francais)
 selling_book18 = SellingBook.create!(personalized_comment: "Si vous aimez le dépaysement, ce livre est pour vous!", price: 16, condition: "très bon état", favorite_book: true, sold: false, book: book1, bookmate_book_category: last_french_awards)
 selling_book19 = SellingBook.create!(personalized_comment: "Excellent pour passer un après-midi à lire et voyager", price: 22, condition: "très bon état", favorite_book: true, sold: false, book: book2, bookmate_book_category: last_french_awards)
-selling_book20 = SellingBook.create!(personalized_comment: "Polar Western : le mélange est possible !", price: 20, condition: "bon état", favorite_book: false, sold: false, book: book2, bookmate_book_category: romans_policiers)
+selling_book20 = SellingBook.create!(personalized_comment: "Polar Western : le mélange est possible !", price: 20, condition: "bon état", favorite_book: false, sold: false, book: book5, bookmate_book_category: last_french_awards)
 selling_book21 = SellingBook.create!(personalized_comment: "Vous ne lirez plus jamais du Barthes de la même manière!", price: 17, condition: "très bon état", favorite_book: true, sold: false, book: book13, bookmate_book_category: last_french_awards)
 selling_book25 = SellingBook.create!(personalized_comment: "Thriller psychologique, on ne peut plus le poser tant qu'on n'est pas arrivé au dénouement....", price: 11, condition: "très bon état", favorite_book: false, sold: false, book: book14, bookmate_book_category: last_french_awards)
 selling_book26 = SellingBook.create!(personalized_comment: "Ecriture dense et précise, histoire poignante, n'hésitez plus : il faut lire ce livre!", price: 4, condition: "bon état", favorite_book: false, sold: false, book: book15, bookmate_book_category: last_french_awards)
@@ -196,9 +196,10 @@ m15 = Message.create!(user: camille, conversation: c4, content: "Parfait pour mo
 
 # puts "Creating loved books..."
 
-# # camille_loved_book1 = LovedBook.create!(user: camille, book: book1)
-# # camille_loved_book2 = LovedBook.create!(user: camille, book: book2)
-# # camille_loved_book3 = LovedBook.create!(user: camille, book: book5)
+
+# camille_loved_book1 = LovedBook.create!(user: camille, book: book1)
+# camille_loved_book2 = LovedBook.create!(user: camille, book: book2)
+# camille_loved_book3 = LovedBook.create!(user: camille, book: book5)
 # quentin_loved_book1 = LovedBook.create!(user: quentin, book: book3)
 # quentin_loved_book2 = LovedBook.create!(user: quentin, book: book8)
 # quentin_loved_book3 = LovedBook.create!(user: quentin, book: book11)

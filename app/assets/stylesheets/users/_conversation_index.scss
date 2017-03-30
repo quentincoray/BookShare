@@ -39,7 +39,8 @@
 .other-user {
   display: flex;
   flex-direction: row;
-  margin-left: 20%
+  margin-right: 30px;
+  justify-content: flex-end;
 }
 
 .user1-name, .current-user-message {
@@ -90,14 +91,14 @@ a:hover{
   position: relative;
   width: 75%;
   height: auto;
-  // background-color: $light-grey;
-  padding: 3% 3%;
+  padding: 15px 30px;
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .round{
-  border-radius: 30px;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
+  border-radius: 6px;
 }
 
 .tri-right.left-in:after{

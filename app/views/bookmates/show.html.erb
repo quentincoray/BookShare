@@ -20,17 +20,18 @@
   <div class="position-relative">
     <div class = "tab-content">
       <div class="inline-block">
-        <span><h1 class="red">A propos de <%= @bookmate.user.first_name %></h1></span>
+        <h1><span class="red">A propos de <%= @bookmate.user.first_name %></span>
 
-        <% if current_user.loved_bookstores.where(bookmate: @bookmate).exists? %>
-          <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :delete, class: "blue"  do %>
-          <span><h2 class="margin-left"><i class="fa fa-heart-o fa-3x" ></i></h2></span>
+          <% if current_user.loved_bookstores.where(bookmate: @bookmate).exists? %>
+            <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :delete, class: "blue"  do %>
+            <i class="fa fa-heart" ></i>
+            <% end %>
+          <% else %>
+            <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :post, class: "blue" do %>
+            <i class="fa fa-heart-o" ></i>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :post, class: "blue" do %>
-          <span><h2><i class="fa fa-heart-o fa-3x" ></i></h2></span>
-          <% end %>
-        <% end %>
+        </h1>
       </div>
 
       <h2>Ses goûts littéraires :  </h2>

@@ -2,6 +2,11 @@
   display: none;
 
 }
+.bookmates-show {
+  .alert {
+    margin-left: 250px;
+  }
+}
 
 .bookmate-show {
   .navbar-wagon {
@@ -10,6 +15,7 @@
     left: 0;
     z-index: 3000;
   }
+
 }
 
 .side-bar {
@@ -65,6 +71,7 @@
 .book-categories {
   display: flex;
   flex-direction: column;
+  margin-top: 50px;
 }
 
 .book-categories img {
