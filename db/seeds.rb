@@ -23,7 +23,7 @@ photo_anne_sophie = 'https://avatars1.githubusercontent.com/u/25099604?v=3&s=460
 photo_camille = 'https://avatars2.githubusercontent.com/u/21193933?v=3&s=460'
 photo_jean = 'https://pbs.twimg.com/profile_images/662333810185543680/0NdNCnYu.jpg'
 photo_edouard = 'https://s-media-cache-ak0.pinimg.com/originals/a6/70/b6/a670b6579ac8de3142a40e5de7217ad0.jpg'
-photo_alice = 'http://www.teamjimmyjoe.com/wp-content/uploads/2012/11/Bad-Family-Photos-80s-Yearbook-.jpg'
+photo_alice = 'http://cdn.images.express.co.uk/img/dynamic/79/285x214/64992_1.jpg'
 
 quentin.photo_url = photo_quentin
 anne_sophie.photo_url = photo_anne_sophie
@@ -189,35 +189,41 @@ puts "Creating messages..."
 # m10 = Message.create!(user: quentin, conversation: c4, content: "Non, on est sur les Rails, il faut avancer !")
 # m11 = Message.create!(user: edouard, conversation: c5, content: "Non.... mais j'ai de la chance, c'est ça ?")
 # m12 = Message.create!(user: quentin, conversation: c6, content: "Tu peux lire 'Le Chat du Rabbin', c'est très chouette !")
-m13 = Message.create!(user: quentin, conversation: c2, content: "Merci pour cette commande!")
+m13 = Message.create!(user: quentin, conversation: c2, content: "Merci pour cette commande ! Je reviens vers toi rapidement pour la livraison")
 m14 = Message.create!(user: anne_sophie, conversation: c4, content: "Merci d'avoir passé commande chez moi! On se retrouve Place d'Italie pour la remise en main propre?")
 m15 = Message.create!(user: camille, conversation: c4, content: "Parfait pour moi! J'y serai demain à 16h, devant la sortie du métro. On pourra prendre un café à côté pour parler du livre")
 
 
-puts "Creating loved books..."
+# puts "Creating loved books..."
 
-# camille_loved_book1 = LovedBook.create!(user: camille, book: book1)
-# camille_loved_book2 = LovedBook.create!(user: camille, book: book2)
-# camille_loved_book3 = LovedBook.create!(user: camille, book: book5)
-quentin_loved_book1 = LovedBook.create!(user: quentin, book: book3)
-quentin_loved_book2 = LovedBook.create!(user: quentin, book: book8)
-quentin_loved_book3 = LovedBook.create!(user: quentin, book: book11)
-anne_sophie_loved_book1 = LovedBook.create!(user: anne_sophie, book: book4)
-anne_sophie_loved_book2 = LovedBook.create!(user: anne_sophie, book: book9)
-anne_sophie_loved_book3 = LovedBook.create!(user: anne_sophie, book: book14)
-jean_loved_book1 = LovedBook.create!(user: jean, book: book10)
-jean_loved_book2 = LovedBook.create!(user: jean, book: book12)
-alice_loved_book1 = LovedBook.create!(user: alice, book: book12)
-alice_loved_book2 = LovedBook.create!(user: alice, book: book15)
-edouard_loved_book1 = LovedBook.create!(user: edouard, book: book14)
+# # camille_loved_book1 = LovedBook.create!(user: camille, book: book1)
+# # camille_loved_book2 = LovedBook.create!(user: camille, book: book2)
+# # camille_loved_book3 = LovedBook.create!(user: camille, book: book5)
+# quentin_loved_book1 = LovedBook.create!(user: quentin, book: book3)
+# quentin_loved_book2 = LovedBook.create!(user: quentin, book: book8)
+# quentin_loved_book3 = LovedBook.create!(user: quentin, book: book11)
+# anne_sophie_loved_book1 = LovedBook.create!(user: anne_sophie, book: book4)
+# anne_sophie_loved_book2 = LovedBook.create!(user: anne_sophie, book: book9)
+# anne_sophie_loved_book3 = LovedBook.create!(user: anne_sophie, book: book14)
+# jean_loved_book1 = LovedBook.create!(user: jean, book: book10)
+# jean_loved_book2 = LovedBook.create!(user: jean, book: book12)
+# alice_loved_book1 = LovedBook.create!(user: alice, book: book12)
+# alice_loved_book2 = LovedBook.create!(user: alice, book: book15)
+# edouard_loved_book1 = LovedBook.create!(user: edouard, book: book14)
 
-puts "Creating loved booksmates..."
+# puts "Creating loved booksmates..."
 
 # camille_loved_bookmate1 = LovedBookstore.create!(user: camille, bookmate: quentin_bookstore)
 
 puts "Creating orders..."
 order1 = Order.create!(user: camille, bookmate: anne_sophie_bookstore, order_status: 'paid', delivery_status: 'effectuée', delivery_type: 'Livraison en main propre', review: 'Livre en excellent état, discussion sympa, je recommande', rating: 5)
 order2 = Order.create!(user: alice, bookmate: quentin_bookstore, order_status: 'paid', delivery_status: 'effectuée', delivery_type: 'Livraison en main propre', review: 'Top', rating: 5)
+order3 = Order.create!(user: alice, bookmate: jean_bookstore, order_status: 'paid', delivery_status: 'effectuée', delivery_type: 'Livraison en main propre', review: 'Jean est de bon conseil, le livre était en bon état', rating: 4)
+order4 = Order.create!(user: alice, bookmate: edouard_bookstore, order_status: 'paid', delivery_status: 'effectuée', delivery_type: 'Livraison en main propre', review: 'Edouard a répondu rapidement, mais on a eu du mal à organiser la remise en main propre', rating: 3)
+order5 = Order.create!(user: edouard, bookmate: alice_bookstore, order_status: 'paid', delivery_status: 'effectuée', delivery_type: 'Livraison à domicile', review: 'Livraison rapide, livre en bon état', rating: 4)
+order6 = Order.create!(user: alice, bookmate: quentin_bookstore, order_status: 'paid', delivery_status: 'effectuée', delivery_type: 'Livraison en main propre', review: 'Quentin est vraiment de bon conseil, et en plus il aime les chats ! ', rating: 5)
+order5 = Order.create!(user: jean, bookmate: quentin_bookstore, order_status: 'paid', delivery_status: 'effectuée', delivery_type: 'Livraison à domicile', review: 'Tout a été top, on a bien rigolé en plus lors de la remise en main propre. Quentin est vraiment top pour vous recommander des livres', rating: 5)
+order6 = Order.create!(user: quentin, bookmate: edouard_bookstore, order_status: 'paid', delivery_status: 'effectuée', delivery_type: 'Livraison en main propre', review: 'Très bien', rating: 4)
 
 puts "Ordered Books"
 ordered_book1 = OrderedBook.create!(order: order1, selling_book: selling_book12)

@@ -8,9 +8,9 @@ class LovedBooksController < ApplicationController
     authorize @loved_book
 
     if @loved_book.save
-      redirect_to user_path(current_user, anchor: 'orders'), notice: "le livre a été liké"
+      redirect_to user_path(current_user, anchor: 'orders'), notice: "Le livre a été ajouté à vos favoris"
     else
-      redirect_to user_path(current_user, anchor: 'orders'), alert: "Oops! There was a problem, please try again"
+      redirect_to user_path(current_user, anchor: 'orders'), alert: "Oops! Il y a eu un problème, veuillez réessayer"
     end
   end
 
@@ -21,9 +21,9 @@ class LovedBooksController < ApplicationController
     @loved_book.destroy
 
     if @loved_book.destroyed?
-      redirect_to user_path(current_user, anchor: 'orders'), notice: "le livre a été déliké"
+      redirect_to user_path(current_user, anchor: 'orders'), notice: "Le livre a été retiré de vos favoris"
     else
-      redirect_to user_path(current_user, anchor: 'orders'), alert: "Oops! There was a problem, please try again"
+      redirect_to user_path(current_user, anchor: 'orders'), alert: "Oops ! Il y a eu un problème, veuillez réessayer"
     end
   end
 

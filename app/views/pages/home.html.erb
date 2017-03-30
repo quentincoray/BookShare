@@ -13,7 +13,7 @@
 
       <div class="container-searchform">
         <%= form_tag(search_path, method: 'get', id: 'searchform_home') do %>
-          <%= text_field_tag :search, params[:search], placeholder: 'Tapez vos livres préférés!', class: "searchbar form-control", id: "searched_books" %>
+          <%= text_field_tag :search, params[:search], placeholder: 'Entrez ici vos livres préférés!', class: "searchbar form-control", id: "searched_books" %>
           <div class="container-api-img">
           </div>
           <div id="search-results">
@@ -72,6 +72,7 @@
           $(".selected-book-cover").prepend(this);
           selected_books ++;
         };
+        $('#searched_books').val("");
       var isbn_1 = ($(".selected-book-cover a:nth-child(1) img").data("isbn"));
       $("#isbn_1").val(isbn_1);
       var isbn_2 = ($(".selected-book-cover a:nth-child(2) img").data("isbn"));
