@@ -71,8 +71,7 @@
 
                   <div id= "form-review#{uncommented_order.id}" >
                     <%= simple_form_for @order, :url => url_for(:action => 'reviewed', :controller => 'orders', :id => uncommented_order.id), :method => 'post' do |f| %>
-                      <%= hidden_field_tag :order_id, uncommented_order.id %>
-                      <%= f.input :review %>
+                      <%= hidden_field_tag :order_id, :label => "Faites un retour sur votre expérience"%>
                        <div class="rating">
 
                           <input type="radio" value="5" name="order[rating]" id="order_rating_5bis">
@@ -117,12 +116,15 @@
 <!--       Contenu des livres préférés -->
       <div class="tab-content hidden" id="loved_books">
         <h1>Mes livres préférés</h1>
-        <div class="books">
-          <% @loved_books.each do |loved_book| %>
-            <div class="book">
-              <%= cl_image_tag loved_book.book.photo.path %>
-            </div>
-          <% end %>
+        <div class="card-grey">
+
+          <div class="books">
+            <% @loved_books.each do |loved_book| %>
+              <div class="book">
+                <%= cl_image_tag loved_book.book.photo.path %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
 <!--       Contenu des bookmates -->

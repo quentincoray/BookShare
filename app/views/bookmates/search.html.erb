@@ -13,7 +13,7 @@
   <!-- Bloc map et cards -->
     <div class="row">
       <% if @bookmates_matching.exists? %>
-        <h1 class ="red">Découvrez les personnes proches de vous avec qui vous partagez le plus d'affinités littéraires</h1>
+        <h1 class ="red spaced"></h1>
       <% else %>
         <h1 class="red">Découvrez les personnes proches de vous!</h1>
       <% end %>
@@ -24,23 +24,25 @@
             <!-- Carte utilisateur -->
             <div class="position-relative">
               <%= link_to bookmate_path(bookmate) do %>
+
                 <div class="card-grey-dashboard">
-                  <div class="user-avatar text-center">
-                    <div class = "card-user text-center">
+
+                  <div class="order-bookmate text-center">
                       <% if bookmate.user.photo? %>
-                        <%= cl_image_tag bookmate.user.photo.path,:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill" %>
+                        <%= cl_image_tag bookmate.user.photo.path,:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill", class: "bookmate-avatar" %>
                       <% else %>
                         <%= image_tag 'avatar.png',:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill" %>
                       <% end %>
-                    </div>
-                    <h2><%= bookmate.user.first_name %></h2>
                   </div>
-                  <div class="user-details">
-                    <h2>A propos de <%= bookmate.user.first_name %></h2>
-                    <p>" <%= bookmate.description %> "</p>
-                    <h2 style="padding-left: 30vh">
-                      <p class="blue"><%= pluralize bookmate.review_count, "commentaire" %></p>
 
+                  <div class="user-details">
+                    <h2 class="dark-grey weighted"><%= bookmate.user.first_name %></h2>
+
+                    <p>" <%= bookmate.description %> "</p>
+
+                    <!-- <h2 style="padding-left: 30vh"> -->
+                    <div class="rating-search">
+                      <p class="blue"><%= bookmate.review_count%> c.</p>
                       <% if bookmate.average_rating %>
                         <% bookmate.average_rating.times do %>
                           <i class="fa fa-star blue"></i>
@@ -49,21 +51,37 @@
                           <i class="fa fa-star grey"></i>
                         <% end %>
                       <% end %>
-                    </h2>
-                    <% if bookmate.respond_to?(:common_books) %>
-                      <a class="btn common-book" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right">
-                        <h2 class="blue" ><%= pluralize bookmate.common_books, "livre" %> en commun</h2>
-                      </a>
-                    <% end %>
                     </div>
-                  <div class="user-link">
-                    <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i>
+                    <!-- </h2> -->
                   </div>
-                </div>
+
+
+                  <div class="common-book-number">
+                    <% if bookmate.respond_to?(:common_books) %>
+                      <%= pluralize bookmate.common_books, "livre" %> en commun</h2>
+                    <% end %>
+                  </div>
+
+                  <div class="user-link">
+                    <div class="book">
+                        <img src="http://www.payot-rivages.net/couvertures/bassedef/9782743631741.jpg" alt="">
+                    </div>
+                      <%# current_user.loved_books.each do |loved_book| %>
+                        <%# bookmate.selling_books.each do |selling_book| %>
+                          <%# if loved_book.book == selling_book.book %>
+                           <%#= cl_image_tag selling_book.book.photo.path %>
+                          <%# end %>
+                        <%# end %>
+                      <%# end %>
+
+                    <!-- <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></i> -->
+                  </div>
+
                 </div>
               <% end %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+        </div>
         <div class="col-xs-5" id="map-column">
           <div id="map"></div>
         </div>
@@ -71,17 +89,10 @@
   </div>
 <% end %>
 
+
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function () {
-
-      <!-- Popover on common books -->
-      $('.common-book').popover({
-        html: true,
-        content: function () {
-        }
-      });
-
       var handler = Gmaps.build ('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
@@ -96,5 +107,3 @@
     });
   <% end %>
 <% end %>
-
-
