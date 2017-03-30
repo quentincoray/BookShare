@@ -24,7 +24,7 @@
 
             <!-- A faire -->
             <% if current_order.selling_books.include? @selling_book %>
-                <h2 class="green">Le livre a bien été ajouté au panier <i class="fa fa-check green"></i></h2>
+                <h2 class="green">Ajouté au panier <i class="fa fa-check green"></i></h2>
             <% else %>
               <div id="btn-ajouter">
                 <%= simple_form_for @order do |f| %>
