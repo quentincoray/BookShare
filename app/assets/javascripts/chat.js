@@ -1,16 +1,12 @@
 $(document).ready(function() {
   $('#messages-content').hide;
-  $(window).load(function() {
-    console.log('hello');
-    var tabactive = $('.listing')[0];
+    // console.log('hello');
+    var tabactive = $('a.listing:first-child');
     console.log(tabactive);
+    tabactive.addClass('active');
     var conv_active = tabactive.data('target');
     console.log(conv_active);
-    conv_active.addClass('active');
-    var onload_id = active.data('target');
-    console.log(onload_id);
-    $('.conversation').removeClass('hidden');
-  });
+    $(conv_active).removeClass('hidden');
   $('.listing').on('click', function () {
     // Change active tab
     $('.listing').removeClass('active');
