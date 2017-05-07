@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  # FB log in, controller part added
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   root to: 'pages#home'
   resources :bookmates, only: [:show] do
     resources :selling_books, only: [:show, :new, :create]

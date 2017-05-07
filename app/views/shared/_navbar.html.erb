@@ -61,7 +61,11 @@
           <% if current_user.photo? %>
             <%= cl_image_tag current_user.photo.path, alt: "profile picture", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
           <% else %>
-          <i class="fa fa-user-circle-o fa-2x dropdown-toggle" id= "navbar-wagon-menu" data-toggle="dropdown"></i>
+          <!-- Choose fb picture or uploaded picture -->
+            <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%# avatar_url = current_user.facebook_picture_url || current_user.photo.path || "http://placehold.it/30x30" %>
+          <!-- cloudinary ? -->
+            <%= image_tag avatar_url, alt: "profile picture", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"%>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
