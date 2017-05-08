@@ -4,6 +4,7 @@
             <% else %>
             <img src="https://graph.facebook.com/v2.6/10155363180006742/picture?type=square">
               <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+              <img src="#{current_user.facebook_picture_url}" alt="">
               <%= image_tag current_user.facebook_picture_url, alt: "profile picture", class: "avatar-large" %>
             <% end %>
             <% if policy(@user).update? %>
