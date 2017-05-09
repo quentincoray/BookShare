@@ -1,5 +1,5 @@
 class BookmatesController < ApplicationController
-  skip_after_action :verify_policy_scoped, only: [:search]
+  skip_after_action :verify_policy_scoped, only: [:search, :index]
   before_action :set_bookmate, only: [:show]
 
   def show
@@ -16,6 +16,9 @@ class BookmatesController < ApplicationController
     end
   end
 
+  def index
+    @bookmates = Bookmate.all
+  end
 
   def search
     @address = [params[:latitude],params[:longitude]].join(",")

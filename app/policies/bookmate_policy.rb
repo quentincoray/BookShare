@@ -13,6 +13,10 @@ class BookmatePolicy < ApplicationPolicy
     return true
   end
 
+  def index?
+    return true
+  end
+
   def bookmarked?
     record.user == user
   end

@@ -1,12 +1,11 @@
 <% if @users_near_me.length == 0 %>
-  <div class="container-search">
-    <div class="span">
-      <p>Il n'y a pas de bookmates près de chez vous pour le moment !</p>
-      <p>Nouvelle recherche !</p>
-      <div class="span-form">
-
+  <div class="container text-center">
+      <h1>Oups...</h1>
+      <p>Il n'y a personne autour de vous qui ont aimé vos livres</p>
+      <p>Vous pouvez visiter les boutiques de tous les vendeurs sur BookShare en cliquant sur le bouton</p>
+      <div id="btn-bookmates">
+        <%= link_to "Voir les vendeurs", bookmates_path, class: "btn-bookshare-red"%>
       </div>
-    </div>
   </div>
 <% else %>
   <div class="container-search">
