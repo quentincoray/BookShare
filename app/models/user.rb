@@ -23,26 +23,16 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
- # def self.process_uri(uri)
- #  avatar_url = URI.parse(uri)
- #  avatar_url.scheme = 'https'
- #  avatar_url.to_s
- # end
+   def self.picture_url(url)
+    url.insert(-1, "&width=1000&height=1000&redirect=false")
+    rep = JSON.parse(open(url).read)
+    rep["data"]["url"]
+   end
 
- def self.picture_url(url)
-  url.insert(-1, "&redirect=false")
-  rep = JSON.parse(open(url).read)
-  rep["data"]["url"]
- end
-# http://graph.facebook.com/517267866/picture?type=large&redirect=false
-# http://graph.facebook.com/517267866/?fields=picture&type=large
-# https://graph.facebook.com/v2.6/10155363180006742/picture?type=square
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
     user_params[:facebook_picture_url] = picture_url(auth.info.image)
-    # process_uri(auth.info.image)
-    # .gsub('http://','https://')
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
     user_params = user_params.to_h
