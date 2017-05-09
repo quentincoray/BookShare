@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root to: 'pages#home'
-  resources :bookmates, only: [:show] do
+  resources :bookmates, only: [:show, :index] do
     resources :selling_books, only: [:show, :new, :create]
     resource :loved_bookstore, only: [:create, :destroy]
   end

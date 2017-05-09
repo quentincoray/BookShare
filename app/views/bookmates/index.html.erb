@@ -1,0 +1,104 @@
+<div class="container-search">
+<!-- Bloc map et cards -->
+  <div class="row">
+      <!-- Bloc cards -->
+
+      <div class="col-xs-7" id="card-column">
+        <% @bookmates.each do |bookmate|%>
+          <!-- Carte utilisateur -->
+          <div class="position-relative">
+
+            <div class="card-grey-dashboard">
+
+              <div class="order-bookmate text-center">
+                  <% if bookmate.user.photo? %>
+                    <%= cl_image_tag bookmate.user.photo.path,:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill", class: "bookmate-avatar" %>
+                  <% else %>
+                    <%= image_tag 'avatar.png',:width=>80, :height=>80, :gravity=>"auto", :crop=>"fill" %>
+                  <% end %>
+              </div>
+
+              <div class="user-details">
+                <%= link_to bookmate_path(bookmate) do %>
+
+                  <h2 class="dark-grey weighted"><%= bookmate.user.first_name %></h2>
+                  <p>" <%= bookmate.description %> "</p>
+                <% end %>
+
+                <!-- <h2 style="padding-left: 30vh"> -->
+                <div class="rating-search">
+                  <p class="blue"> <i class="fa fa-commenting"></i> <%= bookmate.review_count%></p>
+                  <% if bookmate.average_rating %>
+                    <% bookmate.average_rating.times do %>
+                      <i class="fa fa-star blue"></i>
+                    <% end %>
+                    <% (5 - bookmate.average_rating).times do %>
+                      <i class="fa fa-star grey"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <!-- </h2> -->
+              </div>
+
+
+              <div class="common-book-number" data-toggle="modal" data-target="#common-books-modal<%= bookmate.id %>">
+                <% if bookmate.respond_to?(:common_books) %>
+                    <%= pluralize bookmate.common_books, "livre" %> en commun
+                <% else %>
+                    Aucun livre en commun
+                <% end %>
+
+              </div>
+
+              <div class="modal fade books-modal" id="common-books-modal<%= bookmate.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <% if bookmate.respond_to?(:common_books) %>
+                         <h3>Vos livres en commun avec <%= bookmate.user.first_name %></h3>
+                    <% else %>
+                        <h3>Vous n'avez aucun livre en commun avec <%= bookmate.user.first_name %> </h3>
+                    <% end %>
+
+                    <div class="common-books">
+
+                        <% current_user.loved_books.each do |loved_book| %>
+                          <% bookmate.selling_books.each do |selling_book| %>
+                            <% if loved_book.book == selling_book.book %>
+                             <%= cl_image_tag selling_book.book.photo.path, class: "book" %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-5" id="map-column">
+        <div id="map"></div>
+      </div>
+    </div>
+</div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function () {
+      var handler = Gmaps.build ('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(3);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
