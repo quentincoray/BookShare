@@ -24,7 +24,7 @@ class User < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
    def self.picture_url(url)
-    url.insert(-1, "&width=1000&height=1000&redirect=false")
+    url.insert(-1, "?&width=1000&height=1000&redirect=false")
     rep = JSON.parse(open(url).read)
     rep["data"]["url"]
    end
