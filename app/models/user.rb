@@ -17,9 +17,48 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  # FB log in
+  devise :omniauthable,  omniauth_providers: [:facebook]
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+ # def self.process_uri(uri)
+ #  avatar_url = URI.parse(uri)
+ #  avatar_url.scheme = 'https'
+ #  avatar_url.to_s
+ # end
+
+ def self.picture_url(url)
+  url.insert(-1, "&redirect=false")
+  rep = JSON.parse(open(url).read)
+  rep["data"]["url"]
+ end
+# http://graph.facebook.com/517267866/picture?type=large&redirect=false
+# http://graph.facebook.com/517267866/?fields=picture&type=large
+# https://graph.facebook.com/v2.6/10155363180006742/picture?type=square
+  def self.find_for_facebook_oauth(auth)
+    user_params = auth.slice(:provider, :uid)
+    user_params.merge! auth.info.slice(:email, :first_name, :last_name)
+    user_params[:facebook_picture_url] = picture_url(auth.info.image)
+    # process_uri(auth.info.image)
+    # .gsub('http://','https://')
+    user_params[:token] = auth.credentials.token
+    user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
+    user_params = user_params.to_h
+
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    user ||= User.where(email: auth.info.email).first # User did a regular sign up in the past.
+    if user
+      user.update(user_params)
+    else
+      user = User.new(user_params)
+      user.password = Devise.friendly_token[0,20]  # Fake password for validation
+      user.save
+    end
+
+    return user
+  end
 
   def save_loved_books(isbn)
     loved_book_isbns = books.pluck(:isbn)

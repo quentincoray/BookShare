@@ -6,6 +6,9 @@ gem 'puma'
 gem 'pg'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
+# FB log in
+gem 'omniauth-facebook'
+
 gem 'redis'
 gem 'sass-rails'
 gem 'jquery-rails'

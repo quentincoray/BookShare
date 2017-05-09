@@ -2,7 +2,10 @@
             <% if current_user.photo? %>
               <%= cl_image_tag current_user.photo.path, alt: "profile picture", class: "avatar-large" %>
             <% else %>
-              <%= image_tag "avatar.png", alt: "profile picture", class: "avatar-large" %>
+            <img src="https://graph.facebook.com/v2.6/10155363180006742/picture?type=square">
+              <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+              <img src="#{current_user.facebook_picture_url}" alt="">
+              <%= image_tag current_user.facebook_picture_url, alt: "profile picture", class: "avatar-large" %>
             <% end %>
             <% if policy(@user).update? %>
               <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn-bookshare-red" %>
