@@ -1,49 +1,44 @@
-<!-- <div class="container"> -->
 
-<!-- Cette row contient le Dashboard -->
-    <!-- Cette colonne contient la barre latérale -->
-<!--   <div class="row">
-    <div class = "col-xs-4" style = "background-color: #F3F3F3"> -->
-    <div class="sidebar">
-      <h3>Mes conversations</h3>
-        <div class="chat-index">
-          <% @conversations.each do |conversation| %>
-            <a class="listing" data-target="#conversation_<%= conversation.id %>">
-            <% if conversation.user1 == current_user %>
-              <div class='current-conversations'>
-                <div class='user-avatar'>
-                  <div class="avatar dropdown-toggle">
-                    <% if conversation.user2.photo? %>
-                      <%= cl_image_tag conversation.user2.photo.path,:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
-                    <% else %>
-                      <%= image_tag 'avatar.png',:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="conv-user-details">
-                  <p><%= conversation.user2.first_name %></p>
-                </div>
-               </div>
-            <% else %>
-              <div class='current-conversations'>
-                <div class='user-avatar'>
-                  <div class="avatar dropdown-toggle">
-                    <% if conversation.user1.photo? %>
-                      <%= cl_image_tag conversation.user1.photo.path,:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
-                    <% else %>
-                      <%= image_tag 'avatar.png',:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="conv-user-details">
-                  <p><%= conversation.user1.first_name %></p>
-                </div>
+<div class="sidebar">
+  <h3>Mes conversations</h3>
+    <div class="chat-index">
+      <% @conversations.each do |conversation| %>
+        <a class="listing" data-target="#conversation_<%= conversation.id %>">
+        <% if conversation.user1 == current_user %>
+          <div class='current-conversations'>
+            <div class='user-avatar'>
+              <div class="avatar dropdown-toggle">
+                <% if conversation.user2.photo? %>
+                  <%= cl_image_tag conversation.user2.photo.path,:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
+                <% else %>
+                  <%= image_tag 'avatar.png',:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
+                <% end %>
               </div>
-            <% end %>
-          <% end %>
-          </a>
-        </div>
+            </div>
+            <div class="conv-user-details">
+              <p><%= conversation.user2.first_name %></p>
+            </div>
+           </div>
+        <% else %>
+          <div class='current-conversations'>
+            <div class='user-avatar'>
+              <div class="avatar dropdown-toggle">
+                <% if conversation.user1.photo? %>
+                  <%= cl_image_tag conversation.user1.photo.path,:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
+                <% else %>
+                  <%= image_tag 'avatar.png',:width=>30, :height=>30, :gravity=>"auto", :crop=>"fill" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="conv-user-details">
+              <p><%= conversation.user1.first_name %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      </a>
     </div>
+</div>
   <!-- </div> -->
 
   <!-- Cette colonne contient le contenu des tabs -->

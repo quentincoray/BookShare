@@ -1,10 +1,11 @@
 $(document).ready(function() {
   $(function(){
 
-    $(".bookmate-tab").on("click", function(e){
+    $(".bookmate-tab-link").on("click", function(e){
       // Change active tab
-      $(".bookmate-tab").removeClass('active');
+      $(".bookmate-tab-link").removeClass('active');
       $(this).addClass('active');
     });
   });
 });
+
