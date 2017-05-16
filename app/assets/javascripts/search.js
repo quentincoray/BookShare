@@ -17,14 +17,14 @@ $(document).ready(function() {
           $("#submitsearch_home").removeAttr("disabled");
           $("#submitsearch_navbar").removeAttr("disabled");
         };
-      console.log('Latitude is ' + latitude + '° Longitude is ' + longitude + '°');
+      // console.log('Latitude is ' + latitude + '° Longitude is ' + longitude + '°');
     }
 
     function error() {
       console.log("Unable to retrieve your location");
     }
 
-    console.log("Locating…");
+    // console.log("Locating…");
 
     navigator.geolocation.getCurrentPosition(success, error);
   }

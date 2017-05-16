@@ -1,34 +1,36 @@
-    <div class="sidebar">
-      <div class="text-center bookmate-avatar">
-        <%= cl_image_tag @bookmate.user.photo.path, alt: "profile picture", class: "avatar avatar-medium border-white text-center" %>
-      </div>
-        <h3>GENRES FAVORIS</h3>
-        <div class="bookmate-tabs">
-          <% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
-          <div class ="bookmate-tab">
-            <h2>
-              <a href="#category_<%= bookmate_book_category.id %>" >
-                <%= bookmate_book_category.name %>
-              </a>
-            </h2>
-          </div>
-        <% end %>
-      </div>
-    </div>
 
-  <div class = "col-xs-offset-2 col-xs-10" id="card-column">
-  <div class="position-relative">
+<div class="sidebar" id="side-bar">
+  <div class="text-center bookmate-avatar">
+    <%= cl_image_tag @bookmate.user.photo.path, alt: "profile picture", class: "avatar avatar-medium border-white text-center" %>
+  </div>
+  <h3>GENRES FAVORIS</h3>
+  <!-- nav nav-list required by bootstrap to automatiquely active tab on scrolling -->
+  <ul class="nav nav-list bookmate-tabs" role="tablist" >
+    <% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
+    <!-- data-attr-scroll & class scrollto for scroll on click -->
+      <li class ="bookmate-tab-link">
+        <a href = "#category_<%= bookmate_book_category.id %>" class="scroll">
+          <%= bookmate_book_category.name %>
+        </a>
+      </li>
+    <% end %>
+  </div>
+  </ul>
+</div>
+  <!-- data-spy="scroll" required by bootstrap to automatiquely active tab on scrolling -->
+  <div class = "col-xs-offset-2 col-xs-10" id="card-column-bookmate" data-spy="scroll" data-target="#side-bar">
+  <div class="">
     <div class = "tab-content">
       <div class="inline-block">
         <h1><span class="red">A propos de <%= @bookmate.user.first_name %></span>
 
           <% if current_user.loved_bookstores.where(bookmate: @bookmate).exists? %>
             <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :delete, class: "blue"  do %>
-            <i class="fa fa-heart" ></i>
+              <i class="fa fa-heart" ></i>
             <% end %>
           <% else %>
             <%= link_to bookmate_loved_bookstore_path(@bookmate), method: :post, class: "blue" do %>
-            <i class="fa fa-heart-o" ></i>
+              <i class="fa fa-heart-o" ></i>
             <% end %>
           <% end %>
         </h1>
@@ -36,19 +38,10 @@
 
       <h2>Ses goûts littéraires :  </h2>
       <p><%= @bookmate.description %></p>
-<!--       <h2> <%#= pluralize @count, "mode" %> de livraison : </h2>
-      <%# if @bookmate.deliver_by_hand == true %>
-        <p>Livraison en main popre</p>
-      <%# end %>
-      <%# if @bookmate.home_delivery == true %>
-        <p>Livraison à domicile</p>
-      <%# end %> -->
-  <!--     <h2>Son top 3 ?</h2>
-      <h2>Sa note ?</h2> -->
 
       <div class="book-categories">
       <% @bookmate.bookmate_book_categories.each do |bookmate_book_category| %>
-        <section id ="category_<%= bookmate_book_category.id %>">
+        <div id ="category_<%= bookmate_book_category.id %>">
             <h2 class="red"><%= bookmate_book_category.name %></h2>
             <div class="bookmate-books">
               <div class="books">
@@ -64,7 +57,7 @@
               <% end %>
               </div>
             </div>
-        </section>
+        </div>
       <% end %>
       </div>
     </div>
@@ -89,3 +82,4 @@
     });
   <% end %>
 <% end %>
+
