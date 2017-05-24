@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :loved_bookstores, dependent: :destroy
 
   has_attachment :photo
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
   validates :email, presence: :true, uniqueness: :true
   # Include default devise modules. Others available are:
