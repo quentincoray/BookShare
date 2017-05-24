@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :loved_bookstores, dependent: :destroy
 
   has_attachment :photo
+  after_create :send_welcome_email
 
   validates :first_name, presence: :true
 
@@ -23,11 +24,12 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-   def self.picture_url(url)
+  # Facebook part
+  def self.picture_url(url)
     url.insert(-1, "?&width=1000&height=1000&redirect=false")
     rep = JSON.parse(open(url).read)
     rep["data"]["url"]
-   end
+  end
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -78,5 +80,12 @@ class User < ApplicationRecord
 
   def unread_messages?
     unread_messages_count > 0
+  end
+
+  private
+
+  # mail on user creation
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 end

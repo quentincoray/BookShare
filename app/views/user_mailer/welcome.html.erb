@@ -1,5 +1,7 @@
-<h1>User#welcome</h1>
+<h1>Welcome <%= @user.first_name %></h1>
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/welcome.html.erb
-</p>
+<p>Here at BookShare you can find your next best book wiyhout searching!</p>
+<p>See you soon on BookShare</p>
+<%#= link_to "Go to BookShare website", root_url  %>
+
+<%= link_to "Go to BookShare website", bookmates_url, class: "btn-bookshare-red"  %>
