@@ -31,6 +31,9 @@ gem 'geocoder'
 gem "coffee-rails"
 gem "gmaps4rails"
 
+#mail
+gem "actionmailer"
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
