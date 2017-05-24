@@ -33,6 +33,7 @@ gem "gmaps4rails"
 
 #mail
 gem "actionmailer"
+gem "postmark-rails"
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
@@ -42,6 +43,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
 
+  # mail
+  gem "letter_opener"
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
