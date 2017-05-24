@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'camille@bookshare.com'
+  default from: 'camille@bookshare.fr'
   layout 'mailer'
 end
