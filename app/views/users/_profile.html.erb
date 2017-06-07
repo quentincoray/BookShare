@@ -1,10 +1,12 @@
-        <h1>Mon profil</h1>
-            <% if current_user.photo? %>
-              <%= cl_image_tag current_user.photo.path, alt: "profile picture", class: "avatar-large" %>
-            <% else %>
-              <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-              <%= image_tag current_user.facebook_picture_url, alt: "profile picture", class: "avatar-large" %>
-            <% end %>
-            <% if policy(@user).update? %>
-              <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn-bookshare-red" %>
-            <% end %>
+<h1>Mon profil</h1>
+<% if current_user.photo? %>
+  <%= cl_image_tag current_user.photo.path, alt: "profile picture", class: "avatar-large" %>
+<% elsif current_user.facebook_picture_url%>
+  <%= image_tag current_user.facebook_picture_url, alt: "profile picture", class: "avatar-large" %>
+<%else%>
+  <%= image_tag "http://placehold.it/100x100", alt: "profile picture", class: "avatar-large" %>
+<% end %>
+
+<% if policy(@user).update? %>
+  <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn-bookshare-red" %>
+<% end %>
